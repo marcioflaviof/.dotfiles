@@ -1,0 +1,4 @@
+{
+  "coc.preferences.formatOnSaveFiletypes": ["js", "ts", "jsx", "tsx"],
+  "solargraph.formatting": true
+}
