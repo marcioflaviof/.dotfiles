@@ -19,9 +19,10 @@ set wildignore+=**/ios/*
 set wildignore+=**/.git/*
 
 call plug#begin('~/.vim/plugged')
-" Fuzzy finder
-Plug 'nvim-lua/plenary.nvim'
+" Telescope
 Plug 'nvim-telescope/telescope.nvim'
+Plug 'nvim-lua/plenary.nvim'
+Plug 'nvim-telescope/telescope-fzy-native.nvim'
 
 " Auto pairs generate
 " Plug 'jiangmiao/auto-pairs'
@@ -52,8 +53,14 @@ lua require'colorizer'.setup()
 colorscheme onedark
 set background=dark
 
+" Lua scripts
+lua require("mf")
+
 " Our remaps
 let mapleader = " "
+
+" NERDTree show hidden
+let NERDTreeShowHidden=1
 
 " Open file tree
 nnoremap <leader>pv :NERDTreeToggle<CR>
@@ -63,7 +70,7 @@ nnoremap <leader><CR> :so ~/.config/nvim/init.vim<CR>
 
 " Search with fzf
 nnoremap <C-p> :Telescope find_files<CR>
-nnoremap <leader>ag :Telescope grep_string<CR>
+nnoremap <leader>ag :Telescope live_grep<CR>
 nnoremap <leader>pf :Telescope buffers<CR>
 
 " Save with ctrl + s
@@ -90,8 +97,11 @@ nmap <leader>f <Plug>(coc-format)
 " Go to definition
 nmap <leader>gd <Plug>(coc-definition)
 
+" Force suggestions
+inoremap <silent><expr> <c-space> coc#refresh()
+
 " Coc Configs
-let g:coc_global_extensions = ['coc-solargraph', 'coc-json', 'coc-tsserver', 'coc-prettier', 'coc-python', 'coc-vimlsp']
+let g:coc_global_extensions = ['coc-solargraph', 'coc-json', 'coc-tsserver', 'coc-prettier', 'coc-python', 'coc-vimlsp', 'coc-tabnine']
 
 " Setup Prettier
 command! -nargs=0 Prettier :CocCommand prettier.formatFile

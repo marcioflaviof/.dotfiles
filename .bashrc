@@ -135,3 +135,5 @@ ex ()
     echo "'$1' is not a valid file"
   fi
 }
+
+. $HOME/.asdf/asdf.sh 
