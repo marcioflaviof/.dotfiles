@@ -10,7 +10,7 @@ local options = {
 	autoread = true,
 	completeopt = { "menuone", "noselect" },
 	mouse = "a",
-	guifont = "Hack:h11",
+	guifont = "Fira Code:h11",
 }
 
 for k, v in pairs(options) do

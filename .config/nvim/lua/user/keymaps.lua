@@ -82,6 +82,9 @@ keymap("v", "p", '"_dP', opts)
 -- Save to buffer
 keymap("v", "<leader>y", '"+y', opts)
 
+-- Paste from buffer in view mode
+keymap("v", "<leader>p", '"+p', opts)
+
 -- Visual Block --
 -- Move text up and down
 keymap("x", "J", ":move '>+1<CR>gv-gv", opts)

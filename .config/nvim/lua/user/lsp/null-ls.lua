@@ -14,7 +14,7 @@ null_ls.setup({
 		formatting.prettier,
 		formatting.stylua,
 		formatting.rubocop,
-		diagnostics.eslint,
+		-- diagnostics.eslint,
 	},
 	on_attach = function(client)
 		if client.resolved_capabilities.document_formatting then
