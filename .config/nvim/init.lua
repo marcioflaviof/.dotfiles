@@ -1,18 +1,18 @@
-require "user.options"
-require "user.keymaps"
-require "user.plugins"
-require "user.colorscheme"
-require "user.cmp"
-require "user.lsp"
-require "user.telescope"
-require "user.treesitter"
-require "user.autopairs"
-require "user.comment"
-require "user.nvim-tree"
-require "user.toggleterm"
+require("mf.options")
+require("mf.keymaps")
+require("mf.plugins")
+require("mf.colorscheme")
+require("mf.cmp")
+require("mf.lsp")
+require("mf.telescope")
+require("mf.treesitter")
+require("mf.autopairs")
+require("mf.comment")
+require("mf.gitsigns")
+require("mf.nvim-tree")
+require("mf.bufferline")
+require("mf.toggleterm")
+require("mf.lualine")
 
-
-require'colorizer'.setup()
-
-
+require("colorizer").setup()
 

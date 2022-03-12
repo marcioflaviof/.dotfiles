@@ -147,7 +147,7 @@ local schemas = {
 		fileMatch = {
 			"package.json",
 		},
-		url = "https://json.schemastore.org/package.json",
+	url = "https://json.schemastore.org/package.json",
 	},
 	{
 		description = "JSON schema for Visual Studio component configuration files",
@@ -181,3 +181,4 @@ local opts = {
 }
 
 return opts
+	

@@ -141,7 +141,7 @@ lvim.builtin.treesitter.highlight.enabled = true
 lvim.plugins = {
 	{ "folke/tokyonight.nvim" },
 	{ "norcalli/nvim-colorizer.lua" },
-  { "mg979/vim-visual-multi" },
+	{ "mg979/vim-visual-multi" },
 }
 require("colorizer").setup()
 

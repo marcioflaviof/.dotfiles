@@ -11,14 +11,17 @@ local options = {
 	completeopt = { "menuone", "noselect" },
 	mouse = "a",
 	guifont = "Fira Code:h11",
+	clipboard = "", -- unnamedplus to access system clipboard
+	updatetime = 300,
 }
 
 for k, v in pairs(options) do
 	vim.opt[k] = v
 end
 
-vim.cmd("set nohlsearch")
--- Ignore files
+vim.cmd("set whichwrap+=<,>,[,],h,l")
+vim.cmd("set iskeyword+=-")
+
 vim.cmd("set wildignore+=*.pyc")
 vim.cmd("set wildignore+=*_build/*")
 vim.cmd("set wildignore+=**/coverage/*")

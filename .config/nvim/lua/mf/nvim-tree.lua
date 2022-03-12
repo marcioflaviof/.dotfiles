@@ -97,3 +97,4 @@ nvim_tree.setup({
 		tree_width = 30,
 	},
 })
+

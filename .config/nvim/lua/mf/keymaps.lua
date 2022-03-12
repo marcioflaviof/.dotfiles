@@ -27,6 +27,9 @@ keymap("n", "<C-l>", "<C-w>l", opts)
 
 keymap("n", "<leader>e", ":Lex 30<cr>", opts)
 
+-- Close tab
+keymap("n", "<leader>c", ":Bdelete<CR>", opts)
+
 -- Resize with arrows
 keymap("n", "<C-Up>", ":resize -2<CR>", opts)
 keymap("n", "<C-Down>", ":resize +2<CR>", opts)
@@ -45,12 +48,11 @@ keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 keymap("n", "<leader>gs", ":G<CR>", {}) -- Status
 
 -- Search with Telescope
-keymap("n", "<C-p>", ":Telescope find_files<CR>", opts)
-keymap("n", "<leader>ag", ":Telescope live_grep<CR>", opts)
-keymap("n", "<leader>pf", ":Telescope buffers<CR>", opts)
+keymap("n", "<leader>f", ":Telescope find_files<CR>", opts)
+keymap("n", "<leader>st", ":Telescope live_grep<CR>", opts)
 
 -- Open file tree
-keymap("n", "<leader>pv", ":NvimTreeToggle<CR>", { noremap = true })
+keymap("n", "<leader>e", ":NvimTreeToggle<CR>", { noremap = true })
 
 -- Rebuff init.lua
 keymap("n", "<leader><CR>", ":so ~/.config/nvim/init.lua<CR>", { noremap = true })
@@ -65,9 +67,14 @@ keymap("n", "<F4>", ":let @+ = expand('%')<CR>", opts)
 keymap("n", "<leader>p", '"+p', opts)
 
 -- Format
-keymap("n", "<leader>f", ":Format<CR>", opts)
+keymap("n", "<leader>lf", ":Format<CR>", opts)
+
+-- Remove Highlight
+keymap("n", "<leader>h", ":noh<CR>", opts)
 
 -- Insert --
+-- Press jk fast to enter
+keymap("i", "jk", "<ESC>", opts)
 
 -- Visual --
 -- Stay in indent mode
