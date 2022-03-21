@@ -20,5 +20,9 @@ telescope.setup({
 	},
 	file_ignore_patters = { "node_modules/*" },
 	hidden = true,
+	pickers = {
+		find_files = {
+			hidden = true,
+		},
+	},
 })
-

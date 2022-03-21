@@ -1,0 +1,29 @@
+import:
+  - ~/.config/alacritty/tokyonight.yml
+
+font:
+  normal:
+    family: JetBrainsMono Nerd Font
+    style: Medium
+  bold:
+    family: JetBrainsMono Nerd Font
+    style: Bold
+  italic:
+    family: JetBrainsMono Nerd Font
+    style: Mediumitalic
+  bold_italic:
+    family: JetBrainsMono Nerd Font
+    style: BoldItalic
+
+window:
+  # decorations: none
+  opacity: 0.7
+  # padding:
+  #   x: 5
+  #   y: 5
+
+key_bindings:
+  - { key: Return, mods: Control|Shift, action: SpawnNewInstance }
+
+env:
+  TERM: xterm-256color

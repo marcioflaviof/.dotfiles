@@ -5,3 +5,4 @@ end
 
 require("mf.lsp.lsp-installer")
 require("mf.lsp.handlers").setup()
+require("mf.lsp.null-ls")

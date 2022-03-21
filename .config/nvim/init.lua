@@ -15,4 +15,3 @@ require("mf.toggleterm")
 require("mf.lualine")
 
 require("colorizer").setup()
-

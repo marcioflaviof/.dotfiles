@@ -45,16 +45,17 @@ return packer.startup(function(use)
 	use("nvim-lua/popup.nvim") -- An implementation of the Popup API from vim in Neovim
 	use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
 	-- use("vim-airline/vim-airline") -- Status bar
-    use({"nvim-lualine/lualine.nvim", requires = {'kyazdani42/nvim-web-devicons', opt = true}})
+	use({ "nvim-lualine/lualine.nvim", requires = { "kyazdani42/nvim-web-devicons", opt = true } })
 	use("windwp/nvim-autopairs") -- Autopairs
 	use("numToStr/Comment.nvim") -- Easily comment
 	use("akinsho/toggleterm.nvim") -- Toggle terminal
-    use("akinsho/bufferline.nvim")
-    use("moll/vim-bbye")
+	use("akinsho/bufferline.nvim")
+	use("moll/vim-bbye")
+	use("mg979/vim-visual-multi")
 
-    -- Git
+	-- Git
 	use("tpope/vim-fugitive") -- Git in vim
-    use("lewis6991/gitsigns.nvim")
+	use("lewis6991/gitsigns.nvim")
 
 	-- Nvim tree
 	use("kyazdani42/nvim-tree.lua") -- Navigation tree

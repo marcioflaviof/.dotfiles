@@ -19,6 +19,8 @@ for k, v in pairs(options) do
 	vim.opt[k] = v
 end
 
+vim.o.termguicolors = true
+
 vim.cmd("set whichwrap+=<,>,[,],h,l")
 vim.cmd("set iskeyword+=-")
 
