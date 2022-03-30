@@ -18,11 +18,11 @@ telescope.setup({
 			override_file_sorter = true,
 		},
 	},
-	file_ignore_patters = { "node_modules/*" },
 	hidden = true,
 	pickers = {
 		find_files = {
 			hidden = true,
 		},
 	},
+	file_ignore_patters = { "node_modules/*", ".git" },
 })

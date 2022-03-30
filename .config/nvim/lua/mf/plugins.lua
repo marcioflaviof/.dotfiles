@@ -65,6 +65,9 @@ return packer.startup(function(use)
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" }) -- Colors lint etc..
 	use("JoosepAlviste/nvim-ts-context-commentstring")
 
+	-- Close tabs
+	use("alvan/vim-closetag")
+
 	-- Telescope
 	use("nvim-telescope/telescope.nvim") -- Searcher
 	use("nvim-telescope/telescope-media-files.nvim") -- See images

@@ -31,3 +31,4 @@ vim.cmd("set wildignore+=**/node_modules/*")
 vim.cmd("set wildignore+=**/android/*")
 vim.cmd("set wildignore+=**/ios/*")
 vim.cmd("set wildignore+=**/.git/*")
+vim.g["closetag_filenames"] = "*.jsx, *.html, *.tsx"
