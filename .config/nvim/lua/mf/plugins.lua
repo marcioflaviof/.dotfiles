@@ -72,11 +72,13 @@ return packer.startup(function(use)
 	use("nvim-telescope/telescope.nvim") -- Searcher
 	use("nvim-telescope/telescope-media-files.nvim") -- See images
 	use("nvim-telescope/telescope-fzy-native.nvim") -- Better sorter
+	use("nvim-telescope/telescope-project.nvim")
 
 	-- Colors
 	use("folke/tokyonight.nvim") -- Theme
 	use("LunarVim/onedarker.nvim") -- Theme
 	use({ "dracula/vim", as = "dracula" }) -- Theme
+	use({ "rebelot/kanagawa.nvim" })
 	use("norcalli/nvim-colorizer.lua") -- CSS colors
 	use({ "iamcco/markdown-preview.nvim", run = "cd app && npm install", cmd = "MarkdownPreview" }) -- Markdown preview
 

@@ -62,7 +62,8 @@ keymap("n", "<leader><CR>", ":so ~/.config/nvim/init.lua<CR>", { noremap = true 
 keymap("n", "<C-s>", ":w<CR>", {})
 
 -- Copy relative path
-keymap("n", "<F4>", ":let @+ = expand('%')<CR>", opts)
+-- keymap("n", "<F4>", ":let @+ = expand('%')<CR>", opts)
+keymap("n", "<F4>", ':let @+ = fnamemodify(expand("%"), ":~:.")<CR>', opts)
 
 -- Paste from buffer
 keymap("n", "<leader>p", '"+p', opts)
