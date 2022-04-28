@@ -51,6 +51,7 @@ keymap("n", "<leader>gs", ":G<CR>", {}) -- Status
 keymap("n", "<leader>f", ":Telescope find_files<CR>", opts)
 keymap("n", "<leader>st", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>sf", ":Telescope buffers<CR>", opts)
+keymap("n", "<leader>sg", ":Telescope git_branches<CR>", opts)
 
 -- Open file tree
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", { noremap = true })
@@ -62,7 +63,7 @@ keymap("n", "<leader><CR>", ":so ~/.config/nvim/init.lua<CR>", { noremap = true 
 keymap("n", "<C-s>", ":w<CR>", {})
 
 -- Copy relative path
--- keymap("n", "<F4>", ":let @+ = expand('%')<CR>", opts)
+keymap("n", "<F5>", ":let @+ = expand('%:p')<CR>", opts)
 keymap("n", "<F4>", ':let @+ = fnamemodify(expand("%"), ":~:.")<CR>', opts)
 
 -- Paste from buffer

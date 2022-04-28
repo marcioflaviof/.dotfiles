@@ -12,10 +12,10 @@ return {
 			eslint_enable_disable_comments = true,
 		})
 
-		local opts = { noremap = true, silent = true }
+		-- local opts = { noremap = true, silent = true }
 
-		vim.api.nvim_buf_set_keymap(bufnr, "n", " oi", ":TSLspOrganize<CR>", opts)
-		vim.api.nvim_buf_set_keymap(bufnr, "n", " ia", ":TSLspImportAll<CR>", opts)
+		-- vim.api.nvim_buf_set_keymap(bufnr, "n", " oi", ":TSLspOrganize<CR>", opts)
+		-- vim.api.nvim_buf_set_keymap(bufnr, "n", " ia", ":TSLspImportAll<CR>", opts)
 
 		ts.setup_client(client)
 	end,

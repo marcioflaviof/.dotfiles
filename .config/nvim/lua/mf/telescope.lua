@@ -20,10 +20,10 @@ telescope.setup({
 		},
 		project = {
 			base_dirs = {
-				{ path = "~/Documents/Stack/stack-shops-client" },
-				{ path = "~/Documents/Stack/stack-shops" },
-				{ path = "~/Documents/Stack/stack-api" },
-				{ path = "~/Documents/Stack/stack-admin" },
+				{ path = "/home/Documents/Stack/stack-shops-client" },
+				{ path = "~/home/Documents/Stack/stack-shops" },
+				{ path = "~/home/Documents/Stack/stack-api" },
+				{ path = "~/home/Documents/Stack/stack-admin" },
 			},
 		},
 	},
