@@ -80,3 +80,4 @@ nvim_tree.setup({
 		relativenumber = false,
 	},
 })
+

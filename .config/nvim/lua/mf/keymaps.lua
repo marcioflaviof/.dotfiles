@@ -51,7 +51,7 @@ keymap("n", "<leader>gs", ":G<CR>", {}) -- Status
 keymap("n", "<leader>f", ":Telescope find_files<CR>", opts)
 keymap("n", "<leader>st", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>sf", ":Telescope buffers<CR>", opts)
-keymap("n", "<leader>sg", ":Telescope git_branches<CR>", opts)
+keymap("n", "<leader>gb", ":Telescope git_branches<CR>", opts)
 
 -- Open file tree
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", { noremap = true })

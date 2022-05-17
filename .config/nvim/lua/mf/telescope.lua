@@ -5,7 +5,6 @@ end
 
 telescope.load_extension("media_files")
 telescope.load_extension("fzy_native")
-telescope.load_extension("project")
 
 telescope.setup({
 	defaults = {
@@ -17,14 +16,6 @@ telescope.setup({
 		fzy_native = {
 			override_generic_sorter = false,
 			override_file_sorter = true,
-		},
-		project = {
-			base_dirs = {
-				{ path = "/home/Documents/Stack/stack-shops-client" },
-				{ path = "~/home/Documents/Stack/stack-shops" },
-				{ path = "~/home/Documents/Stack/stack-api" },
-				{ path = "~/home/Documents/Stack/stack-admin" },
-			},
 		},
 	},
 	hidden = true,
