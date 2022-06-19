@@ -70,7 +70,6 @@ lvim.builtin.treesitter.ensure_installed = {
 
 lvim.builtin.treesitter.ignore_install = { "haskell" }
 lvim.builtin.treesitter.highlight.enabled = true
-lvim.builtin.nvimtree.setup.view.side = "right"
 
 -- generic LSP settings
 
@@ -99,6 +98,12 @@ lvim.builtin.nvimtree.setup.view.side = "right"
 --   buf_set_option("omnifunc", "v:lua.vim.lsp.omnifunc")
 -- end
 
+-- Treesitter
+lvim.builtin.treesitter.autotag = {
+  enable = true,
+  disable = { "xml" },
+}
+
 -- -- set a formatter, this will override the language server formatting capabilities (if it exists)
 local formatters = require "lvim.lsp.null-ls.formatters"
 formatters.setup {
@@ -126,10 +131,21 @@ linters.setup {
 
 -- Additional Plugins
 lvim.plugins = {
+  -- Themes
   { "folke/tokyonight.nvim" },
+  { "EdenEast/nightfox.nvim" },
+  { "navarasu/onedark.nvim" },
+  { "rebelot/kanagawa.nvim" },
+
   {
     "folke/trouble.nvim",
     cmd = "TroubleToggle",
+  },
+  {
+    "windwp/nvim-ts-autotag",
+    config = function()
+      require("mf.autotag").config()
+    end,
   },
 }
 

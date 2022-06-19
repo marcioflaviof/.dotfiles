@@ -11,9 +11,9 @@ null_ls.setup({
   debug = false,
   sources = {
     formatting.prettier,
-    -- formatting.stylua,
+    formatting.stylua,
     formatting.rubocop,
-    diagnostics.eslint,
+    -- diagnostics.eslint,
     diagnostics.rubocop,
   },
   on_attach = function(client)

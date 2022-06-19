@@ -11,7 +11,7 @@ local options = {
 	completeopt = { "menuone", "noselect" },
 	mouse = "a",
 	guifont = "Fira Code:h11",
-	clipboard = "", -- unnamedplus to access system clipboard
+	clipboard = "unnamedplus", -- unnamedplus to access system clipboard
 	updatetime = 300,
 }
 
