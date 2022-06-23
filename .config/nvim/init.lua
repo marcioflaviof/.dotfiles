@@ -13,5 +13,6 @@ require("mf.nvim-tree")
 require("mf.bufferline")
 require("mf.toggleterm")
 require("mf.lualine")
+require("mf.copilot")
 
 require("colorizer").setup()

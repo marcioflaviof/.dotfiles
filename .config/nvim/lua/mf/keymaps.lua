@@ -46,6 +46,7 @@ keymap("n", "<A-k>", "<Esc>:m .-2<CR>==gi", opts)
 
 -- Git Commands
 keymap("n", "<leader>gs", ":G<CR>", {}) -- Status
+keymap("n", "<leader>gl", ":Gitsigns blame_line<CR>", {}) -- Git Blame
 
 -- Search with Telescope
 keymap("n", "<leader>f", ":Telescope find_files<CR>", opts)
@@ -77,7 +78,7 @@ keymap("n", "<leader>h", ":noh<CR>", opts)
 
 -- Insert --
 -- Press jk fast to enter
-keymap("i", "jk", "<ESC>", opts)
+keymap("i", "jk", "<C-c>", opts)
 
 -- Visual --
 
@@ -110,24 +111,29 @@ keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
-
 -- Gui
 RefreshGuiFont = function()
-  vim.opt.guifont = string.format("%s:h%s", vim.g.gui_font_face, vim.g.gui_font_size)
+	vim.opt.guifont = string.format("%s:h%s", vim.g.gui_font_face, vim.g.gui_font_size)
 end
 
 ResizeGuiFont = function(delta)
-  vim.g.gui_font_size = vim.g.gui_font_size + delta
-  RefreshGuiFont()
+	vim.g.gui_font_size = vim.g.gui_font_size + delta
+	RefreshGuiFont()
 end
 
 ResetGuiFont = function()
-  vim.g.gui_font_size = vim.g.gui_font_default_size
-  RefreshGuiFont()
+	vim.g.gui_font_size = vim.g.gui_font_default_size
+	RefreshGuiFont()
 end
 
 -- Call function on startup to set default value
 ResetGuiFont()
-vim.keymap.set({ 'n', 'i' }, "<C-+>", function() ResizeGuiFont(1) end, opts)
-vim.keymap.set({ 'n', 'i' }, "<C-->", function() ResizeGuiFont(-1) end, opts)
-vim.keymap.set({ 'n', 'i' }, "<C-BS>", function() ResetGuiFont() end, opts)
+vim.keymap.set({ "n", "i" }, "<C-+>", function()
+	ResizeGuiFont(1)
+end, opts)
+vim.keymap.set({ "n", "i" }, "<C-->", function()
+	ResizeGuiFont(-1)
+end, opts)
+vim.keymap.set({ "n", "i" }, "<C-BS>", function()
+	ResetGuiFont()
+end, opts)
