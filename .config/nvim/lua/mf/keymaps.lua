@@ -25,16 +25,8 @@ keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
-keymap("n", "<leader>e", ":Lex 30<cr>", opts)
-
 -- Close tab
 keymap("n", "<leader>c", ":Bdelete<CR>", opts)
-
--- Resize with arrows
-keymap("n", "<C-Up>", ":resize -2<CR>", opts)
-keymap("n", "<C-Down>", ":resize +2<CR>", opts)
-keymap("n", "<C-Left>", ":vertical resize -2<CR>", opts)
-keymap("n", "<C-Right>", ":vertical resize +2<CR>", opts)
 
 -- Navigate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
@@ -57,18 +49,12 @@ keymap("n", "<leader>gb", ":Telescope git_branches<CR>", opts)
 -- Open file tree
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", { noremap = true })
 
--- Rebuff init.lua
-keymap("n", "<leader><CR>", ":so ~/.config/nvim/init.lua<CR>", { noremap = true })
-
 -- Save with ctrl + s
 keymap("n", "<C-s>", ":w<CR>", {})
 
--- Copy relative path
+-- Copy path
 keymap("n", "<F5>", ":let @+ = expand('%:p')<CR>", opts)
 keymap("n", "<F4>", ':let @+ = fnamemodify(expand("%"), ":~:.")<CR>', opts)
-
--- Paste from buffer
-keymap("n", "<leader>p", '"+p', opts)
 
 -- Format
 keymap("n", "<leader>lf", ":Format<CR>", opts)
@@ -90,12 +76,6 @@ keymap("v", ">", ">gv", opts)
 keymap("v", "<A-j>", ":m .+1<CR>==", opts)
 keymap("v", "<A-k>", ":m .-2<CR>==", opts)
 keymap("v", "p", '"_dP', opts)
-
--- Save to buffer
-keymap("v", "<leader>y", '"+y', opts)
-
--- Paste from buffer in view mode
-keymap("v", "<leader>p", '"+p', opts)
 
 -- Visual Block --
 -- Move text up and down

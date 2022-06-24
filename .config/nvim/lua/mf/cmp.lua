@@ -54,7 +54,7 @@ cmp.setup({
 		}),
 	},
 	formatting = {
-		fields = { "kind", "abbr", "menu" },
+		-- fields = { "kind", "abbr", "menu" },
 		format = function(entry, vim_item)
 			-- Kind icons
 			vim_item.kind = kind_icons[vim_item.kind]
@@ -64,9 +64,9 @@ cmp.setup({
 			end
 
 			vim_item.menu = ({
-				nvim_lsp = "",
 				nvim_lua = "",
 				luasnip = "",
+				nvim_lsp = "",
 				buffer = "",
 				path = "",
 				emoji = "",
@@ -75,8 +75,9 @@ cmp.setup({
 		end,
 	},
 	sources = {
-		{ name = "nvim_lsp" },
+		{ name = "nvim_lua" },
 		{ name = "luasnip" },
+		{ name = "nvim_lsp" },
 		{ name = "buffer" },
 		{ name = "cmp_tabnine" },
 		{ name = "path" },

@@ -21,6 +21,15 @@ configs.setup({
 		enable = true,
 		enable_autocmd = false,
 	},
+	ensure_installed = {
+		"lua",
+		"html",
+		"css",
+		"javascript",
+		"typescript",
+		"tsx",
+		"ruby",
+	},
 	config = {
 		javascript = {
 			__default = "// %s",
@@ -31,4 +40,3 @@ configs.setup({
 		},
 	},
 })
-
