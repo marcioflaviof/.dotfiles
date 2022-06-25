@@ -1,5 +1,4 @@
 return {
-
   ["windwp/nvim-ts-autotag"] = {
     ft = { "html", "javascriptreact" },
     after = "nvim-treesitter",
@@ -15,7 +14,7 @@ return {
   ["jose-elias-alvarez/null-ls.nvim"] = {
     after = "nvim-lspconfig",
     config = function()
-      require "custom.plugins.null-ls"
+      require("custom.plugins.null-ls")
     end,
   },
 }

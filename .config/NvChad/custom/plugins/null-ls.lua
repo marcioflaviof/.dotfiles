@@ -9,18 +9,22 @@ local b = null_ls.builtins
 local sources = {
 
   -- webdev stuff
-  b.formatting.prettier,
+  -- b.formatting.prettier,
 
   -- Lua
   b.formatting.stylua,
 
   -- Ruby
   b.formatting.rubocop,
-  b.diagnostics.rubocop
-
+  b.diagnostics.rubocop,
 }
 
-null_ls.setup {
+null_ls.setup({
   debug = false,
   sources = sources,
-}
+  on_attach = function(client)
+    if client.resolved_capabilities.document_formatting then
+      vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.formatting_sync()")
+    end
+  end,
+})

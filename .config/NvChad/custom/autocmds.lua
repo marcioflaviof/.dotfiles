@@ -2,7 +2,6 @@ local autocmd = vim.api.nvim_create_autocmd
 
 local opt = vim.opt
 
-
 autocmd("FileType", {
   pattern = "norg",
   callback = function()

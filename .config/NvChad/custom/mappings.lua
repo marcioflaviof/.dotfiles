@@ -23,11 +23,18 @@ M.general = {
   },
 }
 
-M.bufferline = {
+M.tabufline = {
   n = {
     -- cycle through buffers
-    ["<S-l"] = { "<cmd> BufferLineCycleNext <CR>", "  cycle next buffer" },
-    ["<S-h>"] = { "<cmd> BufferLineCyclePrev <CR>", "  cycle prev buffer" },
+    ["<S-l>"] = { "<cmd> Tbufnext <CR>", "  goto next buffer" },
+    ["<S-h>"] = { "<cmd> Tbufprev <CR> ", "  goto prev buffer" },
+
+    ["<leader>c"] = {
+      function()
+        require("core.utils").close_buffer()
+      end,
+      "   close buffer",
+    },
   }
 }
 
@@ -69,20 +76,6 @@ M.nvimtree = {
   n = {
     -- toggle
     ["<leader>e"] = { "<cmd> NvimTreeToggle <CR>", "   toggle nvimtree" },
-
-    ["l"] = {
-      function()
-        require("nvim-tree.config").nvim_tree_callback "edit"
-      end,
-      "   lsp rename",
-    },
-
-    ["h"] = {
-      function()
-        require("nvim-tree.config").nvim_tree_callback "close_node"
-      end,
-      "   lsp rename",
-    },
   }
 }
 
