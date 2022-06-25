@@ -12,13 +12,14 @@ M.treesitter = {
     "lua",
     "ruby",
     "tsx",
-    "typescript"
+    "typescript",
   },
 }
 
 M.nvimtree = {
   git = {
     enable = true,
+    ignore = false,
   },
 
   renderer = {

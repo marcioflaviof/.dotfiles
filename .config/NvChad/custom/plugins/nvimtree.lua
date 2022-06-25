@@ -1,24 +1,24 @@
 local present, nvimtree = pcall(require, "nvim-tree")
 
 if not present then
-  return
+	return
 end
 
 require("base46").load_highlight("nvimtree")
 
 local options = {
-  filters = {
-    dotfiles = true,
-  },
-  view = {
-    side = "left",
-    width = 25,
-    hide_root_folder = true,
-  },
-  git = {
-    enable = false,
-    ignore = true,
-  },
+	filters = {
+		dotfiles = true,
+	},
+	view = {
+		side = "left",
+		width = 25,
+		hide_root_folder = true,
+	},
+	git = {
+		enable = true,
+		ignore = false,
+	},
 }
 
 -- check for any override
