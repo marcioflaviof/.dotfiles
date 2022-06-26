@@ -32,6 +32,9 @@ M.cmp = {
 		{ name = "path" },
 		{ name = "neorg" },
 	},
+	experimental = {
+		ghost_text = true,
+	},
 }
 
 M.blankline = {
