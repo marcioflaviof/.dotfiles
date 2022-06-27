@@ -1,4 +1,5 @@
 local status_ok, nvim_tree = pcall(require, "nvim-tree")
+
 if not status_ok then
 	return
 end
@@ -11,9 +12,6 @@ end
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
 nvim_tree.setup({
-	-- update_to_buf_dir = {
-	--   enable = false,
-	-- },
 	disable_netrw = true,
 	hijack_netrw = true,
 	open_on_setup = true,
@@ -26,19 +24,8 @@ nvim_tree.setup({
 		custom = { ".git" },
 		exclude = { ".gitignore" },
 	},
-	-- auto_close = true,
-	-- open_on_tab = false,
 	hijack_cursor = true,
 	update_cwd = true,
-	-- update_to_buf_dir = {
-	--   enable = true,
-	--   auto_open = true,
-	-- },
-	-- --   error
-	-- --   info
-	-- --   question
-	-- --   warning
-	-- --   lightbulb
 	renderer = {
 		add_trailing = true,
 		group_empty = false,
@@ -101,14 +88,6 @@ nvim_tree.setup({
 		update_cwd = true,
 		ignore_list = {},
 	},
-	-- system_open = {
-	--   cmd = nil,
-	--   args = {},
-	-- },
-	-- filters = {
-	--   dotfiles = false,
-	--   custom = {},
-	-- },
 	git = {
 		enable = true,
 		ignore = true,

@@ -9,7 +9,6 @@ telescope.load_extension("fzy_native")
 telescope.setup({
 	defaults = {
 		prompt_prefix = "   ",
-		selection_caret = " ",
 		path_display = { "smart" },
 		selection_caret = "  ",
 		entry_prefix = "  ",
@@ -35,7 +34,6 @@ telescope.setup({
 		-- Came from nvchad
 		file_sorter = require("telescope.sorters").get_fuzzy_file,
 		generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
-		path_display = { "truncate" },
 		winblend = 0,
 		color_devicons = true,
 		set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
