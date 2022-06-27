@@ -11,15 +11,12 @@ end
 local tree_cb = nvim_tree_config.nvim_tree_callback
 
 nvim_tree.setup({
-	hijack_directories = {
-		enable = false,
-	},
 	-- update_to_buf_dir = {
 	--   enable = false,
 	-- },
-	-- disable_netrw = true,
-	-- hijack_netrw = true,
-	-- open_on_setup = false,
+	disable_netrw = true,
+	hijack_netrw = true,
+	open_on_setup = true,
 	ignore_ft_on_setup = {
 		"startify",
 		"dashboard",
@@ -31,7 +28,7 @@ nvim_tree.setup({
 	},
 	-- auto_close = true,
 	-- open_on_tab = false,
-	-- hijack_cursor = false,
+	hijack_cursor = true,
 	update_cwd = true,
 	-- update_to_buf_dir = {
 	--   enable = true,
@@ -43,7 +40,7 @@ nvim_tree.setup({
 	-- --   warning
 	-- --   lightbulb
 	renderer = {
-		add_trailing = false,
+		add_trailing = true,
 		group_empty = false,
 		highlight_git = false,
 		highlight_opened_files = "none",
@@ -120,7 +117,7 @@ nvim_tree.setup({
 	view = {
 		width = 30,
 		height = 30,
-		hide_root_folder = false,
+		hide_root_folder = true,
 		side = "left",
 		-- auto_resize = true,
 		mappings = {

@@ -1,22 +1,22 @@
 local options = {
-	scrolloff = 8,
-	number = true,
-	tabstop = 4,
-	softtabstop = 4,
-	shiftwidth = 2,
-	expandtab = true,
-	smartindent = true,
-	termguicolors = true,
-	autoread = true,
-	completeopt = { "menuone", "noselect" },
-	mouse = "a",
-	guifont = "Fira Code:h11",
-	clipboard = "unnamedplus", -- unnamedplus to access system clipboard
-	updatetime = 300,
+  scrolloff = 8,
+  number = true,
+  tabstop = 4,
+  softtabstop = 4,
+  shiftwidth = 2,
+  expandtab = true,
+  smartindent = true,
+  termguicolors = true,
+  autoread = true,
+  completeopt = { "menuone", "noselect" },
+  mouse = "a",
+  guifont = "JetBrainsMono Nerd Font:h11",
+  clipboard = "unnamedplus", -- unnamedplus to access system clipboard
+  updatetime = 300,
 }
 
 for k, v in pairs(options) do
-	vim.opt[k] = v
+  vim.opt[k] = v
 end
 
 vim.o.termguicolors = true
