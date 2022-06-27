@@ -2,8 +2,27 @@ local M = {}
 
 local override = require("custom.override")
 
-M.plugins = {
+M.options = {
+	user = function()
+		vim.opt.scrolloff = 8
+		vim.opt.number = true
+		vim.opt.tabstop = 4
+		vim.opt.softtabstop = 4
+		vim.opt.shiftwidth = 2
+		vim.opt.expandtab = true
+		vim.opt.smartindent = true
+		vim.opt.termguicolors = true
+		vim.opt.autoread = true
+		vim.opt.completeopt = { "menuone", "noselect" }
+		vim.opt.mouse = "a"
+		vim.opt.guifont = "JetBrainsMono Nerd Font:h11"
+		vim.opt.clipboard = "unnamedplus"
+		vim.g.loaded_matchit = nil
+		vim.cmd("runtime " .. "matchit")
+	end,
+}
 
+M.plugins = {
 	options = {
 		lspconfig = {
 			setup_lspconf = "custom.plugins.lspconfig",
@@ -27,7 +46,7 @@ M.plugins = {
 }
 
 M.ui = {
-	theme = "tokyonight",
+	theme = "tokyodark",
 }
 
 M.mappings = require("custom.mappings")

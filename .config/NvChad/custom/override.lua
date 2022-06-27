@@ -17,12 +17,17 @@ M.treesitter = {
 }
 
 M.nvimtree = {
+	open_on_setup = true,
 	git = {
 		enable = true,
 		ignore = false,
 	},
-
+	filters = {
+		custom = { ".git" },
+		exclude = { ".gitignore" },
+	},
 	renderer = {
+		add_trailing = true,
 		highlight_git = true,
 		icons = {
 			show = {
@@ -30,11 +35,10 @@ M.nvimtree = {
 			},
 		},
 	},
-
 	view = {
 		width = 30,
 		height = 30,
-		hide_root_folder = false,
+		hide_root_folder = true,
 		auto_resize = true,
 		mappings = {
 			custom_only = false,
