@@ -26,7 +26,7 @@ keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
 -- Close tab
-keymap("n", "<leader>c", ":Bdelete<CR>", opts)
+keymap("n", "<leader>c", ":bdelete<CR>", opts)
 
 -- Navigate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)

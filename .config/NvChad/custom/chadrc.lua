@@ -46,7 +46,7 @@ M.plugins = {
 }
 
 M.ui = {
-	theme = "tokyodark",
+	theme = "tokyonight",
 }
 
 M.mappings = require("custom.mappings")
