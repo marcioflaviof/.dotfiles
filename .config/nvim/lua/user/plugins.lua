@@ -59,12 +59,10 @@ return packer.startup(function(use)
 
 	-- use "windwp/nvim-spectre" -- like ctrl+f in vscode
 	use("karb94/neoscroll.nvim") -- smooth scrolling
-	use("SmiteshP/nvim-gps")
 
 	-- Colorschemes
 	use("folke/tokyonight.nvim")
 	use("lunarvim/colorschemes") -- A bunch of colorschemes you can try out
-	use("lunarvim/darkplus.nvim")
 
 	-- cmp plugins
 	use({ "hrsh7th/nvim-cmp" })
@@ -93,10 +91,15 @@ return packer.startup(function(use)
 		cmd = "TroubleToggle",
 	})
 	use("RRethy/vim-illuminate")
+	use("jose-elias-alvarez/nvim-lsp-ts-utils")
 
 	-- Telescope
 	use("nvim-telescope/telescope.nvim")
-	use("nvim-telescope/telescope-media-files.nvim")
+	use({
+		"nvim-telescope/telescope-fzf-native.nvim",
+		requires = { "nvim-telescope/telescope.nvim" },
+		run = "make",
+	})
 
 	-- Treesitter
 	use({ "nvim-treesitter/nvim-treesitter" })

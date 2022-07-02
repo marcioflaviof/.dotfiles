@@ -28,6 +28,10 @@ keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 keymap("n", "<leader>c", ":bdelete<CR>", opts)
 
+-- Copy path
+keymap("n", "<F5>", ":let @+ = expand('%:p')<CR>", opts)
+keymap("n", "<F4>", ':let @+ = fnamemodify(expand("%"), ":~:.")<CR>', opts)
+
 -- Insert --
 -- Press jk fast to enter
 keymap("i", "jk", "<ESC>", opts)
@@ -36,6 +40,9 @@ keymap("i", "jk", "<ESC>", opts)
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
+
+-- Git
+keymap("n", "<leader>gl", "<cmd>GitBlameToggle<CR>", opts)
 
 -- Telescope
 keymap("n", "<leader>f", "<cmd>lua require('telescope.builtin').find_files(require('telescope.themes'))<cr>", opts)
@@ -68,3 +75,30 @@ keymap("n", "<leader>e", ":NvimTreeToggle<CR>", { noremap = true })
 
 -- Custom
 keymap("n", "<leader>h", "<cmd>nohlsearch<cr>", opts)
+
+-- Gui
+RefreshGuiFont = function()
+	vim.opt.guifont = string.format("%s:h%s", vim.g.gui_font_face, vim.g.gui_font_size)
+end
+
+ResizeGuiFont = function(delta)
+	vim.g.gui_font_size = vim.g.gui_font_size + delta
+	RefreshGuiFont()
+end
+
+ResetGuiFont = function()
+	vim.g.gui_font_size = vim.g.gui_font_default_size
+	RefreshGuiFont()
+end
+
+-- Call function on startup to set default value
+ResetGuiFont()
+vim.keymap.set({ "n", "i" }, "<C-+>", function()
+	ResizeGuiFont(1)
+end, opts)
+vim.keymap.set({ "n", "i" }, "<C-->", function()
+	ResizeGuiFont(-1)
+end, opts)
+vim.keymap.set({ "n", "i" }, "<C-BS>", function()
+	ResetGuiFont()
+end, opts)

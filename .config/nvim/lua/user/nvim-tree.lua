@@ -12,8 +12,8 @@ local tree_cb = nvim_tree_config.nvim_tree_callback
 
 nvim_tree.setup({
 	filters = {
-		custom = { ".git" },
-		exclude = { ".gitignore" },
+		custom = { ".git/" },
+		exclude = { ".gitignore/" },
 	},
 	disable_netrw = true,
 	hijack_netrw = true,

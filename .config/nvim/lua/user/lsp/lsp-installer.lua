@@ -4,13 +4,13 @@ if not status_ok then
 end
 
 local servers = {
+	"tsserver",
 	"cssls",
 	"cssmodules_ls",
 	"emmet_ls",
 	"html",
 	"jsonls",
 	"sumneko_lua",
-	"tsserver",
 	"yamlls",
 	"bashls",
 	"solargraph",

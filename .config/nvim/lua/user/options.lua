@@ -39,7 +39,7 @@ local options = {
 	numberwidth = 2, -- set number column width to 2 {default 4}
 	signcolumn = "yes", -- always show the sign column, otherwise it would shift the text each time
 	wrap = false, -- display lines as one long line
-	guifont = "JetBrainsMono Nerd Font:h11", -- the font used in graphical neovim applications
+	guifont = "Fira Code:h11", -- the font used in graphical neovim applications
 }
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
@@ -53,3 +53,13 @@ end
 
 vim.cmd("set whichwrap+=<,>,[,],h,l")
 vim.cmd([[set iskeyword+=-]])
+
+-- Put stories from storybook as markdown files
+vim.api.nvim_create_autocmd("BufRead", {
+	pattern = { "*.mdx", "*.md" },
+	callback = function()
+		vim.schedule(function()
+			vim.api.nvim_command("set ft=markdown")
+		end)
+	end,
+})
