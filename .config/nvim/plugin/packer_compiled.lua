@@ -272,6 +272,11 @@ _G.packer_plugins = {
     path = "/home/mf/.local/share/nvim/site/pack/packer/opt/trouble.nvim",
     url = "https://github.com/folke/trouble.nvim"
   },
+  ["vim-bbye"] = {
+    loaded = true,
+    path = "/home/mf/.local/share/nvim/site/pack/packer/start/vim-bbye",
+    url = "https://github.com/moll/vim-bbye"
+  },
   ["vim-illuminate"] = {
     loaded = true,
     path = "/home/mf/.local/share/nvim/site/pack/packer/start/vim-illuminate",

@@ -49,11 +49,12 @@ return packer.startup(function(use)
 
 	use("nvim-lualine/lualine.nvim")
 	use("akinsho/bufferline.nvim")
+	use("moll/vim-bbye")
 	use("akinsho/toggleterm.nvim")
 	use("ahmedkhalf/project.nvim") -- switch between projects, see later
 	use("lewis6991/impatient.nvim")
 
-	use("lukas-reineke/indent-blankline.nvim") -- setup later
+	use("lukas-reineke/indent-blankline.nvim")
 	use("andymass/vim-matchup") -- improve the % key
 	use("norcalli/nvim-colorizer.lua")
 

@@ -17,6 +17,8 @@ vim.g.maplocalleader = " "
 --   command_mode = "c",
 
 -- Normal --
+
+keymap("n", "<leader>h", "<cmd>nohlsearch<cr>", opts)
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
@@ -26,20 +28,11 @@ keymap("n", "<C-l>", "<C-w>l", opts)
 -- Naviagate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
-keymap("n", "<leader>c", ":bdelete<CR>", opts)
+keymap("n", "<leader>c", ":Bdelete<CR>", opts)
 
 -- Copy path
 keymap("n", "<F5>", ":let @+ = expand('%:p')<CR>", opts)
 keymap("n", "<F4>", ':let @+ = fnamemodify(expand("%"), ":~:.")<CR>', opts)
-
--- Insert --
--- Press jk fast to enter
-keymap("i", "jk", "<ESC>", opts)
-
--- Visual --
--- Stay in indent mode
-keymap("v", "<", "<gv", opts)
-keymap("v", ">", ">gv", opts)
 
 -- Git
 keymap("n", "<leader>gl", "<cmd>GitBlameToggle<CR>", opts)
@@ -53,6 +46,22 @@ keymap("n", "<leader>gb", ":Telescope git_branches<CR>", opts)
 -- save with ctrl + s
 keymap("n", "<C-s>", ":w<CR>", {})
 
+-- Open file tree
+keymap("n", "<leader>e", ":NvimTreeToggle<CR>", { noremap = true })
+
+-- lsp-ts-utils
+keymap("n", "<leader>lo", ":TSLspOrganize<CR>", opts)
+keymap("n", "<leader>li", ":TSLspImportAll<CR>", opts)
+
+-- Insert --
+-- Press jk fast to enter
+keymap("i", "jk", "<ESC>", opts)
+
+-- Visual --
+-- Stay in indent mode
+keymap("v", "<", "<gv", opts)
+keymap("v", ">", ">gv", opts)
+
 -- Move text up and down
 keymap("v", "<A-j>", ":m .+1<CR>==", opts)
 keymap("v", "<A-k>", ":m .-2<CR>==", opts)
@@ -63,9 +72,6 @@ keymap("v", "p", '"_dP', opts)
 keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 
--- Open file tree
-keymap("n", "<leader>e", ":NvimTreeToggle<CR>", { noremap = true })
-
 -- Terminal --
 -- Better terminal navigation
 -- keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
@@ -73,10 +79,11 @@ keymap("n", "<leader>e", ":NvimTreeToggle<CR>", { noremap = true })
 -- keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 -- keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
--- Custom
-keymap("n", "<leader>h", "<cmd>nohlsearch<cr>", opts)
-
 -- Gui
+vim.g.gui_font_default_size = 12
+vim.g.gui_font_size = vim.g.gui_font_default_size
+vim.g.gui_font_face = "JetBrainsMono Nerd Font"
+
 RefreshGuiFont = function()
 	vim.opt.guifont = string.format("%s:h%s", vim.g.gui_font_face, vim.g.gui_font_size)
 end

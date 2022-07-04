@@ -39,7 +39,7 @@ local options = {
 	numberwidth = 2, -- set number column width to 2 {default 4}
 	signcolumn = "yes", -- always show the sign column, otherwise it would shift the text each time
 	wrap = false, -- display lines as one long line
-	guifont = "Fira Code:h11", -- the font used in graphical neovim applications
+	guifont = "JetBrainsMono Nerd Font", -- the font used in graphical neovim applications
 }
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
