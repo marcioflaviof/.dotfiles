@@ -7,9 +7,9 @@ return {
 		"css",
 		"scss",
 		-- "javascript",
-		"javascriptreact",
+		-- "javascriptreact",
 		-- "typescript",
-		"typescriptreact",
+		-- "typescriptreact",
 		"sass",
 	},
 }

@@ -59,7 +59,7 @@ return packer.startup(function(use)
 	use("norcalli/nvim-colorizer.lua")
 
 	-- use "windwp/nvim-spectre" -- like ctrl+f in vscode
-	use("karb94/neoscroll.nvim") -- smooth scrolling
+	-- use("karb94/neoscroll.nvim") -- smooth scrolling
 
 	-- Colorschemes
 	use("folke/tokyonight.nvim")

@@ -56,10 +56,10 @@ vim.cmd([[set iskeyword+=-]])
 
 -- Put stories from storybook as markdown files
 vim.api.nvim_create_autocmd("BufRead", {
-	pattern = { "*.mdx", "*.md" },
+	pattern = { "*.stories.mdx", "*.stories.md" },
 	callback = function()
 		vim.schedule(function()
-			vim.api.nvim_command("set ft=markdown")
+			vim.api.nvim_command("set ft=tsx")
 		end)
 	end,
 })
