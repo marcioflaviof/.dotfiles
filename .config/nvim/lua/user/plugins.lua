@@ -63,8 +63,13 @@ return packer.startup(function(use)
 
 	-- Colorschemes
 	use("folke/tokyonight.nvim")
-	use("lunarvim/colorschemes") -- A bunch of colorschemes you can try out
-
+	use({ "catppuccin/nvim", as = "catppuccin" })
+	use({
+		"olimorris/onedarkpro.nvim",
+		config = function()
+			require("onedarkpro").setup()
+		end,
+	})
 	-- cmp plugins
 	use({ "hrsh7th/nvim-cmp" })
 	use("hrsh7th/cmp-buffer") -- buffer completions
@@ -73,14 +78,10 @@ return packer.startup(function(use)
 	use("saadparwaiz1/cmp_luasnip") -- snippet completions
 	use("hrsh7th/cmp-nvim-lsp")
 	use("hrsh7th/cmp-nvim-lua")
-	use({
-		"tzachar/cmp-tabnine",
-		run = "./install.sh",
-		requires = "hrsh7th/nvim-cmp",
-	})
 
 	-- snippets
 	use("L3MON4D3/LuaSnip") --snippet engine
+	use("rafamadriz/friendly-snippets")
 
 	-- LSP
 	use("neovim/nvim-lspconfig") -- enable LSP
@@ -92,7 +93,8 @@ return packer.startup(function(use)
 		cmd = "TroubleToggle",
 	})
 	use("RRethy/vim-illuminate")
-	use("jose-elias-alvarez/nvim-lsp-ts-utils")
+	-- use("jose-elias-alvarez/nvim-lsp-ts-utils")
+	use("jose-elias-alvarez/typescript.nvim")
 
 	-- Telescope
 	use("nvim-telescope/telescope.nvim")

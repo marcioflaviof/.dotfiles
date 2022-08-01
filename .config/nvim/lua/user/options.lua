@@ -15,7 +15,7 @@ local options = {
 	number = true, -- set numbered lines
 	updatetime = 250, -- faster completion (4000ms default)
 
-	scrolloff = 8, -- is one of my fav
+	scrolloff = 8,
 	sidescrolloff = 8,
 
 	backup = false, -- creates a backup file

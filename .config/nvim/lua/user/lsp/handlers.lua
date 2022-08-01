@@ -17,12 +17,12 @@ M.setup = function()
 
 	local config = {
 		-- disable virtual text
-		virtual_text = false,
+		virtual_text = true,
 		-- show signs
 		signs = {
 			active = signs,
 		},
-		update_in_insert = true,
+		update_in_insert = false,
 		underline = true,
 		severity_sort = true,
 		float = {
@@ -66,10 +66,10 @@ local function lsp_keymaps(bufnr)
 end
 
 M.on_attach = function(client, bufnr)
-	if client.name == "tsserver" or client.name == "typescript" then
-		client.resolved_capabilities.document_formatting = false
-		require("user.lsp.ts-utils").setup(client)
-	end
+	-- if client.name == "tsserver" or client.name == "typescript" then
+	-- 	client.resolved_capabilities.document_formatting = false
+	-- require("user.lsp.ts-utils").setup(client)
+	-- end
 
 	if client.name == "sumneko_lua" or client.name == "lua" then
 		client.resolved_capabilities.document_formatting = false

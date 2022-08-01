@@ -12,8 +12,9 @@ local servers = {
 	"jsonls",
 	"sumneko_lua",
 	"yamlls",
-	"bashls",
 	"solargraph",
+	"rust_analyzer",
+	"solc",
 }
 
 local settings = {
@@ -49,10 +50,10 @@ for _, server in pairs(servers) do
 		capabilities = require("user.lsp.handlers").capabilities,
 	}
 
-	if server == "jsonls" then
-		local jsonls_opts = require("user.lsp.settings.jsonls")
-		opts = vim.tbl_deep_extend("force", jsonls_opts, opts)
-	end
+	-- if server == "jsonls" then
+	-- 	local jsonls_opts = require("user.lsp.settings.jsonls")
+	-- 	opts = vim.tbl_deep_extend("force", jsonls_opts, opts)
+	-- end
 
 	if server == "sumneko_lua" then
 		local sumneko_opts = require("user.lsp.settings.sumneko_lua")

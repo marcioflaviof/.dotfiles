@@ -52,8 +52,10 @@ keymap("n", "<C-s>", ":w<CR>", {})
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", { noremap = true })
 
 -- lsp-ts-utils
-keymap("n", "<leader>lo", ":TSLspOrganize<CR>", opts)
-keymap("n", "<leader>li", ":TSLspImportAll<CR>", opts)
+-- keymap("n", "<leader>lo", ":TSLspOrganize<CR>", opts)
+-- keymap("n", "<leader>li", ":TSLspImportAll<CR>", opts)
+keymap("n", "<leader>lo", ":TypescriptOrganizeImports<CR>", opts)
+keymap("n", "<leader>li", ":TypescriptAddMissingImports<CR>", opts)
 
 -- Insert --
 -- Press jk fast to enter
