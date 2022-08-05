@@ -14,6 +14,13 @@ typescript.setup({
 			if client.name == "tsserver" or client.name == "typescript" then
 				client.resolved_capabilities.document_formatting = false
 				-- require("user.lsp.ts-utils").setup(client)
+
+				vim.keymap.set("n", "<leader>lo", function()
+					local ts = require("typescript").actions
+					ts.removeUnused({ sync = true })
+					vim.wait(1000)
+					ts.organizeImports({ sync = true })
+				end)
 			end
 		end,
 	},

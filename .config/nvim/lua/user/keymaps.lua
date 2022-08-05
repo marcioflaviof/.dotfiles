@@ -41,9 +41,20 @@ keymap("n", "<leader>gl", "<cmd>GitBlameToggle<CR>", opts)
 keymap("n", "<leader>f", "<cmd>Telescope find_files<CR>", opts)
 keymap("n", "<leader>st", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>sr", ":Telescope oldfiles<CR>", opts)
-keymap("n", "<leader>sp", ":lua require('telescope').extensions.projects.projects()<CR>", opts) --test
+keymap("n", "<leader>sp", ":lua require('telescope').extensions.projects.projects()<CR>", opts)
 keymap("n", "<leader>gb", ":Telescope git_branches<CR>", opts)
 keymap("n", "<leader>sc", ":Telescope colorscheme<CR>", opts)
+
+-- Tests
+keymap("n", "<leader>tf", "<cmd>w<CR><cmd>lua require('neotest').run.run(vim.fn.expand('%'))<CR>", opts) -- test file
+keymap(
+	"n",
+	"<leader>to",
+	"<cmd>lua require('neotest').output.open({ open_win = function() vim.cmd('vsplit') end })<CR>",
+	opts
+) -- open output
+keymap("n", "<leader>ts", "<cmd>lua require('neotest').summary.toggle()<CR>", opts) -- open summary
+keymap("n", "<leader>ta", "<cmd>lua require('neotest').run.run(vim.fn.getcwd())<CR>", opts) -- test all
 
 -- save with ctrl + s
 keymap("n", "<C-s>", ":w<CR>", {})
@@ -52,9 +63,6 @@ keymap("n", "<C-s>", ":w<CR>", {})
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", { noremap = true })
 
 -- lsp-ts-utils
--- keymap("n", "<leader>lo", ":TSLspOrganize<CR>", opts)
--- keymap("n", "<leader>li", ":TSLspImportAll<CR>", opts)
-keymap("n", "<leader>lo", ":TypescriptOrganizeImports<CR>", opts)
 keymap("n", "<leader>li", ":TypescriptAddMissingImports<CR>", opts)
 
 -- Insert --

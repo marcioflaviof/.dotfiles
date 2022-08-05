@@ -38,7 +38,7 @@ local options = {
 	-- relativenumber = true,                  -- set relative numbered lines
 	numberwidth = 2, -- set number column width to 2 {default 4}
 	signcolumn = "yes", -- always show the sign column, otherwise it would shift the text each time
-	wrap = false, -- display lines as one long line
+	wrap = true, -- display lines as one long line
 	guifont = "JetBrainsMono Nerd Font", -- the font used in graphical neovim applications
 }
 vim.g.loaded_netrw = 1
@@ -63,3 +63,14 @@ vim.api.nvim_create_autocmd("BufRead", {
 		end)
 	end,
 })
+
+vim.api.nvim_create_autocmd("BufRead", {
+	pattern = "node_modules/*",
+	callback = function()
+		vim.schedule(function()
+			vim.api.nvim_command("lua vim.diagnostic.disable(0)")
+		end)
+	end,
+})
+
+-- vim.api.nvim_exec([[autocmd BufRead,BufNewFile */node_modules/* lua vim.diagnostic.disable(0)]], false)

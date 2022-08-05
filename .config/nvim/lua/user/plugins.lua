@@ -110,10 +110,21 @@ return packer.startup(function(use)
 	use({ "p00f/nvim-ts-rainbow" })
 	use("windwp/nvim-ts-autotag")
 
+	-- test tool
+	use("olimorris/neotest-rspec")
+	use("haydenmeade/neotest-jest")
+	use({
+		"nvim-neotest/neotest",
+		requires = {
+			"nvim-lua/plenary.nvim",
+			"nvim-treesitter/nvim-treesitter",
+			"antoinemadec/FixCursorHold.nvim",
+		},
+	})
+
 	-- Git
 	use("lewis6991/gitsigns.nvim")
 	use("f-person/git-blame.nvim")
-	use("b0o/SchemaStore.nvim")
 
 	-- Automatically set up your configuration after cloning packer.nvim
 	-- Put this at the end after all plugins
