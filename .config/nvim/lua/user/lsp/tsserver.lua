@@ -12,7 +12,7 @@ typescript.setup({
 
 		on_attach = function(client)
 			if client.name == "tsserver" or client.name == "typescript" then
-				client.resolved_capabilities.document_formatting = false
+				client.server_capabilities.document_formatting = false
 				-- require("user.lsp.ts-utils").setup(client)
 
 				vim.keymap.set("n", "<leader>lo", function()
