@@ -60,16 +60,11 @@ local function lsp_keymaps(bufnr)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts) -- test
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 	vim.cmd([[ command! Format execute 'lua vim.lsp.buf.format()' ]])
 end
 
 M.on_attach = function(client, bufnr)
-	-- if client.name == "tsserver" or client.name == "typescript" then
-	-- 	client.server_capabilities.document_formatting = false
-	-- require("user.lsp.ts-utils").setup(client)
-	-- end
-
 	if client.name == "sumneko_lua" or client.name == "lua" then
 		client.server_capabilities.document_formatting = false
 	end
@@ -82,9 +77,9 @@ M.on_attach = function(client, bufnr)
 		client.server_capabilities.document_formatting = false
 	end
 
-	if client.name == "solargraph" then
-		client.server_capabilities.document_formatting = false
-	end
+	-- if client.name == "solargraph" then
+	-- 	client.server_capabilities.document_formatting = true
+	-- end
 
 	lsp_keymaps(bufnr)
 	lsp_highlight_document(client)

@@ -25,6 +25,9 @@ keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
+-- Open buff in ruby
+keymap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+
 -- Naviagate buffers
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
@@ -48,10 +51,10 @@ keymap("n", "<leader>sc", ":Telescope colorscheme<CR>", opts)
 -- Tests
 keymap("n", "<leader>tf", "<cmd>w<CR><cmd>lua require('neotest').run.run(vim.fn.expand('%'))<CR>", opts) -- test file
 keymap(
-	"n",
-	"<leader>to",
-	"<cmd>lua require('neotest').output.open({ open_win = function() vim.cmd('vsplit') end })<CR>",
-	opts
+  "n",
+  "<leader>to",
+  "<cmd>lua require('neotest').output.open({ open_win = function() vim.cmd('vsplit') end })<CR>",
+  opts
 ) -- open output
 keymap("n", "<leader>ts", "<cmd>lua require('neotest').summary.toggle()<CR>", opts) -- open summary
 keymap("n", "<leader>ta", "<cmd>lua require('neotest').run.run(vim.fn.getcwd())<CR>", opts) -- test all
@@ -97,27 +100,27 @@ vim.g.gui_font_size = vim.g.gui_font_default_size
 vim.g.gui_font_face = "JetBrainsMono Nerd Font"
 
 RefreshGuiFont = function()
-	vim.opt.guifont = string.format("%s:h%s", vim.g.gui_font_face, vim.g.gui_font_size)
+  vim.opt.guifont = string.format("%s:h%s", vim.g.gui_font_face, vim.g.gui_font_size)
 end
 
 ResizeGuiFont = function(delta)
-	vim.g.gui_font_size = vim.g.gui_font_size + delta
-	RefreshGuiFont()
+  vim.g.gui_font_size = vim.g.gui_font_size + delta
+  RefreshGuiFont()
 end
 
 ResetGuiFont = function()
-	vim.g.gui_font_size = vim.g.gui_font_default_size
-	RefreshGuiFont()
+  vim.g.gui_font_size = vim.g.gui_font_default_size
+  RefreshGuiFont()
 end
 
 -- Call function on startup to set default value
 ResetGuiFont()
 vim.keymap.set({ "n", "i" }, "<C-+>", function()
-	ResizeGuiFont(1)
+  ResizeGuiFont(1)
 end, opts)
 vim.keymap.set({ "n", "i" }, "<C-->", function()
-	ResizeGuiFont(-1)
+  ResizeGuiFont(-1)
 end, opts)
 vim.keymap.set({ "n", "i" }, "<C-BS>", function()
-	ResetGuiFont()
+  ResetGuiFont()
 end, opts)
