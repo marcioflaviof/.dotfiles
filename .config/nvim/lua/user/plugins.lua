@@ -59,7 +59,7 @@ return packer.startup(function(use)
   use("norcalli/nvim-colorizer.lua")
 
   -- use "windwp/nvim-spectre" -- like ctrl+f in vscode
-  -- use("karb94/neoscroll.nvim") -- smooth scrolling
+  use("karb94/neoscroll.nvim") -- smooth scrolling
 
   -- Colorschemes
   use("folke/tokyonight.nvim")
@@ -86,7 +86,8 @@ return packer.startup(function(use)
 
   -- LSP
   use("neovim/nvim-lspconfig") -- enable LSP
-  use("williamboman/nvim-lsp-installer") -- simple to use language server installer
+  use "williamboman/mason.nvim"
+  use "williamboman/mason-lspconfig.nvim"
   use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
   use("ray-x/lsp_signature.nvim") -- Show function signature when you type
   use({
@@ -94,6 +95,7 @@ return packer.startup(function(use)
     cmd = "TroubleToggle",
   })
   use("RRethy/vim-illuminate")
+  use("lvimuser/lsp-inlayhints.nvim")
   use("jose-elias-alvarez/typescript.nvim")
 
   -- Telescope

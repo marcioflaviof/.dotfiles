@@ -10,7 +10,6 @@ bufferline.setup({
     right_mouse_command = "Bdelete! %d", -- can be a string | function, see "Mouse actions"
     left_mouse_command = "buffer %d", -- can be a string | function, see "Mouse actions"
     middle_mouse_command = nil, -- can be a string | function, see "Mouse actions"
-    indicator_icon = "│",
     buffer_close_icon = "",
     modified_icon = "●",
     close_icon = "",
@@ -30,6 +29,10 @@ bufferline.setup({
     separator_style = "thin", -- | "thick" | "thin" | { 'any', 'any' },
     enforce_regular_tabs = true,
     always_show_bufferline = true,
+    indicator = {
+      icon = "│",
+      style = "icon"
+    },
   },
   highlights = {
     fill = {

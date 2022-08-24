@@ -39,9 +39,10 @@ keymap("n", "<F4>", ':let @+ = fnamemodify(expand("%"), ":~:.")<CR>', opts)
 
 -- Git
 keymap("n", "<leader>gl", "<cmd>GitBlameToggle<CR>", opts)
+keymap("n", "<leader>gll", "<cmd>Gitsigns blame_line<CR>", opts)
 
 -- Telescope
-keymap("n", "<leader>f", "<cmd>Telescope find_files<CR>", opts)
+keymap("n", "<leader>f", "<cmd>Telescope find_files hidden=true<CR>", opts)
 keymap("n", "<leader>st", ":Telescope live_grep<CR>", opts)
 keymap("n", "<leader>sr", ":Telescope oldfiles<CR>", opts)
 keymap("n", "<leader>sp", ":lua require('telescope').extensions.projects.projects()<CR>", opts)

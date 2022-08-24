@@ -79,8 +79,8 @@ cmp.setup({
 
       -- NOTE: order matters
       vim_item.menu = ({
-        luasnip = "[LuaSnip]",
         nvim_lsp = "[LSP]",
+        luasnip = "[LuaSnip]",
         nvim_lua = "[Lua]",
         buffer = "[Buffer]",
         path = "[Path]",
@@ -90,8 +90,8 @@ cmp.setup({
   },
 
   sources = {
-    { name = "luasnip" },
     { name = "nvim_lsp" },
+    { name = "luasnip" },
     { name = "nvim_lua" },
     { name = "buffer" },
     { name = "path" },
