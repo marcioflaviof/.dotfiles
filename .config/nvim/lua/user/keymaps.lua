@@ -40,6 +40,7 @@ keymap("n", "<F4>", ':let @+ = fnamemodify(expand("%"), ":~:.")<CR>', opts)
 -- Git
 keymap("n", "<leader>gl", "<cmd>GitBlameToggle<CR>", opts)
 keymap("n", "<leader>gll", "<cmd>Gitsigns blame_line<CR>", opts)
+keymap("n", "<leader>gs", "<cmd>0G<CR>", opts) -- vim fugitive
 
 -- Telescope
 keymap("n", "<leader>f", "<cmd>Telescope find_files hidden=true<CR>", opts)

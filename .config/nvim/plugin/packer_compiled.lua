@@ -174,11 +174,6 @@ _G.packer_plugins = {
     path = "/home/mf/.local/share/nvim/site/pack/packer/start/mason.nvim",
     url = "https://github.com/williamboman/mason.nvim"
   },
-  neogit = {
-    loaded = true,
-    path = "/home/mf/.local/share/nvim/site/pack/packer/start/neogit",
-    url = "https://github.com/TimUntersberger/neogit"
-  },
   ["neoscroll.nvim"] = {
     loaded = true,
     path = "/home/mf/.local/share/nvim/site/pack/packer/start/neoscroll.nvim",
@@ -318,6 +313,11 @@ _G.packer_plugins = {
     loaded = true,
     path = "/home/mf/.local/share/nvim/site/pack/packer/start/vim-bbye",
     url = "https://github.com/moll/vim-bbye"
+  },
+  ["vim-fugitive"] = {
+    loaded = true,
+    path = "/home/mf/.local/share/nvim/site/pack/packer/start/vim-fugitive",
+    url = "https://github.com/tpope/vim-fugitive"
   },
   ["vim-illuminate"] = {
     loaded = true,
