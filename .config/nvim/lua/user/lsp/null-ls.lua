@@ -19,7 +19,7 @@ null_ls.setup({
     formatting.stylua,
     formatting.rubocop,
     diagnostics.rubocop,
-    diagnostics.eslint_d,
+    --[[ diagnostics.eslint_d, ]]
   },
 
   on_attach = function(client)
