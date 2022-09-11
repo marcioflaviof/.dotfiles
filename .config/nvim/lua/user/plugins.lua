@@ -42,24 +42,17 @@ return packer.startup(function(use)
   -- My plugins here
   use("wbthomason/packer.nvim") -- Have packer manage itself
   use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
-  use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter
-  use("numToStr/Comment.nvim")
+
+  -- User interface
   use("kyazdani42/nvim-web-devicons")
   use("kyazdani42/nvim-tree.lua")
-
   use("nvim-lualine/lualine.nvim")
   use("akinsho/bufferline.nvim")
   use("moll/vim-bbye") -- better buffer close
   use("akinsho/toggleterm.nvim") -- toggle terminal
-  use("ahmedkhalf/project.nvim") -- switch between projects, see later
   use("lewis6991/impatient.nvim")
 
-  use("lukas-reineke/indent-blankline.nvim")
-  use("andymass/vim-matchup") -- improve the % key
-  use("norcalli/nvim-colorizer.lua")
 
-  -- use "windwp/nvim-spectre" -- like ctrl+f in vscode
-  use("karb94/neoscroll.nvim") -- smooth scrolling
 
   -- Colorschemes
   use("folke/tokyonight.nvim")
@@ -129,12 +122,20 @@ return packer.startup(function(use)
   use("f-person/git-blame.nvim")
   use("tpope/vim-fugitive")
 
+  -- Utils
+  use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter
+  use("numToStr/Comment.nvim")
+  use("karb94/neoscroll.nvim") -- smooth scrolling
+  use("lukas-reineke/indent-blankline.nvim")
+  use("andymass/vim-matchup") -- improve the % key
+  use("norcalli/nvim-colorizer.lua")
   use({
     "kylechui/nvim-surround",
     config = function()
       require("nvim-surround").setup()
     end
   })
+
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if PACKER_BOOTSTRAP then

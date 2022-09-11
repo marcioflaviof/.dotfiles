@@ -9,6 +9,7 @@ if not snip_status_ok then
 end
 
 require("luasnip.loaders.from_vscode").lazy_load()
+luasnip.filetype_extend("typescriptreact", { "javascript" })
 
 local check_backspace = function()
   local line, col = unpack(vim.api.nvim_win_get_cursor(0))

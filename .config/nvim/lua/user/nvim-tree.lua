@@ -76,7 +76,7 @@ nvim_tree.setup({
           default = "",
           empty = "",
           empty_open = "",
-          open = "",
+          open = "",
           symlink = "",
           symlink_open = "",
           arrow_open = "",

@@ -10,6 +10,8 @@ starship init fish | source
 alias gs='git status'
 alias ls="exa --icons"
 alias bat="bat --style=auto"
+alias icat="kitty +kitten icat"
+alias g="git"
 
 [ -f /usr/share/autojump/autojump.fish ]
 

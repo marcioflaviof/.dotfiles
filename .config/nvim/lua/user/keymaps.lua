@@ -41,6 +41,9 @@ keymap("n", "<F4>", ':let @+ = fnamemodify(expand("%"), ":~:.")<CR>', opts)
 keymap("n", "<leader>gl", "<cmd>GitBlameToggle<CR>", opts)
 keymap("n", "<leader>gll", "<cmd>Gitsigns blame_line<CR>", opts)
 keymap("n", "<leader>gs", "<cmd>0G<CR>", opts) -- vim fugitive
+keymap("n", "<leader>gd", "<cmd>G diff<CR>", opts) -- vim fugitive
+keymap("n", "<leader>gf", "<cmd>diffget //2<CR>", opts) -- vim fugitive
+keymap("n", "<leader>gj", "<cmd>diffget //3<CR>", opts) -- vim fugitive
 
 -- Telescope
 keymap("n", "<leader>f", "<cmd>Telescope find_files hidden=true<CR>", opts)
@@ -91,6 +94,7 @@ keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 
 -- Terminal --
 -- Better terminal navigation
+keymap("t", "<Esc>", "<C-\\><C-n>", opts)
 -- keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
 -- keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 -- keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
