@@ -78,6 +78,8 @@ keymap("n", "<leader>li", ":TypescriptAddMissingImports<CR>", opts)
 keymap("i", "jk", "<ESC>", opts)
 
 -- Visual --
+
+
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
@@ -91,6 +93,9 @@ keymap("v", "p", '"_dP', opts)
 -- Move text up and down
 keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
+
+-- Paste without lose what you're pasting
+keymap("x", "<leader>p", "\"_dP", opts)
 
 -- Terminal --
 -- Better terminal navigation
