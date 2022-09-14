@@ -102,8 +102,13 @@ return packer.startup(function(use)
   -- Treesitter
   use({ "nvim-treesitter/nvim-treesitter" })
   use("JoosepAlviste/nvim-ts-context-commentstring")
-  use({ "p00f/nvim-ts-rainbow" })
   use("windwp/nvim-ts-autotag")
+
+  -- Orgmode
+  use { 'nvim-orgmode/orgmode', config = function()
+    require('orgmode').setup {}
+  end
+  }
 
   -- test tool
   use("olimorris/neotest-rspec")

@@ -9,7 +9,7 @@ configs.setup({
   ignore_install = { "" }, -- List of parsers to ignore installing
   highlight = {
     enable = true, -- false will disable the whole extension
-    disable = { "" }, -- list of language that will be disabled
+    disable = { "org" }, -- list of language that will be disabled
     additional_vim_regex_highlighting = true,
   },
   autopairs = {
@@ -22,18 +22,5 @@ configs.setup({
   },
   autotag = {
     enable = true,
-  },
-  rainbow = {
-    enable = true,
-    extended_mode = false,
-    colors = {
-      "#7AA2F7",
-      "#BB9AF7",
-      "#2AC3DE",
-      -- "Cornsilk",
-      -- "Salmon",
-      -- "LawnGreen",
-    },
-    -- disable = { "tsx", "jsx", "html" },
   },
 })

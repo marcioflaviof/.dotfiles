@@ -17,8 +17,14 @@ null_ls.setup({
     formatting.prettier,
     -- formatting.prettierd,
     formatting.stylua,
-    formatting.rubocop,
-    diagnostics.rubocop,
+    formatting.rubocop.with({
+      command = "bundle",
+      args = vim.list_extend({ "exec", "rubocop" }, require("null-ls").builtins.formatting.rubocop._opts.args),
+    }),
+    diagnostics.rubocop.with({
+      command = "bundle",
+      args = vim.list_extend({ "exec", "rubocop" }, require("null-ls").builtins.diagnostics.rubocop._opts.args),
+    }),
     diagnostics.eslint_d,
   },
 
