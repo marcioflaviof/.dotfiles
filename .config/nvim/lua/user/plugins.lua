@@ -105,10 +105,10 @@ return packer.startup(function(use)
   use("windwp/nvim-ts-autotag")
 
   -- Orgmode
-  use { 'nvim-orgmode/orgmode', config = function()
-    require('orgmode').setup {}
-  end
-  }
+  use { 'nvim-orgmode/orgmode' }
+  use { 'akinsho/org-bullets.nvim', config = function()
+    require('org-bullets').setup()
+  end }
 
   -- test tool
   use("olimorris/neotest-rspec")
