@@ -54,8 +54,12 @@ end
 vim.cmd("set whichwrap+=<,>,[,],h,l")
 vim.cmd([[set iskeyword+=-]])
 
+local autocmd = vim.api.nvim_create_autocmd
+local augroup = vim.api.nvim_create_augroup
+local yank_group = augroup("HighlightYank", {})
+
 -- Put stories from storybook as markdown files
-vim.api.nvim_create_autocmd("BufRead", {
+autocmd("BufRead", {
   pattern = { "*.stories.mdx", "*.stories.md" },
   callback = function()
     vim.schedule(function()
@@ -64,7 +68,7 @@ vim.api.nvim_create_autocmd("BufRead", {
   end,
 })
 
-vim.api.nvim_create_autocmd("BufRead", {
+autocmd("BufRead", {
   pattern = "node_modules/*",
   callback = function()
     vim.schedule(function()
@@ -73,4 +77,13 @@ vim.api.nvim_create_autocmd("BufRead", {
   end,
 })
 
--- vim.api.nvim_exec([[autocmd BufRead,BufNewFile */node_modules/* lua vim.diagnostic.disable(0)]], false)
+autocmd("TextYankPost", {
+  group = yank_group,
+  pattern = "*",
+  callback = function()
+    vim.highlight.on_yank({
+      higroup = 'IncSearch',
+      timeout = 40,
+    })
+  end
+})
