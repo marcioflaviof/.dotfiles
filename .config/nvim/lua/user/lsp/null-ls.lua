@@ -19,10 +19,10 @@ end
 null_ls.setup({
   debug = false,
   sources = {
-    --[[ formatting.prettier, ]]
+    formatting.prettier,
     -- formatting.prettierd,
     formatting.stylua,
-    --[[ diagnostics.eslint_d, ]]
+    diagnostics.eslint_d,
 
     conditional(function(utils)
       return utils.root_has_file("Gemfile")
@@ -48,10 +48,4 @@ null_ls.setup({
           or null_ls.builtins.diagnostics.rubocop
     end),
   },
-
-  --[[ on_attach = function(client) ]]
-  --[[   if client.server_capabilities.documentFormattingProvider then ]]
-  --[[     vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format()") ]]
-  --[[   end ]]
-  --[[ end, ]]
 })

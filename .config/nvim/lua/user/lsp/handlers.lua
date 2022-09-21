@@ -74,7 +74,7 @@ local lsp_formatting = function(bufnr)
 end
 
 local function attach_navic(client, bufnr)
-  vim.g.navic_silence = false
+  vim.g.navic_silence = true
   local status_ok, navic = pcall(require, "nvim-navic")
   if not status_ok then
     return

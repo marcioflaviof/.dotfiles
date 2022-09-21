@@ -20,7 +20,7 @@ require("user.indentline")
 require("user.matchup")
 require("user.git-blame")
 require("user.nvim-webdev-icons")
-require("user.bufferline")
+--[[ require("user.bufferline") ]]
 require("user.neotest")
 require("user.illuminate")
 
