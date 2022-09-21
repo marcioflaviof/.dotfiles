@@ -17,6 +17,7 @@ local servers = {
   "jsonls",
   "sumneko_lua",
   "yamlls",
+  "solargraph"
 }
 
 local settings = {
@@ -44,6 +45,7 @@ if not lspconfig_status_ok then
 end
 
 local opts = {}
+
 
 for _, server in pairs(servers) do
   opts = {

@@ -19,6 +19,10 @@ vim.g.maplocalleader = " "
 -- Normal --
 
 keymap("n", "<leader>h", "<cmd>nohlsearch<cr>", opts)
+
+--  format
+keymap("n", "<leader>lf", "<cmd>LspToggleAutoFormat<cr>", opts)
+
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
@@ -46,12 +50,12 @@ keymap("n", "<leader>gf", "<cmd>diffget //2<CR>", opts) -- vim fugitive
 keymap("n", "<leader>gj", "<cmd>diffget //3<CR>", opts) -- vim fugitive
 
 -- Telescope
-keymap("n", "<leader>f", "<cmd>Telescope find_files hidden=true<CR>", opts)
-keymap("n", "<leader>st", ":Telescope live_grep<CR>", opts)
-keymap("n", "<leader>sr", ":Telescope oldfiles<CR>", opts)
-keymap("n", "<leader>sp", ":lua require('telescope').extensions.projects.projects()<CR>", opts)
-keymap("n", "<leader>gb", ":Telescope git_branches<CR>", opts)
-keymap("n", "<leader>sc", ":Telescope colorscheme<CR>", opts)
+keymap("n", "<leader>ff", "<cmd>Telescope find_files hidden=true<CR>", opts)
+keymap("n", "<leader>ft", ":Telescope live_grep<CR>", opts)
+keymap("n", "<leader>fr", ":Telescope oldfiles<CR>", opts)
+keymap("n", "<leader>fgb", ":Telescope git_branches<CR>", opts)
+keymap("n", "<leader>fc", ":Telescope colorscheme<CR>", opts)
+keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
 
 -- Tests
 keymap("n", "<leader>tf", "<cmd>w<CR><cmd>lua require('neotest').run.run(vim.fn.expand('%'))<CR>", opts) -- test file

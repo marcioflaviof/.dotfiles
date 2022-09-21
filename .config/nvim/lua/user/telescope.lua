@@ -7,9 +7,25 @@ local actions = require("telescope.actions")
 
 telescope.setup({
   defaults = {
+
     prompt_prefix = " ",
-    -- selection_caret = " ",
-    --[[ path_display = { "smart" }, ]]
+    selection_caret = " ",
+    path_display = { "smart" },
+
+    layout_config = {
+      horizontal = {
+        prompt_position = "top",
+        preview_width = 0.3,
+        results_width = 0.8,
+      },
+      vertical = {
+        mirror = false,
+      },
+      width = 0.87,
+      height = 0.80,
+      preview_cutoff = 120,
+    },
+
     file_ignore_patterns = {
       ".git/",
       "target/",
@@ -63,25 +79,52 @@ telescope.setup({
       "%.flac",
       "%.tar.gz",
     },
+
     mappings = {
       n = {
         ["q"] = actions.close,
         ["<esc>"] = actions.close,
+        ["dd"] = require("telescope.actions").delete_buffer,
       },
     },
-    pickers = {
-      live_grep = {
-        only_sort_text = true,
+  },
+
+
+  pickers = {
+    live_grep = {
+      theme = "dropdown",
+    },
+
+    find_files = {
+      theme = "dropdown",
+      previewer = false,
+      layout_config = {
+        horizontal = {
+          prompt_position = "top",
+          results_width = 0.8,
+        },
+        vertical = {
+          mirror = false,
+        },
+        width = 0.87,
+        height = 0.80,
       },
     },
-    extensions = {
-      fzf = {
-        fuzzy = true, -- false will only do exact matching
-        override_generic_sorter = true, -- override the generic sorter
-        override_file_sorter = true, -- override the file sorter
-        case_mode = "smart_case", -- or "ignore_case" or "respect_case"
-        -- the default case_mode is "smart_case"
-      },
+
+    buffers = {
+      theme = "dropdown",
+      previewer = false,
+      initial_mode = "normal",
+    },
+  },
+
+  extensions = {
+    fzf = {
+      fuzzy = true, -- false will only do exact matching
+      override_generic_sorter = true, -- override the generic sorter
+      override_file_sorter = true, -- override the file sorter
+      case_mode = "smart_case", -- or "ignore_case" or "respect_case"
+      -- the default case_mode is "smart_case"
     },
   },
 })

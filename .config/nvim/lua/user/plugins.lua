@@ -46,7 +46,7 @@ return packer.startup(function(use)
   -- User interface
   use("kyazdani42/nvim-web-devicons")
   use("kyazdani42/nvim-tree.lua")
-  use("nvim-lualine/lualine.nvim")
+  use 'feline-nvim/feline.nvim'
   use("akinsho/bufferline.nvim")
   use("moll/vim-bbye") -- better buffer close
   use("akinsho/toggleterm.nvim") -- toggle terminal
@@ -90,6 +90,7 @@ return packer.startup(function(use)
   use("RRethy/vim-illuminate")
   use("lvimuser/lsp-inlayhints.nvim")
   use("jose-elias-alvarez/typescript.nvim")
+  use("SmiteshP/nvim-navic")
 
   -- Telescope
   use("nvim-telescope/telescope.nvim")

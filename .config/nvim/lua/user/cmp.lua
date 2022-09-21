@@ -85,6 +85,7 @@ cmp.setup({
         nvim_lua = "[Lua]",
         buffer = "[Buffer]",
         path = "[Path]",
+        orgmode = "[ORG]"
       })[entry.source.name]
       return vim_item
     end,
@@ -96,6 +97,7 @@ cmp.setup({
     { name = "nvim_lua" },
     { name = "buffer" },
     { name = "path" },
+    { name = "orgmode" },
   },
   confirm_opts = {
     behavior = cmp.ConfirmBehavior.Replace,

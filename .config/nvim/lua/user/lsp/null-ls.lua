@@ -19,12 +19,10 @@ end
 null_ls.setup({
   debug = false,
   sources = {
-    formatting.prettier,
+    --[[ formatting.prettier, ]]
     -- formatting.prettierd,
     formatting.stylua,
-    --[[ formatting.rubocop, ]]
-    --[[ diagnostics.rubocop, ]]
-    diagnostics.eslint_d,
+    --[[ diagnostics.eslint_d, ]]
 
     conditional(function(utils)
       return utils.root_has_file("Gemfile")
@@ -37,6 +35,7 @@ null_ls.setup({
           })
           or null_ls.builtins.formatting.rubocop
     end),
+
     conditional(function(utils)
       return utils.root_has_file("Gemfile")
           and null_ls.builtins.diagnostics.rubocop.with({
@@ -50,9 +49,9 @@ null_ls.setup({
     end),
   },
 
-  on_attach = function(client)
-    if client.server_capabilities.documentFormattingProvider then
-      vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format()")
-    end
-  end,
+  --[[ on_attach = function(client) ]]
+  --[[   if client.server_capabilities.documentFormattingProvider then ]]
+  --[[     vim.cmd("autocmd BufWritePre <buffer> lua vim.lsp.buf.format()") ]]
+  --[[   end ]]
+  --[[ end, ]]
 })
