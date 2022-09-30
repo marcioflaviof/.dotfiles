@@ -125,7 +125,6 @@ local get_gps = function()
   end
 
   if not require("user.functions").isempty(gps_location) then
-    -- TODO: replace with chevron
     return ">" .. " " .. gps_location
   else
     return ""
@@ -157,7 +156,6 @@ M.get_winbar = function()
   end
 
   if not f.isempty(value) and f.get_buf_option "mod" then
-    -- TODO: replace with circle
     local mod = "%#LspCodeLens#" .. "" .. "%*"
     if gps_added then
       value = value .. " " .. mod
@@ -189,7 +187,6 @@ M.create_winbar = function()
         callback = function()
           local status_ok, _ = pcall(vim.api.nvim_buf_get_var, 0, "lsp_floating_window")
           if not status_ok then
-            -- TODO:
             require("user.breadcrumbs").get_winbar()
           end
         end,

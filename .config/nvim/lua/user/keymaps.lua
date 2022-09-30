@@ -18,8 +18,6 @@ vim.g.maplocalleader = " "
 
 -- Normal --
 
-keymap("n", "<leader>h", "<cmd>nohlsearch<cr>", opts)
-
 --  format
 keymap("n", "<leader>lf", "<cmd>LspToggleAutoFormat<cr>", opts)
 
@@ -77,6 +75,12 @@ keymap("n", "<leader>e", ":NvimTreeToggle<CR>", { noremap = true })
 -- lsp-ts-utils
 keymap("n", "<leader>li", ":TypescriptAddMissingImports<CR>", opts)
 
+-- Harpoon
+keymap("n", "<leader>h",
+  ":lua require('harpoon.ui').toggle_quick_menu()<CR>"
+  , opts)
+keymap("n", "<leader>hm", ":lua require('harpoon.mark').add_file()<CR>", opts)
+
 -- Insert --
 -- Press jk fast to enter
 keymap("i", "jk", "<ESC>", opts)
@@ -97,9 +101,6 @@ keymap("v", "p", '"_dP', opts)
 -- Move text up and down
 keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
-
--- Paste without lose what you're pasting
-keymap("x", "<leader>p", "\"_dP", opts)
 
 -- Terminal --
 -- Better terminal navigation

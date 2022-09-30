@@ -22,7 +22,11 @@ null_ls.setup({
     formatting.prettier,
     -- formatting.prettierd,
     formatting.stylua,
-    diagnostics.eslint_d,
+    diagnostics.eslint_d.with({
+      condition = function(utils)
+        return utils.root_has_file({ '.eslintrc.js' })
+      end
+    }),
 
     conditional(function(utils)
       return utils.root_has_file("Gemfile")

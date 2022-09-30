@@ -10,7 +10,7 @@ telescope.setup({
 
     prompt_prefix = " ",
     selection_caret = " ",
-    path_display = { "smart" },
+    path_display = { "truncate" },
 
     layout_config = {
       horizontal = {
@@ -93,6 +93,10 @@ telescope.setup({
   pickers = {
     live_grep = {
       theme = "dropdown",
+      layout_config = {
+        width = 0.87,
+        height = 0.30,
+      }
     },
 
     find_files = {

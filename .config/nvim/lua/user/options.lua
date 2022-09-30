@@ -47,43 +47,10 @@ vim.opt.fillchars.eob = " "
 
 vim.o.termguicolors = true
 
+
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
 
 vim.cmd("set whichwrap+=<,>,[,],h,l")
 vim.cmd([[set iskeyword+=-]])
-
-local autocmd = vim.api.nvim_create_autocmd
-local augroup = vim.api.nvim_create_augroup
-local yank_group = augroup("HighlightYank", {})
-
--- Put stories from storybook as markdown files
-autocmd("BufRead", {
-  pattern = { "*.stories.mdx", "*.stories.md" },
-  callback = function()
-    vim.schedule(function()
-      vim.api.nvim_command("set ft=tsx")
-    end)
-  end,
-})
-
-autocmd("BufRead", {
-  pattern = "node_modules/*",
-  callback = function()
-    vim.schedule(function()
-      vim.api.nvim_command("lua vim.diagnostic.disable(0)")
-    end)
-  end,
-})
-
-autocmd("TextYankPost", {
-  group = yank_group,
-  pattern = "*",
-  callback = function()
-    vim.highlight.on_yank({
-      higroup = 'IncSearch',
-      timeout = 40,
-    })
-  end
-})

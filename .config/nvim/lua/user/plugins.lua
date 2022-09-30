@@ -57,12 +57,6 @@ return packer.startup(function(use)
   -- Colorschemes
   use("folke/tokyonight.nvim")
   use({ "catppuccin/nvim", as = "catppuccin" })
-  use({
-    "olimorris/onedarkpro.nvim",
-    config = function()
-      require("onedarkpro").setup()
-    end,
-  })
 
   -- snippets
   use("L3MON4D3/LuaSnip") --snippet engine
@@ -142,6 +136,7 @@ return packer.startup(function(use)
     end
   })
   use("junegunn/vim-slash")
+  use("ThePrimeagen/harpoon")
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
