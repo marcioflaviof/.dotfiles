@@ -95,7 +95,8 @@ telescope.setup({
       theme = "dropdown",
       layout_config = {
         width = 0.87,
-        height = 0.30,
+        height = 0.4,
+        preview_height = 0.4,
       }
     },
 

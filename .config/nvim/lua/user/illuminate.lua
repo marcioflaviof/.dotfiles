@@ -1,5 +1,5 @@
 -- default configuration
-require("illuminate").configure {
+require("illuminate").configure({
   -- providers: provider used to get references in the buffer, ordered by priority
   providers = {
     "lsp",
@@ -7,7 +7,7 @@ require("illuminate").configure {
     "regex",
   },
   -- delay: delay in milliseconds
-  delay = 120,
+  delay = 50,
   -- filetypes_denylist: filetypes to not illuminate, this overrides filetypes_allowlist
   filetypes_denylist = {
     "dirvish",
@@ -40,7 +40,7 @@ require("illuminate").configure {
   providers_regex_syntax_allowlist = {},
   -- under_cursor: whether or not to illuminate under the cursor
   under_cursor = true,
-}
+})
 
 vim.api.nvim_set_hl(0, "IlluminatedWordText", { link = "Visual" })
 vim.api.nvim_set_hl(0, "IlluminatedWordRead", { link = "Visual" })

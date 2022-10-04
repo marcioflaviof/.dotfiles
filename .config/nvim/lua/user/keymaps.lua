@@ -48,12 +48,12 @@ keymap("n", "<leader>gf", "<cmd>diffget //2<CR>", opts) -- vim fugitive
 keymap("n", "<leader>gj", "<cmd>diffget //3<CR>", opts) -- vim fugitive
 
 -- Telescope
-keymap("n", "<leader>ff", "<cmd>Telescope find_files hidden=true<CR>", opts)
-keymap("n", "<leader>ft", ":Telescope live_grep<CR>", opts)
-keymap("n", "<leader>fr", ":Telescope oldfiles<CR>", opts)
-keymap("n", "<leader>fgb", ":Telescope git_branches<CR>", opts)
-keymap("n", "<leader>fc", ":Telescope colorscheme<CR>", opts)
-keymap("n", "<leader>fb", ":Telescope buffers<CR>", opts)
+keymap("n", "<leader>f", "<cmd>Telescope find_files hidden=true<CR>", opts)
+keymap("n", "<leader>st", ":Telescope live_grep<CR>", opts)
+keymap("n", "<leader>so", ":Telescope oldfiles<CR>", opts)
+keymap("n", "<leader>gb", ":Telescope git_branches<CR>", opts)
+keymap("n", "<leader>sc", ":Telescope colorscheme<CR>", opts)
+keymap("n", "<leader>sb", ":Telescope buffers<CR>", opts)
 
 -- Tests
 keymap("n", "<leader>tf", "<cmd>w<CR><cmd>lua require('neotest').run.run(vim.fn.expand('%'))<CR>", opts) -- test file
@@ -70,7 +70,7 @@ keymap("n", "<leader>ta", "<cmd>lua require('neotest').run.run(vim.fn.getcwd())<
 keymap("n", "<C-s>", ":w<CR>", {})
 
 -- Open file tree
-keymap("n", "<leader>e", ":NvimTreeToggle<CR>", { noremap = true })
+keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 
 -- lsp-ts-utils
 keymap("n", "<leader>li", ":TypescriptAddMissingImports<CR>", opts)
