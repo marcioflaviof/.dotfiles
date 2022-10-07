@@ -17,10 +17,10 @@ end
 
 -- Autocommand that reloads neovim whenever you save the plugins.lua file
 vim.cmd([[
-  augroup packer_user_config
-    autocmd!
-    autocmd BufWritePost plugins.lua source <afile> | PackerSync
-  augroup end
+   augroup packer_user_config
+   autocmd!
+   autocmd BufWritePost plugins.lua source <afile> | PackerSync
+   augroup end
 ]])
 
 -- Use a protected call so we don't error out on first use
@@ -46,13 +46,11 @@ return packer.startup(function(use)
   -- User interface
   use("kyazdani42/nvim-web-devicons")
   use("kyazdani42/nvim-tree.lua")
-  use 'feline-nvim/feline.nvim'
+  use "feline-nvim/feline.nvim"
   use("akinsho/bufferline.nvim")
   use("moll/vim-bbye") -- better buffer close
   use("akinsho/toggleterm.nvim") -- toggle terminal
   use("lewis6991/impatient.nvim")
-
-
 
   -- Colorschemes
   use("folke/tokyonight.nvim")
@@ -125,7 +123,6 @@ return packer.startup(function(use)
   -- Utils
   use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter
   use("numToStr/Comment.nvim")
-  use("karb94/neoscroll.nvim") -- smooth scrolling
   use("lukas-reineke/indent-blankline.nvim")
   use("andymass/vim-matchup") -- improve the % key
   use("norcalli/nvim-colorizer.lua")

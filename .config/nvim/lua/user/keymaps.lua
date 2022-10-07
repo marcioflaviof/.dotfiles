@@ -67,7 +67,7 @@ keymap("n", "<leader>ts", "<cmd>lua require('neotest').summary.toggle()<CR>", op
 keymap("n", "<leader>ta", "<cmd>lua require('neotest').run.run(vim.fn.getcwd())<CR>", opts) -- test all
 
 -- save with ctrl + s
-keymap("n", "<C-s>", ":w<CR>", {})
+keymap("n", "<C-s>", ":w<CR>", { noremap = true })
 
 -- Open file tree
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
@@ -86,15 +86,10 @@ keymap("n", "<leader>hm", ":lua require('harpoon.mark').add_file()<CR>", opts)
 keymap("i", "jk", "<ESC>", opts)
 
 -- Visual --
-
-
 -- Stay in indent mode
 keymap("v", "<", "<gv", opts)
 keymap("v", ">", ">gv", opts)
 
--- Move text up and down
-keymap("v", "<A-j>", ":m .+1<CR>==", opts)
-keymap("v", "<A-k>", ":m .-2<CR>==", opts)
 keymap("v", "p", '"_dP', opts)
 
 -- Visual Block --
