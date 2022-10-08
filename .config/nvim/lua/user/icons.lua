@@ -32,6 +32,13 @@ return {
     Calendar = "",
     Watch = " ",
     Package = "",
+
+    Array = "",
+    Boolean = "蘒",
+    Key = "",
+    Number = "",
+    Object = "",
+    String = "",
   },
   type = {
     Array = "[]",
