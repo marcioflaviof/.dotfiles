@@ -29,5 +29,3 @@ augroup MyColors
 	autocmd ColorScheme * highlight LineNr guifg=#5081c0   | highlight CursorLineNR guifg=#FFba00
 augroup END
 ]], false)
-
-vim.g.neovide_transparency = 0.8

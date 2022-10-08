@@ -1,3 +1,14 @@
+lvim.builtin.alpha.active = true
+lvim.builtin.alpha.mode = "dashboard"
+lvim.builtin.notify.active = true
+lvim.builtin.terminal.active = true
+lvim.builtin.nvimtree.setup.view.side = "left"
+lvim.builtin.nvimtree.setup.renderer.icons.show.git = false
+lvim.builtin.breadcrumbs.active = true
+lvim.log.level = "warn"
+
+lvim.colorscheme = "tokyonight-night"
+
 local options = {
   expandtab = true, -- convert tabs to spaces
   shiftwidth = 2, -- the number of spaces inserted for each indentation
@@ -41,7 +52,6 @@ local options = {
   wrap = true, -- display lines as one long line
   guifont = "JetBrainsMono Nerd Font", -- the font used in graphical neovim applications
 }
-
 for k, v in pairs(options) do
   vim.opt[k] = v
 end

@@ -84,7 +84,6 @@ return {
     Note = "",
     BookMark = "",
     Pencil = "",
-    -- ChevronRight = "",
     ChevronRight = ">",
     Table = "",
     Calendar = "",
