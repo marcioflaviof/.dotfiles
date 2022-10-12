@@ -34,5 +34,12 @@ keymap("n", "<leader>h",
   , opts)
 keymap("n", "<leader>hm", ":lua require('harpoon.mark').add_file()<CR>", opts)
 
+-- Harpoon
+keymap("n", "<leader>h",
+  ":lua require('harpoon.ui').toggle_quick_menu()<CR>"
+  , opts)
+keymap("n", "<leader>hm", ":lua require('harpoon.mark').add_file()<CR>", opts)
+
 -- Insert --
 keymap("i", "jk", "<ESC>", opts)
+
