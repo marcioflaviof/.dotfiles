@@ -11,7 +11,8 @@ local options = {
   mouse = "a", -- allow the mouse to be used in neovim
 
   tabstop = 2, -- insert 2 spaces for a tab
-  cursorline = false, -- highlight the current line
+  cursorline = true, -- highlight the current line
+  cursorlineopt = "number",
   number = true, -- set numbered lines
   updatetime = 250, -- faster completion (4000ms default)
 

@@ -141,23 +141,24 @@ M.get_winbar = function()
   local f = require "user.functions"
   local value = M.get_filename()
 
-  local gps_added = false
+  -- Save symbol
+  --[[ local gps_added = false ]]
   if not f.isempty(value) then
     local gps_value = get_gps()
     value = value .. " " .. gps_value
-    if not f.isempty(gps_value) then
-      gps_added = true
-    end
+    --[[ if not f.isempty(gps_value) then ]]
+    --[[   gps_added = true ]]
+    --[[ end ]]
   end
 
-  if not f.isempty(value) and f.get_buf_option "mod" then
-    local mod = "%#LspCodeLens#" .. "" .. "%*"
-    if gps_added then
-      value = value .. " " .. mod
-    else
-      value = value .. mod
-    end
-  end
+  --[[ if not f.isempty(value) and f.get_buf_option "mod" then ]]
+  --[[   local mod = "%#LspCodeLens#" .. "" .. "%*" ]]
+  --[[   if gps_added then ]]
+  --[[     value = value .. " " .. mod ]]
+  --[[   else ]]
+  --[[     value = value .. mod ]]
+  --[[   end ]]
+  --[[ end ]]
 
   local num_tabs = #vim.api.nvim_list_tabpages()
 

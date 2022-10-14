@@ -17,7 +17,8 @@ local servers = {
   "jsonls",
   "sumneko_lua",
   "yamlls",
-  "solargraph"
+  "solargraph",
+  "tailwindcss"
 }
 
 local settings = {

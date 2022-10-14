@@ -110,6 +110,7 @@ return packer.startup(function(use)
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
       "antoinemadec/FixCursorHold.nvim",
+      "haydenmeade/neotest-jest"
     },
   })
 

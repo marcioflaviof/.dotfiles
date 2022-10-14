@@ -38,6 +38,7 @@ typescript.setup({
   },
 })
 
+-- Remove an annoying warning
 vim.lsp.handlers["textDocument/publishDiagnostics"] = function(_, result, ctx, ...)
   local client = vim.lsp.get_client_by_id(ctx.client_id)
 

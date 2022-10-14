@@ -23,11 +23,4 @@ autocmd("TextYankPost", {
   end
 })
 
-vim.api.nvim_exec([[
-augroup MyColors
-	autocmd!
-	autocmd ColorScheme * highlight LineNr guifg=#5081c0   | highlight CursorLineNR guifg=#FFba00
-augroup END
-]], false)
-
 vim.g.neovide_transparency = 0.8

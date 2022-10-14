@@ -10,7 +10,20 @@ end
 
 tokyonight.setup({
   style = "night",
-  transparent = true
+  transparent = true,
+  styles = {
+    sidebars = "transparent",
+    floats = "transparent"
+  },
+  on_highlights = function(hl, colors)
+    hl.CursorLineNr = {
+      fg = colors.orange,
+      bold = true
+    }
+    hl.LineNr = {
+      fg = colors.blue0,
+    }
+  end
 })
 
 catppuccin.setup({
