@@ -103,15 +103,15 @@ return packer.startup(function(use)
 
   -- test tool
   use("olimorris/neotest-rspec")
-  use("haydenmeade/neotest-jest")
+  use { "haydenmeade/neotest-jest", commit = 'cedda8ae1b5c1672e87767b61379b38c5be7a7db' }
   use({
     "nvim-neotest/neotest",
     requires = {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
       "antoinemadec/FixCursorHold.nvim",
-      "haydenmeade/neotest-jest"
     },
+    commit = '6669f6dda2385ed358ffc90108e574ccccc71f32'
   })
 
   -- Git
