@@ -97,7 +97,19 @@ telescope.setup({
         width = 0.87,
         height = 0.4,
         preview_height = 0.4,
-      }
+      },
+      file_ignore_patterns = { ".test", ".spec" }
+    },
+
+    lsp_references = {
+      theme = "dropdown",
+      path_display = { "tail" },
+      layout_config = {
+        width = 0.87,
+        height = 0.4,
+      },
+      file_ignore_patterns = { ".test", ".spec" },
+      initial_mode = "normal",
     },
 
     find_files = {

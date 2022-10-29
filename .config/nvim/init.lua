@@ -24,5 +24,3 @@ require("user.nvim-webdev-icons")
 require("user.bufferline")
 require("user.neotest")
 require("user.illuminate")
-
-require("user.lsp.handlers").toggle_format_on_save()

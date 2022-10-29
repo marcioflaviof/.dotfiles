@@ -19,6 +19,9 @@ typescript.setup({
   debug = false, -- enable debug logging for commands
   eslint_bin = "eslint_d", -- use eslint_d if possible!
   import_on_completion_timeout = 5000,
+  go_to_source_definition = {
+    fallback = true,
+  },
   server = {
 
     on_attach = function(client, bufnr)
@@ -33,6 +36,8 @@ typescript.setup({
           --[[ vim.wait(1000) ]]
           --[[ ts.organizeImports({ sync = true }) ]]
         end)
+        vim.keymap.set("n", "gD", "gD<cmd>lua vim.lsp.buf.definition()<CR><cmd>noh<CR>",
+          { noremap = true, silent = true })
       end
     end,
   },

@@ -103,7 +103,7 @@ return packer.startup(function(use)
 
   -- test tool
   use("olimorris/neotest-rspec")
-  use { "haydenmeade/neotest-jest", commit = 'cedda8ae1b5c1672e87767b61379b38c5be7a7db' }
+  use { "haydenmeade/neotest-jest" }
   use({
     "nvim-neotest/neotest",
     requires = {

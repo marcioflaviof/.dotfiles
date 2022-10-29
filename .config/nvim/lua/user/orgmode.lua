@@ -10,7 +10,7 @@ orgmode.setup_ts_grammar()
 orgmode.setup({
   org_agenda_files = { '~/Documents/orgmode/*' },
   org_default_notes_file = '~/Documents/orgmode/daily.org',
-  org_todo_keywords = { "TODO", "HELP", "|", "DONE" }
+  org_todo_keywords = { "HELP", "TODO", "|", "DONE" }
 })
 
 local bullets_status_ok, orgbullets = pcall(require, "org-bullets")

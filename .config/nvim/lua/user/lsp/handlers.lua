@@ -25,7 +25,6 @@ M.setup = function()
   end
 
   local config = {
-    -- disable virtual text
     virtual_text = true,
     -- show signs
     signs = {
@@ -133,5 +132,7 @@ function M.remove_augroup(name)
 end
 
 vim.cmd [[ command! LspToggleAutoFormat execute 'lua require("user.lsp.handlers").toggle_format_on_save()' ]]
+
+M.toggle_format_on_save()
 
 return M

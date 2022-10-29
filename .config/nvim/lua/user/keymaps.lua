@@ -54,6 +54,7 @@ keymap("n", "<leader>so", ":Telescope oldfiles<CR>", opts)
 keymap("n", "<leader>gb", ":Telescope git_branches<CR>", opts)
 keymap("n", "<leader>sc", ":Telescope colorscheme<CR>", opts)
 keymap("n", "<leader>sb", ":Telescope buffers<CR>", opts)
+keymap("n", "<leader>slr", ":Telescope lsp_references<CR>", opts)
 
 -- Tests
 keymap("n", "<leader>tf", "<cmd>w<CR><cmd>lua require('neotest').run.run(vim.fn.expand('%'))<CR>", opts) -- test file
