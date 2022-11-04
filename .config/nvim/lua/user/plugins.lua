@@ -44,8 +44,8 @@ return packer.startup(function(use)
   use("nvim-lua/plenary.nvim") -- Useful lua functions used ny lots of plugins
 
   -- User interface
-  use("kyazdani42/nvim-web-devicons")
-  use("kyazdani42/nvim-tree.lua")
+  use("nvim-tree/nvim-web-devicons")
+  use("nvim-tree/nvim-tree.lua")
   use "feline-nvim/feline.nvim"
   use("akinsho/bufferline.nvim")
   use("moll/vim-bbye") -- better buffer close
