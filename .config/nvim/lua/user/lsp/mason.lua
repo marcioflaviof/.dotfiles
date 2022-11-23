@@ -1,3 +1,5 @@
+local utils = require('user.lsp.utils')
+
 local status_ok, mason = pcall(require, "mason")
 if not status_ok then
   return
@@ -18,7 +20,7 @@ local servers = {
   "sumneko_lua",
   "yamlls",
   "solargraph",
-  "tailwindcss"
+  "tailwindcss",
 }
 
 local settings = {
@@ -32,12 +34,16 @@ local settings = {
   },
   log_level = vim.log.levels.INFO,
   max_concurrent_installers = 4,
+  ensure_installed = {
+    "prettierd"
+  }
 }
 
 mason.setup(settings)
 mason_lspconfig.setup {
   ensure_installed = servers,
   automatic_installation = true,
+  auto_update = true
 }
 
 local lspconfig_status_ok, lspconfig = pcall(require, "lspconfig")

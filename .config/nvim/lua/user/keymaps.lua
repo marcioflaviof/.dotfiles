@@ -81,6 +81,8 @@ keymap("n", "<leader>h",
   ":lua require('harpoon.ui').toggle_quick_menu()<CR>"
   , opts)
 keymap("n", "<leader>hm", ":lua require('harpoon.mark').add_file()<CR>", opts)
+keymap("n", "<leader>hn", ":lua require('harpoon.ui').nav_next()<CR>", opts)
+keymap("n", "<leader>hp", ":lua require('harpoon.ui').nav_prev()<CR>", opts)
 
 -- Insert --
 -- Press jk fast to enter
@@ -101,10 +103,6 @@ keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 -- Terminal --
 -- Better terminal navigation
 keymap("t", "<Esc>", "<C-\\><C-n>", opts)
--- keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
--- keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
--- keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
--- keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 
 -- Gui
 vim.g.gui_font_default_size = 12

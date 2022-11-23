@@ -22,5 +22,3 @@ autocmd("TextYankPost", {
     })
   end
 })
-
-vim.g.neovide_transparency = 0.8

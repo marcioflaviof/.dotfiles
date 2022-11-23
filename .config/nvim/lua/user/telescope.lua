@@ -98,7 +98,7 @@ telescope.setup({
         height = 0.4,
         preview_height = 0.4,
       },
-      file_ignore_patterns = { ".test", ".spec" }
+      -- file_ignore_patterns = { ".test", ".spec" }
     },
 
     lsp_references = {
@@ -146,4 +146,4 @@ telescope.setup({
   },
 })
 
-require("telescope").load_extension("fzf")
+-- require("telescope").load_extension("fzf")
