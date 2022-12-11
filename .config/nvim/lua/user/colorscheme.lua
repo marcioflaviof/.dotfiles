@@ -3,11 +3,6 @@ if not tokyook then
   return
 end
 
-local catok, _ = pcall(require, "catppuccin")
-if not catok then
-  return
-end
-
 tokyonight.setup({
   style = "night",
   styles = {
@@ -24,8 +19,6 @@ tokyonight.setup({
     }
   end
 })
-
-vim.g.catppuccin_flavour = "mocha"
 
 local colorscheme = "tokyonight"
 

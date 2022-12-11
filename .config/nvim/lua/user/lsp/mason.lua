@@ -1,5 +1,3 @@
-local utils = require('user.lsp.utils')
-
 local status_ok, mason = pcall(require, "mason")
 if not status_ok then
   return
@@ -20,7 +18,9 @@ local servers = {
   "sumneko_lua",
   "yamlls",
   "solargraph",
+  -- "ruby_ls",
   "tailwindcss",
+  "prismals"
 }
 
 local settings = {

@@ -54,7 +54,6 @@ return packer.startup(function(use)
 
   -- Colorschemes
   use("folke/tokyonight.nvim")
-  use({ "catppuccin/nvim", as = "catppuccin" })
 
   -- snippets
   use("L3MON4D3/LuaSnip") --snippet engine
@@ -100,19 +99,6 @@ return packer.startup(function(use)
   -- Orgmode
   use { 'nvim-orgmode/orgmode' }
   use { 'akinsho/org-bullets.nvim' }
-
-  -- test tool
-  use("olimorris/neotest-rspec")
-  use { "haydenmeade/neotest-jest" }
-  use({
-    "nvim-neotest/neotest",
-    requires = {
-      "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
-      "antoinemadec/FixCursorHold.nvim",
-    },
-    commit = '6669f6dda2385ed358ffc90108e574ccccc71f32'
-  })
 
   -- Git
   use("lewis6991/gitsigns.nvim")
