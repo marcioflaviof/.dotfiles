@@ -27,6 +27,13 @@ keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
+-- Better navigation with ctrl d and ctrl u
+keymap("n", "<C-d>", "<C-d>zz", opts)
+keymap("n", "<C-u>", "<C-u>zz", opts)
+
+-- Replace the word below the pointer
+keymap("n", "<leader>r", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", opts)
+
 -- Open buff in ruby
 keymap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 
@@ -46,15 +53,6 @@ keymap("n", "<leader>gs", "<cmd>0G<CR>", opts) -- vim fugitive
 keymap("n", "<leader>gd", "<cmd>G diff<CR>", opts) -- vim fugitive
 keymap("n", "<leader>gf", "<cmd>diffget //2<CR>", opts) -- vim fugitive
 keymap("n", "<leader>gj", "<cmd>diffget //3<CR>", opts) -- vim fugitive
-
--- Telescope
-keymap("n", "<leader>f", "<cmd>Telescope find_files hidden=true<CR>", opts)
-keymap("n", "<leader>st", ":Telescope live_grep<CR>", opts)
-keymap("n", "<leader>so", ":Telescope oldfiles<CR>", opts)
-keymap("n", "<leader>gb", ":Telescope git_branches<CR>", opts)
-keymap("n", "<leader>sc", ":Telescope colorscheme<CR>", opts)
-keymap("n", "<leader>sb", ":Telescope buffers<CR>", opts)
-keymap("n", "<leader>slr", ":Telescope lsp_references<CR>", opts)
 
 -- Tests
 keymap("n", "<leader>tf", "<cmd>w<CR><cmd>lua require('neotest').run.run(vim.fn.expand('%'))<CR>", opts) -- test file
@@ -106,34 +104,3 @@ keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 -- Terminal --
 -- Better terminal navigation
 keymap("t", "<Esc>", "<C-\\><C-n>", opts)
-
--- Gui
-vim.g.gui_font_default_size = 12
-vim.g.gui_font_size = vim.g.gui_font_default_size
-vim.g.gui_font_face = "JetBrainsMono Nerd Font"
-
-RefreshGuiFont = function()
-  vim.opt.guifont = string.format("%s:h%s", vim.g.gui_font_face, vim.g.gui_font_size)
-end
-
-ResizeGuiFont = function(delta)
-  vim.g.gui_font_size = vim.g.gui_font_size + delta
-  RefreshGuiFont()
-end
-
-ResetGuiFont = function()
-  vim.g.gui_font_size = vim.g.gui_font_default_size
-  RefreshGuiFont()
-end
-
--- Call function on startup to set default value
-ResetGuiFont()
-vim.keymap.set({ "n", "i" }, "<C-+>", function()
-  ResizeGuiFont(1)
-end, opts)
-vim.keymap.set({ "n", "i" }, "<C-->", function()
-  ResizeGuiFont(-1)
-end, opts)
-vim.keymap.set({ "n", "i" }, "<C-BS>", function()
-  ResetGuiFont()
-end, opts)

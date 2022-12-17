@@ -5,7 +5,7 @@ end
 
 
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
-local formatting = null_ls.builtins.formatting
+local formatters = null_ls.builtins.formatting
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/diagnostics
 local diagnostics = null_ls.builtins.diagnostics
 
@@ -19,8 +19,10 @@ end
 null_ls.setup({
   debug = false,
   sources = {
-    -- formatting.prettier,
-    formatting.prettierd,
+    -- formatters.prettier,
+    formatters.prettierd,
+    formatters.stylua,
+
     diagnostics.eslint_d.with({
       condition = function(utils)
         return utils.root_has_file({ '.eslintrc.js' })

@@ -32,3 +32,7 @@ keymap("n", "<F4>", ':let @+ = fnamemodify(expand("%"), ":~:.")<CR>', opts)
 keymap("n", "<S-l>", ":bnext<CR>", opts)
 keymap("n", "<S-h>", ":bprevious<CR>", opts)
 keymap("n", "<leader>c", ":Bdelete<CR>", opts)
+
+
+-- terminal
+lvim.builtin.terminal.open_mapping = [[<c-t>]]

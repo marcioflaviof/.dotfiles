@@ -5,7 +5,8 @@ local options = {
 
   clipboard = "unnamedplus", -- allows neovim to access the system clipboard
 
-  hlsearch = true, -- highlight all matches on previous search pattern
+  hlsearch = false, -- highlight all matches on previous search pattern
+  incsearch = true,
 
   ignorecase = true, -- ignore case in search patterns
   mouse = "a", -- allow the mouse to be used in neovim
@@ -14,7 +15,7 @@ local options = {
   cursorline = true, -- highlight the current line
   cursorlineopt = "number",
   number = true, -- set numbered lines
-  updatetime = 250, -- faster completion (4000ms default)
+  updatetime = 50, -- faster completion (4000ms default)
 
   scrolloff = 8,
   sidescrolloff = 8,

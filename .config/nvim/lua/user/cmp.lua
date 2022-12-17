@@ -80,10 +80,10 @@ cmp.setup({
 
       -- NOTE: order matters
       vim_item.menu = ({
-        luasnip = "[LuaSnip]",
         nvim_lsp = "[LSP]",
-        nvim_lua = "[Lua]",
+        luasnip = "[LuaSnip]",
         buffer = "[Buffer]",
+        nvim_lua = "[Lua]",
         path = "[Path]",
         orgmode = "[ORG]"
       })[entry.source.name]
@@ -92,10 +92,10 @@ cmp.setup({
   },
 
   sources = {
-    { name = "luasnip" },
     { name = "nvim_lsp" },
-    { name = "nvim_lua" },
+    { name = "luasnip" },
     { name = "buffer" },
+    { name = "nvim_lua" },
     { name = "path" },
     { name = "orgmode" },
   },

@@ -55,33 +55,48 @@ return packer.startup(function(use)
   -- Colorschemes
   use("folke/tokyonight.nvim")
 
-  -- snippets
-  use("L3MON4D3/LuaSnip") --snippet engine
-  use("rafamadriz/friendly-snippets")
-
   -- cmp plugins
-  use({ "hrsh7th/nvim-cmp" })
-  use("hrsh7th/cmp-buffer") -- buffer completions
-  use("hrsh7th/cmp-path") -- path completions
-  use("hrsh7th/cmp-cmdline") -- cmdline completions
-  use("saadparwaiz1/cmp_luasnip") -- snippet completions
-  use("hrsh7th/cmp-nvim-lsp")
-  use("hrsh7th/cmp-nvim-lua")
+  use { "hrsh7th/nvim-cmp",
+    requires = {
+      "hrsh7th/cmp-buffer",
+      "hrsh7th/cmp-path",
+      "hrsh7th/cmp-cmdline",
+      "saadparwaiz1/cmp_luasnip",
+      "hrsh7th/cmp-nvim-lsp",
+      "hrsh7th/cmp-nvim-lua",
+
+      -- snippets
+      "L3MON4D3/LuaSnip",
+      "rafamadriz/friendly-snippets"
+    }
+  }
 
   -- LSP
-  use("neovim/nvim-lspconfig") -- enable LSP
-  use "williamboman/mason.nvim"
-  use "williamboman/mason-lspconfig.nvim"
+  use { "neovim/nvim-lspconfig",
+    requires = {
+      "williamboman/mason.nvim",
+      "williamboman/mason-lspconfig.nvim",
+
+      -- better function signature location
+      "ray-x/lsp_signature.nvim",
+      "lvimuser/lsp-inlayhints.nvim",
+
+      -- status updates
+      "j-hui/fidget.nvim",
+
+      -- better typescript experience
+      "jose-elias-alvarez/typescript.nvim",
+
+      -- shows variables as I navigate
+      "SmiteshP/nvim-navic"
+    } }
+
   use("jose-elias-alvarez/null-ls.nvim") -- for formatters and linters
-  use("ray-x/lsp_signature.nvim") -- Show function signature when you type
   use({
     "folke/trouble.nvim",
     cmd = "TroubleToggle",
   })
   use("RRethy/vim-illuminate")
-  use("lvimuser/lsp-inlayhints.nvim")
-  use("jose-elias-alvarez/typescript.nvim")
-  use("SmiteshP/nvim-navic")
 
   -- Telescope
   use("nvim-telescope/telescope.nvim")
@@ -92,9 +107,12 @@ return packer.startup(function(use)
   })
 
   -- Treesitter
-  use({ "nvim-treesitter/nvim-treesitter" })
-  use("JoosepAlviste/nvim-ts-context-commentstring")
-  use("windwp/nvim-ts-autotag")
+  use { "nvim-treesitter/nvim-treesitter",
+    require = {
+      "JoosepAlviste/nvim-ts-context-commentstring",
+      "windwp/nvim-ts-autotag"
+    }
+  }
 
   -- Orgmode
   use { 'nvim-orgmode/orgmode' }
@@ -107,6 +125,7 @@ return packer.startup(function(use)
 
   -- Utils
   use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter
+  use("mbbill/undotree")
   use("numToStr/Comment.nvim")
   use("lukas-reineke/indent-blankline.nvim")
   use("andymass/vim-matchup") -- improve the % key
@@ -117,8 +136,16 @@ return packer.startup(function(use)
       require("nvim-surround").setup()
     end
   })
-  use("junegunn/vim-slash")
   use("ThePrimeagen/harpoon")
+
+  use {
+    'jinh0/eyeliner.nvim',
+    config = function()
+      require 'eyeliner'.setup {
+        highlight_on_key = true
+      }
+    end
+  }
 
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins

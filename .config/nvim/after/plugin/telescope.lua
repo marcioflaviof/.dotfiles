@@ -1,3 +1,4 @@
+local builtin = require('telescope.builtin')
 local status_ok, telescope = pcall(require, "telescope")
 if not status_ok then
   return
@@ -51,7 +52,6 @@ telescope.setup({
       ".vscode/",
       "__pycache__/",
       "build/",
-      "env/",
       "gradle/",
       "node_modules/",
       "%.pdb",
@@ -101,6 +101,16 @@ telescope.setup({
       -- file_ignore_patterns = { ".test", ".spec" }
     },
 
+    grep_string = {
+      theme = "dropdown",
+      layout_config = {
+        width = 0.87,
+        height = 0.4,
+      },
+      initial_mode = "normal",
+      -- file_ignore_patterns = { ".test", ".spec" }
+    },
+
     lsp_references = {
       theme = "dropdown",
       path_display = { "tail" },
@@ -146,4 +156,16 @@ telescope.setup({
   },
 })
 
--- require("telescope").load_extension("fzf")
+local opts = { noremap = true, silent = true }
+local keymap = vim.keymap.set
+
+keymap("n", "<leader>st", function()
+  builtin.grep_string({ search = vim.fn.input("Grep > ") })
+end, opts)
+keymap("n", "<leader>f", builtin.find_files, opts)
+keymap("n", "<leader>so", builtin.oldfiles, opts)
+keymap("n", "<leader>gb", builtin.git_branches, opts)
+keymap("n", "<leader>slr", builtin.lsp_references, opts)
+
+-- Enable telescope fzf native, if installed
+pcall(require('telescope').load_extension, 'fzf')
