@@ -89,6 +89,17 @@ telescope.setup({
     },
   },
 
+  vimgrep_arguments = {
+    "rg",
+    "--color=never",
+    "--no-heading",
+    "--with-filename",
+    "--line-number",
+    "--column",
+    "--smart-case",
+    "--hidden",
+    "--glob=!.git/",
+  },
 
   pickers = {
     live_grep = {
@@ -96,7 +107,6 @@ telescope.setup({
       layout_config = {
         width = 0.87,
         height = 0.4,
-        preview_height = 0.4,
       },
       -- file_ignore_patterns = { ".test", ".spec" }
     },
@@ -124,7 +134,9 @@ telescope.setup({
 
     find_files = {
       theme = "dropdown",
+      find_command = { 'rg', '--files', '--iglob', '!.git' },
       previewer = false,
+      hidden = true,
       layout_config = {
         horizontal = {
           prompt_position = "top",
@@ -159,9 +171,12 @@ telescope.setup({
 local opts = { noremap = true, silent = true }
 local keymap = vim.keymap.set
 
-keymap("n", "<leader>st", function()
+keymap("n", "<leader>sw", function()
   builtin.grep_string({ search = vim.fn.input("Grep > ") })
 end, opts)
+
+keymap("n", "<leader>st", function() builtin.live_grep() end, opts)
+
 keymap("n", "<leader>f", builtin.find_files, opts)
 keymap("n", "<leader>so", builtin.oldfiles, opts)
 keymap("n", "<leader>gb", builtin.git_branches, opts)

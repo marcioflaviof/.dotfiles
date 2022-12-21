@@ -108,7 +108,7 @@ return packer.startup(function(use)
 
   -- Treesitter
   use { "nvim-treesitter/nvim-treesitter",
-    require = {
+    requires = {
       "JoosepAlviste/nvim-ts-context-commentstring",
       "windwp/nvim-ts-autotag"
     }
@@ -136,6 +136,7 @@ return packer.startup(function(use)
       require("nvim-surround").setup()
     end
   })
+  use("junegunn/vim-slash")
   use("ThePrimeagen/harpoon")
 
   use {

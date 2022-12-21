@@ -15,7 +15,7 @@ local options = {
   cursorline = true, -- highlight the current line
   cursorlineopt = "number",
   number = true, -- set numbered lines
-  updatetime = 50, -- faster completion (4000ms default)
+  updatetime = 200, -- faster completion (4000ms default)
 
   scrolloff = 8,
   sidescrolloff = 8,
@@ -40,7 +40,7 @@ local options = {
   relativenumber = true, -- set relative numbered lines
   numberwidth = 2, -- set number column width to 2 {default 4}
   signcolumn = "yes", -- always show the sign column, otherwise it would shift the text each time
-  wrap = true, -- display lines as one long line
+  wrap = false, -- display lines as one long line
   guifont = "JetBrainsMono Nerd Font", -- the font used in graphical neovim applications
 }
 

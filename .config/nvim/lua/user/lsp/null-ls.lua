@@ -19,7 +19,6 @@ end
 null_ls.setup({
   debug = false,
   sources = {
-    -- formatters.prettier,
     formatters.prettierd,
     formatters.stylua,
 

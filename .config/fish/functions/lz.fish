@@ -1,3 +1,0 @@
-function lz
-  lazygit
-end
