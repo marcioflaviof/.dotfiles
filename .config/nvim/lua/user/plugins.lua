@@ -124,6 +124,10 @@ return packer.startup(function(use)
   use("tpope/vim-fugitive")
 
   -- Utils
+  use({
+    "iamcco/markdown-preview.nvim",
+    run = function() vim.fn["mkdp#util#install"]() end,
+  })
   use("windwp/nvim-autopairs") -- Autopairs, integrates with both cmp and treesitter
   use("mbbill/undotree")
   use("numToStr/Comment.nvim")
