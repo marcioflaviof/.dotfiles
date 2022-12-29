@@ -40,16 +40,15 @@ null_ls.setup({
           or null_ls.builtins.formatting.rubocop
     end),
 
-    conditional(function(utils)
-      return utils.root_has_file("Gemfile")
-          and null_ls.builtins.diagnostics.rubocop.with({
-            command = "bundle",
-            args = vim.list_extend(
-              { "exec", "rubocop" },
-              null_ls.builtins.diagnostics.rubocop._opts.args
-            ),
-          })
-          or null_ls.builtins.diagnostics.rubocop
-    end),
+    diagnostics.rubocop.with({
+      condition = function(utils)
+        return utils.root_has_file({ '.rubocop.yml' })
+      end,
+      command = "bundle",
+      args = vim.list_extend(
+        { "exec", "rubocop" },
+        null_ls.builtins.diagnostics.rubocop._opts.args
+      ),
+    }),
   },
 })

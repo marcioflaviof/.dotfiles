@@ -23,7 +23,7 @@ local options = {
   tabstop = 2, -- insert 2 spaces for a tab
   cursorline = false, -- highlight the current line
   number = true, -- set numbered lines
-  updatetime = 250, -- faster completion (4000ms default)
+  updatetime = 400, -- faster completion (4000ms default)
 
   scrolloff = 8,
   sidescrolloff = 8,

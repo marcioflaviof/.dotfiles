@@ -7,5 +7,6 @@ lvim.plugins = {
   "jose-elias-alvarez/typescript.nvim",
   "norcalli/nvim-colorizer.lua",
   "folke/todo-comments.nvim",
-  "TimUntersberger/neogit"
+  "TimUntersberger/neogit",
+  "sindrets/diffview.nvim"
 }

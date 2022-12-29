@@ -12,6 +12,7 @@ alias ls="exa --icons"
 alias bat="bat --style=auto"
 alias icat="kitty +kitten icat"
 alias g="git"
+alias la="exa -la --icons"
 
 [ -f /usr/share/autojump/autojump.fish ]
 

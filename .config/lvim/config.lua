@@ -1,9 +1,9 @@
-require("user.plugins")
-require("user.options")
-require("user.autotag")
-require("user.harpoon")
-require("user.keymaps")
-require("user.autocommands")
-require("user.lsp")
-require("user.surround")
-require("user.neogit")
+reload "user.plugins"
+reload "user.options"
+reload "user.lsp"
+reload "user.autotag"
+reload "user.harpoon"
+reload "user.keymaps"
+reload "user.autocommands"
+reload "user.surround"
+reload "user.neogit"
