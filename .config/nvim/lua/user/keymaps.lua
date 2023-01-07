@@ -57,10 +57,10 @@ keymap("n", "<leader>gj", "<cmd>diffget //3<CR>", opts) -- vim fugitive
 -- Tests
 keymap("n", "<leader>tf", "<cmd>w<CR><cmd>lua require('neotest').run.run(vim.fn.expand('%'))<CR>", opts) -- test file
 keymap(
-  "n",
-  "<leader>to",
-  "<cmd>lua require('neotest').output.open({ open_win = function() vim.cmd('vsplit') end })<CR>",
-  opts
+	"n",
+	"<leader>to",
+	"<cmd>lua require('neotest').output.open({ open_win = function() vim.cmd('vsplit') end })<CR>",
+	opts
 ) -- open output
 keymap("n", "<leader>ts", "<cmd>lua require('neotest').summary.toggle()<CR>", opts) -- open summary
 keymap("n", "<leader>ta", "<cmd>lua require('neotest').run.run(vim.fn.getcwd())<CR>", opts) -- test all
@@ -75,9 +75,7 @@ keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 keymap("n", "<leader>li", ":TypescriptAddMissingImports<CR>", opts)
 
 -- Harpoon
-keymap("n", "<leader>h",
-  ":lua require('harpoon.ui').toggle_quick_menu()<CR>"
-  , opts)
+keymap("n", "<leader>h", ":lua require('harpoon.ui').toggle_quick_menu()<CR>", opts)
 keymap("n", "<leader>hm", ":lua require('harpoon.mark').add_file()<CR>", opts)
 keymap("n", "<leader>hn", ":lua require('harpoon.ui').nav_next()<CR>", opts)
 keymap("n", "<leader>hp", ":lua require('harpoon.ui').nav_prev()<CR>", opts)
