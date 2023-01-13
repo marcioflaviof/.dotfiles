@@ -13,10 +13,10 @@ tabnine:setup({
 		-- default is not to ignore
 		-- uncomment to ignore in lua:
 		-- lua = true,
-		javascript = true,
-		javascriptreact = true,
-		typescriptreact = true,
-		typescript = true,
+		-- javascript = true,
+		-- javascriptreact = true,
+		-- typescriptreact = true,
+		-- typescript = true,
 	},
 	show_prediction_strength = false,
 })
