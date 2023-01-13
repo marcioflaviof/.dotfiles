@@ -13,6 +13,35 @@ local function attach_navic(client, bufnr)
 	navic.attach(client, bufnr)
 end
 
+local function filter(arr, fn)
+	if type(arr) ~= "table" then
+		return arr
+	end
+
+	local filtered = {}
+	for k, v in pairs(arr) do
+		if fn(v, k, arr) then
+			table.insert(filtered, v)
+		end
+	end
+
+	return filtered
+end
+
+local function filterReactDTS(value)
+	return string.match(value.filename, "react/index.d.ts") == nil
+end
+
+local function on_list(options)
+	local items = options.items
+	if #items > 1 then
+		items = filter(items, filterReactDTS)
+	end
+
+	vim.fn.setqflist({}, " ", { title = options.title, items = items, context = options.context })
+	vim.api.nvim_command("cfirst") -- or maybe you want 'copen' instead of 'cfirst'
+end
+
 typescript.setup({
 	disable_commands = false, -- prevent the plugin from creating Vim commands
 	debug = false, -- enable debug logging for commands
@@ -22,12 +51,17 @@ typescript.setup({
 		fallback = true,
 	},
 	server = {
-
 		on_attach = function(client, bufnr)
 			attach_navic(client, bufnr)
 
 			if client.name == "tsserver" or client.name == "typescript" then
 				client.server_capabilities.document_formatting = false
+
+				local bufopts = { noremap = true, silent = true, buffer = bufnr }
+
+				vim.keymap.set("n", "gd", function()
+					vim.lsp.buf.definition({ on_list = on_list })
+				end, bufopts)
 
 				vim.keymap.set("n", "<leader>lu", function()
 					local ts = require("typescript").actions
@@ -35,12 +69,6 @@ typescript.setup({
 					--[[ vim.wait(1000) ]]
 					--[[ ts.organizeImports({ sync = true }) ]]
 				end)
-				vim.keymap.set(
-					"n",
-					"gD",
-					"gD<cmd>lua vim.lsp.buf.definition()<CR><cmd>noh<CR>",
-					{ noremap = true, silent = true }
-				)
 			end
 		end,
 	},

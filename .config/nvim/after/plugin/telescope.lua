@@ -47,7 +47,6 @@ telescope.setup({
 			".github/",
 			".gradle/",
 			".idea/",
-			".settings/",
 			".vscode/",
 			"__pycache__/",
 			"build/",
@@ -182,7 +181,7 @@ keymap("n", "<leader>f", builtin.find_files, opts)
 keymap("n", "<leader>so", builtin.oldfiles, opts)
 keymap("n", "<leader>gb", builtin.git_branches, opts)
 keymap("n", "<leader>slr", builtin.lsp_references, opts)
-keymap("n", "gd", builtin.lsp_definitions, opts)
+-- keymap("n", "gd", builtin.lsp_definitions, opts)
 
 -- Enable telescope fzf native, if installed
 pcall(require("telescope").load_extension, "fzf")

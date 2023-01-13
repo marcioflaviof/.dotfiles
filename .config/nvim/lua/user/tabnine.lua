@@ -12,7 +12,7 @@ tabnine:setup({
 	ignored_file_types = {
 		-- default is not to ignore
 		-- uncomment to ignore in lua:
-		lua = true,
+		-- lua = true,
 		javascript = true,
 		javascriptreact = true,
 		typescriptreact = true,

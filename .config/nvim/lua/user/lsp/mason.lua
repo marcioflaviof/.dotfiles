@@ -10,17 +10,17 @@ end
 
 local servers = {
 	"tsserver",
-	"cssls",
+	-- "cssls",
 	"cssmodules_ls",
 	"emmet_ls",
 	"html",
 	"jsonls",
 	"sumneko_lua",
-	"yamlls",
+	-- "yamlls",
 	"solargraph",
 	-- "ruby_ls",
 	"tailwindcss",
-	"prismals",
+	-- "prismals",
 }
 
 local settings = {
@@ -54,12 +54,12 @@ end
 local opts = {}
 
 for _, server in pairs(servers) do
+	server = vim.split(server, "@")[1]
+
 	opts = {
 		on_attach = require("user.lsp.handlers").on_attach,
 		capabilities = require("user.lsp.handlers").capabilities,
 	}
-
-	server = vim.split(server, "@")[1]
 
 	if server == "sumneko_lua" then
 		local sumneko_opts = require("user.lsp.settings.sumneko_lua")
