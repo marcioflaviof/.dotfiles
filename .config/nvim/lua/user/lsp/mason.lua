@@ -10,8 +10,8 @@ end
 
 local servers = {
 	"tsserver",
-	-- "cssls",
-	"cssmodules_ls",
+	"cssls",
+	-- "cssmodules_ls",
 	"emmet_ls",
 	"html",
 	"jsonls",

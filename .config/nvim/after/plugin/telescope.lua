@@ -32,6 +32,7 @@ telescope.setup({
 			"docs/",
 			"vendor/*",
 			"%.lock",
+			"package%-lock.json",
 			"__pycache__/*",
 			"%.sqlite3",
 			"%.ipynb",

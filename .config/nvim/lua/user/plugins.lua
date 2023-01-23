@@ -38,22 +38,26 @@ return lazy.setup({
 	"folke/tokyonight.nvim",
 
 	-- cmp plugins
-	"hrsh7th/nvim-cmp",
-	-- snippets
-	"L3MON4D3/LuaSnip",
-	"rafamadriz/friendly-snippets",
-
-	"hrsh7th/cmp-buffer",
-	"hrsh7th/cmp-path",
-	"hrsh7th/cmp-cmdline",
-	"saadparwaiz1/cmp_luasnip",
-	"hrsh7th/cmp-nvim-lsp",
-	"hrsh7th/cmp-nvim-lua",
 	{
-		"tzachar/cmp-tabnine",
-		build = "./install.sh",
-		dependencies = "hrsh7th/nvim-cmp",
-		event = "InsertEnter",
+		"hrsh7th/nvim-cmp",
+		dependencies = {
+			-- snippets
+			"L3MON4D3/LuaSnip",
+			"rafamadriz/friendly-snippets",
+
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-cmdline",
+			"saadparwaiz1/cmp_luasnip",
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-nvim-lua",
+			{
+				"tzachar/cmp-tabnine",
+				build = "./install.sh",
+				dependencies = "hrsh7th/nvim-cmp",
+				event = "InsertEnter",
+			},
+		},
 	},
 	{
 		"roobert/tailwindcss-colorizer-cmp.nvim",
@@ -66,20 +70,20 @@ return lazy.setup({
 	},
 
 	-- LSP
-	"neovim/nvim-lspconfig",
+	{
+		"neovim/nvim-lspconfig",
+		dependencies = {
+			"williamboman/mason.nvim",
+			"williamboman/mason-lspconfig.nvim",
 
-	"williamboman/mason.nvim",
-	"williamboman/mason-lspconfig.nvim",
+			-- better function signature location
+			"ray-x/lsp_signature.nvim",
+			"lvimuser/lsp-inlayhints.nvim",
 
-	-- better function signature location
-	"ray-x/lsp_signature.nvim",
-	"lvimuser/lsp-inlayhints.nvim",
-
-	-- status updates
-	"j-hui/fidget.nvim",
-
-	-- better typescript experience
-	"jose-elias-alvarez/typescript.nvim",
+			-- better typescript experience
+			"jose-elias-alvarez/typescript.nvim",
+		},
+	},
 
 	-- shows variables as I navigate
 	"SmiteshP/nvim-navic",
