@@ -150,8 +150,8 @@ telescope.setup({
 		},
 
 		buffers = {
-			theme = "dropdown",
-			previewer = false,
+			-- 	theme = "dropdown",
+			-- 	previewer = false,
 			initial_mode = "normal",
 		},
 	},
@@ -182,6 +182,7 @@ keymap("n", "<leader>f", builtin.find_files, opts)
 keymap("n", "<leader>so", builtin.oldfiles, opts)
 keymap("n", "<leader>gb", builtin.git_branches, opts)
 keymap("n", "<leader>slr", builtin.lsp_references, opts)
+keymap("n", "<leader>sb", builtin.buffers, opts)
 -- keymap("n", "gd", builtin.lsp_definitions, opts)
 
 -- Enable telescope fzf native, if installed

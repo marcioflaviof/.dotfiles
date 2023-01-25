@@ -74,10 +74,6 @@ keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 -- lsp-ts-utils
 keymap("n", "<leader>li", "<cmd>TypescriptAddMissingImports<CR>", opts)
 
--- buffers
-keymap("n", "<leader>[", "<cmd>BufferLineMovePrev<CR>", opts)
-keymap("n", "<leader>]", "<cmd>BufferLineMoveNext<CR>", opts)
-
 -- Harpoon
 keymap("n", "<leader>h", ":lua require('harpoon.ui').toggle_quick_menu()<CR>", opts)
 keymap("n", "<leader>hm", ":lua require('harpoon.mark').add_file()<CR>", opts)
