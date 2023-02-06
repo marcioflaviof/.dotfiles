@@ -17,8 +17,6 @@ nvim_tree.setup({
 	},
 	disable_netrw = true,
 	hijack_netrw = true,
-	open_on_setup = true,
-	ignore_ft_on_setup = { "alpha" },
 	hijack_cursor = true,
 	hijack_unnamed_buffer_when_opening = false,
 	update_cwd = true,
@@ -95,3 +93,9 @@ nvim_tree.setup({
 		},
 	},
 })
+local function open_nvim_tree()
+	-- open the tree
+	require("nvim-tree.api").tree.open()
+end
+
+vim.api.nvim_create_autocmd({ "VimEnter" }, { callback = open_nvim_tree })
