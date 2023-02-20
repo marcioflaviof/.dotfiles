@@ -82,6 +82,7 @@ keymap("n", "<leader>hp", ":lua require('harpoon.ui').nav_prev()<CR>", opts)
 keymap("n", "<leader>1", ":lua require('harpoon.ui').nav_file(1)<CR>", opts)
 keymap("n", "<leader>2", ":lua require('harpoon.ui').nav_file(2)<CR>", opts)
 keymap("n", "<leader>3", ":lua require('harpoon.ui').nav_file(3)<CR>", opts)
+keymap("n", "<leader>4", ":lua require('harpoon.ui').nav_file(4)<CR>", opts)
 
 -- Insert --
 -- Press jk fast to enter

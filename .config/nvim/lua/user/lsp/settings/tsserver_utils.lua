@@ -66,8 +66,6 @@ typescript.setup({
 				vim.keymap.set("n", "<leader>lu", function()
 					local ts = require("typescript").actions
 					ts.removeUnused({ sync = true })
-					--[[ vim.wait(1000) ]]
-					--[[ ts.organizeImports({ sync = true }) ]]
 				end)
 			end
 		end,

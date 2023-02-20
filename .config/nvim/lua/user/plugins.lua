@@ -51,12 +51,12 @@ return lazy.setup({
 			"saadparwaiz1/cmp_luasnip",
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-nvim-lua",
-			{
-				"tzachar/cmp-tabnine",
-				build = "./install.sh",
-				dependencies = "hrsh7th/nvim-cmp",
-				event = "InsertEnter",
-			},
+			-- {
+			-- 	"tzachar/cmp-tabnine",
+			-- 	build = "./install.sh",
+			-- 	dependencies = "hrsh7th/nvim-cmp",
+			-- 	event = "InsertEnter",
+			-- },
 		},
 	},
 	{
@@ -111,6 +111,7 @@ return lazy.setup({
 			"windwp/nvim-ts-autotag",
 		},
 	},
+	"kchmck/vim-coffee-script",
 
 	-- Orgmode
 	"nvim-orgmode/orgmode",
@@ -142,13 +143,4 @@ return lazy.setup({
 	},
 	"junegunn/vim-slash",
 	"ThePrimeagen/harpoon",
-
-	{
-		"jinh0/eyeliner.nvim",
-		config = function()
-			require("eyeliner").setup({
-				highlight_on_key = true,
-			})
-		end,
-	},
 })

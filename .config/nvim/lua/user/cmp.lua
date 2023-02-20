@@ -22,7 +22,7 @@ local kind_icons = icons.kind
 
 local compare = require("cmp.config.compare")
 
-vim.api.nvim_set_hl(0, "CmpItemKindTabnine", { fg = "#CA42F0" })
+-- vim.api.nvim_set_hl(0, "CmpItemKindTabnine", { fg = "#CA42F0" })
 
 cmp.setup({
 	snippet = {
@@ -82,16 +82,16 @@ cmp.setup({
 			-- Kind icons
 			vim_item.kind = kind_icons[vim_item.kind]
 
-			if entry.source.name == "cmp_tabnine" then
-				vim_item.kind = icons.misc.Robot
-				vim_item.kind_hl_group = "CmpItemKindTabnine"
-			end
+			-- if entry.source.name == "cmp_tabnine" then
+			-- 	vim_item.kind = icons.misc.Robot
+			-- 	vim_item.kind_hl_group = "CmpItemKindTabnine"
+			-- end
 
 			-- NOTE: order matters
 			vim_item.menu = ({
-				cmp_tabnine = "[TN]",
-				luasnip = "[LuaSnip]",
 				nvim_lsp = "[LSP]",
+				luasnip = "[LuaSnip]",
+				-- cmp_tabnine = "[TN]",
 				buffer = "[Buffer]",
 				nvim_lua = "[Lua]",
 				path = "[Path]",
@@ -100,11 +100,10 @@ cmp.setup({
 			return vim_item
 		end,
 	},
-
 	sources = {
-		{ name = "luasnip" },
 		{ name = "nvim_lsp" },
-		{ name = "cmp_tabnine" },
+		{ name = "luasnip" },
+		-- { name = "cmp_tabnine" },
 		{ name = "buffer" },
 		{ name = "nvim_lua" },
 		{ name = "path" },
@@ -124,21 +123,21 @@ cmp.setup({
 			winhighlight = "NormalFloat:Pmenu,NormalFloat:Pmenu,CursorLine:PmenuSel,Search:None",
 		},
 	},
-	sorting = {
-		priority_weight = 2,
-		comparators = {
-			compare.offset,
-			compare.exact,
-			-- compare.scopes,
-			compare.score,
-			compare.recently_used,
-			compare.locality,
-			-- compare.kind,
-			compare.sort_text,
-			compare.length,
-			compare.order,
-		},
-	},
+	-- sorting = {
+	-- 	priority_weight = 2,
+	-- 	comparators = {
+	-- 		compare.offset,
+	-- 		compare.exact,
+	-- 		-- compare.scopes,
+	-- 		compare.score,
+	-- 		compare.recently_used,
+	-- 		compare.locality,
+	-- 		-- compare.kind,
+	-- 		compare.sort_text,
+	-- 		compare.length,
+	-- 		compare.order,
+	-- 	},
+	-- },
 	experimental = {
 		ghost_text = true,
 	},
