@@ -23,12 +23,9 @@ return lazy.setup({
 	"nvim-lua/plenary.nvim", -- Useful lua functions used ny lots of plugins
 
 	-- User interface
-	{
-		"nvim-tree/nvim-tree.lua",
-		dependencies = {
-			"nvim-tree/nvim-web-devicons",
-		},
-	},
+
+	"nvim-tree/nvim-tree.lua",
+	"nvim-tree/nvim-web-devicons",
 	"feline-nvim/feline.nvim",
 	"akinsho/bufferline.nvim",
 	"moll/vim-bbye", -- better buffer close
