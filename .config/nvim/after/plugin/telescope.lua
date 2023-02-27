@@ -87,7 +87,6 @@ telescope.setup({
 			},
 		},
 	},
-
 	vimgrep_arguments = {
 		"rg",
 		"--color=never",
@@ -99,7 +98,6 @@ telescope.setup({
 		"--hidden",
 		"--glob=!.git/",
 	},
-
 	pickers = {
 		live_grep = {
 			theme = "dropdown",
@@ -155,7 +153,6 @@ telescope.setup({
 			initial_mode = "normal",
 		},
 	},
-
 	extensions = {
 		fzf = {
 			fuzzy = true, -- false will only do exact matching
@@ -186,4 +183,4 @@ keymap("n", "<leader>sb", builtin.buffers, opts)
 -- keymap("n", "gd", builtin.lsp_definitions, opts)
 
 -- Enable telescope fzf native, if installed
-pcall(require("telescope").load_extension, "fzf")
+pcall(telescope.load_extension, "fzf")

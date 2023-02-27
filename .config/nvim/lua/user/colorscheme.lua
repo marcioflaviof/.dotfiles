@@ -32,3 +32,6 @@ if not status_ok then
 	vim.notify("colorscheme " .. colorscheme .. " not found!")
 	return
 end
+
+-- CMP transparent background
+vim.cmd("highlight Pmenu guibg=NONE")
