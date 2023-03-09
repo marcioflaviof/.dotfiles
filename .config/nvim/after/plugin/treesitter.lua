@@ -32,4 +32,26 @@ configs.setup({
 	autotag = {
 		enable = true,
 	},
+	incremental_selection = {
+		enable = true,
+		keymaps = {
+			init_selection = "<c-space>",
+			node_incremental = "<c-space>",
+			node_decremental = "<c-backspace>",
+		},
+	},
+	textobjects = {
+		select = {
+			enable = true,
+			lookahead = true,
+			keymaps = {
+				["aa"] = "@parameter.outer",
+				["ia"] = "@parameter.outer",
+				["af"] = "@function.outer",
+				["if"] = "@function.inner",
+				["ic"] = "@class.inner",
+				["ac"] = "@class.outer",
+			},
+		},
+	},
 })
