@@ -1,0 +1,33 @@
+layout {
+  default_tab_template {
+    pane size=1 borderless=true {
+      plugin location="zellij:tab-bar"
+    }
+    children
+      pane size=2 borderless=true {
+        plugin location="zellij:status-bar"
+      }
+  }
+  tab name="Client" cwd="/home/mf/Documents/Stack/stack-shops-client" focus=true {
+    pane borderless=true command="yarn" {
+        args "dev"
+      }
+  }
+  tab name="Shops" cwd="/home/mf/Documents/Stack/stack-shops" {
+    pane borderless=true command="bundle" {
+        args "exec" "unicorn" "-p" "7080" "-c" "./config/unicorn.rb"
+      }
+  }
+  tab name="Api" cwd="/home/mf/Documents/Stack/stack-api" {
+    pane borderless=true {
+        command "bundle"
+        args "exec" "puma" "-p" "7084" "-C" "./config/puma.rb"
+      }
+  }
+  tab name="Docker" cwd="/home/mf/Documents/Stack" {
+    pane borderless=true {
+        command "docker-compose"
+        args "up" "-d"
+      }
+  }
+}

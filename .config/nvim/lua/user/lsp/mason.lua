@@ -11,16 +11,13 @@ end
 local servers = {
 	"tsserver",
 	"cssls",
-	-- "cssmodules_ls",
 	"emmet_ls",
 	"html",
 	"jsonls",
 	"lua_ls",
-	-- "yamlls",
+	"yamlls",
 	"solargraph",
-	-- "ruby_ls",
 	"tailwindcss",
-	-- "prismals",
 }
 
 local settings = {

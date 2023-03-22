@@ -1,0 +1,23 @@
+layout {
+  default_tab_template {
+    pane size=1 borderless=true {
+      plugin location="zellij:tab-bar"
+    }
+    children
+      pane size=2 borderless=true {
+        plugin location="zellij:status-bar"
+      }
+  }
+  tab name="Client" cwd="/home/mf/Documents/Stack/stack-shops-client" focus=true {
+    pane borderless=true
+  }
+  tab name="Shops" cwd="/home/mf/Documents/Stack/stack-shops" {
+    pane
+  }
+  tab name="Api" cwd="/home/mf/Documents/Stack/stack-api" {
+    pane
+  }
+  tab name="Foundation" cwd="/home/mf/Documents/Stack/stack-foundation" {
+    pane
+  }
+}

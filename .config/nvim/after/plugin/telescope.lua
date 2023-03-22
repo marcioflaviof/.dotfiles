@@ -11,7 +11,7 @@ telescope.setup({
 		prompt_prefix = " ",
 		selection_caret = " ",
 		path_display = { "truncate" },
-
+		hidden = true,
 		layout_config = {
 			horizontal = {
 				prompt_position = "top",
@@ -25,7 +25,6 @@ telescope.setup({
 			height = 0.80,
 			preview_cutoff = 120,
 		},
-
 		file_ignore_patterns = {
 			".git/",
 			"target/",
@@ -78,7 +77,6 @@ telescope.setup({
 			"%.flac",
 			"%.tar.gz",
 		},
-
 		mappings = {
 			n = {
 				["q"] = actions.close,
@@ -107,7 +105,6 @@ telescope.setup({
 			},
 			-- file_ignore_patterns = { ".test", ".spec" }
 		},
-
 		grep_string = {
 			theme = "dropdown",
 			layout_config = {
@@ -117,7 +114,6 @@ telescope.setup({
 			initial_mode = "normal",
 			-- file_ignore_patterns = { ".test", ".spec" }
 		},
-
 		lsp_references = {
 			theme = "dropdown",
 			path_display = { "tail" },
@@ -128,12 +124,10 @@ telescope.setup({
 			file_ignore_patterns = { ".test", ".spec" },
 			initial_mode = "normal",
 		},
-
 		find_files = {
 			theme = "dropdown",
 			find_command = { "rg", "--files", "--iglob", "!.git" },
 			previewer = false,
-			hidden = true,
 			layout_config = {
 				horizontal = {
 					prompt_position = "top",
@@ -146,7 +140,6 @@ telescope.setup({
 				height = 0.80,
 			},
 		},
-
 		buffers = {
 			-- 	theme = "dropdown",
 			-- 	previewer = false,
@@ -180,6 +173,7 @@ keymap("n", "<leader>so", builtin.oldfiles, opts)
 keymap("n", "<leader>gb", builtin.git_branches, opts)
 keymap("n", "<leader>slr", builtin.lsp_references, opts)
 keymap("n", "<leader>sb", builtin.buffers, opts)
+keymap("n", "<leader>sq", builtin.quickfix, opts)
 -- keymap("n", "gd", builtin.lsp_definitions, opts)
 
 -- Enable telescope fzf native, if installed
