@@ -70,15 +70,18 @@ return lazy.setup({
 	{
 		"neovim/nvim-lspconfig",
 		dependencies = {
-			"williamboman/mason.nvim",
-			"williamboman/mason-lspconfig.nvim",
-
 			-- better function signature location
 			"ray-x/lsp_signature.nvim",
 			"lvimuser/lsp-inlayhints.nvim",
 
 			-- better typescript experience
 			"jose-elias-alvarez/typescript.nvim",
+		},
+	},
+	{
+		"williamboman/mason.nvim",
+		dependencies = {
+			"williamboman/mason-lspconfig.nvim",
 		},
 	},
 
@@ -98,17 +101,17 @@ return lazy.setup({
 	},
 
 	-- Treesitter
-	{
-		"nvim-treesitter/nvim-treesitter",
-		build = function()
-			pcall(require("nvim-treesitter.install").update({ with_sync = true }))
-		end,
-	},
-	"JoosepAlviste/nvim-ts-context-commentstring",
-	"windwp/nvim-ts-autotag",
-	"kchmck/vim-coffee-script",
-	"nvim-treesitter/nvim-treesitter-context",
-	{ "nvim-treesitter/nvim-treesitter-textobjects", dependencies = "nvim-treesitter/nvim-treesitter" },
+	-- {
+	-- 	"nvim-treesitter/nvim-treesitter",
+	-- 	build = function()
+	-- 		pcall(require("nvim-treesitter.install").update({ with_sync = true }))
+	-- 	end,
+	-- },
+	-- "JoosepAlviste/nvim-ts-context-commentstring",
+	-- "windwp/nvim-ts-autotag",
+	-- "kchmck/vim-coffee-script",
+	-- "nvim-treesitter/nvim-treesitter-context",
+	-- { "nvim-treesitter/nvim-treesitter-textobjects", dependencies = "nvim-treesitter/nvim-treesitter" },
 
 	-- Orgmode
 	"nvim-orgmode/orgmode",
@@ -160,6 +163,23 @@ return lazy.setup({
 				pad_horiz = 0,
 				pad_vert = 0,
 				round_corner = false,
+			})
+		end,
+	},
+
+	-- folds
+	{
+		"anuvyklack/pretty-fold.nvim",
+		config = function()
+			require("pretty-fold").setup()
+		end,
+	},
+	{
+		"anuvyklack/fold-preview.nvim",
+		dependencies = "anuvyklack/keymap-amend.nvim",
+		config = function()
+			require("fold-preview").setup({
+				auto = 400,
 			})
 		end,
 	},

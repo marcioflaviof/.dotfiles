@@ -18,7 +18,7 @@ vim.g.maplocalleader = " "
 
 -- Normal --
 
---  format
+--  auto format
 keymap("n", "<leader>lf", "<cmd>LspToggleAutoFormat<cr>", opts)
 
 -- Better window navigation
@@ -83,6 +83,10 @@ keymap("n", "<leader>1", ":lua require('harpoon.ui').nav_file(1)<CR>", opts)
 keymap("n", "<leader>2", ":lua require('harpoon.ui').nav_file(2)<CR>", opts)
 keymap("n", "<leader>3", ":lua require('harpoon.ui').nav_file(3)<CR>", opts)
 keymap("n", "<leader>4", ":lua require('harpoon.ui').nav_file(4)<CR>", opts)
+
+-- quickfix list
+keymap("n", "<leader>qn", ":cn<CR>", opts)
+keymap("n", "<leader>qp", ":cp<CR>", opts)
 
 -- Insert --
 -- Press jk fast to enter
