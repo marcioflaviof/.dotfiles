@@ -145,6 +145,15 @@ telescope.setup({
 			-- 	previewer = false,
 			initial_mode = "normal",
 		},
+		quickfix = {
+			theme = "dropdown",
+			layout_config = {
+				width = 0.87,
+				height = 0.4,
+			},
+			initial_mode = "normal",
+			-- file_ignore_patterns = { ".test", ".spec" }
+		},
 	},
 	extensions = {
 		fzf = {

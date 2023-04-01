@@ -8,7 +8,7 @@ nvim_tree.setup({
 		custom = { ".git/" },
 		exclude = { ".gitignore/" },
 	},
-	disable_netrw = true,
+	disable_netrw = false,
 	hijack_netrw = true,
 	hijack_cursor = true,
 	hijack_unnamed_buffer_when_opening = false,
@@ -47,11 +47,9 @@ nvim_tree.setup({
 	renderer = {
 		highlight_git = false,
 		highlight_opened_files = "none",
-
 		indent_markers = {
 			enable = true,
 		},
-
 		icons = {
 			show = {
 				file = true,
@@ -59,7 +57,6 @@ nvim_tree.setup({
 				folder_arrow = true,
 				git = true,
 			},
-
 			glyphs = {
 				default = "",
 				symlink = "",

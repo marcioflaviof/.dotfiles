@@ -101,17 +101,17 @@ return lazy.setup({
 	},
 
 	-- Treesitter
-	-- {
-	-- 	"nvim-treesitter/nvim-treesitter",
-	-- 	build = function()
-	-- 		pcall(require("nvim-treesitter.install").update({ with_sync = true }))
-	-- 	end,
-	-- },
-	-- "JoosepAlviste/nvim-ts-context-commentstring",
-	-- "windwp/nvim-ts-autotag",
-	-- "kchmck/vim-coffee-script",
-	-- "nvim-treesitter/nvim-treesitter-context",
-	-- { "nvim-treesitter/nvim-treesitter-textobjects", dependencies = "nvim-treesitter/nvim-treesitter" },
+	{
+		"nvim-treesitter/nvim-treesitter",
+		build = function()
+			pcall(require("nvim-treesitter.install").update({ with_sync = true }))
+		end,
+	},
+	"JoosepAlviste/nvim-ts-context-commentstring",
+	"windwp/nvim-ts-autotag",
+	"kchmck/vim-coffee-script",
+	"nvim-treesitter/nvim-treesitter-context",
+	{ "nvim-treesitter/nvim-treesitter-textobjects", dependencies = "nvim-treesitter/nvim-treesitter" },
 
 	-- Orgmode
 	"nvim-orgmode/orgmode",
@@ -121,6 +121,7 @@ return lazy.setup({
 	"lewis6991/gitsigns.nvim",
 	"f-person/git-blame.nvim",
 	"tpope/vim-fugitive",
+	"tpope/vim-rhubarb",
 
 	-- Utils
 	{
@@ -143,29 +144,6 @@ return lazy.setup({
 	},
 	"junegunn/vim-slash",
 	"ThePrimeagen/harpoon",
-	{
-		"krivahtoo/silicon.nvim",
-		build = "./install.sh build",
-		config = function()
-			require("silicon").setup({
-				font = "JetBrains Mono NL=16",
-				theme = "Dracula",
-				output = {
-					path = "home/mf/Pictures/Screenshots",
-				},
-				background = "#eff",
-				shadow = {
-					blur_radius = 0.0,
-					offset_x = 0,
-					offset_y = 0,
-					color = "#555",
-				},
-				pad_horiz = 0,
-				pad_vert = 0,
-				round_corner = false,
-			})
-		end,
-	},
 
 	-- folds
 	{
