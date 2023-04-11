@@ -8,7 +8,7 @@ layout {
         plugin location="zellij:status-bar"
       }
   }
-  tab name="Hard OOP JS" cwd="/home/mf/training/frontend-masters/hard-parts-oopjs" focus=true {
+  tab name="SpaceCode" cwd="/home/mf/code42/training/space-code-platform" focus=true {
     pane borderless=true
   }
 }

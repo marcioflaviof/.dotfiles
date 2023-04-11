@@ -19,10 +19,10 @@ tokyonight.setup({
 			fg = colors.blue0,
 		}
 	end,
-	on_colors = function(colors)
-		colors.magenta = "#f7768e"
-		colors.blue1 = "#7aa2f7"
-	end,
+	-- on_colors = function(colors)
+	-- 	colors.magenta = "#f7768e"
+	-- 	colors.blue1 = "#7aa2f7"
+	-- end,
 })
 
 local colorscheme = "tokyonight"

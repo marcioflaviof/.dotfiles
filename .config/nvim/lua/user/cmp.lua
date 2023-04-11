@@ -22,7 +22,7 @@ local kind_icons = icons.kind
 
 local compare = require("cmp.config.compare")
 
--- vim.api.nvim_set_hl(0, "CmpItemKindTabnine", { fg = "#CA42F0" })
+vim.api.nvim_set_hl(0, "CmpItemKindTabnine", { fg = "#CA42F0" })
 
 cmp.setup({
 	snippet = {
@@ -82,16 +82,16 @@ cmp.setup({
 			-- Kind icons
 			vim_item.kind = kind_icons[vim_item.kind]
 
-			-- if entry.source.name == "cmp_tabnine" then
-			-- 	vim_item.kind = icons.misc.Robot
-			-- 	vim_item.kind_hl_group = "CmpItemKindTabnine"
-			-- end
+			if entry.source.name == "cmp_tabnine" then
+				vim_item.kind = icons.misc.Robot
+				vim_item.kind_hl_group = "CmpItemKindTabnine"
+			end
 
 			-- NOTE: order matters
 			vim_item.menu = ({
 				nvim_lsp = "[LSP]",
 				luasnip = "[LuaSnip]",
-				-- cmp_tabnine = "[TN]",
+				cmp_tabnine = "[TN]",
 				buffer = "[Buffer]",
 				nvim_lua = "[Lua]",
 				path = "[Path]",
@@ -103,7 +103,7 @@ cmp.setup({
 	sources = {
 		{ name = "nvim_lsp" },
 		{ name = "luasnip" },
-		-- { name = "cmp_tabnine" },
+		{ name = "cmp_tabnine" },
 		{ name = "buffer" },
 		{ name = "nvim_lua" },
 		{ name = "path" },

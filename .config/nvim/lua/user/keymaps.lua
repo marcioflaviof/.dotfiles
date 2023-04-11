@@ -84,6 +84,9 @@ keymap("n", "<leader>2", ":lua require('harpoon.ui').nav_file(2)<CR>", opts)
 keymap("n", "<leader>3", ":lua require('harpoon.ui').nav_file(3)<CR>", opts)
 keymap("n", "<leader>4", ":lua require('harpoon.ui').nav_file(4)<CR>", opts)
 
+-- navbuddy
+keymap("n", "<leader>nb", ":Navbuddy<CR>", opts)
+
 -- quickfix list
 keymap("n", "<leader>qn", ":cn<CR>", opts)
 keymap("n", "<leader>qp", ":cp<CR>", opts)

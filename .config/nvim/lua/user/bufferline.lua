@@ -36,7 +36,7 @@ bufferline.setup({
 	},
 	highlights = {
 		fill = {
-			fg = { attribute = "fg", highlight = "#ff0000" },
+			fg = { attribute = "fg", highlight = "Tabline" },
 			bg = { attribute = "bg", highlight = "TabLine" },
 		},
 		background = {
@@ -68,7 +68,6 @@ bufferline.setup({
 			fg = { attribute = "fg", highlight = "TabLineSel" },
 			bg = { attribute = "bg", highlight = "Normal" },
 		},
-
 		duplicate_selected = {
 			fg = { attribute = "fg", highlight = "TabLineSel" },
 			bg = { attribute = "bg", highlight = "TabLineSel" },
@@ -96,7 +95,6 @@ bufferline.setup({
 			fg = { attribute = "fg", highlight = "TabLine" },
 			bg = { attribute = "bg", highlight = "TabLine" },
 		},
-
 		separator = {
 			fg = { attribute = "bg", highlight = "TabLine" },
 			bg = { attribute = "bg", highlight = "TabLine" },

@@ -15,9 +15,10 @@ local servers = {
 	"html",
 	"jsonls",
 	"lua_ls",
-	"yamlls",
+	-- "yamlls",
 	"solargraph",
 	"tailwindcss",
+	"rust_analyzer",
 }
 
 local settings = {

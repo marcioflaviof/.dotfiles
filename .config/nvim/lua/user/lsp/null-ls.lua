@@ -21,6 +21,7 @@ null_ls.setup({
 		formatters.stylua,
 		formatters.erb_format,
 		-- diagnostics.erb_lint,
+		formatters.rustfmt,
 
 		diagnostics.eslint_d.with({
 			condition = function(utils)
