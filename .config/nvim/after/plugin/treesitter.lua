@@ -4,6 +4,7 @@ if not status_ok then
 end
 
 configs.setup({
+	auto_install = true,
 	ensure_installed = {
 		"javascript",
 		"typescript",
@@ -21,6 +22,7 @@ configs.setup({
 		enable = true, -- false will disable the whole extension
 		disable = { "org" }, -- list of language that will be disabled
 		additional_vim_regex_highlighting = true,
+		use_languagetree = true,
 	},
 	autopairs = {
 		enable = true,

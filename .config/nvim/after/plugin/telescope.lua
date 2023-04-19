@@ -34,6 +34,7 @@ telescope.setup({
 			"package%-lock.json",
 			"__pycache__/*",
 			"%.sqlite3",
+			"%.sql",
 			"%.ipynb",
 			"node_modules/*",
 			"%.jpg",

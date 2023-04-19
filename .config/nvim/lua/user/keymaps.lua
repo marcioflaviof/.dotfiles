@@ -54,17 +54,6 @@ keymap("n", "<leader>gd", "<cmd>G diff<CR>", opts) -- vim fugitive
 keymap("n", "<leader>gf", "<cmd>diffget //2<CR>", opts) -- vim fugitive
 keymap("n", "<leader>gj", "<cmd>diffget //3<CR>", opts) -- vim fugitive
 
--- Tests
-keymap("n", "<leader>tf", "<cmd>w<CR><cmd>lua require('neotest').run.run(vim.fn.expand('%'))<CR>", opts) -- test file
-keymap(
-	"n",
-	"<leader>to",
-	"<cmd>lua require('neotest').output.open({ open_win = function() vim.cmd('vsplit') end })<CR>",
-	opts
-) -- open output
-keymap("n", "<leader>ts", "<cmd>lua require('neotest').summary.toggle()<CR>", opts) -- open summary
-keymap("n", "<leader>ta", "<cmd>lua require('neotest').run.run(vim.fn.getcwd())<CR>", opts) -- test all
-
 -- save with ctrl + s
 keymap("n", "<C-s>", ":w<CR>", { noremap = true })
 
