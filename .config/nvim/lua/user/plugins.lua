@@ -48,12 +48,6 @@ return lazy.setup({
 			"saadparwaiz1/cmp_luasnip",
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-nvim-lua",
-			{
-				"tzachar/cmp-tabnine",
-				build = "./install.sh",
-				dependencies = "hrsh7th/nvim-cmp",
-				event = "InsertEnter",
-			},
 		},
 	},
 	{

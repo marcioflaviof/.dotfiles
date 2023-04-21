@@ -95,7 +95,7 @@ telescope.setup({
 		"--column",
 		"--smart-case",
 		"--hidden",
-		"--glob=!.git/",
+		-- "--glob=!.git/",
 	},
 	pickers = {
 		live_grep = {
@@ -127,7 +127,7 @@ telescope.setup({
 		},
 		find_files = {
 			theme = "dropdown",
-			find_command = { "rg", "--files", "--iglob", "!.git" },
+			find_command = { "rg", "--files", "--iglob", "!.git", "--hidden" },
 			previewer = false,
 			layout_config = {
 				horizontal = {
