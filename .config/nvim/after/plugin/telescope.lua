@@ -141,11 +141,6 @@ telescope.setup({
 				height = 0.80,
 			},
 		},
-		buffers = {
-			-- 	theme = "dropdown",
-			-- 	previewer = false,
-			initial_mode = "normal",
-		},
 		quickfix = {
 			theme = "dropdown",
 			layout_config = {
@@ -153,7 +148,6 @@ telescope.setup({
 				height = 0.4,
 			},
 			initial_mode = "normal",
-			-- file_ignore_patterns = { ".test", ".spec" }
 		},
 	},
 	extensions = {
@@ -182,7 +176,6 @@ keymap("n", "<leader>f", builtin.find_files, opts)
 keymap("n", "<leader>so", builtin.oldfiles, opts)
 keymap("n", "<leader>gb", builtin.git_branches, opts)
 keymap("n", "<leader>slr", builtin.lsp_references, opts)
-keymap("n", "<leader>sb", builtin.buffers, opts)
 keymap("n", "<leader>sq", builtin.quickfix, opts)
 -- keymap("n", "gd", builtin.lsp_definitions, opts)
 

@@ -29,12 +29,12 @@ null_ls.setup({
 			end,
 		}),
 
-		diagnostics.rubocop.with({
-			condition = function(utils)
-				return utils.root_has_file({ ".rubocop.yml" })
-			end,
-			command = "bundle",
-			args = vim.list_extend({ "exec", "rubocop" }, null_ls.builtins.diagnostics.rubocop._opts.args),
-		}),
+		-- diagnostics.rubocop.with({
+		-- 	condition = function(utils)
+		-- 		return utils.root_has_file({ ".rubocop.yml" })
+		-- 	end,
+		-- 	command = "bundle",
+		-- 	args = vim.list_extend({ "exec", "rubocop" }, null_ls.builtins.diagnostics.rubocop._opts.args),
+		-- }),
 	},
 })
