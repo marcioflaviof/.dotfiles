@@ -20,8 +20,6 @@ local icons = require("user.icons")
 
 local kind_icons = icons.kind
 
-local compare = require("cmp.config.compare")
-
 cmp.setup({
 	snippet = {
 		expand = function(args)
@@ -130,6 +128,6 @@ cmp.setup({
 	-- 	},
 	-- },
 	experimental = {
-		ghost_text = true,
+		ghost_text = { enabled = true },
 	},
 })

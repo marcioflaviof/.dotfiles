@@ -16,8 +16,8 @@ local servers = {
 	"jsonls",
 	"lua_ls",
 	-- "yamlls",
-	"solargraph",
-	-- "ruby_ls",
+	-- "solargraph",
+	"ruby_ls",
 	"tailwindcss",
 	"rust_analyzer",
 }
