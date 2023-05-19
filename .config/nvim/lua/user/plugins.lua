@@ -94,6 +94,18 @@ return lazy.setup({
 
 	-- shows variables as I navigate
 	"SmiteshP/nvim-navic",
+	{
+		"utilyre/barbecue.nvim",
+		name = "barbecue",
+		version = "*",
+		dependencies = {
+			"SmiteshP/nvim-navic",
+			"nvim-tree/nvim-web-devicons", -- optional dependency
+		},
+		opts = {
+			-- configurations go here
+		},
+	},
 
 	"jose-elias-alvarez/null-ls.nvim", -- for formatters and linters
 	{ "folke/trouble.nvim", cmd = "TroubleToggle" },

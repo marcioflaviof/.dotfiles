@@ -1,5 +1,4 @@
 require("user.options")
-require("user.breadcrumbs")
 require("user.autocommands")
 require("user.keymaps")
 require("user.git-blame")

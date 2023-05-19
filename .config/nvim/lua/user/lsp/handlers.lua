@@ -72,22 +72,11 @@ local lsp_formatting = function(bufnr)
 	})
 end
 
-local function attach_navic(client, bufnr)
-	vim.g.navic_silence = true
-	local status_ok, navic = pcall(require, "nvim-navic")
-	if not status_ok then
-		return
-	end
-
-	navic.attach(client, bufnr)
-end
-
 -- if you want to set up formatting on save, you can use this as a callback
 local augroup = vim.api.nvim_create_augroup("LspFormatting", {})
 
 M.on_attach = function(client, bufnr)
 	lsp_keymaps(bufnr)
-	attach_navic(client, bufnr)
 
 	if client.supports_method("textDocument/formatting") then
 		vim.api.nvim_clear_autocmds({ group = augroup, buffer = bufnr })
