@@ -38,6 +38,7 @@ return lazy.setup({
 
 	-- Colorschemes
 	"folke/tokyonight.nvim",
+	"catppuccin/nvim",
 
 	-- cmp plugins
 	{
@@ -164,20 +165,13 @@ return lazy.setup({
 	"junegunn/vim-slash",
 	"ThePrimeagen/harpoon",
 
-	-- folds
+	-- AI
 	{
-		"anuvyklack/pretty-fold.nvim",
+		"Exafunction/codeium.vim",
 		config = function()
-			require("pretty-fold").setup()
-		end,
-	},
-	{
-		"anuvyklack/fold-preview.nvim",
-		dependencies = "anuvyklack/keymap-amend.nvim",
-		config = function()
-			require("fold-preview").setup({
-				auto = 400,
-			})
+			vim.keymap.set("i", "<C-a>", function()
+				return vim.fn["codeium#Accept"]()
+			end, { expr = true })
 		end,
 	},
 })
