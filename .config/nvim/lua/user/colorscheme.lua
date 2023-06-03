@@ -18,7 +18,22 @@ tokyonight.setup({
 		hl.LineNr = {
 			fg = colors.blue0,
 		}
+		-- hl["@tag.delimiter.tsx"] = {
+		-- 	fg = colors.red,
+		-- }
+		hl["@constructor.tsx"] = {
+			fg = colors.red,
+		}
+		-- hl["@tag.attribute.tsx"] = {
+		-- 	fg = colors.blue,
+		-- }
 	end,
+})
+
+require("nightfox").setup({
+	options = {
+		transparent = true,
+	},
 })
 
 local colorscheme = "tokyonight"

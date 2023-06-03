@@ -37,8 +37,9 @@ return lazy.setup({
 	},
 
 	-- Colorschemes
-	"folke/tokyonight.nvim",
+	{ "folke/tokyonight.nvim", lazy = false, priority = 1000, opts = {} },
 	"catppuccin/nvim",
+	{ "EdenEast/nightfox.nvim", lazy = false, priority = 1000, opts = {} },
 
 	-- cmp plugins
 	{
@@ -127,6 +128,7 @@ return lazy.setup({
 			pcall(require("nvim-treesitter.install").update({ with_sync = true }))
 		end,
 	},
+	"nvim-treesitter/playground",
 	"JoosepAlviste/nvim-ts-context-commentstring",
 	"windwp/nvim-ts-autotag",
 	"kchmck/vim-coffee-script",
