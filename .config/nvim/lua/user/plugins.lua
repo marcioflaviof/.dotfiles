@@ -23,7 +23,8 @@ return lazy.setup({
 	"nvim-lua/plenary.nvim", -- Useful lua functions used by lots of plugins
 
 	-- User interface
-
+	{ "folke/trouble.nvim", cmd = "TroubleToggle" },
+	"RRethy/vim-illuminate",
 	"nvim-tree/nvim-tree.lua",
 	"nvim-tree/nvim-web-devicons",
 	"feline-nvim/feline.nvim",
@@ -39,7 +40,12 @@ return lazy.setup({
 	-- Colorschemes
 	{ "folke/tokyonight.nvim", lazy = false, priority = 1000, opts = {} },
 	"catppuccin/nvim",
-	{ "EdenEast/nightfox.nvim", lazy = false, priority = 1000, opts = {} },
+	{
+		"EdenEast/nightfox.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = {},
+	},
 
 	-- cmp plugins
 	{
@@ -93,8 +99,9 @@ return lazy.setup({
 			"MunifTanjim/nui.nvim",
 		},
 	},
+	"jose-elias-alvarez/null-ls.nvim", -- for formatters and linters
 
-	-- shows variables as I navigate
+	-- shows vars as I navigate
 	"SmiteshP/nvim-navic",
 	{
 		"utilyre/barbecue.nvim",
@@ -104,14 +111,7 @@ return lazy.setup({
 			"SmiteshP/nvim-navic",
 			"nvim-tree/nvim-web-devicons", -- optional dependency
 		},
-		opts = {
-			-- configurations go here
-		},
 	},
-
-	"jose-elias-alvarez/null-ls.nvim", -- for formatters and linters
-	{ "folke/trouble.nvim", cmd = "TroubleToggle" },
-	"RRethy/vim-illuminate",
 
 	-- Telescope
 	"nvim-telescope/telescope.nvim",
@@ -176,4 +176,7 @@ return lazy.setup({
 			end, { expr = true })
 		end,
 	},
+
+	-- Optimizations
+	"LunarVim/bigfile.nvim",
 })

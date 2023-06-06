@@ -14,7 +14,6 @@ alias icat="kitty +kitten icat"
 alias g="git"
 alias la="exa -la --icons"
 alias gc="git checkout"
-alias genie="shell-genie ask"
 
 [ -f /usr/share/autojump/autojump.fish ]
 

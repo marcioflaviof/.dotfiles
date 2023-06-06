@@ -8,5 +8,5 @@ lvim.plugins = {
   "norcalli/nvim-colorizer.lua",
   "folke/todo-comments.nvim",
   "TimUntersberger/neogit",
-  "sindrets/diffview.nvim"
+  "sindrets/diffview.nvim",
 }

@@ -4,11 +4,24 @@ layout {
       plugin location="zellij:tab-bar"
     }
     children
-      pane size=2 borderless=true {
-        plugin location="zellij:status-bar"
-      }
+    pane size=2 borderless=true {
+      plugin location="zellij:status-bar"
+    }
   }
-  tab name="SpaceCode" cwd="/home/mf/code42/training/space-code-platform" focus=true {
-    pane borderless=true
+  tab name="Front" cwd="/home/mf/code42/avaliacoes/training/ledgerdary-frontend" focus=true {
+  }
+  tab name="Back" cwd="/home/mf/code42/avaliacoes/training/ledgerdary-ruby" {
+  }
+  tab name="Front-run" cwd="/home/mf/code42/avaliacoes/training/ledgerdary-frontend" {
+    pane {
+      command "npm"
+      args "run" "dev"
+    }
+  }
+  tab name="Back-run" cwd="/home/mf/code42/avaliacoes/training/ledgerdary-ruby" {
+    pane {
+      command "docker-compose"
+      args "up" "-d"
+    }
   }
 }
