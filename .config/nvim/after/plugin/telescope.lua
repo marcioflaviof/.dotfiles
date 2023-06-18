@@ -104,7 +104,7 @@ telescope.setup({
 				width = 0.87,
 				height = 0.4,
 			},
-			-- file_ignore_patterns = { ".test", ".spec" }
+			file_ignore_patterns = { ".spec" },
 		},
 		grep_string = {
 			theme = "dropdown",
@@ -113,7 +113,7 @@ telescope.setup({
 				height = 0.4,
 			},
 			initial_mode = "normal",
-			-- file_ignore_patterns = { ".test", ".spec" }
+			file_ignore_patterns = { ".test", ".spec" },
 		},
 		lsp_references = {
 			theme = "dropdown",
@@ -158,6 +158,14 @@ telescope.setup({
 			case_mode = "smart_case", -- or "ignore_case" or "respect_case"
 			-- the default case_mode is "smart_case"
 		},
+		live_grep_args = {
+			theme = "dropdown",
+			auto_quoting = true,
+			layout_config = {
+				width = 0.87,
+				height = 0.4,
+			},
+		},
 	},
 })
 
@@ -168,9 +176,7 @@ keymap("n", "<leader>sw", function()
 	builtin.grep_string({ search = vim.fn.input("Grep > ") })
 end, opts)
 
-keymap("n", "<leader>st", function()
-	builtin.live_grep()
-end, opts)
+keymap("n", "<leader>st", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<cr>", opts)
 
 keymap("n", "<leader>f", builtin.find_files, opts)
 keymap("n", "<leader>so", builtin.oldfiles, opts)
@@ -183,7 +189,7 @@ keymap(
 	"<cmd>lua require('telescope.builtin').resume(require('telescope.themes').get_ivy({}))<cr>",
 	opts
 )
--- keymap("n", "gd", builtin.lsp_definitions, opts)
+pcall(telescope.load_extension, "live_grep_args")
 
 -- Enable telescope fzf native, if installed
 pcall(telescope.load_extension, "fzf")

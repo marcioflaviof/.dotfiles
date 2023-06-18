@@ -14,6 +14,7 @@ alias icat="kitty +kitten icat"
 alias g="git"
 alias la="exa -la --icons"
 alias gc="git checkout"
+alias dockergpt="docker run -p 8501:8501 gpt4free:latest"
 
 [ -f /usr/share/autojump/autojump.fish ]
 

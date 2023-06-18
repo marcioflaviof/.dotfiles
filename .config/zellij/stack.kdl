@@ -20,4 +20,7 @@ layout {
   tab name="Foundation" cwd="/home/mf/Documents/Stack/stack-foundation" {
     pane
   }
+  tab name="Admin" cwd="/home/mf/Documents/Stack/stack-admin" {
+    pane
+  }
 }

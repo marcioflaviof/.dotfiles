@@ -32,6 +32,8 @@ local function on_list(options)
 	vim.api.nvim_command("cfirst") -- or maybe you want 'copen' instead of 'cfirst'
 end
 
+local opts = { noremap = true, silent = true }
+
 typescript.setup({
 	disable_commands = false, -- prevent the plugin from creating Vim commands
 	debug = false, -- enable debug logging for commands
@@ -42,6 +44,8 @@ typescript.setup({
 	},
 	server = {
 		on_attach = function(client, bufnr)
+			vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+
 			if client.name == "tsserver" or client.name == "typescript" then
 				client.server_capabilities.document_formatting = false
 

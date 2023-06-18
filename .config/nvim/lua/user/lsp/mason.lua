@@ -18,7 +18,7 @@ local servers = {
 	-- "yamlls",
 	-- "solargraph",
 	"ruby_ls",
-	"tailwindcss",
+	-- "tailwindcss",
 	"rust_analyzer",
 }
 

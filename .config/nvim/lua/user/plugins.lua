@@ -114,10 +114,12 @@ return lazy.setup({
 	},
 
 	-- Telescope
-	"nvim-telescope/telescope.nvim",
+	{
+		"nvim-telescope/telescope.nvim",
+		dependencies = { "nvim-telescope/telescope-live-grep-args.nvim", "nvim-telescope/telescope-fzf-native.nvim" },
+	},
 	{
 		"nvim-telescope/telescope-fzf-native.nvim",
-		dependencies = { "nvim-telescope/telescope.nvim" },
 		build = "make",
 	},
 
