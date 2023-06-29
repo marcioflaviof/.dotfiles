@@ -8,6 +8,7 @@ require("illuminate").configure({
 	},
 	-- delay: delay in milliseconds
 	delay = 50,
+	large_file_cutoff = 2000,
 	-- filetypes_denylist: filetypes to not illuminate, this overrides filetypes_allowlist
 	filetypes_denylist = {
 		"dirvish",

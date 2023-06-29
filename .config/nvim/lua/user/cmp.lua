@@ -76,7 +76,7 @@ cmp.setup({
 	}),
 
 	formatting = {
-		fields = { "kind", "abbr", "menu" },
+		fields = { "abbr", "menu", "kind" },
 		format = function(entry, vim_item)
 			-- Kind icons
 			vim_item.kind = kind_icons[vim_item.kind]
@@ -88,7 +88,7 @@ cmp.setup({
 
 			-- NOTE: order matters
 			vim_item.menu = ({
-				-- codeium = "[COD]",
+				codeium = "[COD]",
 				luasnip = "[LuaSnip]",
 				nvim_lsp = "[LSP]",
 				buffer = "[Buffer]",
@@ -100,7 +100,7 @@ cmp.setup({
 		end,
 	},
 	sources = {
-		-- { name = "codeium", max_item_count = 5 },
+		{ name = "codeium", max_item_count = 5 },
 		{ name = "luasnip", max_item_count = 3 },
 		{ name = "nvim_lsp" },
 		{ name = "buffer" },

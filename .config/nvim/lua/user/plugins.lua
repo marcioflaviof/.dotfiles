@@ -28,7 +28,10 @@ return lazy.setup({
 	"nvim-tree/nvim-tree.lua",
 	"nvim-tree/nvim-web-devicons",
 	"feline-nvim/feline.nvim",
-	"akinsho/bufferline.nvim",
+	{
+		"akinsho/bufferline.nvim",
+		event = "VeryLazy",
+	},
 	"moll/vim-bbye", -- better buffer close
 	"akinsho/toggleterm.nvim", -- toggle terminal
 
@@ -40,12 +43,6 @@ return lazy.setup({
 	-- Colorschemes
 	{ "folke/tokyonight.nvim", lazy = false, priority = 1000, opts = {} },
 	"catppuccin/nvim",
-	{
-		"EdenEast/nightfox.nvim",
-		lazy = false,
-		priority = 1000,
-		opts = {},
-	},
 
 	-- cmp plugins
 	{
@@ -58,8 +55,8 @@ return lazy.setup({
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-cmdline",
+      "hrsh7th/cmp-nvim-lsp",
 			"saadparwaiz1/cmp_luasnip",
-			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-nvim-lua",
 		},
 	},
@@ -150,7 +147,10 @@ return lazy.setup({
 	"akinsho/org-bullets.nvim",
 
 	-- Git
-	"lewis6991/gitsigns.nvim",
+	{
+		"lewis6991/gitsigns.nvim",
+		event = { "BufReadPre", "BufNewFile" },
+	},
 	"f-person/git-blame.nvim",
 	"tpope/vim-fugitive",
 	"tpope/vim-rhubarb",
@@ -207,14 +207,14 @@ return lazy.setup({
 	},
 
 	-- AI
-	{
-		"Exafunction/codeium.vim",
-		config = function()
-			vim.keymap.set("i", "<C-a>", function()
-				return vim.fn["codeium#Accept"]()
-			end, { expr = true })
-		end,
-	},
+	-- {
+	-- 	"Exafunction/codeium.vim",
+	-- 	config = function()
+	-- 		vim.keymap.set("i", "<C-a>", function()
+	-- 			return vim.fn["codeium#Accept"]()
+	-- 		end, { expr = true })
+	-- 	end,
+	-- },
 
 	-- Optimizations
 	"LunarVim/bigfile.nvim",

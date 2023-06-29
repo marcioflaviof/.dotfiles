@@ -3,7 +3,7 @@ if not status_ok then
 	return
 end
 
-colorizer.setup({ "css", "lua", "typescriptreact", "typescript", "ruby" }, {
+colorizer.setup({ "scss", "css", "lua", "typescriptreact", "typescript", "ruby" }, {
 	RGB = true, -- #RGB hex codes
 	RRGGBB = true, -- #RRGGBB hex codes
 	names = false, -- "Name" codes like Blue oe blue
