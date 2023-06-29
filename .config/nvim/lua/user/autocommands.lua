@@ -12,6 +12,16 @@ autocmd("BufRead", {
 	end,
 })
 
+-- jbuilder as ruby
+autocmd("BufRead", {
+	pattern = { "*.jbuilder" },
+	callback = function()
+		vim.schedule(function()
+			vim.api.nvim_command("set ft=ruby")
+		end)
+	end,
+})
+
 autocmd("TextYankPost", {
 	group = yank_group,
 	pattern = "*",

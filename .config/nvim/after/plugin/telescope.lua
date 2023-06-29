@@ -183,12 +183,7 @@ keymap("n", "<leader>so", builtin.oldfiles, opts)
 keymap("n", "<leader>gb", builtin.git_branches, opts)
 keymap("n", "<leader>slr", builtin.lsp_references, opts)
 keymap("n", "<leader>sq", builtin.quickfix, opts)
-keymap(
-	"n",
-	"<leader>sr",
-	"<cmd>lua require('telescope.builtin').resume(require('telescope.themes').get_ivy({}))<cr>",
-	opts
-)
+keymap("n", "<leader>sr", "<cmd>lua require('telescope.builtin').resume()<cr>", opts)
 pcall(telescope.load_extension, "live_grep_args")
 
 -- Enable telescope fzf native, if installed

@@ -3,3 +3,5 @@
 	email = mflaviof1995@gmail.com
 [core]
 	editor = nvim
+[push]
+	autoSetupremote = true

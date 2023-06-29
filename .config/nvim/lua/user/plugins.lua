@@ -72,19 +72,16 @@ return lazy.setup({
 			})
 		end,
 	},
-
-	-- LSP
 	{
-		"neovim/nvim-lspconfig",
+		"jcdickinson/codeium.nvim",
 		dependencies = {
-			-- better function signature location
-			"ray-x/lsp_signature.nvim",
-			"lvimuser/lsp-inlayhints.nvim",
-
-			-- better typescript experience
-			"jose-elias-alvarez/typescript.nvim",
+			"nvim-lua/plenary.nvim",
+			"hrsh7th/nvim-cmp",
 		},
 	},
+
+	-- LSP
+	"neovim/nvim-lspconfig",
 	{
 		"williamboman/mason.nvim",
 		dependencies = {
@@ -99,7 +96,18 @@ return lazy.setup({
 			"MunifTanjim/nui.nvim",
 		},
 	},
+
+	-- better function signature location
+	"ray-x/lsp_signature.nvim",
+
+	-- better typescript experience
+	"jose-elias-alvarez/typescript.nvim",
 	"jose-elias-alvarez/null-ls.nvim", -- for formatters and linters
+	-- {
+	-- 	"pmizio/typescript-tools.nvim",
+	-- 	dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+	-- 	opts = {},
+	-- },
 
 	-- shows vars as I navigate
 	"SmiteshP/nvim-navic",
@@ -133,9 +141,9 @@ return lazy.setup({
 	"nvim-treesitter/playground",
 	"JoosepAlviste/nvim-ts-context-commentstring",
 	"windwp/nvim-ts-autotag",
-	"kchmck/vim-coffee-script",
 	"nvim-treesitter/nvim-treesitter-context",
 	{ "nvim-treesitter/nvim-treesitter-textobjects", dependencies = "nvim-treesitter/nvim-treesitter" },
+	"kchmck/vim-coffee-script",
 
 	-- Orgmode
 	"nvim-orgmode/orgmode",
@@ -168,6 +176,35 @@ return lazy.setup({
 	},
 	"junegunn/vim-slash",
 	"ThePrimeagen/harpoon",
+	{
+		"folke/flash.nvim",
+		event = "VeryLazy",
+		opts = {},
+		keys = {
+			{
+				"s",
+				mode = { "n", "x", "o" },
+				function()
+					-- default options: exact mode, multi window, all directions, with a backdrop
+					require("flash").jump()
+				end,
+				desc = "Flash",
+			},
+			{
+				"S",
+				mode = { "n", "o", "x" },
+				function()
+					require("flash").treesitter()
+				end,
+				desc = "Flash Treesitter",
+			},
+		},
+		config = function()
+			require("flash").setup({
+				labels = "ASDFGHJKLQWERTYUIOPZXCVBNM",
+			})
+		end,
+	},
 
 	-- AI
 	{
