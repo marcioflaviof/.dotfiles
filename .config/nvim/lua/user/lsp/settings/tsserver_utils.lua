@@ -45,6 +45,7 @@ typescript.setup({
 	server = {
 		on_attach = function(client, bufnr)
 			vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
+			vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
 
 			if client.name == "tsserver" or client.name == "typescript" then
 				client.server_capabilities.document_formatting = false

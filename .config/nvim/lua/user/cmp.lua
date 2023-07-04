@@ -20,8 +20,6 @@ local icons = require("user.icons")
 
 local kind_icons = icons.kind
 
-vim.api.nvim_set_hl(0, "CmpItemKindCodeium", { fg = "#71E9D8" })
-
 cmp.setup({
 	snippet = {
 		expand = function(args)
@@ -81,14 +79,8 @@ cmp.setup({
 			-- Kind icons
 			vim_item.kind = kind_icons[vim_item.kind]
 
-			if entry.source.name == "codeium" then
-				vim_item.kind = icons.misc.Robot
-				vim_item.kind_hl_group = "CmpItemKindCodeium"
-			end
-
 			-- NOTE: order matters
 			vim_item.menu = ({
-				codeium = "[COD]",
 				luasnip = "[LuaSnip]",
 				nvim_lsp = "[LSP]",
 				buffer = "[Buffer]",
@@ -100,7 +92,6 @@ cmp.setup({
 		end,
 	},
 	sources = {
-		{ name = "codeium", max_item_count = 5 },
 		{ name = "luasnip", max_item_count = 3 },
 		{ name = "nvim_lsp" },
 		{ name = "buffer" },
@@ -138,6 +129,6 @@ cmp.setup({
 	-- 	},
 	-- },
 	experimental = {
-		ghost_text = { enabled = true },
+		ghost_text = { enabled = false },
 	},
 })

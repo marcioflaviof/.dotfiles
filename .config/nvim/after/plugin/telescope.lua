@@ -172,10 +172,6 @@ telescope.setup({
 local opts = { noremap = true, silent = true }
 local keymap = vim.keymap.set
 
-keymap("n", "<leader>sw", function()
-	builtin.grep_string({ search = vim.fn.input("Grep > ") })
-end, opts)
-
 keymap("n", "<leader>sg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<cr>", opts)
 
 keymap("n", "<leader>f", builtin.find_files, opts)

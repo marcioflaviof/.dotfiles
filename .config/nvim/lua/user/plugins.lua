@@ -38,11 +38,15 @@ return lazy.setup({
 	{
 		"folke/todo-comments.nvim",
 		dependencies = { "nvim-lua/plenary.nvim" },
+		opts = {},
 	},
 
 	-- Colorschemes
 	{ "folke/tokyonight.nvim", lazy = false, priority = 1000, opts = {} },
 	"catppuccin/nvim",
+
+	-- Colors
+	"NvChad/nvim-colorizer.lua",
 
 	-- cmp plugins
 	{
@@ -55,27 +59,18 @@ return lazy.setup({
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-cmdline",
-      "hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-nvim-lsp",
 			"saadparwaiz1/cmp_luasnip",
 			"hrsh7th/cmp-nvim-lua",
 		},
 	},
-	{
-		"roobert/tailwindcss-colorizer-cmp.nvim",
-		-- optionally, override the default options:
-		config = function()
-			require("tailwindcss-colorizer-cmp").setup({
-				color_square_width = 2,
-			})
-		end,
-	},
-	{
-		"jcdickinson/codeium.nvim",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"hrsh7th/nvim-cmp",
-		},
-	},
+	-- {
+	-- 	"jcdickinson/codeium.nvim",
+	-- 	dependencies = {
+	-- 		"nvim-lua/plenary.nvim",
+	-- 		"hrsh7th/nvim-cmp",
+	-- 	},
+	-- },
 
 	-- LSP
 	"neovim/nvim-lspconfig",
@@ -167,7 +162,6 @@ return lazy.setup({
 	"numToStr/Comment.nvim",
 	"lukas-reineke/indent-blankline.nvim",
 	"andymass/vim-matchup", -- improve the % key
-	"norcalli/nvim-colorizer.lua",
 	{
 		"kylechui/nvim-surround",
 		config = function()
@@ -207,14 +201,14 @@ return lazy.setup({
 	},
 
 	-- AI
-	-- {
-	-- 	"Exafunction/codeium.vim",
-	-- 	config = function()
-	-- 		vim.keymap.set("i", "<C-a>", function()
-	-- 			return vim.fn["codeium#Accept"]()
-	-- 		end, { expr = true })
-	-- 	end,
-	-- },
+	{
+		"Exafunction/codeium.vim",
+		config = function()
+			vim.keymap.set("i", "<C-a>", function()
+				return vim.fn["codeium#Accept"]()
+			end, { expr = true })
+		end,
+	},
 
 	-- Optimizations
 	"LunarVim/bigfile.nvim",
