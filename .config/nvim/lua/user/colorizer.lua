@@ -4,9 +4,10 @@ if not status_ok then
 end
 
 colorizer.setup({
-	-- filetypes = { "scss", "css", "lua", "typescriptreact", "typescript", "ruby" },
+	filetypes = { "scss", "css", "lua", "typescriptreact", "typescript", "ruby", "javascript" },
 	user_default_options = {
 		tailwind = true,
+		names = false,
 		-- virtualtext = "■",
 		mode = "background", -- virtualtext | background
 	},

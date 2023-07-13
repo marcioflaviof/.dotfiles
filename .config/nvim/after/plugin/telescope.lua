@@ -127,7 +127,8 @@ telescope.setup({
 		},
 		find_files = {
 			theme = "dropdown",
-			find_command = { "rg", "--files", "--iglob", "!.git", "--hidden" },
+			hidden = true,
+			-- find_command = { "rg", "--files", "--iglob", "!.git", "--hidden" },
 			previewer = false,
 			layout_config = {
 				horizontal = {
@@ -166,6 +167,9 @@ telescope.setup({
 				height = 0.4,
 			},
 		},
+		["ui-select"] = {
+			require("telescope.themes").get_dropdown({}),
+		},
 	},
 })
 
@@ -180,7 +184,9 @@ keymap("n", "<leader>gb", builtin.git_branches, opts)
 keymap("n", "<leader>slr", builtin.lsp_references, opts)
 keymap("n", "<leader>sq", builtin.quickfix, opts)
 keymap("n", "<leader>sr", "<cmd>lua require('telescope.builtin').resume()<cr>", opts)
+keymap("n", "<leader>sb", builtin.buffers, opts)
 pcall(telescope.load_extension, "live_grep_args")
 
 -- Enable telescope fzf native, if installed
 pcall(telescope.load_extension, "fzf")
+require("telescope").load_extension("ui-select")

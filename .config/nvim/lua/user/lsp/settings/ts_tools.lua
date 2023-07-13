@@ -33,7 +33,8 @@ require("typescript-tools").setup({
 	on_attach = function(client, bufnr)
 		client.server_capabilities.document_formatting = false
 		vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
-		vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+		vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+		vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 
 		local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
@@ -51,15 +52,3 @@ require("typescript-tools").setup({
 		tsserver_file_preferences = {},
 	},
 })
-
-vim.lsp.handlers["textDocument/publishDiagnostics"] = function(_, result, ctx, ...)
-	local client = vim.lsp.get_client_by_id(ctx.client_id)
-
-	if client and client.name == "tsserver" then
-		result.diagnostics = vim.tbl_filter(function(diagnostic)
-			return not diagnostic.message:find("File is a CommonJS module; it may be converted to an ES module.")
-		end, result.diagnostics)
-	end
-
-	return vim.lsp.diagnostic.on_publish_diagnostics(nil, result, ctx, ...)
-end

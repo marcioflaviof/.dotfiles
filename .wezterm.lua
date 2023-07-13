@@ -11,13 +11,18 @@ config.font = wezterm.font_with_fallback({ "JetBrains Mono", "Fira Code" })
 config.window_background_opacity = 1.0
 config.window_decorations = "NONE"
 config.enable_tab_bar = false
-config.font_size = 13.0
+config.font_size = 12.0
 config.max_fps = 60
 
 config.keys = {
 	{
 		key = "F11",
 		action = wezterm.action.ToggleFullScreen,
+	},
+	{
+		key = "l",
+		mods = "CTRL|SHIFT",
+		action = wezterm.action.ClearScrollback("ScrollbackAndViewport"),
 	},
 }
 -- config.cell_width = 0.9

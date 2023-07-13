@@ -61,7 +61,9 @@ keymap("n", "<C-s>", ":w<CR>", { noremap = true })
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 
 -- lsp-ts-utils
-keymap("n", "<leader>li", "<cmd>TypescriptAddMissingImports<CR>", opts)
+-- keymap("n", "<leader>li", "<cmd>TypescriptAddMissingImports<CR>", opts)
+keymap("n", "<leader>lu", "<cmd>TSToolsRemoveUnusedImports<CR>", opts)
+keymap("n", "<leader>li", "<cmd>TSToolsAddMissingImports<CR>", opts)
 
 -- Harpoon
 keymap("n", "<leader>h", ":lua require('harpoon.ui').toggle_quick_menu()<CR>", opts)
@@ -72,9 +74,6 @@ keymap("n", "<leader>1", ":lua require('harpoon.ui').nav_file(1)<CR>", opts)
 keymap("n", "<leader>2", ":lua require('harpoon.ui').nav_file(2)<CR>", opts)
 keymap("n", "<leader>3", ":lua require('harpoon.ui').nav_file(3)<CR>", opts)
 keymap("n", "<leader>4", ":lua require('harpoon.ui').nav_file(4)<CR>", opts)
-
--- navbuddy
-keymap("n", "<leader>nb", ":Navbuddy<CR>", opts)
 
 -- quickfix list
 keymap("n", "<leader>qn", ":cn<CR>", opts)
@@ -95,7 +94,3 @@ keymap("v", "p", '"_dP', opts)
 -- Move text up and down
 keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
-
--- Terminal --
--- Better terminal navigation
-keymap("t", "<Esc>", "<C-\\><C-n>", opts)

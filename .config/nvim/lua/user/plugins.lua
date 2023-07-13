@@ -28,12 +28,7 @@ return lazy.setup({
 	"nvim-tree/nvim-tree.lua",
 	"nvim-tree/nvim-web-devicons",
 	"feline-nvim/feline.nvim",
-	{
-		"akinsho/bufferline.nvim",
-		event = "VeryLazy",
-	},
 	"moll/vim-bbye", -- better buffer close
-	"akinsho/toggleterm.nvim", -- toggle terminal
 
 	{
 		"folke/todo-comments.nvim",
@@ -64,13 +59,6 @@ return lazy.setup({
 			"hrsh7th/cmp-nvim-lua",
 		},
 	},
-	-- {
-	-- 	"jcdickinson/codeium.nvim",
-	-- 	dependencies = {
-	-- 		"nvim-lua/plenary.nvim",
-	-- 		"hrsh7th/nvim-cmp",
-	-- 	},
-	-- },
 
 	-- LSP
 	"neovim/nvim-lspconfig",
@@ -80,29 +68,20 @@ return lazy.setup({
 			"williamboman/mason-lspconfig.nvim",
 		},
 	},
-	{
-		"SmiteshP/nvim-navbuddy",
-		dependencies = {
-			"neovim/nvim-lspconfig",
-			"SmiteshP/nvim-navic",
-			"MunifTanjim/nui.nvim",
-		},
-	},
 
 	-- better function signature location
 	"ray-x/lsp_signature.nvim",
 
-	-- better typescript experience
-	"jose-elias-alvarez/typescript.nvim",
+	-- better typescript experience  -- Deprecated
+	-- "jose-elias-alvarez/typescript.nvim", -- Deprecated
 	"jose-elias-alvarez/null-ls.nvim", -- for formatters and linters
-	-- {
-	-- 	"pmizio/typescript-tools.nvim",
-	-- 	dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-	-- 	opts = {},
-	-- },
+	{
+		"pmizio/typescript-tools.nvim",
+		dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
+		opts = {},
+	},
 
 	-- shows vars as I navigate
-	"SmiteshP/nvim-navic",
 	{
 		"utilyre/barbecue.nvim",
 		name = "barbecue",
@@ -122,6 +101,7 @@ return lazy.setup({
 		"nvim-telescope/telescope-fzf-native.nvim",
 		build = "make",
 	},
+	"nvim-telescope/telescope-ui-select.nvim",
 
 	-- Treesitter
 	{
@@ -137,10 +117,6 @@ return lazy.setup({
 	{ "nvim-treesitter/nvim-treesitter-textobjects", dependencies = "nvim-treesitter/nvim-treesitter" },
 	"kchmck/vim-coffee-script",
 
-	-- Orgmode
-	"nvim-orgmode/orgmode",
-	"akinsho/org-bullets.nvim",
-
 	-- Git
 	{
 		"lewis6991/gitsigns.nvim",
@@ -151,12 +127,6 @@ return lazy.setup({
 	"tpope/vim-rhubarb",
 
 	-- Utils
-	{
-		"iamcco/markdown-preview.nvim",
-		build = function()
-			vim.fn["mkdp#util#install"]()
-		end,
-	},
 	"windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and treesitter
 	"mbbill/undotree",
 	"numToStr/Comment.nvim",
