@@ -24,6 +24,11 @@ config.keys = {
 		mods = "CTRL|SHIFT",
 		action = wezterm.action.ClearScrollback("ScrollbackAndViewport"),
 	},
+	{
+		key = "F",
+		mods = "SHIFT|CTRL",
+		action = wezterm.action.Search({ CaseInSensitiveString = "" }),
+	},
 }
 -- config.cell_width = 0.9
 -- config.line_height = 1.2

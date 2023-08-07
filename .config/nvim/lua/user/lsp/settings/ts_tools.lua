@@ -30,6 +30,15 @@ end
 local opts = { noremap = true, silent = true }
 
 require("typescript-tools").setup({
+	settings = {
+		separate_diagnostic_server = false,
+		publish_diagnostic_on = "insert_leave",
+		tsserver_max_memory = "auto",
+		tsserver_plugins = {},
+		tsserver_format_options = {},
+		tsserver_file_preferences = {},
+	},
+
 	on_attach = function(client, bufnr)
 		client.server_capabilities.document_formatting = false
 		vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
@@ -42,13 +51,4 @@ require("typescript-tools").setup({
 			vim.lsp.buf.definition({ on_list = on_list })
 		end, bufopts)
 	end,
-
-	settings = {
-		separate_diagnostic_server = true,
-		publish_diagnostic_on = "insert_leave",
-		tsserver_max_memory = "auto",
-		tsserver_plugins = {},
-		tsserver_format_options = {},
-		tsserver_file_preferences = {},
-	},
 })

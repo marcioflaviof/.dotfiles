@@ -1,3 +1,3 @@
 function ytc
-  yarn test:coverage --maxWorkers=80% $argv
+  yarn test:coverage --maxWorkers=75% $argv
 end

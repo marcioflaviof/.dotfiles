@@ -62,7 +62,7 @@ keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 
 -- lsp-ts-utils
 -- keymap("n", "<leader>li", "<cmd>TypescriptAddMissingImports<CR>", opts)
-keymap("n", "<leader>lu", "<cmd>TSToolsRemoveUnusedImports<CR>", opts)
+keymap("n", "<leader>lu", "<cmd>TSToolsRemoveUnused<CR>", opts)
 keymap("n", "<leader>li", "<cmd>TSToolsAddMissingImports<CR>", opts)
 
 -- Harpoon

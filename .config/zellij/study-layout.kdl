@@ -8,9 +8,9 @@ layout {
       plugin location="zellij:status-bar"
     }
   }
-  tab name="SpaceCode" cwd="/home/mf/code42/avaliacoes/training/space-code" focus=true {
+  tab name="LedgerRuby" cwd="/home/mf/code42/avaliacoes/training/ledgerdary/ledgerdary-ruby" focus=true {
   }
-  tab name="SpaceCode-Run" cwd="/home/mf/code42/avaliacoes/training/space-code" {
+  tab name="LedgerRuby-Run" cwd="/home/mf/code42/avaliacoes/training/ledgerdary/ledgerdary-ruby" {
     pane {
       command "rails"
       args "s"
