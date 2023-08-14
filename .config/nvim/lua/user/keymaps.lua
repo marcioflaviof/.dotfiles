@@ -50,7 +50,6 @@ keymap("n", "<F4>", ':let @+ = fnamemodify(expand("%"), ":~:.")<CR>', opts)
 keymap("n", "<leader>gl", "<cmd>GitBlameToggle<CR>", opts)
 keymap("n", "<leader>gll", "<cmd>Gitsigns blame_line<CR>", opts)
 keymap("n", "<leader>gs", "<cmd>0G<CR>", opts) -- vim fugitive
-keymap("n", "<leader>gd", "<cmd>G diff<CR>", opts) -- vim fugitive
 keymap("n", "<leader>gf", "<cmd>diffget //2<CR>", opts) -- vim fugitive
 keymap("n", "<leader>gj", "<cmd>diffget //3<CR>", opts) -- vim fugitive
 
@@ -94,3 +93,21 @@ keymap("v", "p", '"_dP', opts)
 -- Move text up and down
 keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
 keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
+
+-- Neovide
+--
+if vim.g.neovide == true then
+	vim.api.nvim_set_keymap(
+		"n",
+		"<C-+>",
+		":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1<CR>",
+		{ silent = true }
+	)
+	vim.api.nvim_set_keymap(
+		"n",
+		"<C-->",
+		":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.1<CR>",
+		{ silent = true }
+	)
+	vim.api.nvim_set_keymap("n", "<C-0>", ":lua vim.g.neovide_scale_factor = 1<CR>", { silent = true })
+end

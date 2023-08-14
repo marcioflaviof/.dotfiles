@@ -184,6 +184,7 @@ keymap("n", "<leader>gb", builtin.git_branches, opts)
 keymap("n", "<leader>slr", builtin.lsp_references, opts)
 keymap("n", "<leader>sq", builtin.quickfix, opts)
 keymap("n", "<leader>sr", "<cmd>lua require('telescope.builtin').resume()<cr>", opts)
+keymap("n", "<leader>sw", builtin.grep_string, opts)
 keymap("n", "<leader>sb", builtin.buffers, opts)
 pcall(telescope.load_extension, "live_grep_args")
 

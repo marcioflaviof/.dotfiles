@@ -36,10 +36,16 @@ require("typescript-tools").setup({
 		tsserver_max_memory = "auto",
 		tsserver_plugins = {},
 		tsserver_format_options = {},
-		tsserver_file_preferences = {},
+		tsserver_file_preferences = {
+			includeInlayParameterNameHints = "all",
+			includeCompletionsForModuleExports = true,
+		},
 	},
 
 	on_attach = function(client, bufnr)
+		-- NOTE: inlay hints
+		-- vim.lsp.buf.inlay_hint(0, true)
+
 		client.server_capabilities.document_formatting = false
 		vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
 		vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)

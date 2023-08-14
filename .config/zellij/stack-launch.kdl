@@ -27,7 +27,7 @@ layout {
   tab name="Docker" cwd="/home/mf/Documents/Stack" {
     pane borderless=true {
         command "docker-compose"
-        args "up" "-d"
+        args "up"
       }
   }
 }

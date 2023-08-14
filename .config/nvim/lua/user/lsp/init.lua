@@ -1,6 +1,3 @@
 require("user.lsp.lsp-signature")
-require("user.lsp.mason")
--- require("user.lsp.settings.tsserver_utils")
 require("user.lsp.settings.ts_tools")
-require("user.lsp.handlers").setup()
-require("user.lsp.null-ls")
+require("user.lsp.lsp-zero")

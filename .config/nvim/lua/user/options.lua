@@ -52,3 +52,5 @@ end
 vim.cmd("set whichwrap+=<,>,[,],h,l")
 vim.cmd([[set iskeyword+=-]])
 -- vim.cmd([[set spell]])
+
+vim.g.gui_font_default_size = 10
