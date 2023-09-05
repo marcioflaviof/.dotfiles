@@ -15,7 +15,7 @@ layout {
   }
   tab name="Shops" cwd="/home/mf/Documents/Stack/stack-shops" {
     pane borderless=true command="bundle" {
-        args "exec" "unicorn" "-p" "7080" "-c" "./config/unicorn.rb"
+        args "exec" "puma" "-p" "7080" "-C" "./config/puma.rb"
       }
   }
   tab name="Api" cwd="/home/mf/Documents/Stack/stack-api" {
@@ -26,8 +26,8 @@ layout {
   }
   tab name="Docker" cwd="/home/mf/Documents/Stack" {
     pane borderless=true {
-        command "docker-compose"
-        args "up"
+        command "docker"
+        args "compose" "up"
       }
   }
 }

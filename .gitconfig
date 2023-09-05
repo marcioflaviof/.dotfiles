@@ -5,3 +5,6 @@
 	editor = nvim
 [push]
 	autoSetupremote = true
+	default = current
+[pull]
+	rebase = false

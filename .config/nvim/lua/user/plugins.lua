@@ -179,6 +179,7 @@ return lazy.setup({
   },
   { "akinsho/toggleterm.nvim",                     version = "*",                                   config = true },
   { "kevinhwang91/nvim-ufo",                       dependencies = "kevinhwang91/promise-async" },
+  "stefandtw/quickfix-reflector.vim",
 
   -- AI
   {

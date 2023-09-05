@@ -1,13 +1,13 @@
 local lsp = require("lsp-zero").preset({})
 
 local cmp = require("cmp")
+local cmp_action = require("lsp-zero").cmp_action()
 require("luasnip.loaders.from_vscode").lazy_load()
 
 local luasnip = require("luasnip")
 luasnip.filetype_extend("typescriptreact", { "javascript" })
 
 -- CMP
-
 cmp.setup({
   sources = {
     { name = "nvim_lsp" },
@@ -16,15 +16,22 @@ cmp.setup({
     { name = "nvim_lua" },
     { name = "path" },
   },
-  mapping = {
-    -- `Enter` key to confirm completion
-    ["<CR>"] = cmp.mapping.confirm({ select = false }),
-    -- Ctrl+Space to trigger completion menu
-    ["<C-Space>"] = cmp.mapping.complete(),
-  },
   window = {
     completion = cmp.config.window.bordered(),
     documentation = cmp.config.window.bordered(),
+  },
+})
+
+lsp.setup_nvim_cmp({
+  mapping = {
+    ["<C-n>"] = cmp_action.luasnip_supertab(),
+    ["<C-p>"] = cmp_action.luasnip_shift_supertab(),
+    -- `Enter` key to confirm completion
+    ["<CR>"] = cmp.mapping.confirm({ select = true }),
+    -- Ctrl+Space to trigger completion menu
+    ["<C-Space>"] = cmp.mapping.complete(),
+    ["<Tab>"] = cmp_action.luasnip_supertab(),
+    ["<S-Tab>"] = cmp_action.luasnip_shift_supertab(),
   },
 })
 
@@ -53,10 +60,9 @@ lsp.ensure_installed({
   "html",
   "jsonls",
   "lua_ls",
-  -- "eslint",
   -- "yamlls",
-  -- "solargraph",
-  "ruby_ls",
+  "solargraph@0.13.2",
+  -- "ruby_ls@0.1.0",
   -- "tailwindcss",
   "rust_analyzer",
   "prismals",
@@ -80,7 +86,6 @@ null_ls.setup({
     formatters.prettierd,
     formatters.stylua,
     formatters.erb_format,
-    -- diagnostics.erb_lint,
     formatters.rustfmt,
 
     diagnostics.eslint_d.with({
@@ -90,11 +95,11 @@ null_ls.setup({
     }),
 
     -- diagnostics.rubocop.with({
-    -- 	condition = function(utils)
-    -- 		return utils.root_has_file({ ".rubocop.yml" })
-    -- 	end,
-    -- 	command = "bundle",
-    -- 	args = vim.list_extend({ "exec", "rubocop" }, null_ls.builtins.diagnostics.rubocop._opts.args),
+    --   condition = function(utils)
+    --     return utils.root_has_file({ ".rubocop.yml" })
+    --   end,
+    --   command = "bundle",
+    --   args = vim.list_extend({ "exec", "rubocop" }, null_ls.builtins.diagnostics.rubocop._opts.args),
     -- }),
   },
 })
