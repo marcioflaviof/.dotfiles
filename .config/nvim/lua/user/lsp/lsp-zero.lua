@@ -7,33 +7,7 @@ require("luasnip.loaders.from_vscode").lazy_load()
 local luasnip = require("luasnip")
 luasnip.filetype_extend("typescriptreact", { "javascript" })
 
--- CMP
-cmp.setup({
-  sources = {
-    { name = "nvim_lsp" },
-    { name = "luasnip", max_item_count = 3 },
-    { name = "buffer" },
-    { name = "nvim_lua" },
-    { name = "path" },
-  },
-  window = {
-    completion = cmp.config.window.bordered(),
-    documentation = cmp.config.window.bordered(),
-  },
-})
 
-lsp.setup_nvim_cmp({
-  mapping = {
-    ["<C-n>"] = cmp_action.luasnip_supertab(),
-    ["<C-p>"] = cmp_action.luasnip_shift_supertab(),
-    -- `Enter` key to confirm completion
-    ["<CR>"] = cmp.mapping.confirm({ select = true }),
-    -- Ctrl+Space to trigger completion menu
-    ["<C-Space>"] = cmp.mapping.complete(),
-    ["<Tab>"] = cmp_action.luasnip_supertab(),
-    ["<S-Tab>"] = cmp_action.luasnip_shift_supertab(),
-  },
-})
 
 -- LSP
 
@@ -50,7 +24,20 @@ lsp.format_on_save({
     timeout_ms = 10000,
   },
   servers = {
-    ["null-ls"] = { "javascript", "typescript", "lua" },
+    ["null-ls"] = { "javascript", "typescript", "lua", "ruby" },
+  },
+})
+
+lsp.setup_nvim_cmp({
+  mapping = {
+    ["<C-n>"] = cmp_action.luasnip_supertab(),
+    ["<C-p>"] = cmp_action.luasnip_shift_supertab(),
+    -- `Enter` key to confirm completion
+    ["<CR>"] = cmp.mapping.confirm({ select = true }),
+    -- Ctrl+Space to trigger completion menu
+    ["<C-Space>"] = cmp.mapping.complete(),
+    ["<Tab>"] = cmp_action.luasnip_supertab(),
+    ["<S-Tab>"] = cmp_action.luasnip_shift_supertab(),
   },
 })
 
@@ -61,8 +48,8 @@ lsp.ensure_installed({
   "jsonls",
   "lua_ls",
   -- "yamlls",
-  "solargraph@0.13.2",
-  -- "ruby_ls@0.1.0",
+  -- "solargraph",
+  "ruby_ls",
   -- "tailwindcss",
   "rust_analyzer",
   "prismals",
@@ -72,8 +59,24 @@ lsp.skip_server_setup({ "tsserver" })
 
 lsp.nvim_workspace()
 
---- NULL LS
+lsp.setup()
 
+-- CMP
+cmp.setup({
+  sources = {
+    { name = "nvim_lsp" },
+    { name = "luasnip", max_item_count = 3 },
+    { name = "buffer" },
+    { name = "nvim_lua" },
+    { name = "path" },
+  },
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+  },
+})
+
+--- NULL LS
 local null_ls = require("null-ls")
 
 -- https://github.com/jose-elias-alvarez/null-ls.nvim/tree/main/lua/null-ls/builtins/formatting
@@ -84,7 +87,6 @@ local diagnostics = null_ls.builtins.diagnostics
 null_ls.setup({
   sources = {
     formatters.prettierd,
-    formatters.stylua,
     formatters.erb_format,
     formatters.rustfmt,
 
@@ -103,5 +105,3 @@ null_ls.setup({
     -- }),
   },
 })
-
-lsp.setup()

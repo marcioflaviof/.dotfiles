@@ -29,7 +29,6 @@ return lazy.setup({
   "nvim-tree/nvim-web-devicons",
   "feline-nvim/feline.nvim",
   "moll/vim-bbye", -- better buffer close
-
   {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
@@ -66,28 +65,36 @@ return lazy.setup({
     branch = "v2.x",
     dependencies = {
       -- LSP Support
-      { "neovim/nvim-lspconfig" },          -- Required
-      { "williamboman/mason.nvim" },        -- Optional
+      { "neovim/nvim-lspconfig" },             -- Required
+      { "williamboman/mason.nvim" },           -- Optional
       { "williamboman/mason-lspconfig.nvim" }, -- Optional
 
       -- Autocompletion
-      { "hrsh7th/nvim-cmp" },  -- Required
+      { "hrsh7th/nvim-cmp" },     -- Required
       { "hrsh7th/cmp-nvim-lsp" }, -- Required
-      { "L3MON4D3/LuaSnip" },  -- Required
+      { "L3MON4D3/LuaSnip" },     -- Required
     },
   },
 
   -- better function signature location
   "ray-x/lsp_signature.nvim",
-
-  -- better typescript experience  -- Deprecated
-  -- "jose-elias-alvarez/typescript.nvim", -- Deprecated
   "jose-elias-alvarez/null-ls.nvim", -- for formatters and linters
   {
     "pmizio/typescript-tools.nvim",
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
     opts = {},
   },
+  {
+    'antosha417/nvim-lsp-file-operations',
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-tree/nvim-tree.lua",
+    },
+    config = function()
+      require("lsp-file-operations").setup()
+    end,
+  }
+  ,
 
   -- shows vars as I navigate
   {

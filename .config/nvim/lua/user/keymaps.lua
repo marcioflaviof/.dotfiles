@@ -49,7 +49,7 @@ keymap("n", "<F4>", ':let @+ = fnamemodify(expand("%"), ":~:.")<CR>', opts)
 -- Git
 keymap("n", "<leader>gl", "<cmd>GitBlameToggle<CR>", opts)
 keymap("n", "<leader>gll", "<cmd>Gitsigns blame_line<CR>", opts)
-keymap("n", "<leader>gs", "<cmd>0G<CR>", opts) -- vim fugitive
+keymap("n", "<leader>gs", "<cmd>0G<CR>", opts)          -- vim fugitive
 keymap("n", "<leader>gf", "<cmd>diffget //2<CR>", opts) -- vim fugitive
 keymap("n", "<leader>gj", "<cmd>diffget //3<CR>", opts) -- vim fugitive
 
@@ -60,7 +60,6 @@ keymap("n", "<C-s>", ":w<CR>", { noremap = true })
 keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 
 -- lsp-ts-utils
--- keymap("n", "<leader>li", "<cmd>TypescriptAddMissingImports<CR>", opts)
 keymap("n", "<leader>lu", "<cmd>TSToolsRemoveUnused<CR>", opts)
 keymap("n", "<leader>li", "<cmd>TSToolsAddMissingImports<CR>", opts)
 
@@ -97,17 +96,17 @@ keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
 -- Neovide
 --
 if vim.g.neovide == true then
-	vim.api.nvim_set_keymap(
-		"n",
-		"<C-+>",
-		":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1<CR>",
-		{ silent = true }
-	)
-	vim.api.nvim_set_keymap(
-		"n",
-		"<C-->",
-		":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.1<CR>",
-		{ silent = true }
-	)
-	vim.api.nvim_set_keymap("n", "<C-0>", ":lua vim.g.neovide_scale_factor = 1<CR>", { silent = true })
+  vim.api.nvim_set_keymap(
+    "n",
+    "<C-+>",
+    ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1<CR>",
+    { silent = true }
+  )
+  vim.api.nvim_set_keymap(
+    "n",
+    "<C-->",
+    ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.1<CR>",
+    { silent = true }
+  )
+  vim.api.nvim_set_keymap("n", "<C-0>", ":lua vim.g.neovide_scale_factor = 1<CR>", { silent = true })
 end

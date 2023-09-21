@@ -4,6 +4,7 @@ if not status_ok then
   return
 end
 
+local lga_actions = require("telescope-live-grep-args.actions")
 local actions = require("telescope.actions")
 
 telescope.setup({
@@ -26,7 +27,10 @@ telescope.setup({
       preview_cutoff = 120,
     },
     file_ignore_patterns = {
+      "bundle/*",
+      "coverage/*",
       ".git/",
+      ".next/",
       "target/",
       "docs/",
       "vendor/*",
@@ -40,7 +44,6 @@ telescope.setup({
       "%.jpg",
       "%.jpeg",
       "%.png",
-      "%.svg",
       "%.otf",
       "%.ttf",
       "%.webp",
@@ -117,18 +120,19 @@ telescope.setup({
     },
     lsp_references = {
       theme = "dropdown",
-      path_display = { "tail" },
+      path_display = { 'truncate' },
       layout_config = {
         width = 0.87,
         height = 0.4,
       },
       file_ignore_patterns = { ".test", ".spec" },
       initial_mode = "normal",
+      show_line = false
     },
     find_files = {
       theme = "dropdown",
       hidden = true,
-      -- find_command = { "rg", "--files", "--iglob", "!.git", "--hidden" },
+      find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*", "--no-ignore-vcs" },
       previewer = false,
       layout_config = {
         horizontal = {
@@ -156,10 +160,10 @@ telescope.setup({
   },
   extensions = {
     fzf = {
-      fuzzy = true,                -- false will only do exact matching
+      fuzzy = true,                   -- false will only do exact matching
       override_generic_sorter = true, -- override the generic sorter
-      override_file_sorter = true, -- override the file sorter
-      case_mode = "smart_case",    -- or "ignore_case" or "respect_case"
+      override_file_sorter = true,    -- override the file sorter
+      case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
       -- the default case_mode is "smart_case"
     },
     live_grep_args = {
@@ -169,6 +173,12 @@ telescope.setup({
         width = 0.87,
         height = 0.4,
       },
+      mappings = {
+        i = {
+          ["<C-k>"] = lga_actions.quote_prompt(),
+          ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+        },
+      }
     },
     ["ui-select"] = {
       require("telescope.themes").get_dropdown({}),
