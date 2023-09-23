@@ -1,35 +1,63 @@
-local lsp = require("lsp-zero").preset({})
+local lsp_zero = require('lsp-zero')
 
-local cmp = require("cmp")
-local cmp_action = require("lsp-zero").cmp_action()
-require("luasnip.loaders.from_vscode").lazy_load()
+---@diagnostic disable-next-line: unused-local
+lsp_zero.on_attach(function(client, bufnr)
+  lsp_zero.default_keymaps({ buffer = bufnr, preserve_mappings = false })
+  lsp_zero.buffer_autoformat()
 
-local luasnip = require("luasnip")
-luasnip.filetype_extend("typescriptreact", { "javascript" })
-
-
-
--- LSP
-
-lsp.on_attach(function(client, bufnr)
-  lsp.default_keymaps({ buffer = bufnr })
-  lsp.buffer_autoformat()
-
-  vim.keymap.set("n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<cr>", { buffer = true })
+  if client.name == 'svelte' then
+    vim.api.nvim_create_autocmd("BufWritePost", {
+      pattern = { "*.js", "*.ts" },
+      callback = function(ctx)
+        client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.file })
+      end,
+    })
+  end
 end)
 
-lsp.format_on_save({
+lsp_zero.format_on_save({
   format_opts = {
     async = false,
     timeout_ms = 10000,
   },
   servers = {
-    ["null-ls"] = { "javascript", "typescript", "lua", "ruby" },
+    ["null-ls"] = { "javascript", "typescript", "ruby" },
+  }
+})
+
+-- MASON
+
+local lua_opts = lsp_zero.nvim_lua_ls()
+require('lspconfig').lua_ls.setup(lua_opts)
+
+require('mason').setup({})
+require('mason-lspconfig').setup({
+  ensure_installed = {
+    "cssls",
+    "html",
+    "jsonls",
+    "lua_ls",
+    -- "yamlls",
+    -- "solargraph",
+    "ruby_ls",
+    -- "tailwindcss",
+    "prismals",
+    "svelte"
+  },
+  handlers = {
+    lsp_zero.default_setup,
+    tsserver = lsp_zero.noop,
+    lua_ls = require('lspconfig').lua_ls.setup(lua_opts)
   },
 })
 
-lsp.setup_nvim_cmp({
-  mapping = {
+-- CMP
+
+local cmp = require('cmp')
+local cmp_action = require('lsp-zero').cmp_action()
+
+cmp.setup({
+  mapping = cmp.mapping.preset.insert({
     ["<C-n>"] = cmp_action.luasnip_supertab(),
     ["<C-p>"] = cmp_action.luasnip_shift_supertab(),
     -- `Enter` key to confirm completion
@@ -38,38 +66,7 @@ lsp.setup_nvim_cmp({
     ["<C-Space>"] = cmp.mapping.complete(),
     ["<Tab>"] = cmp_action.luasnip_supertab(),
     ["<S-Tab>"] = cmp_action.luasnip_shift_supertab(),
-  },
-})
-
-lsp.ensure_installed({
-  -- "tsserver",
-  "cssls",
-  "html",
-  "jsonls",
-  "lua_ls",
-  -- "yamlls",
-  -- "solargraph",
-  "ruby_ls",
-  -- "tailwindcss",
-  "rust_analyzer",
-  "prismals",
-})
-
-lsp.skip_server_setup({ "tsserver" })
-
-lsp.nvim_workspace()
-
-lsp.setup()
-
--- CMP
-cmp.setup({
-  sources = {
-    { name = "nvim_lsp" },
-    { name = "luasnip", max_item_count = 3 },
-    { name = "buffer" },
-    { name = "nvim_lua" },
-    { name = "path" },
-  },
+  }),
   window = {
     completion = cmp.config.window.bordered(),
     documentation = cmp.config.window.bordered(),

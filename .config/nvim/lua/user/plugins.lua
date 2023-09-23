@@ -60,30 +60,22 @@ return lazy.setup({
   },
 
   -- LSP
-  {
-    "VonHeikemen/lsp-zero.nvim",
-    branch = "v2.x",
-    dependencies = {
-      -- LSP Support
-      { "neovim/nvim-lspconfig" },             -- Required
-      { "williamboman/mason.nvim" },           -- Optional
-      { "williamboman/mason-lspconfig.nvim" }, -- Optional
+  { "VonHeikemen/lsp-zero.nvim",        branch = "v3.x" },
 
-      -- Autocompletion
-      { "hrsh7th/nvim-cmp" },     -- Required
-      { "hrsh7th/cmp-nvim-lsp" }, -- Required
-      { "L3MON4D3/LuaSnip" },     -- Required
+  -- LSP Support
+  {
+    'neovim/nvim-lspconfig',
+    dependencies = {
+      { 'hrsh7th/cmp-nvim-lsp' },
     },
   },
+  { "williamboman/mason.nvim" },
+  { "williamboman/mason-lspconfig.nvim" },
 
   -- better function signature location
   "ray-x/lsp_signature.nvim",
   "jose-elias-alvarez/null-ls.nvim", -- for formatters and linters
-  {
-    "pmizio/typescript-tools.nvim",
-    dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
-    opts = {},
-  },
+  "pmizio/typescript-tools.nvim",
   {
     'antosha417/nvim-lsp-file-operations',
     dependencies = {
