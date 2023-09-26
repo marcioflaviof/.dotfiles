@@ -1,9 +1,13 @@
 local lsp_zero = require('lsp-zero')
+local utils = require("user.lsp.settings.utils")
+
+local luasnip = require("luasnip")
+luasnip.filetype_extend("typescriptreact", { "javascript" })
 
 ---@diagnostic disable-next-line: unused-local
 lsp_zero.on_attach(function(client, bufnr)
-  lsp_zero.default_keymaps({ buffer = bufnr, preserve_mappings = false })
   lsp_zero.buffer_autoformat()
+  lsp_zero.default_keymaps({ buffer = bufnr, preserve_mappings = false })
 
   if client.name == 'svelte' then
     vim.api.nvim_create_autocmd("BufWritePost", {
@@ -12,7 +16,23 @@ lsp_zero.on_attach(function(client, bufnr)
         client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.file })
       end,
     })
+
+    vim.api.nvim_create_autocmd({ "BufWrite" }, {
+      pattern = { "+page.server.ts", "+page.ts", "+layout.server.ts", "+layout.ts" },
+      command = "LspRestart svelte",
+    })
   end
+
+  local opts = { noremap = true, silent = true }
+
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+  vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+
+  local bufopts = { noremap = true, silent = true, buffer = bufnr }
+
+  vim.keymap.set("n", "gd", function()
+    vim.lsp.buf.definition({ on_list = utils.on_list })
+  end, bufopts)
 end)
 
 lsp_zero.format_on_save({
@@ -21,9 +41,10 @@ lsp_zero.format_on_save({
     timeout_ms = 10000,
   },
   servers = {
-    ["null-ls"] = { "javascript", "typescript", "ruby" },
+    ["null-ls"] = { "javascript", "typescript", "ruby", "typescriptreact", "javascriptreact" },
   }
 })
+
 
 -- MASON
 
@@ -57,6 +78,17 @@ local cmp = require('cmp')
 local cmp_action = require('lsp-zero').cmp_action()
 
 cmp.setup({
+  window = {
+    completion = cmp.config.window.bordered(),
+    documentation = cmp.config.window.bordered(),
+  },
+  sources = {
+    { name = "nvim_lsp" },
+    { name = "luasnip", max_item_count = 3 },
+    { name = "buffer" },
+    { name = "nvim_lua" },
+    { name = "path" },
+  },
   mapping = cmp.mapping.preset.insert({
     ["<C-n>"] = cmp_action.luasnip_supertab(),
     ["<C-p>"] = cmp_action.luasnip_shift_supertab(),
@@ -67,10 +99,6 @@ cmp.setup({
     ["<Tab>"] = cmp_action.luasnip_supertab(),
     ["<S-Tab>"] = cmp_action.luasnip_shift_supertab(),
   }),
-  window = {
-    completion = cmp.config.window.bordered(),
-    documentation = cmp.config.window.bordered(),
-  },
 })
 
 --- NULL LS

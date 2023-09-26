@@ -7,8 +7,10 @@ colorizer.setup({
   filetypes = { "scss", "css", "lua", "typescriptreact", "typescript", "ruby", "javascript", 'svelte' },
   user_default_options = {
     tailwind = true,
-    names = false,
+    rgb_fn   = true, -- CSS rgb() and rgba() functions
+    hsl_fn   = true, -- CSS hsl() and hsla() functions
+    names    = false,
     -- virtualtext = "■",
-    mode = "background", -- virtualtext | background
+    mode     = "background", -- virtualtext | background
   },
 })

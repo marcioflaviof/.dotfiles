@@ -42,6 +42,16 @@ return lazy.setup({
   -- Colors
   "NvChad/nvim-colorizer.lua",
 
+  -- Style
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      "MunifTanjim/nui.nvim",
+    }
+  },
+
   -- cmp plugins
   {
     "hrsh7th/nvim-cmp",
@@ -52,7 +62,6 @@ return lazy.setup({
 
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
-      "hrsh7th/cmp-cmdline",
       "hrsh7th/cmp-nvim-lsp",
       "saadparwaiz1/cmp_luasnip",
       "hrsh7th/cmp-nvim-lua",
@@ -71,11 +80,8 @@ return lazy.setup({
   },
   { "williamboman/mason.nvim" },
   { "williamboman/mason-lspconfig.nvim" },
-
-  -- better function signature location
-  "ray-x/lsp_signature.nvim",
-  "jose-elias-alvarez/null-ls.nvim", -- for formatters and linters
   "pmizio/typescript-tools.nvim",
+  "jose-elias-alvarez/null-ls.nvim", -- for formatters and linters
   {
     'antosha417/nvim-lsp-file-operations',
     dependencies = {
@@ -138,7 +144,7 @@ return lazy.setup({
   "mbbill/undotree",
   "numToStr/Comment.nvim",
   "lukas-reineke/indent-blankline.nvim",
-  "andymass/vim-matchup", -- improve the % key
+  { "andymass/vim-matchup",                        lazy = false, }, -- improve the % key
   {
     "kylechui/nvim-surround",
     config = function()
@@ -176,8 +182,8 @@ return lazy.setup({
       })
     end,
   },
-  { "akinsho/toggleterm.nvim",                     version = "*",                                   config = true },
-  { "kevinhwang91/nvim-ufo",                       dependencies = "kevinhwang91/promise-async" },
+  { "akinsho/toggleterm.nvim", version = "*",                              config = true },
+  { "kevinhwang91/nvim-ufo",   dependencies = "kevinhwang91/promise-async" },
   "stefandtw/quickfix-reflector.vim",
 
   -- AI

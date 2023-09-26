@@ -69,6 +69,10 @@ configs.setup({
     }
 
   },
+  matchup = {
+    enable = true,
+    enable_quotes = true,
+  },
 })
 
 require("treesitter-context").setup({
