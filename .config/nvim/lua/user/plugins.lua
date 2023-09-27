@@ -42,16 +42,6 @@ return lazy.setup({
   -- Colors
   "NvChad/nvim-colorizer.lua",
 
-  -- Style
-  {
-    "folke/noice.nvim",
-    event = "VeryLazy",
-    dependencies = {
-      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-      "MunifTanjim/nui.nvim",
-    }
-  },
-
   -- cmp plugins
   {
     "hrsh7th/nvim-cmp",
@@ -70,7 +60,18 @@ return lazy.setup({
 
   -- LSP
   { "VonHeikemen/lsp-zero.nvim",        branch = "v3.x" },
-
+  {
+    "ray-x/lsp_signature.nvim",
+    event = "VeryLazy",
+    opts = {},
+    config = function(_, opts)
+      require 'lsp_signature'.setup({
+        floating_window = false,
+        hint_scheme = "Comment",
+        hint_prefix = " ",
+      })
+    end
+  },
   -- LSP Support
   {
     'neovim/nvim-lspconfig',
