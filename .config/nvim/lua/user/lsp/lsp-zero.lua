@@ -1,8 +1,10 @@
 local lsp_zero = require('lsp-zero')
-local utils = require("user.lsp.settings.utils")
+local lspzero_utils = require("user.lsp.settings.utils")
 
 local luasnip = require("luasnip")
 luasnip.filetype_extend("typescriptreact", { "javascript" })
+
+require('luasnip.loaders.from_vscode').lazy_load()
 
 ---@diagnostic disable-next-line: unused-local
 lsp_zero.on_attach(function(client, bufnr)
@@ -31,7 +33,7 @@ lsp_zero.on_attach(function(client, bufnr)
   local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
   vim.keymap.set("n", "gd", function()
-    vim.lsp.buf.definition({ on_list = utils.on_list })
+    vim.lsp.buf.definition({ on_list = lspzero_utils.on_list })
   end, bufopts)
 end)
 
@@ -41,7 +43,7 @@ lsp_zero.format_on_save({
     timeout_ms = 10000,
   },
   servers = {
-    ["null-ls"] = { "javascript", "typescript", "ruby", "typescriptreact", "javascriptreact" },
+    ["null-ls"] = { "javascript", "typescript", "ruby", "typescriptreact", "javascriptreact", "markdown" },
   }
 })
 
@@ -81,6 +83,11 @@ cmp.setup({
   window = {
     completion = cmp.config.window.bordered(),
     documentation = cmp.config.window.bordered(),
+  },
+  snippet = {
+    expand = function(args)
+      require 'luasnip'.lsp_expand(args.body)
+    end
   },
   sources = {
     { name = "nvim_lsp" },

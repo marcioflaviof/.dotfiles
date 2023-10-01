@@ -32,16 +32,14 @@ keymap("n", "<C-u>", "<C-u>zz", opts)
 keymap("n", "<leader>r", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", opts)
 
 -- Open buff in ruby
-keymap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
+-- keymap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
 
 -- Naviagate buffers
-keymap("n", "<S-l>", ":bnext<CR>", opts)
-keymap("n", "<S-h>", ":bprevious<CR>", opts)
 keymap("n", "<leader>c", ":Bdelete<CR>", opts)
 
 -- Copy path
 keymap("n", "<F5>", ":let @+ = expand('%:p')<CR>", opts)
-keymap("n", "<F4>", ':let @+ = fnamemodify(expand("%"), ":~:.")<CR>', opts)
+keymap("n", "<leader>cp", ':let @+ = fnamemodify(expand("%"), ":~:.")<CR>', opts)
 
 -- Git
 keymap("n", "<leader>gl", "<cmd>GitBlameToggle<CR>", opts)
