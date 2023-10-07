@@ -26,6 +26,9 @@ telescope.setup({
       height = 0.80,
       preview_cutoff = 120,
     },
+    preview = {
+      highlight_limit = 1, -- MB
+    },
     file_ignore_patterns = {
       "bundle/*",
       "coverage/*",
@@ -132,7 +135,14 @@ telescope.setup({
     find_files = {
       theme = "dropdown",
       hidden = true,
-      find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*", "--no-ignore-vcs" },
+      find_command = {
+        "rg",
+        "--files",
+        "--hidden",
+        "--iglob",
+        "!**/.git/*",
+        "--no-ignore-vcs"
+      },
       previewer = false,
       layout_config = {
         horizontal = {

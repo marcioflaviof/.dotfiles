@@ -24,7 +24,6 @@ lsp_zero.on_attach(function(client, bufnr)
       command = "LspRestart svelte",
     })
   end
-
   local opts = { noremap = true, silent = true }
 
   vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
@@ -120,7 +119,6 @@ null_ls.setup({
   sources = {
     formatters.prettierd,
     formatters.erb_format,
-    formatters.rustfmt,
 
     diagnostics.eslint_d.with({
       condition = function(utils)

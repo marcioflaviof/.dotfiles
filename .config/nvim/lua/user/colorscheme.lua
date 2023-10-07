@@ -37,6 +37,11 @@ require("catppuccin").setup({
   },
 })
 
+require('kanagawa').setup({
+  transparent = true,
+  theme = "wave"
+})
+
 local colorscheme = "tokyonight"
 
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)

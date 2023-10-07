@@ -38,6 +38,7 @@ return lazy.setup({
   -- Colorschemes
   { "folke/tokyonight.nvim", lazy = false,         priority = 1000, opts = {} },
   "catppuccin/nvim",
+  "rebelot/kanagawa.nvim",
 
   -- Colors
   "NvChad/nvim-colorizer.lua",
@@ -82,7 +83,7 @@ return lazy.setup({
   { "williamboman/mason.nvim" },
   { "williamboman/mason-lspconfig.nvim" },
   "pmizio/typescript-tools.nvim",
-  "jose-elias-alvarez/null-ls.nvim", -- for formatters and linters
+  "nvimtools/none-ls.nvim", -- for formatters and linters
   {
     'antosha417/nvim-lsp-file-operations',
     dependencies = {
@@ -197,6 +198,4 @@ return lazy.setup({
     end,
   },
 
-  -- Optimizations
-  "LunarVim/bigfile.nvim",
 })

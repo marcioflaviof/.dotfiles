@@ -14,9 +14,8 @@ require("typescript-tools").setup({
 
   on_attach = function(client, bufnr)
     -- NOTE: inlay hints
-    -- vim.lsp.buf.inlay_hint(0, true)
+    -- vim.lsp.buf.inlay_hint(bufnr, true)
 
-    client.server_capabilities.document_formatting = false
     client.server_capabilities.documentFormattingProvider = false
     client.server_capabilities.documentRangeFormattingProvider = false
   end,
