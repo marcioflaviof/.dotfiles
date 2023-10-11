@@ -36,6 +36,7 @@ lsp_zero.on_attach(function(client, bufnr)
   end, bufopts)
 end)
 
+
 lsp_zero.format_on_save({
   format_opts = {
     async = false,
@@ -60,8 +61,8 @@ require('mason-lspconfig').setup({
     "jsonls",
     "lua_ls",
     -- "yamlls",
-    -- "solargraph",
-    "ruby_ls",
+    "solargraph",
+    -- "ruby_ls",
     -- "tailwindcss",
     "prismals",
     "svelte"
