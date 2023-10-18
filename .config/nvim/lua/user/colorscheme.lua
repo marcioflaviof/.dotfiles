@@ -37,10 +37,6 @@ require("catppuccin").setup({
   },
 })
 
-require('kanagawa').setup({
-  transparent = true,
-  theme = "wave"
-})
 
 local colorscheme = "tokyonight"
 

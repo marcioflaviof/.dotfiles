@@ -23,22 +23,14 @@ return lazy.setup({
   "nvim-lua/plenary.nvim", -- Useful lua functions used by lots of plugins
 
   -- User interface
-  { "folke/trouble.nvim",    cmd = "TroubleToggle" },
   "RRethy/vim-illuminate",
   "nvim-tree/nvim-tree.lua",
-  "nvim-tree/nvim-web-devicons",
-  "feline-nvim/feline.nvim",
+  "freddiehaddad/feline.nvim",
   "moll/vim-bbye", -- better buffer close
-  {
-    "folke/todo-comments.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
-    opts = {},
-  },
 
   -- Colorschemes
-  { "folke/tokyonight.nvim", lazy = false,         priority = 1000, opts = {} },
+  { "folke/tokyonight.nvim",     lazy = false,   priority = 1000, },
   "catppuccin/nvim",
-  "rebelot/kanagawa.nvim",
 
   -- Colors
   "NvChad/nvim-colorizer.lua",
@@ -60,7 +52,7 @@ return lazy.setup({
   },
 
   -- LSP
-  { "VonHeikemen/lsp-zero.nvim",        branch = "v3.x" },
+  { "VonHeikemen/lsp-zero.nvim", branch = "v3.x" },
   {
     "ray-x/lsp_signature.nvim",
     event = "VeryLazy",
@@ -83,18 +75,7 @@ return lazy.setup({
   { "williamboman/mason.nvim" },
   { "williamboman/mason-lspconfig.nvim" },
   "pmizio/typescript-tools.nvim",
-  "nvimtools/none-ls.nvim", -- for formatters and linters
-  {
-    'antosha417/nvim-lsp-file-operations',
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-      "nvim-tree/nvim-tree.lua",
-    },
-    config = function()
-      require("lsp-file-operations").setup()
-    end,
-  }
-  ,
+  "nvimtools/none-ls.nvim",
 
   -- shows vars as I navigate
   {
@@ -110,11 +91,7 @@ return lazy.setup({
   -- Telescope
   {
     "nvim-telescope/telescope.nvim",
-    dependencies = { "nvim-telescope/telescope-live-grep-args.nvim", "nvim-telescope/telescope-fzf-native.nvim" },
-  },
-  {
-    "nvim-telescope/telescope-fzf-native.nvim",
-    build = "make",
+    dependencies = { "nvim-telescope/telescope-live-grep-args.nvim" },
   },
   "nvim-telescope/telescope-ui-select.nvim",
 
@@ -127,7 +104,6 @@ return lazy.setup({
   },
   "nvim-treesitter/playground",
   "JoosepAlviste/nvim-ts-context-commentstring",
-  "windwp/nvim-ts-autotag",
   "nvim-treesitter/nvim-treesitter-context",
   { "nvim-treesitter/nvim-treesitter-textobjects", dependencies = "nvim-treesitter/nvim-treesitter" },
   "kchmck/vim-coffee-script",
@@ -142,6 +118,7 @@ return lazy.setup({
   "tpope/vim-rhubarb",
 
   -- Utils
+  "windwp/nvim-ts-autotag",
   "windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and treesitter
   "mbbill/undotree",
   "numToStr/Comment.nvim",
@@ -186,7 +163,6 @@ return lazy.setup({
   },
   { "akinsho/toggleterm.nvim", version = "*",                              config = true },
   { "kevinhwang91/nvim-ufo",   dependencies = "kevinhwang91/promise-async" },
-  "stefandtw/quickfix-reflector.vim",
 
   -- AI
   {
@@ -198,4 +174,16 @@ return lazy.setup({
     end,
   },
 
+  -- Tests
+  {
+    "nvim-neotest/neotest",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-treesitter/nvim-treesitter",
+      "antoinemadec/FixCursorHold.nvim",
+      'marilari88/neotest-vitest',
+      'haydenmeade/neotest-jest',
+      'nvim-neotest/neotest-plenary'
+    },
+  },
 })

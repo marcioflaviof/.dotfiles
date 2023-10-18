@@ -41,6 +41,11 @@ keymap("n", "<leader>c", ":Bdelete<CR>", opts)
 keymap("n", "<F5>", ":let @+ = expand('%:p')<CR>", opts)
 keymap("n", "<leader>cp", ':let @+ = fnamemodify(expand("%"), ":~:.")<CR>', opts)
 
+-- tests
+keymap("n", "<leader>tc", ':lua require("neotest").run.run()<CR>', { noremap = true })
+keymap("n", "<leader>tf", ':lua require("neotest").run.run(vim.fn.expand("%"))<CR>', { noremap = true })
+keymap("n", "<leader>ts", ':lua require("neotest").summary.toggle()<CR>', { noremap = true })
+
 -- Git
 keymap("n", "<leader>gl", "<cmd>GitBlameToggle<CR>", opts)
 keymap("n", "<leader>gll", "<cmd>Gitsigns blame_line<CR>", opts)
