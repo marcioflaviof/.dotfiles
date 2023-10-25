@@ -2,11 +2,10 @@ local lsp_zero = require('lsp-zero')
 local lspzero_utils = require("user.lsp.settings.utils")
 
 local luasnip = require("luasnip")
-luasnip.filetype_extend("typescriptreact", { "javascript" })
+luasnip.filetype_extend("typescriptreact", { "javascript", "typescript" })
 
 require('luasnip.loaders.from_vscode').lazy_load()
 
----@diagnostic disable-next-line: unused-local
 lsp_zero.on_attach(function(client, bufnr)
   lsp_zero.buffer_autoformat()
   lsp_zero.default_keymaps({ buffer = bufnr, preserve_mappings = false })

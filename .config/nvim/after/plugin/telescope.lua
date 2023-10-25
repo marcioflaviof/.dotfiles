@@ -169,6 +169,12 @@ telescope.setup({
     },
   },
   extensions = {
+    fzf = {
+      fuzzy = true,                   -- false will only do exact matching
+      override_generic_sorter = true, -- override the generic sorter
+      override_file_sorter = true,    -- override the file sorter
+      case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
+    },
     live_grep_args = {
       theme = "dropdown",
       auto_quoting = true,
@@ -201,6 +207,7 @@ keymap("n", "<leader>sq", builtin.quickfix, opts)
 keymap("n", "<leader>sr", "<cmd>lua require('telescope.builtin').resume()<cr>", opts)
 keymap("n", "<leader>sw", builtin.grep_string, opts)
 keymap("n", "<leader>sb", builtin.buffers, opts)
-pcall(telescope.load_extension, "live_grep_args")
 
+pcall(telescope.load_extension, "live_grep_args")
+require('telescope').load_extension('fzf')
 require("telescope").load_extension("ui-select")

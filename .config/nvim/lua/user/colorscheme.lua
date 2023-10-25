@@ -24,20 +24,6 @@ tokyonight.setup({
   end,
 })
 
-require("catppuccin").setup({
-  flavour = "mocha",
-  transparent_background = true,
-  color_overrides = {
-    mocha = {
-      base = "#1a1b26",
-      mantle = "#1a1b26",
-      crust = "#1a1b26",
-      surface0 = "#1a1b26",
-    },
-  },
-})
-
-
 local colorscheme = "tokyonight"
 
 local status_ok, _ = pcall(vim.cmd, "colorscheme " .. colorscheme)

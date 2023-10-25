@@ -30,7 +30,6 @@ return lazy.setup({
 
   -- Colorschemes
   { "folke/tokyonight.nvim",     lazy = false,   priority = 1000, },
-  "catppuccin/nvim",
 
   -- Colors
   "NvChad/nvim-colorizer.lua",
@@ -72,8 +71,8 @@ return lazy.setup({
       { 'hrsh7th/cmp-nvim-lsp' },
     },
   },
-  { "williamboman/mason.nvim" },
-  { "williamboman/mason-lspconfig.nvim" },
+  "williamboman/mason.nvim",
+  "williamboman/mason-lspconfig.nvim",
   "pmizio/typescript-tools.nvim",
   "nvimtools/none-ls.nvim",
 
@@ -94,6 +93,7 @@ return lazy.setup({
     dependencies = { "nvim-telescope/telescope-live-grep-args.nvim" },
   },
   "nvim-telescope/telescope-ui-select.nvim",
+  { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
 
   -- Treesitter
   {
@@ -102,7 +102,7 @@ return lazy.setup({
       pcall(require("nvim-treesitter.install").update({ with_sync = true }))
     end,
   },
-  "nvim-treesitter/playground",
+  { "nvim-treesitter/playground",               lazy = true },
   "JoosepAlviste/nvim-ts-context-commentstring",
   "nvim-treesitter/nvim-treesitter-context",
   { "nvim-treesitter/nvim-treesitter-textobjects", dependencies = "nvim-treesitter/nvim-treesitter" },
@@ -120,10 +120,10 @@ return lazy.setup({
   -- Utils
   "windwp/nvim-ts-autotag",
   "windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and treesitter
-  "mbbill/undotree",
+  { "mbbill/undotree",                             cmd = "UndotreeToggle" },
   "numToStr/Comment.nvim",
   "lukas-reineke/indent-blankline.nvim",
-  { "andymass/vim-matchup",                        lazy = false, }, -- improve the % key
+  { "andymass/vim-matchup",    lazy = false, }, -- improve the % key
   {
     "kylechui/nvim-surround",
     config = function()
