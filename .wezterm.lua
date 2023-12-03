@@ -13,6 +13,7 @@ config.window_decorations = "NONE"
 config.enable_tab_bar = false
 config.font_size = 16.0
 config.max_fps = 60
+config.enable_wayland = true
 
 config.keys = {
   {

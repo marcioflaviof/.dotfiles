@@ -64,7 +64,9 @@ require('mason-lspconfig').setup({
     -- "ruby_ls",
     -- "tailwindcss",
     "prismals",
-    "svelte"
+    "svelte",
+    "tsserver",
+    "emmet_language_server"
   },
   handlers = {
     lsp_zero.default_setup,
@@ -118,7 +120,7 @@ local diagnostics = null_ls.builtins.diagnostics
 null_ls.setup({
   sources = {
     formatters.prettierd,
-    formatters.erb_format,
+    -- formatters.erb_format,
 
     diagnostics.eslint_d.with({
       condition = function(utils)

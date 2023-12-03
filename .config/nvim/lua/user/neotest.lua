@@ -10,5 +10,7 @@ require("neotest").setup({
         return vim.fn.getcwd()
       end,
     }),
+
+    require("neotest-rspec")
   },
 })

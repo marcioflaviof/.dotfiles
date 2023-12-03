@@ -163,6 +163,22 @@ return lazy.setup({
   },
   { "akinsho/toggleterm.nvim", version = "*",                              config = true },
   { "kevinhwang91/nvim-ufo",   dependencies = "kevinhwang91/promise-async" },
+  {
+    "gelguy/wilder.nvim",
+    config = function()
+      local wilder = require('wilder')
+
+      wilder.setup({
+        modes = { ':', '/', '?' }
+      })
+
+      wilder.set_option('renderer', wilder.popupmenu_renderer({
+        highlighter = wilder.basic_highlighter(),
+        left = { ' ', wilder.popupmenu_devicons() },
+        right = { ' ', wilder.popupmenu_scrollbar() },
+      }))
+    end
+  },
 
   -- AI
   {
@@ -183,7 +199,8 @@ return lazy.setup({
       "antoinemadec/FixCursorHold.nvim",
       'marilari88/neotest-vitest',
       'haydenmeade/neotest-jest',
-      'nvim-neotest/neotest-plenary'
+      'nvim-neotest/neotest-plenary',
+      "olimorris/neotest-rspec",
     },
   },
 })
