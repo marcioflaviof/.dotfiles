@@ -62,9 +62,10 @@ require('mason-lspconfig').setup({
     -- "yamlls",
     "solargraph",
     -- "ruby_ls",
+    "eslint",
     -- "tailwindcss",
-    "prismals",
-    "svelte",
+    -- "prismals",
+    -- "svelte",
     "tsserver",
     "emmet_language_server"
   },
@@ -122,18 +123,18 @@ null_ls.setup({
     formatters.prettierd,
     -- formatters.erb_format,
 
-    diagnostics.eslint_d.with({
-      condition = function(utils)
-        return utils.root_has_file({ ".eslintrc.js" })
-      end,
-    }),
-
-    -- diagnostics.rubocop.with({
+    -- diagnostics.eslint.with({
     --   condition = function(utils)
-    --     return utils.root_has_file({ ".rubocop.yml" })
+    --     return utils.root_has_file({ ".eslintrc.js" })
     --   end,
-    --   command = "bundle",
-    --   args = vim.list_extend({ "exec", "rubocop" }, null_ls.builtins.diagnostics.rubocop._opts.args),
     -- }),
+
+    diagnostics.rubocop.with({
+      condition = function(utils)
+        return utils.root_has_file({ ".rubocop.yml" })
+      end,
+      command = "bundle",
+      args = vim.list_extend({ "exec", "rubocop" }, null_ls.builtins.diagnostics.rubocop._opts.args),
+    }),
   },
 })

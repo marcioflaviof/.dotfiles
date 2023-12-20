@@ -7,8 +7,8 @@ if wezterm.config_builder then
 end
 
 config.color_scheme = "tokyonight_night"
-config.font = wezterm.font_with_fallback({ "Maple Mono NF", "JetBrains Mono", "Fira Code", })
-config.window_background_opacity = 0.9
+config.font = wezterm.font_with_fallback({ "JetBrainsMono Nerd Font", "Maple Mono NF", "Fira Code", })
+config.window_background_opacity = 1.0
 config.window_decorations = "NONE"
 config.enable_tab_bar = false
 config.font_size = 16.0

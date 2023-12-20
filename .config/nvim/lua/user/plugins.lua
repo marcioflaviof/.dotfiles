@@ -23,6 +23,7 @@ return lazy.setup({
   "nvim-lua/plenary.nvim", -- Useful lua functions used by lots of plugins
 
   -- User interface
+  'stevearc/oil.nvim',
   "RRethy/vim-illuminate",
   "nvim-tree/nvim-tree.lua",
   "freddiehaddad/feline.nvim",
@@ -123,7 +124,7 @@ return lazy.setup({
   { "mbbill/undotree",                             cmd = "UndotreeToggle" },
   "numToStr/Comment.nvim",
   "lukas-reineke/indent-blankline.nvim",
-  { "andymass/vim-matchup",    lazy = false, }, -- improve the % key
+  { "andymass/vim-matchup", lazy = false, }, -- improve the % key
   {
     "kylechui/nvim-surround",
     config = function()
@@ -131,7 +132,7 @@ return lazy.setup({
     end,
   },
   "junegunn/vim-slash",
-  "ThePrimeagen/harpoon",
+  { "ThePrimeagen/harpoon", branch = 'harpoon2' },
   {
     "folke/flash.nvim",
     event = "VeryLazy",
