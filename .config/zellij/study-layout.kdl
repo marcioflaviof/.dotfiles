@@ -8,12 +8,18 @@ layout {
       plugin location="zellij:status-bar"
     }
   }
-  tab name="LedgerRuby" cwd="/home/mf/code42/avaliacoes/training/ledgerdary/ledgerdary-ruby" focus=true {
+  tab name="Project" cwd="/home/mf/code42/ledgerdary/ledgerdary-frontend" focus=true {
   }
-  tab name="LedgerRuby-Run" cwd="/home/mf/code42/avaliacoes/training/ledgerdary/ledgerdary-ruby" {
+  tab name="Docker" cwd="/home/mf/code42/ledgerdary/ledgerdary-ruby" {
     pane {
-      command "rails"
-      args "s"
+      command "docker"
+      args "compose" "up"
+    }
+  }
+  tab name="Run Dev" cwd="/home/mf/code42/ledgerdary/ledgerdary-frontend" {
+    pane {
+      command "pnpm"
+      args "dev"
     }
   }
 }
