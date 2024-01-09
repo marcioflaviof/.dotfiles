@@ -5,7 +5,9 @@ end
 
 harpoon:setup({
   settings = {
+    save_on_ui_close = true,
     mark_branch = true,
+    save_on_toggle = true
   },
 })
 

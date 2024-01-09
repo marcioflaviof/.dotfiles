@@ -60,8 +60,6 @@ keymap("n", "<leader>gj", "<cmd>diffget //3<CR>", opts) -- vim fugitive
 -- save with ctrl + s
 keymap("n", "<C-s>", ":w<CR>", { noremap = true })
 
--- Open file tree
-keymap("n", "<leader>e", ":NvimTreeToggle<CR>", opts)
 
 -- lsp-ts-utils
 keymap("n", "<leader>lu", "<cmd>TSToolsRemoveUnused<CR>", opts)

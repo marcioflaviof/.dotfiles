@@ -31,6 +31,8 @@ configs.setup({
   indent = { enable = true, disable = { "python", "css", "yaml", "ruby", "eruby" } },
   autotag = {
     enable = true,
+    enable_rename = true,
+    enable_close = true,
     enable_close_on_slash = false,
   },
   incremental_selection = {

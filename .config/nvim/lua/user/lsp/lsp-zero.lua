@@ -50,7 +50,6 @@ lsp_zero.format_on_save({
 -- MASON
 
 local lua_opts = lsp_zero.nvim_lua_ls()
-require('lspconfig').lua_ls.setup(lua_opts)
 
 require('mason').setup({})
 require('mason-lspconfig').setup({
@@ -66,14 +65,14 @@ require('mason-lspconfig').setup({
     -- "tailwindcss",
     -- "prismals",
     -- "svelte",
-    "tsserver",
+    -- "tsserver",
     "emmet_language_server"
   },
   handlers = {
     lsp_zero.default_setup,
     tsserver = lsp_zero.noop,
-    lua_ls = require('lspconfig').lua_ls.setup(lua_opts)
-  },
+    lua_ls = require('lspconfig').lua_ls.setup(lua_opts),
+  }
 })
 
 -- CMP
@@ -123,18 +122,18 @@ null_ls.setup({
     formatters.prettierd,
     -- formatters.erb_format,
 
-    -- diagnostics.eslint.with({
+    -- diagnostics.eslint_d.with({
     --   condition = function(utils)
     --     return utils.root_has_file({ ".eslintrc.js" })
     --   end,
     -- }),
 
-    diagnostics.rubocop.with({
-      condition = function(utils)
-        return utils.root_has_file({ ".rubocop.yml" })
-      end,
-      command = "bundle",
-      args = vim.list_extend({ "exec", "rubocop" }, null_ls.builtins.diagnostics.rubocop._opts.args),
-    }),
+    -- diagnostics.rubocop.with({
+    --   condition = function(utils)
+    --     return utils.root_has_file({ ".rubocop.yml" })
+    --   end,
+    --   command = "bundle",
+    --   args = vim.list_extend({ "exec", "rubocop" }, null_ls.builtins.diagnostics.rubocop._opts.args),
+    -- }),
   },
 })

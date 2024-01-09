@@ -25,9 +25,9 @@ return lazy.setup({
   -- User interface
   'stevearc/oil.nvim',
   "RRethy/vim-illuminate",
-  "nvim-tree/nvim-tree.lua",
   "freddiehaddad/feline.nvim",
   "moll/vim-bbye", -- better buffer close
+  "nvim-tree/nvim-web-devicons",
 
   -- Colorschemes
   { "folke/tokyonight.nvim",     lazy = false,   priority = 1000, },
@@ -84,7 +84,6 @@ return lazy.setup({
     version = "*",
     dependencies = {
       "SmiteshP/nvim-navic",
-      "nvim-tree/nvim-web-devicons", -- optional dependency
     },
   },
 
@@ -189,6 +188,7 @@ return lazy.setup({
         return vim.fn["codeium#Accept"]()
       end, { expr = true })
     end,
+    event = "BufEnter"
   },
 
   -- Tests
@@ -196,7 +196,6 @@ return lazy.setup({
     "nvim-neotest/neotest",
     dependencies = {
       "nvim-lua/plenary.nvim",
-      "nvim-treesitter/nvim-treesitter",
       "antoinemadec/FixCursorHold.nvim",
       'marilari88/neotest-vitest',
       'haydenmeade/neotest-jest',

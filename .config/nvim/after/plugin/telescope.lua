@@ -34,6 +34,7 @@ telescope.setup({
       ".git/.*",
       ".next/.*",
       "%.lock",
+      'package-lock.json',
       "node%_modules/.*",
     },
     mappings = {

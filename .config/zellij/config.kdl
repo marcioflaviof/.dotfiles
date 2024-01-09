@@ -243,6 +243,7 @@ themes {
 // Default: default
 //
 theme "tokyo-night-dark"
+session_serialization false
 
 // The name of the default layout to load on startup
 // Default: "default"
