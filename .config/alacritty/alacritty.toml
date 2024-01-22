@@ -1,0 +1,34 @@
+import = ["/home/mf/.config/alacritty/tokyonight.toml"]
+
+[env]
+TERM = "xterm-256color"
+
+[font]
+size = 17
+
+[font.bold]
+family = "JetBrainsMono Nerd Font"
+style = "Bold"
+
+[font.bold_italic]
+family = "JetBrainsMono Nerd Font"
+style = "BoldItalic"
+
+[font.italic]
+family = "JetBrainsMono Nerd Font"
+style = "Mediumitalic"
+
+[font.normal]
+family = "JetBrainsMono Nerd Font"
+style = "Medium"
+
+[[keyboard.bindings]]
+action = "SpawnNewInstance"
+key = "Return"
+mods = "Control|Shift"
+
+
+[window]
+opacity = 0.9
+decorations = 'None'
+padding = { x=10, y=10 }

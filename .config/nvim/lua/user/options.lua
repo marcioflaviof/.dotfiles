@@ -37,12 +37,12 @@ local options = {
   undofile = true,                         -- enable persistent undo
   laststatus = 3,
   showcmd = false,
-  ruler = false,
-  relativenumber = true,         -- set relative numbered lines
-  numberwidth = 2,               -- set number column width to 2 {default 4}
-  signcolumn = "yes",            -- always show the sign column, otherwise it would shift the text each time
-  wrap = true,                   -- display lines as one long line
-  guifont = "Maple Mono NF:h12", -- the font used in graphical neovim applications
+  relativenumber = true,                   -- set relative numbered lines
+  numberwidth = 2,                         -- set number column width to 2 {default 4}
+  colorcolumn = "80",
+  wrap = true,                             -- display lines as one long line
+  -- guifont = "Maple Mono NF:h17", -- the font used in graphical neovim applications
+  guifont = "JetBrainsMono Nerd Font:h17", -- the font used in graphical neovim applications
 }
 
 for k, v in pairs(options) do

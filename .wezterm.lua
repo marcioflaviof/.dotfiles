@@ -11,7 +11,7 @@ config.font = wezterm.font_with_fallback({ "JetBrainsMono Nerd Font", "Maple Mon
 config.window_background_opacity = 1.0
 config.window_decorations = "NONE"
 config.enable_tab_bar = false
-config.font_size = 16.0
+config.font_size = 11.0
 config.max_fps = 60
 config.enable_wayland = true
 

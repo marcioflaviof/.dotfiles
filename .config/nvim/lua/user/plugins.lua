@@ -28,9 +28,18 @@ return lazy.setup({
   "freddiehaddad/feline.nvim",
   "moll/vim-bbye", -- better buffer close
   "nvim-tree/nvim-web-devicons",
+  {
+    "folke/noice.nvim",
+    event = "VeryLazy",
+    dependencies = {
+      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
+      "MunifTanjim/nui.nvim",
+    }
+  },
+
 
   -- Colorschemes
-  { "folke/tokyonight.nvim",     lazy = false,   priority = 1000, },
+  { "folke/tokyonight.nvim",     lazy = false,   priority = 1000 },
 
   -- Colors
   "NvChad/nvim-colorizer.lua",
@@ -48,23 +57,24 @@ return lazy.setup({
       "hrsh7th/cmp-nvim-lsp",
       "saadparwaiz1/cmp_luasnip",
       "hrsh7th/cmp-nvim-lua",
+      "hrsh7th/cmp-cmdline",
     },
   },
 
   -- LSP
   { "VonHeikemen/lsp-zero.nvim", branch = "v3.x" },
-  {
-    "ray-x/lsp_signature.nvim",
-    event = "VeryLazy",
-    opts = {},
-    config = function(_, opts)
-      require 'lsp_signature'.setup({
-        floating_window = false,
-        hint_scheme = "Comment",
-        hint_prefix = " ",
-      })
-    end
-  },
+  -- {
+  --   "ray-x/lsp_signature.nvim",
+  --   event = "VeryLazy",
+  --   opts = {},
+  --   config = function(_, opts)
+  --     require 'lsp_signature'.setup({
+  --       floating_window = false,
+  --       hint_scheme = "Comment",
+  --       hint_prefix = " ",
+  --     })
+  --   end
+  -- },
   -- LSP Support
   {
     'neovim/nvim-lspconfig',
@@ -105,7 +115,10 @@ return lazy.setup({
   { "nvim-treesitter/playground",               lazy = true },
   "JoosepAlviste/nvim-ts-context-commentstring",
   "nvim-treesitter/nvim-treesitter-context",
-  { "nvim-treesitter/nvim-treesitter-textobjects", dependencies = "nvim-treesitter/nvim-treesitter" },
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    dependencies = "nvim-treesitter/nvim-treesitter"
+  },
   "kchmck/vim-coffee-script",
 
   -- Git
@@ -120,7 +133,7 @@ return lazy.setup({
   -- Utils
   "windwp/nvim-ts-autotag",
   "windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and treesitter
-  { "mbbill/undotree",                             cmd = "UndotreeToggle" },
+  { "mbbill/undotree",      cmd = "UndotreeToggle" },
   "numToStr/Comment.nvim",
   "lukas-reineke/indent-blankline.nvim",
   { "andymass/vim-matchup", lazy = false, }, -- improve the % key
@@ -131,7 +144,7 @@ return lazy.setup({
     end,
   },
   "junegunn/vim-slash",
-  { "ThePrimeagen/harpoon", branch = 'harpoon2' },
+  { "ThePrimeagen/harpoon",    branch = 'harpoon2' },
   {
     "folke/flash.nvim",
     event = "VeryLazy",
@@ -163,22 +176,6 @@ return lazy.setup({
   },
   { "akinsho/toggleterm.nvim", version = "*",                              config = true },
   { "kevinhwang91/nvim-ufo",   dependencies = "kevinhwang91/promise-async" },
-  {
-    "gelguy/wilder.nvim",
-    config = function()
-      local wilder = require('wilder')
-
-      wilder.setup({
-        modes = { ':', '/', '?' }
-      })
-
-      wilder.set_option('renderer', wilder.popupmenu_renderer({
-        highlighter = wilder.basic_highlighter(),
-        left = { ' ', wilder.popupmenu_devicons() },
-        right = { ' ', wilder.popupmenu_scrollbar() },
-      }))
-    end
-  },
 
   -- AI
   {

@@ -15,12 +15,12 @@ tokyonight.setup({
       fg = colors.orange,
       bold = true,
     }
-    hl.LineNr = {
-      fg = colors.blue0,
-    }
-    hl["@constructor.tsx"] = {
-      fg = colors.red,
-    }
+    --   hl.LineNr = {
+    --     fg = colors.blue0,
+    --   }
+    --   hl["@constructor.tsx"] = {
+    --     fg = colors.red,
+    --   }
   end,
 })
 
