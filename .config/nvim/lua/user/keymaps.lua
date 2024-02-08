@@ -62,7 +62,7 @@ keymap("n", "<C-s>", ":w<CR>", { noremap = true })
 
 
 -- lsp-ts-utils
-keymap("n", "<leader>lu", "<cmd>TSToolsRemoveUnused<CR>", opts)
+keymap("n", "<leader>lu", "<cmd>TSToolsRemoveUnusedImports<CR>", opts)
 keymap("n", "<leader>li", "<cmd>TSToolsAddMissingImports<CR>", opts)
 
 

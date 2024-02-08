@@ -39,7 +39,9 @@ return lazy.setup({
 
 
   -- Colorschemes
-  { "folke/tokyonight.nvim",     lazy = false,   priority = 1000 },
+  { "folke/tokyonight.nvim", lazy = false,        priority = 1000 },
+  { "EdenEast/nightfox.nvim" },
+  { "catppuccin/nvim",       name = "catppuccin", priority = 1000 },
 
   -- Colors
   "NvChad/nvim-colorizer.lua",
@@ -62,20 +64,20 @@ return lazy.setup({
   },
 
   -- LSP
-  { "VonHeikemen/lsp-zero.nvim", branch = "v3.x" },
-  -- {
-  --   "ray-x/lsp_signature.nvim",
-  --   event = "VeryLazy",
-  --   opts = {},
-  --   config = function(_, opts)
-  --     require 'lsp_signature'.setup({
-  --       floating_window = false,
-  --       hint_scheme = "Comment",
-  --       hint_prefix = " ",
-  --     })
-  --   end
-  -- },
-  -- LSP Support
+  { "VonHeikemen/lsp-zero.nvim",                branch = "v3.x" },
+  {
+    "ray-x/lsp_signature.nvim",
+    event = "VeryLazy",
+    opts = {},
+    config = function(_, opts)
+      require 'lsp_signature'.setup({
+        floating_window = false,
+        hint_scheme = "Comment",
+        hint_prefix = " ",
+      })
+    end
+  },
+
   {
     'neovim/nvim-lspconfig',
     dependencies = {
@@ -112,7 +114,7 @@ return lazy.setup({
       pcall(require("nvim-treesitter.install").update({ with_sync = true }))
     end,
   },
-  { "nvim-treesitter/playground",               lazy = true },
+  { "nvim-treesitter/playground", lazy = true },
   "JoosepAlviste/nvim-ts-context-commentstring",
   "nvim-treesitter/nvim-treesitter-context",
   {
@@ -133,7 +135,7 @@ return lazy.setup({
   -- Utils
   "windwp/nvim-ts-autotag",
   "windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and treesitter
-  { "mbbill/undotree",      cmd = "UndotreeToggle" },
+  { "mbbill/undotree",            cmd = "UndotreeToggle" },
   "numToStr/Comment.nvim",
   "lukas-reineke/indent-blankline.nvim",
   { "andymass/vim-matchup", lazy = false, }, -- improve the % key
@@ -144,7 +146,7 @@ return lazy.setup({
     end,
   },
   "junegunn/vim-slash",
-  { "ThePrimeagen/harpoon",    branch = 'harpoon2' },
+  { "ThePrimeagen/harpoon", branch = 'harpoon2' },
   {
     "folke/flash.nvim",
     event = "VeryLazy",
@@ -176,6 +178,12 @@ return lazy.setup({
   },
   { "akinsho/toggleterm.nvim", version = "*",                              config = true },
   { "kevinhwang91/nvim-ufo",   dependencies = "kevinhwang91/promise-async" },
+  {
+    "iamcco/markdown-preview.nvim",
+    cmd = { "MarkdownPreviewToggle", "MarkdownPreview", "MarkdownPreviewStop" },
+    ft = { "markdown" },
+    build = function() vim.fn["mkdp#util#install"]() end,
+  },
 
   -- AI
   {

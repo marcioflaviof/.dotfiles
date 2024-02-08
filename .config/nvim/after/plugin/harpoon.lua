@@ -6,7 +6,7 @@ end
 harpoon:setup({
   settings = {
     save_on_ui_close = true,
-    save_on_toggle = true
+    save_on_toggle = true,
   },
 })
 
