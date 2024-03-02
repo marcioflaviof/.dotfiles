@@ -81,7 +81,7 @@ telescope.setup({
         width = 0.87,
         height = 0.4,
       },
-      file_ignore_patterns = { ".test", ".spec" },
+      file_ignore_patterns = { ".test", ".spec", "node%_modules/.*", },
       initial_mode = "normal",
       show_line = false
     },

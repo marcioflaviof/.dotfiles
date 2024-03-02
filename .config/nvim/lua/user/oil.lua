@@ -1,5 +1,6 @@
 require("oil").setup({
   lsp_rename_autosave = true,
+  default_file_explorer = true,
   keymaps = {
     ["g?"] = "actions.show_help",
     ["<CR>"] = "actions.select",
