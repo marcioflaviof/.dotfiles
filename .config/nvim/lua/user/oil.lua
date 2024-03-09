@@ -1,5 +1,4 @@
 require("oil").setup({
-  lsp_rename_autosave = true,
   default_file_explorer = true,
   keymaps = {
     ["g?"] = "actions.show_help",
@@ -18,6 +17,11 @@ require("oil").setup({
     ["gx"] = "actions.open_external",
     ["g."] = "actions.toggle_hidden",
     ["g\\"] = "actions.toggle_trash",
+
+    lsp_file_methods = {
+      timeout_ms = 1000,
+      autosave_changes = true,
+    }
   },
 
   use_default_keymaps = false

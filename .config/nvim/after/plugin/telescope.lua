@@ -31,6 +31,7 @@ telescope.setup({
     },
     file_ignore_patterns = {
       "bundle/.*",
+      'coverage/.*',
       ".git/.*",
       ".next/.*",
       "%.lock",

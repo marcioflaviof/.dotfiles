@@ -28,12 +28,6 @@ keymap("n", "<C-l>", "<C-w>l", opts)
 keymap("n", "<C-d>", "<C-d>zz", opts)
 keymap("n", "<C-u>", "<C-u>zz", opts)
 
--- Replace the word below the pointer
-keymap("n", "<leader>r", ":%s/\\<<C-r><C-w>\\>/<C-r><C-w>/gI<Left><Left><Left>", opts)
-
--- Open buff in ruby
--- keymap("n", "gl", "<cmd>lua vim.diagnostic.open_float()<CR>", opts)
-
 -- Naviagate buffers
 keymap("n", "<leader>c", ":Bdelete<CR>", opts)
 

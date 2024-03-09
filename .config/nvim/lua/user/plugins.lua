@@ -24,19 +24,11 @@ return lazy.setup({
 
   -- User interface
   'stevearc/oil.nvim',
+
   "RRethy/vim-illuminate",
   "freddiehaddad/feline.nvim",
   "moll/vim-bbye", -- better buffer close
   "nvim-tree/nvim-web-devicons",
-  {
-    "folke/noice.nvim",
-    event = "VeryLazy",
-    dependencies = {
-      -- if you lazy-load any plugin below, make sure to add proper `module="..."` entries
-      "MunifTanjim/nui.nvim",
-    }
-  },
-
 
   -- Colorschemes
   { "folke/tokyonight.nvim", lazy = false,        priority = 1000 },
@@ -102,6 +94,7 @@ return lazy.setup({
   -- Telescope
   {
     "nvim-telescope/telescope.nvim",
+    event = "VeryLazy",
     dependencies = { "nvim-telescope/telescope-live-grep-args.nvim" },
   },
   "nvim-telescope/telescope-ui-select.nvim",
@@ -129,24 +122,24 @@ return lazy.setup({
     event = { "BufReadPre", "BufNewFile" },
   },
   "f-person/git-blame.nvim",
-  "tpope/vim-fugitive",
-  "tpope/vim-rhubarb",
+  { "tpope/vim-fugitive",         dependencies = 'tpope/vim-rhubarb' },
 
   -- Utils
   "windwp/nvim-ts-autotag",
   "windwp/nvim-autopairs", -- Autopairs, integrates with both cmp and treesitter
-  { "mbbill/undotree",            cmd = "UndotreeToggle" },
+  { "mbbill/undotree",      cmd = "UndotreeToggle" },
   "numToStr/Comment.nvim",
   "lukas-reineke/indent-blankline.nvim",
   { "andymass/vim-matchup", lazy = false, }, -- improve the % key
   {
     "kylechui/nvim-surround",
+    event = "VeryLazy",
     config = function()
       require("nvim-surround").setup()
     end,
   },
   "junegunn/vim-slash",
-  { "ThePrimeagen/harpoon", branch = 'harpoon2' },
+  { "ThePrimeagen/harpoon",    branch = 'harpoon2' },
   {
     "folke/flash.nvim",
     event = "VeryLazy",
@@ -195,6 +188,7 @@ return lazy.setup({
     end,
     event = "BufEnter"
   },
+  { "David-Kunz/gen.nvim" },
 
   -- Tests
   {
@@ -208,4 +202,39 @@ return lazy.setup({
       "olimorris/neotest-rspec",
     },
   },
+  {
+    "tpope/vim-projectionist",
+    config = function()
+      vim.g.projectionist_heuristics = {
+        ["*"] = {
+          ["src/*.tsx"] = {
+            alternate = "src/{dirname}/__tests__/{basename}.test.tsx",
+          },
+          ['src/**/__tests__/*.test.tsx'] = {
+            alternate = "src/{dirname}/{basename}.tsx",
+          },
+
+
+          ["src/*.ts"] = {
+            alternate = "src/{dirname}/__tests__/{basename}.test.ts",
+          },
+          ['src/**/__tests__/*.test.ts'] = {
+            alternate = "src/{dirname}/{basename}.ts",
+
+          }
+        }
+      }
+
+      vim.keymap.set('n', '<leader>al', '<CMD>A<CR>')
+    end,
+  },
+  {
+    "tpope/vim-rails",
+    ft = { "ruby", "eruby", "slim", "yaml", "yml" },
+    config = function()
+      vim.keymap.set('n', '<leader>rl', '<CMD>R<CR>')
+    end
+  },
+
+
 })
