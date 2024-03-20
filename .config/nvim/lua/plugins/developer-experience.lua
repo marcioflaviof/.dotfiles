@@ -13,7 +13,7 @@ vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 
 
 return {
-  { "andymass/vim-matchup", lazy = false, },
+  { "andymass/vim-matchup",   lazy = false, },
   {
     'lukas-reineke/indent-blankline.nvim',
     config = function()
@@ -79,7 +79,7 @@ return {
 
       require("ufo").setup({
         fold_virt_text_handler = handler,
-        close_fold_kinds = { "imports", "comment" },
+        close_fold_kinds_for_ft = { "imports", "comment" },
         provider_selector = function()
           return { "treesitter", "indent" }
         end,
@@ -89,7 +89,7 @@ return {
       vim.keymap.set("n", "zM", require("ufo").closeAllFolds)
     end
   },
-  "windwp/nvim-ts-autotag",
+  { "windwp/nvim-ts-autotag", config = function() require("nvim-ts-autotag").setup() end },
   {
     "windwp/nvim-autopairs",
     config = function()
@@ -193,9 +193,6 @@ return {
   {
     "mbbill/undotree",
     cmd = "UndotreeToggle",
-    config = function()
-      vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle)
-    end
   },
   "moll/vim-bbye", -- better buffer close
 }

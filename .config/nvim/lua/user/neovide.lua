@@ -1,6 +1,6 @@
 if vim.g.neovide == true then
   vim.g.neovide_refresh_rate = 60
-  vim.g.neovide_transparency = 1.0
+  vim.g.neovide_transparency = 0.9
   -- vim.g.neovide_no_idle = false
   -- vim.g.neovide_fullscreen = false
   -- vim.g.neovide_cursor_animation_length = 0.20

@@ -35,13 +35,6 @@ keymap("n", "<leader>c", ":Bdelete<CR>", opts)
 keymap("n", "<leader>cfp", "<cmd>let @+ = expand('%:p')<CR>", opts)
 keymap("n", "<leader>cp", '<cmd>let @+ = fnamemodify(expand("%"), ":~:.")<CR>', opts)
 
--- tests
-keymap("n", "<leader>tc", '<cmd>lua require("neotest").run.run()<CR>', { noremap = true })
-keymap("n", "<leader>tl", '<cmd>lua require("neotest").run.run_last()<CR>', { noremap = true })
-keymap("n", "<leader>tf", '<cmd>lua require("neotest").run.run(vim.fn.expand("%"))<CR>', { noremap = true })
-keymap("n", "<leader>ts", '<cmd>lua require("neotest").summary.toggle()<CR>', { noremap = true })
-keymap("n", "<leader>to", '<cmd>lua require("neotest").output_panel.toggle()<CR>', { noremap = true })
-keymap("n", "<leader>toc", '<cmd>lua require("neotest").output_panel.clear()<CR>', { noremap = true })
 
 
 -- Git
@@ -59,6 +52,8 @@ keymap("n", "<C-s>", ":w<CR>", { noremap = true })
 keymap("n", "<leader>lu", "<cmd>TSToolsRemoveUnusedImports<CR>", opts)
 keymap("n", "<leader>li", "<cmd>TSToolsAddMissingImports<CR>", opts)
 
+-- Undotree
+keymap("n", "<leader>u", "<cmd>UndotreeToggle<cr>", opts)
 
 -- quickfix list
 keymap("n", "<leader>qn", ":cn<CR>", opts)

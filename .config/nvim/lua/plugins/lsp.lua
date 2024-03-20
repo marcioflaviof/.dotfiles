@@ -33,6 +33,7 @@ return {
     branch = "v3.x",
     config = function()
       local lsp_zero = require('lsp-zero')
+      lsp_zero.extend_lspconfig()
 
       local luasnip = require("luasnip")
       luasnip.filetype_extend("typescriptreact", { "javascript", "typescript" })
@@ -193,7 +194,7 @@ return {
     config = function()
       require("typescript-tools").setup({
         settings = {
-          separate_diagnostic_server = true,
+          separate_diagnostic_server = false,
           publish_diagnostic_on = "insert_leave",
           tsserver_max_memory = "auto",
           tsserver_plugins = {},
@@ -212,6 +213,7 @@ return {
         end,
       })
     end,
+    event = "VeryLazy",
     ft = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
   },
 
@@ -243,4 +245,11 @@ return {
       })
     end
   },
+
+  {
+    'dmmulroy/ts-error-translator.nvim',
+    config = function()
+      require("ts-error-translator").setup()
+    end
+  }
 }

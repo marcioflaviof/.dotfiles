@@ -15,6 +15,7 @@ alias g="git"
 alias la="exa -la --icons"
 alias gc="git checkout"
 alias dc="docker compose"
+alias r="rails"
 
 [ -f /usr/share/autojump/autojump.fish ]
 
