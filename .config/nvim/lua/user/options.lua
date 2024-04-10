@@ -42,7 +42,7 @@ local options = {
   -- colorcolumn = "80",
   wrap = true,                    -- display lines as one long line
   -- guifont = "Maple Mono NF:h17", -- the font used in graphical neovim applications
-  guifont = "JetBrains Mono:h17", -- the font used in graphical neovim applications
+  guifont = "JetBrains Mono:h15", -- the font used in graphical neovim applications
 }
 
 for k, v in pairs(options) do

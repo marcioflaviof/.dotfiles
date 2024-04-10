@@ -25,10 +25,10 @@ return {
 
         transparent = false,
         style = "night",
-        -- styles = {
-        --   sidebars = "transparent",
-        --   floats = "transparent",
-        -- },
+        styles = {
+          -- sidebars = "transparent",
+          -- floats = "transparent",
+        },
         on_highlights = function(hl, colors)
           hl.CursorLineNr = {
             fg = colors.orange,
@@ -42,8 +42,6 @@ return {
           }
         end,
       })
-
-      vim.cmd("colorscheme tokyonight")
     end
   },
   {
@@ -51,7 +49,7 @@ return {
     config = function()
       require("nightfox").setup({
         options = {
-          transparent = false,
+          -- transparent = true,
 
           styles = {
             comments = "italic",
@@ -68,7 +66,7 @@ return {
     priority = 1000,
     config = function()
       require("catppuccin").setup({
-        transparent_background = false,
+        -- transparent_background = true,
         styles = {
           comments = { "italic" },
           keywords = { "italic" },

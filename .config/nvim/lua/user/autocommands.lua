@@ -12,6 +12,15 @@ autocmd("BufRead", {
   end,
 })
 
+autocmd("BufRead", {
+  pattern = { "*" },
+  callback = function()
+    vim.schedule(function()
+      vim.api.nvim_command("set nowinfixbuf")
+    end)
+  end,
+})
+
 autocmd("TextYankPost", {
   group = yank_group,
   pattern = "*",
@@ -28,7 +37,6 @@ local ag = vim.api.nvim_create_augroup
 -- GROUPS:
 local disable_node_modules_eslint_group = ag("DisableNodeModulesEslint", { clear = true })
 
--- AUTO-COMMANDS:
 autocmd({ "BufNewFile", "BufRead" }, {
   pattern = { "**/node_modules/**", "node_modules", "/node_modules/*" },
   callback = function()
