@@ -24,9 +24,14 @@ keymap("n", "<C-j>", "<C-w>j", opts)
 keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
+-- split resize
+keymap("n", "<M-,>", "<c-w>5<", opts)
+keymap("n", "<M-.>", "<c-w>5>", opts)
+
 -- Better navigation with ctrl d and ctrl u
 keymap("n", "<C-d>", "<C-d>zz", opts)
 keymap("n", "<C-u>", "<C-u>zz", opts)
+
 
 -- Naviagate buffers
 keymap("n", "<leader>c", ":Bdelete<CR>", opts)

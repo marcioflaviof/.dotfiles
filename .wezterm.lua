@@ -8,10 +8,10 @@ end
 
 config.color_scheme = "tokyonight_night"
 config.font = wezterm.font_with_fallback({ "JetBrains Mono", "Maple Mono NF", "Fira Code", })
-config.window_background_opacity = 1.0
+config.window_background_opacity = 0.95
 config.window_decorations = "NONE"
 config.enable_tab_bar = false
-config.font_size = 11.0
+config.font_size = 16.0
 config.max_fps = 60
 config.enable_wayland = true
 

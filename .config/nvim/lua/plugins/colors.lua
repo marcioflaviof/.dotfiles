@@ -40,6 +40,9 @@ return {
           hl["@constructor.tsx"] = {
             fg = colors.red,
           }
+          hl["@tag.builtin.tsx"] = {
+            fg = colors.red,
+          }
         end,
       })
     end

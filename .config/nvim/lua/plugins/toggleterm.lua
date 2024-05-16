@@ -14,8 +14,9 @@ return {
   "akinsho/toggleterm.nvim",
   version = "*",
   opts = {
+    size = 25,
     open_mapping = [[<c-\>]],
-    direction = "float",
+    direction = "horizontal",
     auto_scroll = true,
     hide_numbers = true,
   }

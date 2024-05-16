@@ -7,6 +7,16 @@ source ~/.asdf/asdf.fish
 
 starship init fish | source
 
+# zoxide
+
+if ! builtin functions --query __zoxide_cd_internal
+    if builtin functions --query cd
+        builtin functions --copy cd __zoxide_cd_internal
+    else
+        alias __zoxide_cd_internal='builtin cd'
+    end
+end
+
 alias gs='git status'
 alias ls="exa --icons"
 alias bat="bat --style=auto"
@@ -16,10 +26,7 @@ alias la="exa -la --icons"
 alias gc="git checkout"
 alias dc="docker compose"
 alias r="rails"
-
-[ -f /usr/share/autojump/autojump.fish ]
-
-source /usr/share/autojump/autojump.fish
+alias cd="z"
 
 export PATH=/home/mf/.local/bin:/home/mf/.asdf/shims:/home/mf/.asdf/bin:/home/mf/.local/bin:/usr/local/bin:/usr/bin:/var/lib/snapd/snap/bin:/usr/local/sbin:/usr/bin/core_perl:/snap/bin:/usr/sbin:/sbin:/home/mf/.local/share/bob/nvim-bin
 
@@ -34,3 +41,5 @@ if not string match -q -- $PNPM_HOME $PATH
   set -gx PATH "$PNPM_HOME" $PATH
 end
 # pnpm end
+
+zoxide init fish | source

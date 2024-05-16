@@ -91,7 +91,7 @@ return {
           "lua_ls",
           -- "yamlls",
           -- "solargraph",
-          "ruby_ls",
+          "ruby_lsp",
           "eslint",
           -- "tailwindcss",
           -- "prismals",

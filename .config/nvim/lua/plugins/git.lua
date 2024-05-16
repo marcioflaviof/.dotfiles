@@ -39,5 +39,5 @@ return {
       { "<leader>gj", "<cmd>diffget //3<CR>", opts },
     }
   },
-  'tpope/vim-rhubarb'
+  'tpope/vim-rhubarb',
 }
