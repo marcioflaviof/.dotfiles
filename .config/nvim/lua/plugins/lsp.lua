@@ -107,6 +107,9 @@ return {
       })
 
       -- CMP
+      vim.opt.shortmess:append "c"
+
+      local lspkind = require "lspkind"
 
       local cmp = require('cmp')
       local cmp_action = require('lsp-zero').cmp_action()
@@ -115,6 +118,15 @@ return {
         window = {
           completion = cmp.config.window.bordered(),
           documentation = cmp.config.window.bordered(),
+        },
+        formatting = {
+          format = lspkind.cmp_format({
+            mode = 'symbol_text',
+            -- maxwidth = 150,
+            ellipsis_char = '...',
+            show_labelDetails = true
+          })
+
         },
         snippet = {
           expand = function(args)
@@ -222,8 +234,9 @@ return {
     dependencies = {
       -- snippets
       "L3MON4D3/LuaSnip",
-      "rafamadriz/friendly-snippets",
+      -- "rafamadriz/friendly-snippets",
 
+      "onsails/lspkind.nvim",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
       "hrsh7th/cmp-nvim-lsp",

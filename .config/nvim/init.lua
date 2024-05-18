@@ -4,4 +4,5 @@ require("user.neovide")
 require("user.load-plugins")
 require("user.autocommands")
 
+-- vim.cmd("colorscheme tokyonight")
 vim.cmd("colorscheme catppuccin")

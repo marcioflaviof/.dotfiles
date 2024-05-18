@@ -17,6 +17,11 @@ if ! builtin functions --query __zoxide_cd_internal
     end
 end
 
+abbr --erase j &>/dev/null
+alias j=__zoxide_z
+abbr --erase ji &>/dev/null
+alias ji=__zoxide_zi
+
 alias gs='git status'
 alias ls="exa --icons"
 alias bat="bat --style=auto"
@@ -26,7 +31,7 @@ alias la="exa -la --icons"
 alias gc="git checkout"
 alias dc="docker compose"
 alias r="rails"
-alias cd="z"
+
 
 export PATH=/home/mf/.local/bin:/home/mf/.asdf/shims:/home/mf/.asdf/bin:/home/mf/.local/bin:/usr/local/bin:/usr/bin:/var/lib/snapd/snap/bin:/usr/local/sbin:/usr/bin/core_perl:/snap/bin:/usr/sbin:/sbin:/home/mf/.local/share/bob/nvim-bin
 

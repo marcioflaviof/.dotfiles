@@ -12,14 +12,6 @@ autocmd("BufRead", {
   end,
 })
 
-autocmd("BufRead", {
-  pattern = { "*" },
-  callback = function()
-    vim.schedule(function()
-      vim.api.nvim_command("set nowinfixbuf")
-    end)
-  end,
-})
 
 autocmd("TextYankPost", {
   group = yank_group,
