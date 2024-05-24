@@ -1,6 +1,7 @@
 local autocmd = vim.api.nvim_create_autocmd
-local augroup = vim.api.nvim_create_augroup
-local yank_group = augroup("HighlightYank", {})
+local ag = vim.api.nvim_create_augroup
+
+local yank_group = ag("HighlightYank", {})
 
 -- jbuilder as ruby
 autocmd("BufRead", {
@@ -24,7 +25,6 @@ autocmd("TextYankPost", {
   end,
 })
 
-local ag = vim.api.nvim_create_augroup
 
 -- GROUPS:
 local disable_node_modules_eslint_group = ag("DisableNodeModulesEslint", { clear = true })

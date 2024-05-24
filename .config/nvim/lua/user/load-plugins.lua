@@ -18,4 +18,4 @@ if not status_ok then
 end
 
 -- Install your plugins here
-return lazy.setup("plugins")
+return lazy.setup({ import = "plugins" }, { change_detection = { notify = false } })

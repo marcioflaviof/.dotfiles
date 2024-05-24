@@ -131,14 +131,6 @@ return {
     end,
   },
   {
-    "numToStr/Comment.nvim",
-    config = function()
-      require("Comment").setup({
-        pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
-      })
-    end
-  },
-  {
     "RRethy/vim-illuminate",
     config = function()
       require("illuminate").configure({
@@ -203,4 +195,12 @@ return {
     cmd = "UndotreeToggle",
   },
   "moll/vim-bbye", -- better buffer close
+  {
+    'MeanderingProgrammer/markdown.nvim',
+    name = 'render-markdown', -- Only needed if you have another plugin named markdown.nvim
+    dependencies = { 'nvim-treesitter/nvim-treesitter' },
+    config = function()
+      require('render-markdown').setup({})
+    end,
+  }
 }

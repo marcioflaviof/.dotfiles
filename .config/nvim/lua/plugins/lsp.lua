@@ -36,9 +36,17 @@ return {
       lsp_zero.extend_lspconfig()
 
       local luasnip = require("luasnip")
-      luasnip.filetype_extend("typescriptreact", { "javascript", "typescript" })
+      luasnip.config.set_config {
+        updateevents = "TextChanged,TextChangedI"
+      }
 
       require('luasnip.loaders.from_vscode').lazy_load()
+
+      luasnip.filetype_extend("typescriptreact", { "javascript", "typescript" })
+
+      for _, ft_path in ipairs(vim.api.nvim_get_runtime_file("lua/custom/snippets/*.lua", true)) do
+        loadfile(ft_path)()
+      end
 
       lsp_zero.on_attach(function(client, bufnr)
         lsp_zero.buffer_autoformat()
@@ -61,6 +69,8 @@ return {
 
         vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
         vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+        vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lih",
+          "<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>", opts)
 
         local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
@@ -130,7 +140,7 @@ return {
         },
         snippet = {
           expand = function(args)
-            require 'luasnip'.lsp_expand(args.body)
+            require('luasnip').lsp_expand(args.body)
           end
         },
         sources = {
@@ -234,7 +244,7 @@ return {
     dependencies = {
       -- snippets
       "L3MON4D3/LuaSnip",
-      -- "rafamadriz/friendly-snippets",
+      "rafamadriz/friendly-snippets",
 
       "onsails/lspkind.nvim",
       "hrsh7th/cmp-buffer",
