@@ -194,13 +194,5 @@ return {
     "mbbill/undotree",
     cmd = "UndotreeToggle",
   },
-  "moll/vim-bbye", -- better buffer close
-  {
-    'MeanderingProgrammer/markdown.nvim',
-    name = 'render-markdown', -- Only needed if you have another plugin named markdown.nvim
-    dependencies = { 'nvim-treesitter/nvim-treesitter' },
-    config = function()
-      require('render-markdown').setup({})
-    end,
-  }
+  "moll/vim-bbye" -- better buffer close
 }

@@ -20,21 +20,21 @@ local options = {
   scrolloff = 8,
   sidescrolloff = 8,
 
-  backup = false,                                 -- creates a backup file
-  cmdheight = 1,                                  -- more space in the neovim command line for displaying messages
+  backup = false,                                  -- creates a backup file
+  cmdheight = 1,                                   -- more space in the neovim command line for displaying messages
   completeopt = { "menu", "menuone", "noselect" }, -- mostly just for cmp
-  conceallevel = 0,                               -- so that `` is visible in markdown files
-  fileencoding = "utf-8",                         -- the encoding written to a file
+  conceallevel = 0,                                -- so that `` is visible in markdown files
+  fileencoding = "utf-8",                          -- the encoding written to a file
   -- spelllang = "en",
-  pumheight = 10,                                 -- pop up menu height
-  showmode = false,                               -- we don't need to see things like -- INSERT -- anymore
-  showtabline = 0,                                -- always show tabs
-  smartcase = true,                               -- smart case
-  splitbelow = true,                              -- force all horizontal splits to go below current window
-  splitright = true,                              -- force all vertical splits to go to the right of current window
-  termguicolors = true,                           -- set term gui colors (most terminals support this)
-  timeoutlen = 500,                               -- time to wait for a mapped sequence to complete (in milliseconds)
-  undofile = true,                                -- enable persistent undo
+  pumheight = 10,                                  -- pop up menu height
+  showmode = false,                                -- we don't need to see things like -- INSERT -- anymore
+  showtabline = 0,                                 -- always show tabs
+  smartcase = true,                                -- smart case
+  splitbelow = true,                               -- force all horizontal splits to go below current window
+  splitright = true,                               -- force all vertical splits to go to the right of current window
+  termguicolors = true,                            -- set term gui colors (most terminals support this)
+  timeoutlen = 500,                                -- time to wait for a mapped sequence to complete (in milliseconds)
+  undofile = true,                                 -- enable persistent undo
   laststatus = 3,
   showcmd = false,
   relativenumber = true,          -- set relative numbered lines
@@ -48,6 +48,7 @@ local options = {
 for k, v in pairs(options) do
   vim.opt[k] = v
 end
+
 
 vim.cmd("set whichwrap+=<,>,[,],h,l")
 vim.cmd([[set iskeyword+=-]])

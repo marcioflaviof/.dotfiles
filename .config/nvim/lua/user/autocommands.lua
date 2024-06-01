@@ -25,6 +25,13 @@ autocmd("TextYankPost", {
   end,
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "*",
+  callback = function()
+    vim.opt_local.formatoptions:remove({ 'r', 'o' })
+  end,
+})
+
 
 -- GROUPS:
 local disable_node_modules_eslint_group = ag("DisableNodeModulesEslint", { clear = true })

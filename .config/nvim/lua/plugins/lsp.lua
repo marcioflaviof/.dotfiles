@@ -71,6 +71,7 @@ return {
         vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
         vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lih",
           "<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>", opts)
+        vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lf", "<cmd>LspZeroFormat<CR>", opts)
 
         local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
@@ -176,6 +177,13 @@ return {
         })
       })
 
+      cmp.setup.filetype({ 'sql' }, {
+        sources = {
+          { name = 'vim-dadbod-completion' },
+          { name = 'buffer' }
+        }
+      })
+
       --- NULL LS
       local null_ls = require("null-ls")
 
@@ -185,6 +193,7 @@ return {
       null_ls.setup({
         sources = {
           formatters.prettierd,
+          formatters.sqlfmt,
           -- formatters.erb_format,
 
           -- diagnostics.eslint_d.with({
