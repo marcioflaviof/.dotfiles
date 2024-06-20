@@ -39,7 +39,7 @@ local disable_node_modules_eslint_group = ag("DisableNodeModulesEslint", { clear
 autocmd({ "BufNewFile", "BufRead" }, {
   pattern = { "**/node_modules/**", "node_modules", "/node_modules/*" },
   callback = function()
-    vim.diagnostic.disable(0)
+    vim.diagnostic.enable(false)
   end,
   group = disable_node_modules_eslint_group,
 })

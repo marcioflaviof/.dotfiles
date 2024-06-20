@@ -42,7 +42,8 @@ return {
 
       require('luasnip.loaders.from_vscode').lazy_load()
 
-      luasnip.filetype_extend("typescriptreact", { "javascript", "typescript" })
+      luasnip.filetype_extend("typescriptreact", { "javascript" })
+      luasnip.filetype_extend("typescript", { "javascript" })
 
       for _, ft_path in ipairs(vim.api.nvim_get_runtime_file("lua/custom/snippets/*.lua", true)) do
         loadfile(ft_path)()
@@ -179,6 +180,7 @@ return {
 
       cmp.setup.filetype({ 'sql' }, {
         sources = {
+          -- { name = 'cmp-dbee' },
           { name = 'vim-dadbod-completion' },
           { name = 'buffer' }
         }
@@ -193,7 +195,6 @@ return {
       null_ls.setup({
         sources = {
           formatters.prettierd,
-          formatters.sqlfmt,
           -- formatters.erb_format,
 
           -- diagnostics.eslint_d.with({
@@ -262,6 +263,7 @@ return {
       "saadparwaiz1/cmp_luasnip",
       "hrsh7th/cmp-nvim-lua",
       "hrsh7th/cmp-cmdline",
+      -- { "MattiasMTS/cmp-dbee", opts = {} },
     },
   },
 
@@ -269,7 +271,7 @@ return {
     "ray-x/lsp_signature.nvim",
     event = "VeryLazy",
     opts = {},
-    config = function(_, opts)
+    config = function()
       require 'lsp_signature'.setup({
         floating_window = false,
         hint_scheme = "Comment",

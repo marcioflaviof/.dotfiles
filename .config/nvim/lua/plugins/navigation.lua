@@ -21,17 +21,21 @@ return {
         ["*"] = {
           ["src/*.tsx"] = {
             alternate = "src/{dirname}/__tests__/{basename}.test.tsx",
+            type = "source"
           },
           ['src/**/__tests__/*.test.tsx'] = {
             alternate = "src/{dirname}/{basename}.tsx",
+            type = "test"
           },
 
 
           ["src/*.ts"] = {
             alternate = "src/{dirname}/__tests__/{basename}.test.ts",
+            type = "source"
           },
           ['src/**/__tests__/*.test.ts'] = {
             alternate = "src/{dirname}/{basename}.ts",
+            type = "test"
 
           }
         }

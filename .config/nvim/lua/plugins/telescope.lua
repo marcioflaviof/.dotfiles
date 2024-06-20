@@ -6,7 +6,6 @@ return {
       'nvim-lua/plenary.nvim',
       "nvim-telescope/telescope-live-grep-args.nvim",
     },
-    branch = "0.1.x",
     config = function()
       local builtin = require("telescope.builtin")
       local lga_actions = require("telescope-live-grep-args.actions")
@@ -79,14 +78,6 @@ return {
           find_files = {
             theme = "ivy",
             hidden = true,
-            find_command = {
-              "rg",
-              "--files",
-              "--hidden",
-              "--iglob",
-              "!**/.git/*",
-              "--no-ignore-vcs"
-            },
             previewer = true,
             layout_config = {
               horizontal = {
