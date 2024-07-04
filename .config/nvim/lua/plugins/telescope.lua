@@ -37,17 +37,17 @@ return {
             },
           },
         },
-        vimgrep_arguments = {
-          "rg",
-          "--color=never",
-          "--no-heading",
-          "--with-filename",
-          "--line-number",
-          "--column",
-          "--smart-case",
-          "--hidden",
-          "--glob=!.git/",
-        },
+        -- vimgrep_arguments = {
+        --   "rg",
+        --   "--color=never",
+        --   "--no-heading",
+        --   "--with-filename",
+        --   "--line-number",
+        --   "--column",
+        --   "--smart-case",
+        --   "--hidden",
+        --   "--glob=!.git/",
+        -- },
         pickers = {
           grep_string = {
             theme = "ivy",
@@ -78,7 +78,7 @@ return {
           find_files = {
             theme = "ivy",
             hidden = true,
-            previewer = true,
+            previewer = false,
             layout_config = {
               horizontal = {
                 prompt_position = "top",
@@ -175,4 +175,5 @@ return {
 
   "nvim-telescope/telescope-ui-select.nvim",
   { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' },
+
 }

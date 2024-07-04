@@ -30,36 +30,13 @@ return {
           -- floats = "transparent",
         },
         on_highlights = function(hl, colors)
-          hl.CursorLineNr = {
-            fg = colors.orange,
-            bold = true,
-          }
-          hl.LineNr = {
-            fg = colors.blue0,
-          }
-          hl["@constructor.tsx"] = {
-            fg = colors.red,
-          }
           hl["@tag.builtin.tsx"] = {
             fg = colors.red,
           }
-        end,
-      })
-    end
-  },
-  {
-    "EdenEast/nightfox.nvim",
-    config = function()
-      require("nightfox").setup({
-        options = {
-          -- transparent = true,
-
-          styles = {
-            comments = "italic",
-            keywords = "italic",
-            types = "bold",
+          hl["@tag.builtin.javascript"] = {
+            fg = colors.red,
           }
-        }
+        end,
       })
     end
   },

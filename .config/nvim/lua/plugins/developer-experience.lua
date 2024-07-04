@@ -193,5 +193,5 @@ return {
     "mbbill/undotree",
     cmd = "UndotreeToggle",
   },
-  "moll/vim-bbye" -- better buffer close
+  "moll/vim-bbye", -- better buffer close
 }

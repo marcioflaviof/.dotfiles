@@ -53,23 +53,11 @@ return {
         lsp_zero.buffer_autoformat()
         lsp_zero.default_keymaps({ buffer = bufnr, preserve_mappings = false })
 
-        if client.name == 'svelte' then
-          vim.api.nvim_create_autocmd("BufWritePost", {
-            pattern = { "*.js", "*.ts" },
-            callback = function(ctx)
-              client.notify("$/onDidChangeTsOrJsFile", { uri = ctx.file })
-            end,
-          })
-
-          vim.api.nvim_create_autocmd({ "BufWrite" }, {
-            pattern = { "+page.server.ts", "+page.ts", "+layout.server.ts", "+layout.ts" },
-            command = "LspRestart svelte",
-          })
-        end
         local opts = { noremap = true, silent = true }
 
         vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
         vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+        vim.api.nvim_buf_set_keymap(bufnr, "v", "<leader>lca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
         vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lih",
           "<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>", opts)
         vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lf", "<cmd>LspZeroFormat<CR>", opts)
@@ -109,7 +97,7 @@ return {
           -- "prismals",
           -- "svelte",
           -- "tsserver",
-          "emmet_language_server"
+          "emmet_ls"
         },
         handlers = {
           lsp_zero.default_setup,
@@ -212,6 +200,13 @@ return {
           -- }),
         },
       })
+
+      -- LSP
+
+      local lspconfig = require('lspconfig')
+      lspconfig.emmet_ls.setup({
+        filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug", "typescriptreact", "vue", "handlebars" },
+      })
     end,
   },
 
@@ -236,7 +231,7 @@ return {
             includeCompletionsForModuleExports = true,
             quotePreference = "auto",
           },
-          expose_as_code_action = 'all',
+          expose_as_code_action = { 'organize_imports', 'remove_unused_imports', 'fix_all' },
         },
 
         on_attach = function(client, bufnr)
