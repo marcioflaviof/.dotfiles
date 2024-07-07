@@ -4,23 +4,8 @@ end
 
 source ~/.asdf/asdf.fish
 
-
 starship init fish | source
 
-# zoxide
-
-if ! builtin functions --query __zoxide_cd_internal
-    if builtin functions --query cd
-        builtin functions --copy cd __zoxide_cd_internal
-    else
-        alias __zoxide_cd_internal='builtin cd'
-    end
-end
-
-abbr --erase j &>/dev/null
-alias j=__zoxide_z
-abbr --erase ji &>/dev/null
-alias ji=__zoxide_zi
 
 alias gs='git status'
 alias ls="exa --icons"
@@ -39,12 +24,5 @@ export EDITOR="/home/mf/.local/share/bob/nvim-bin/nvim"
 set -gx VOLTA_HOME "$HOME/.volta"
 set -gx PATH "$VOLTA_HOME/bin" $PATH
 
-
-# pnpm
-set -gx PNPM_HOME "/home/mf/.local/share/pnpm"
-if not string match -q -- $PNPM_HOME $PATH
-  set -gx PATH "$PNPM_HOME" $PATH
-end
-# pnpm end
 
 zoxide init fish | source

@@ -29,9 +29,9 @@ config.font_rules = {
 
 config.window_background_opacity = 0.95
 config.window_decorations = "NONE"
-config.enable_tab_bar = false
+config.enable_tab_bar = true
+config.tab_bar_at_bottom = true
 config.font_size = 16.0
-config.max_fps = 60
 config.enable_wayland = true
 
 config.keys = {
@@ -50,6 +50,8 @@ config.keys = {
     action = wezterm.action.Search({ CaseInSensitiveString = "" }),
   },
 }
+
+
 -- config.cell_width = 0.9
 -- config.line_height = 1.2
 
