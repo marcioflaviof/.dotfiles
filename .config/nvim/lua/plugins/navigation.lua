@@ -55,7 +55,6 @@ return {
   {
     "ThePrimeagen/harpoon",
     branch = 'harpoon2',
-    commit = 'ccae1b9bec717ae284906b0bf83d720e59d12b91',
     config = function()
       local h_status_ok, harpoon = pcall(require, "harpoon")
       if not h_status_ok then
@@ -66,20 +65,6 @@ return {
         settings = {
           save_on_ui_close = true,
           save_on_toggle = true,
-          key = function()
-            local branch = get_os_command_output({
-              "git",
-              "rev-parse",
-              "--abbrev-ref",
-              "HEAD",
-            })[1]
-
-            if branch then
-              return vim.loop.cwd() .. "-" .. branch
-            else
-              return vim.loop.cwd()
-            end
-          end,
         },
       })
 

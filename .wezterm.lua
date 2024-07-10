@@ -9,30 +9,13 @@ end
 config.color_scheme = "tokyonight_night"
 config.font = wezterm.font_with_fallback({ "JetBrains Mono", "Fira Code", "Maple Mono NF" })
 config.bold_brightens_ansi_colors = true
-config.font_rules = {
-  {
-    intensity = "Bold",
-    italic = true,
-    font = wezterm.font({ family = "Maple Mono NF", weight = "Bold", style = "Italic" }),
-  },
-  {
-    italic = true,
-    intensity = "Half",
-    font = wezterm.font({ family = "Maple Mono NF", weight = "DemiBold", style = "Italic" }),
-  },
-  {
-    italic = true,
-    intensity = "Normal",
-    font = wezterm.font({ family = "Maple Mono NF", style = "Italic" }),
-  },
-}
 
-config.window_background_opacity = 0.95
-config.window_decorations = "NONE"
+config.window_background_opacity = 0.9
+config.macos_window_background_blur = 20
+config.window_decorations = "RESIZE"
 config.enable_tab_bar = true
 config.tab_bar_at_bottom = true
-config.font_size = 16.0
-config.enable_wayland = true
+config.font_size = 14.0
 
 config.keys = {
   {
