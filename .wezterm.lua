@@ -27,8 +27,8 @@ config.font_rules = {
   },
 }
 
-config.window_background_opacity = 0.95
-config.window_decorations = "NONE"
+config.window_background_opacity = 1
+config.window_decorations = "RESIZE"
 config.enable_tab_bar = true
 config.tab_bar_at_bottom = true
 config.font_size = 16.0
