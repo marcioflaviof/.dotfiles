@@ -25,12 +25,13 @@ autocmd("TextYankPost", {
   end,
 })
 
--- vim.api.nvim_create_autocmd("FileType", {
---   pattern = "*",
---   callback = function()
---     vim.opt_local.formatoptions:remove({ 'r', 'o' })
---   end,
--- })
+-- prevent new line to be a comment
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "*",
+  callback = function()
+    vim.opt_local.formatoptions:remove({ 'r', 'o' })
+  end,
+})
 
 
 -- GROUPS:

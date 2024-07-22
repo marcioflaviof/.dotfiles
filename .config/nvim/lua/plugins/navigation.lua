@@ -27,8 +27,6 @@ return {
             alternate = "src/{dirname}/{basename}.tsx",
             type = "test"
           },
-
-
           ["src/*.ts"] = {
             alternate = "src/{dirname}/__tests__/{basename}.test.ts",
             type = "source"
@@ -37,6 +35,49 @@ return {
             alternate = "src/{dirname}/{basename}.ts",
             type = "test"
 
+          },
+
+          ["app/initializers/*.js"] = {
+            type = "initializer"
+          },
+          ["app/models/*.js"] = {
+            type = "model",
+            alternate = "app/adapters/{}.js"
+          },
+          ["app/adapters/*.js"] = {
+            type = "adapter",
+            alternate = "app/serializers/{}.js"
+          },
+          ["app/serializers/*.js"] = {
+            type = "serializer",
+            alternate = "app/models/{}.js"
+          },
+          ["app/services/*.js"] = {
+            type = "service"
+          },
+          ["app/routes/*.js"] = {
+            type = "route",
+            alternate = "app/controllers/{}.js"
+          },
+          ["app/controllers/*.js"] = {
+            type = "controller",
+            alternate = "app/templates/{}.hbs"
+          },
+          ["app/templates/*.hbs"] = {
+            type = "template",
+            alternate = "app/routes/{}.js"
+          },
+          ["app/components/*.js"] = {
+            type = "component",
+            alternate = "app/templates/components/{}.hbs"
+          },
+          ["app/components/*/component.js"] = {
+            type = "component",
+            alternate = "app/components/{}/template.hbs"
+          },
+          ["app/templates/components/*.hbs"] = {
+            type = "ctemplate",
+            alternate = "app/components/{}.js"
           }
         }
       }
