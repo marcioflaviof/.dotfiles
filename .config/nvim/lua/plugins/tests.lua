@@ -39,5 +39,6 @@ return {
     keymap("n", "<leader>ts", '<cmd>lua require("neotest").summary.toggle()<CR>', { noremap = true })
     keymap("n", "<leader>to", '<cmd>lua require("neotest").output_panel.toggle()<CR>', { noremap = true })
     keymap("n", "<leader>toc", '<cmd>lua require("neotest").output_panel.clear()<CR>', { noremap = true })
-  end
+  end,
+  ft = { "typescript", "javascript", 'typescriptreact', 'javascriptreact', "ruby" },
 }

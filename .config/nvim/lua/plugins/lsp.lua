@@ -50,7 +50,6 @@ return {
       end
 
       lsp_zero.on_attach(function(client, bufnr)
-        lsp_zero.buffer_autoformat()
         lsp_zero.default_keymaps({ buffer = bufnr, preserve_mappings = false })
 
         local opts = { noremap = true, silent = true }
@@ -70,15 +69,17 @@ return {
       end)
 
 
-      lsp_zero.format_on_save({
-        format_opts = {
-          async = false,
-          timeout_ms = 10000,
-        },
-        servers = {
-          ["null-ls"] = { "javascript", "typescript", "ruby", "typescriptreact", "javascriptreact", "markdown" },
-        }
-      })
+      -- lsp_zero.buffer_autoformat()
+      -- lsp_zero.format_on_save({
+      --   format_opts = {
+      --     async = false,
+      --     timeout_ms = 10000,
+      --   },
+      --   servers = {
+      --     ["null-ls"] = { "javascript", "typescript", "ruby", "typescriptreact", "javascriptreact", "markdown" },
+      --   }
+      -- })
+
       -- MASON
       local lua_opts = lsp_zero.nvim_lua_ls()
 
@@ -92,12 +93,13 @@ return {
           -- "yamlls",
           -- "solargraph",
           "ruby_lsp",
-          "eslint",
+          -- "eslint",
           -- "tailwindcss",
           -- "prismals",
           -- "svelte",
           -- "tsserver",
-          "emmet_ls"
+          "emmet_language_server",
+          -- "ember"
         },
         handlers = {
           lsp_zero.default_setup,
@@ -182,7 +184,8 @@ return {
 
       null_ls.setup({
         sources = {
-          formatters.prettierd,
+          -- formatters.prettierd,
+          formatters.prettier,
           -- formatters.erb_format,
 
           -- diagnostics.eslint_d.with({
@@ -204,7 +207,7 @@ return {
       -- LSP
 
       local lspconfig = require('lspconfig')
-      lspconfig.emmet_ls.setup({
+      lspconfig.emmet_language_server.setup({
         filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug", "typescriptreact", "vue", "handlebars" },
       })
     end,
@@ -248,7 +251,10 @@ return {
     "hrsh7th/nvim-cmp",
     dependencies = {
       -- snippets
-      "L3MON4D3/LuaSnip",
+      {
+        "L3MON4D3/LuaSnip",
+        build = "make install_jsregexp"
+      },
       "rafamadriz/friendly-snippets",
 
       "onsails/lspkind.nvim",
@@ -280,5 +286,5 @@ return {
     config = function()
       require("ts-error-translator").setup()
     end
-  }
+  },
 }
