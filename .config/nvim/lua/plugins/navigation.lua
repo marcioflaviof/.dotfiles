@@ -1,18 +1,5 @@
 Job = require "plenary.job"
 
-local function get_os_command_output(cmd, cwd)
-  if type(cmd) ~= "table" then return {} end
-  local command = table.remove(cmd, 1)
-  local stderr = {}
-  local stdout, ret = Job:new({
-    command = command,
-    args = cmd,
-    cwd = cwd,
-    on_stderr = function(_, data) table.insert(stderr, data) end,
-  }):sync()
-  return stdout, ret, stderr
-end
-
 return {
   {
     "tpope/vim-projectionist",
@@ -51,47 +38,22 @@ return {
       vim.keymap.set('n', '<leader>rl', '<CMD>R<CR>')
     end
   },
-
   {
-    "ThePrimeagen/harpoon",
-    branch = 'harpoon2',
-    commit = 'ccae1b9bec717ae284906b0bf83d720e59d12b91',
-    config = function()
-      local h_status_ok, harpoon = pcall(require, "harpoon")
-      if not h_status_ok then
-        return
-      end
-
-      harpoon:setup({
-        settings = {
-          save_on_ui_close = true,
-          save_on_toggle = true,
-          key = function()
-            local branch = get_os_command_output({
-              "git",
-              "rev-parse",
-              "--abbrev-ref",
-              "HEAD",
-            })[1]
-
-            if branch then
-              return vim.loop.cwd() .. "-" .. branch
-            else
-              return vim.loop.cwd()
-            end
-          end,
-        },
-      })
-
-      vim.keymap.set("n", "<leader>hm", function() harpoon:list():add() end)
-      vim.keymap.set("n", "<leader>h", function() harpoon.ui:toggle_quick_menu(harpoon:list()) end)
-      vim.keymap.set("n", "<leader>1", function() harpoon:list():select(1) end)
-      vim.keymap.set("n", "<leader>2", function() harpoon:list():select(2) end)
-      vim.keymap.set("n", "<leader>3", function() harpoon:list():select(3) end)
-      vim.keymap.set("n", "<leader>4", function() harpoon:list():select(4) end)
-    end,
+    "cbochs/grapple.nvim",
+    keys = {
+      { "<leader>hm", "<cmd>Grapple toggle<cr>",         mode = { 'n' } },
+      { "<leader>h",  "<cmd>Grapple toggle_tags<cr>",    mode = { 'n' } },
+      { "<leader>1",  "<cmd>Grapple select index=1<cr>", mode = { 'n' } },
+      { "<leader>2",  "<cmd>Grapple select index=2<cr>", mode = { 'n' } },
+      { "<leader>3",  "<cmd>Grapple select index=3<cr>", mode = { 'n' } },
+      { "<leader>4",  "<cmd>Grapple select index=4<cr>", mode = { 'n' } },
+    },
+    opts = {
+      scope = 'git_branch'
+    },
+    cmd = "Grapple",
+    event = { "BufReadPost", "BufNewFile" },
   },
-
   {
     "folke/flash.nvim",
     event = "VeryLazy",
