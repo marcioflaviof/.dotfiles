@@ -42,7 +42,7 @@ return {
 
       require('luasnip.loaders.from_vscode').lazy_load()
 
-      luasnip.filetype_extend("typescriptreact", { "javascript" })
+      luasnip.filetype_extend("typescriptreact", { "javascript", "typescript" })
       luasnip.filetype_extend("typescript", { "javascript" })
 
       for _, ft_path in ipairs(vim.api.nvim_get_runtime_file("lua/custom/snippets/*.lua", true)) do
@@ -92,12 +92,12 @@ return {
           -- "yamlls",
           -- "solargraph",
           "ruby_lsp",
-          "eslint",
+          -- "eslint",
           -- "tailwindcss",
           -- "prismals",
           -- "svelte",
           -- "tsserver",
-          "emmet_ls"
+          "emmet_language_server"
         },
         handlers = {
           lsp_zero.default_setup,
@@ -204,7 +204,7 @@ return {
       -- LSP
 
       local lspconfig = require('lspconfig')
-      lspconfig.emmet_ls.setup({
+      lspconfig.emmet_language_server.setup({
         filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug", "typescriptreact", "vue", "handlebars" },
       })
     end,
@@ -248,9 +248,15 @@ return {
     "hrsh7th/nvim-cmp",
     dependencies = {
       -- snippets
-      "L3MON4D3/LuaSnip",
-      "rafamadriz/friendly-snippets",
+      {
+        "L3MON4D3/LuaSnip",
+        -- follow latest release.
+        version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
+        -- install jsregexp (optional!).
+        build = "make install_jsregexp"
+      },
 
+      "rafamadriz/friendly-snippets",
       "onsails/lspkind.nvim",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
@@ -261,7 +267,6 @@ return {
       -- { "MattiasMTS/cmp-dbee", opts = {} },
     },
   },
-
   {
     "ray-x/lsp_signature.nvim",
     event = "VeryLazy",

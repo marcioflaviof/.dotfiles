@@ -25,6 +25,7 @@ autocmd("TextYankPost", {
   end,
 })
 
+-- prevent commenting out next line after comment
 vim.api.nvim_create_autocmd("FileType", {
   pattern = "*",
   callback = function()
