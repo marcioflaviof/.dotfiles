@@ -96,7 +96,6 @@ return {
       require("nvim-ts-autotag").setup()
     end
   },
-  'AndrewRadev/tagalong.vim',
   {
     "windwp/nvim-autopairs",
     config = function()

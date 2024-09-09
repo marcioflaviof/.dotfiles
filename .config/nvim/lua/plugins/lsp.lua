@@ -36,9 +36,6 @@ return {
       lsp_zero.extend_lspconfig()
 
       local luasnip = require("luasnip")
-      luasnip.config.set_config {
-        updateevents = "TextChanged,TextChangedI"
-      }
 
       require('luasnip.loaders.from_vscode').lazy_load()
 
@@ -48,6 +45,11 @@ return {
       for _, ft_path in ipairs(vim.api.nvim_get_runtime_file("lua/custom/snippets/*.lua", true)) do
         loadfile(ft_path)()
       end
+
+      luasnip.config.set_config {
+        history = true,
+        updateevents = "TextChanged,TextChangedI"
+      }
 
       lsp_zero.on_attach(function(client, bufnr)
         lsp_zero.default_keymaps({ buffer = bufnr, preserve_mappings = false })
