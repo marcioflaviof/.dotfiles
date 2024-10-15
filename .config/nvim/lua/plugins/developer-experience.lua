@@ -193,4 +193,11 @@ return {
     cmd = "UndotreeToggle",
   },
   "moll/vim-bbye", -- better buffer close
+  {
+    'echasnovski/mini.ai',
+    version = '*',
+    config = function()
+      require('mini.ai').setup()
+    end
+  },
 }

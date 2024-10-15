@@ -19,25 +19,17 @@ return {
   {
     'lewis6991/gitsigns.nvim',
     event = { "BufReadPre", "BufNewFile" },
-    opts = {
-      signs = {
-        add = { text = '+' },
-        change = { text = '~' },
-        delete = { text = '_' },
-        topdelete = { text = '‾' },
-        changedelete = { text = '~' },
-      }
-    },
+    opts = {},
   },
 
   {
     "tpope/vim-fugitive",
-    dependencies = 'tpope/vim-rhubarb',
     keys = {
       { "<leader>gs", "<cmd>0G<CR>",          opts },
       { "<leader>gf", "<cmd>diffget //2<CR>", opts },
       { "<leader>gj", "<cmd>diffget //3<CR>", opts },
     }
   },
-  'tpope/vim-rhubarb',
+  { 'akinsho/git-conflict.nvim', version = "*", config = true },
+  'Almo7aya/openingh.nvim'
 }

@@ -27,14 +27,14 @@ config.font_rules = {
   },
 }
 
--- config.window_background_opacity = 0.9
+config.window_background_opacity = 0.9
 config.window_decorations = "RESIZE"
 config.enable_tab_bar = true
 config.tab_bar_at_bottom = true
-config.font_size = 14.0
+config.font_size = 16.0
 
 config.native_macos_fullscreen_mode = true
--- config.macos_window_background_blur = 20
+config.macos_window_background_blur = 40
 
 config.keys = {
   {

@@ -1,3 +1,5 @@
+vim.g.navic_silence = true
+
 local one_monokai = {
   fg = "#abb2bf",
   bg = "#1e2024",

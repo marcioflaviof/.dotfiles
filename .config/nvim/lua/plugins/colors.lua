@@ -36,6 +36,10 @@ return {
           hl["@tag.builtin.javascript"] = {
             fg = colors.red,
           }
+          hl["CmpItemKindVariable"] = {
+            fg = colors.magenta,
+            bg = colors.none
+          }
         end,
       })
     end

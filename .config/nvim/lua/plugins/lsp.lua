@@ -62,6 +62,7 @@ return {
         vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lih",
           "<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>", opts)
         vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lf", "<cmd>LspZeroFormat<CR>", opts)
+        vim.api.nvim_buf_set_keymap(bufnr, "v", "<leader>lf", "<cmd>LspZeroFormat<CR>", opts)
 
         local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
@@ -99,13 +100,13 @@ return {
           -- "tailwindcss",
           -- "prismals",
           -- "svelte",
-          -- "tsserver",
+          -- "ts_ls",
           "emmet_language_server",
           -- "ember"
         },
         handlers = {
           lsp_zero.default_setup,
-          tsserver = lsp_zero.noop,
+          -- ts_ls = lsp_zero.noop,
           lua_ls = require('lspconfig').lua_ls.setup(lua_opts),
         }
       })
@@ -172,8 +173,8 @@ return {
 
       cmp.setup.filetype({ 'sql' }, {
         sources = {
-          -- { name = 'cmp-dbee' },
-          { name = 'vim-dadbod-completion' },
+          { name = 'cmp-dbee' },
+          -- { name = 'vim-dadbod-completion' },
           { name = 'buffer' }
         }
       })
@@ -186,8 +187,9 @@ return {
 
       null_ls.setup({
         sources = {
-          -- formatters.prettierd,
-          formatters.prettier,
+          formatters.prettierd,
+          formatters.sqlfmt,
+          -- formatters.prettier,
           -- formatters.erb_format,
 
           -- diagnostics.eslint_d.with({
@@ -266,7 +268,7 @@ return {
       "saadparwaiz1/cmp_luasnip",
       "hrsh7th/cmp-nvim-lua",
       "hrsh7th/cmp-cmdline",
-      -- { "MattiasMTS/cmp-dbee", opts = {} },
+      { "MattiasMTS/cmp-dbee", opts = {} },
     },
   },
 
