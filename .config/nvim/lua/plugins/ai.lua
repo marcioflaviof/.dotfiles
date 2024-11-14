@@ -1,24 +1,19 @@
-vim.api.nvim_set_keymap("n", "<Leader>o", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("v", "<Leader>o", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("n", "<LocalLeader>a", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("v", "<LocalLeader>a", "<cmd>CodeCompanionChat Toggle<cr>", { noremap = true, silent = true })
-vim.api.nvim_set_keymap("v", "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true })
-
--- Expand 'cc' into 'CodeCompanion' in the command line
-vim.cmd([[cab cc CodeCompanion]])
-
 return {
   {
     "Exafunction/codeium.vim",
     config = function()
-      vim.keymap.set("i", "<C-a>", function()
-        return vim.fn["codeium#Accept"]()
-      end, { expr = true })
+      vim.keymap.set("i", "<C-a>", function() return vim.fn["codeium#Accept"]() end, { expr = true, silent = true })
+      vim.keymap.set("i", "<C-x>", function() return vim.fn["codeium#Clear"]() end, { expr = true, silent = true })
+      vim.keymap.set("i", "<C-]>", function() return vim.fn["codeium#CycleCompletions"](1) end,
+        { expr = true, silent = true })
 
       vim.g.codeium_enabled = false
+
+      vim.g.codeium_filetypes = {
+        markdown = false
+      }
     end,
     event = "BufEnter",
-    commit = "289eb724e5d6fab2263e94a1ad6e54afebefafb2"
   },
   {
     "olimorris/codecompanion.nvim",
@@ -29,6 +24,17 @@ return {
       { "stevearc/dressing.nvim", opts = {} }
     },
     config = function()
+      vim.api.nvim_set_keymap("n", "<Leader>o", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
+      vim.api.nvim_set_keymap("v", "<Leader>o", "<cmd>CodeCompanionActions<cr>", { noremap = true, silent = true })
+      vim.api.nvim_set_keymap("n", "<LocalLeader>a", "<cmd>CodeCompanionChat Toggle<cr>",
+        { noremap = true, silent = true })
+      vim.api.nvim_set_keymap("v", "<LocalLeader>a", "<cmd>CodeCompanionChat Toggle<cr>",
+        { noremap = true, silent = true })
+      vim.api.nvim_set_keymap("v", "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap = true, silent = true })
+
+      -- Expand 'cc' into 'CodeCompanion' in the command line
+      vim.cmd([[cab cc CodeCompanion]])
+
       require("codecompanion").setup({
         adapters = {
           ollama = function()

@@ -200,4 +200,9 @@ return {
       require('mini.ai').setup()
     end
   },
+  {
+    "chentoast/marks.nvim",
+    event = "VeryLazy",
+    opts = {},
+  }
 }
