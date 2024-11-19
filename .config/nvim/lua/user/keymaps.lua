@@ -38,7 +38,12 @@ keymap("n", "<leader>c", ":Bdelete<CR>", opts)
 
 -- Copy path
 keymap("n", "<leader>cfp", "<cmd>let @+ = expand('%:p')<CR>", opts)
-keymap("n", "<leader>cp", '<cmd>let @+ = fnamemodify(expand("%"), ":~:.")<CR>', opts)
+keymap(
+  "n",
+  "<leader>cp",
+  '<cmd>let @+ = fnamemodify(expand("%"), ":~:.") .. ":" .. line(".")<CR>',
+  opts
+)
 
 
 
