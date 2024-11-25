@@ -180,13 +180,6 @@ return {
       vim.api.nvim_set_hl(0, "IlluminatedWordWrite", { link = "Visual" })
     end
   },
-  {
-    "kylechui/nvim-surround",
-    event = "VeryLazy",
-    config = function()
-      require("nvim-surround").setup()
-    end,
-  },
   "junegunn/vim-slash",
   {
     "mbbill/undotree",
@@ -198,6 +191,13 @@ return {
     version = '*',
     config = function()
       require('mini.ai').setup()
+    end
+  },
+  {
+    'echasnovski/mini.surround',
+    version = '*',
+    config = function()
+      require('mini.surround').setup()
     end
   },
   {
