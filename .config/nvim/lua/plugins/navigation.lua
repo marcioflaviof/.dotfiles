@@ -82,7 +82,7 @@ return {
   {
     "cbochs/grapple.nvim",
     keys = {
-      { "<leader>hm", "<cmd>Grapple toggle<cr>",         mode = { 'n' } },
+      { "<leader>hm", "<cmd>Grapple tag<cr>",            mode = { 'n' } },
       { "<leader>h",  "<cmd>Grapple toggle_tags<cr>",    mode = { 'n' } },
       { "<leader>1",  "<cmd>Grapple select index=1<cr>", mode = { 'n' } },
       { "<leader>2",  "<cmd>Grapple select index=2<cr>", mode = { 'n' } },
@@ -100,15 +100,6 @@ return {
     event = "VeryLazy",
     opts = {},
     keys = {
-      {
-        "s",
-        mode = { "n", "x", "o" },
-        function()
-          -- default options: exact mode, multi window, all directions, with a backdrop
-          require("flash").jump()
-        end,
-        desc = "Flash",
-      },
       {
         "S",
         mode = { "n", "o", "x" },
