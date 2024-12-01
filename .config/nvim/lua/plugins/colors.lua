@@ -59,6 +59,4 @@ return {
       })
     end
   },
-
-  "kchmck/vim-coffee-script",
 }
