@@ -18,13 +18,10 @@ return {
           path_display = { "truncate" },
           hidden = true,
           preview = {
-            highlight_limit = 1, -- MB
+            highlight_limit = 0.5, -- MB
           },
           file_ignore_patterns = {
-            "bundle/.*",
-            'coverage/.*',
             ".git/.*",
-            ".next/.*",
             "%.lock",
             'package-lock.json',
             "node%_modules/.*",
@@ -36,6 +33,17 @@ return {
               ["dd"] = require("telescope.actions").delete_buffer,
             },
           },
+        },
+        vimgrep_arguments = {
+          "rg",
+          "--color=never",
+          "--no-heading",
+          "--with-filename",
+          "--line-number",
+          "--column",
+          "--smart-case",
+          "--hidden",
+          "--glob=!.git/",
         },
         pickers = {
           grep_string = {
@@ -92,12 +100,7 @@ return {
           },
         },
         extensions = {
-          fzf = {
-            fuzzy = true,                   -- false will only do exact matching
-            override_generic_sorter = true, -- override the generic sorter
-            override_file_sorter = true,    -- override the file sorter
-            case_mode = "smart_case",       -- or "ignore_case" or "respect_case"
-          },
+          fzf = {},
           live_grep_args = {
             theme = "ivy",
             auto_quoting = true,
@@ -137,6 +140,7 @@ return {
       keymap("n", "<leader>sr", "<cmd>lua require('telescope.builtin').resume()<cr>", opts)
       keymap("n", "<leader>sw", builtin.grep_string, opts)
       keymap("n", "<leader>sb", builtin.buffers, opts)
+      keymap("n", "<leader>sm", builtin.marks, opts)
 
       require("telescope").load_extension("live_grep_args")
       require("telescope").load_extension("fzf")
