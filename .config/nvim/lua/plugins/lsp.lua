@@ -50,7 +50,7 @@ return {
       end
 
       lsp_zero.on_attach(function(client, bufnr)
-        lsp_zero.buffer_autoformat()
+        -- lsp_zero.buffer_autoformat()
         lsp_zero.default_keymaps({ buffer = bufnr, preserve_mappings = false })
 
         local opts = { noremap = true, silent = true }
@@ -70,15 +70,15 @@ return {
       end)
 
 
-      lsp_zero.format_on_save({
-        format_opts = {
-          async = false,
-          timeout_ms = 10000,
-        },
-        servers = {
-          ["null-ls"] = { "javascript", "typescript", "ruby", "typescriptreact", "javascriptreact", "markdown" },
-        }
-      })
+      -- lsp_zero.format_on_save({
+      --   format_opts = {
+      --     async = false,
+      --     timeout_ms = 10000,
+      --   },
+      --   servers = {
+      --     ["null-ls"] = { "javascript", "typescript", "ruby", "typescriptreact", "javascriptreact", "markdown", "sql" },
+      --   }
+      -- })
       -- MASON
       local lua_opts = lsp_zero.nvim_lua_ls()
 
@@ -96,12 +96,12 @@ return {
           -- "tailwindcss",
           -- "prismals",
           -- "svelte",
-          -- "tsserver",
+          -- "ts_ls",
           "emmet_language_server"
         },
         handlers = {
           lsp_zero.default_setup,
-          tsserver = lsp_zero.noop,
+          ts_ls = lsp_zero.noop,
           lua_ls = require('lspconfig').lua_ls.setup(lua_opts),
         }
       })
@@ -168,8 +168,7 @@ return {
 
       cmp.setup.filetype({ 'sql' }, {
         sources = {
-          -- { name = 'cmp-dbee' },
-          { name = 'vim-dadbod-completion' },
+          { name = 'cmp-dbee' },
           { name = 'buffer' }
         }
       })
@@ -183,6 +182,7 @@ return {
       null_ls.setup({
         sources = {
           formatters.prettierd,
+          formatters.sqlfmt,
           -- formatters.erb_format,
 
           -- diagnostics.eslint_d.with({
@@ -264,7 +264,7 @@ return {
       "saadparwaiz1/cmp_luasnip",
       "hrsh7th/cmp-nvim-lua",
       "hrsh7th/cmp-cmdline",
-      -- { "MattiasMTS/cmp-dbee", opts = {} },
+      { "MattiasMTS/cmp-dbee", opts = {} },
     },
   },
   {
