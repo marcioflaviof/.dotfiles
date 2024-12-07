@@ -32,10 +32,6 @@ keymap("n", "≥", "<c-w>5>", opts)
 keymap("n", "<C-d>", "<C-d>zz", opts)
 keymap("n", "<C-u>", "<C-u>zz", opts)
 
-
--- Naviagate buffers
-keymap("n", "<leader>c", ":Bdelete<CR>", opts)
-
 -- Copy path
 keymap("n", "<leader>cfp", "<cmd>let @+ = expand('%:p')<CR>", opts)
 keymap(
@@ -48,8 +44,6 @@ keymap(
 
 
 -- Git
-keymap("n", "<leader>gl", "<cmd>GitBlameToggle<CR>", opts)
-keymap("n", "<leader>gll", "<cmd>Gitsigns blame_line<CR>", opts)
 keymap("n", "<leader>gs", "<cmd>0G<CR>", opts)          -- vim fugitive
 keymap("n", "<leader>gf", "<cmd>diffget //2<CR>", opts) -- vim fugitive
 keymap("n", "<leader>gj", "<cmd>diffget //3<CR>", opts) -- vim fugitive

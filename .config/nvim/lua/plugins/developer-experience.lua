@@ -119,7 +119,6 @@ return {
     "mbbill/undotree",
     cmd = "UndotreeToggle",
   },
-  "moll/vim-bbye", -- better buffer close
   {
     'echasnovski/mini.ai',
     version = '*',
