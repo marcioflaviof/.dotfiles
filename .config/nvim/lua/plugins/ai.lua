@@ -64,6 +64,22 @@ return {
             adapter = "ollama",
           },
         },
+        prompt_library = {
+          ["Fix Grammar"] = {
+            strategy = "chat",
+            description = "Fix the english grammar",
+            prompts = {
+              {
+                role = "system",
+                content = "You are an experienced english teacher",
+              },
+              {
+                role = "user",
+                content = "Can you fix the grammar on this sentence: "
+              }
+            },
+          }
+        }
       })
     end,
   }
