@@ -4,11 +4,9 @@ return {
     event = "VeryLazy",
     dependencies = {
       'nvim-lua/plenary.nvim',
-      "nvim-telescope/telescope-live-grep-args.nvim",
     },
     config = function()
       local builtin = require("telescope.builtin")
-      local lga_actions = require("telescope-live-grep-args.actions")
       local actions = require("telescope.actions")
 
       require('telescope').setup({
@@ -46,18 +44,6 @@ return {
           "--glob=!.git/",
         },
         pickers = {
-          grep_string = {
-            theme = "ivy",
-            layout_config = {
-              horizontal = {
-                prompt_position = "top",
-                results_width = 0.8,
-              },
-              height = 0.7,
-            },
-            initial_mode = "normal",
-            file_ignore_patterns = { ".test", ".spec" },
-          },
           lsp_references = {
             theme = "ivy",
             layout_config = {
@@ -101,26 +87,6 @@ return {
         },
         extensions = {
           fzf = {},
-          live_grep_args = {
-            theme = "ivy",
-            auto_quoting = true,
-            layout_config = {
-              horizontal = {
-                prompt_position = "top",
-                results_width = 0.8,
-              },
-              height = 0.7,
-            },
-            mappings = {
-              i = {
-                ["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
-                ["<C-t>"] = lga_actions.quote_prompt({ postfix = " --iglob !**tests**" }),
-
-                -- freeze the current list and start a fuzzy search in the frozen list
-                ["<C-space>"] = actions.to_fuzzy_refine,
-              },
-            }
-          },
           ["ui-select"] = {
             require("telescope.themes").get_dropdown({}),
           },
@@ -130,7 +96,6 @@ return {
       local opts = { noremap = true, silent = true }
       local keymap = vim.keymap.set
 
-      keymap("n", "<leader>sg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<cr>", opts)
 
       keymap("n", "<leader>f", builtin.find_files, opts)
       keymap("n", "<leader>so", builtin.oldfiles, opts)
@@ -141,8 +106,10 @@ return {
       keymap("n", "<leader>sw", builtin.grep_string, opts)
       keymap("n", "<leader>sb", builtin.buffers, opts)
       keymap("n", "<leader>sm", builtin.marks, opts)
+      keymap("n", "<leader>sh", builtin.help_tags, opts)
 
-      require("telescope").load_extension("live_grep_args")
+
+      require('custom/telescope/multigrep').setup()
       require("telescope").load_extension("fzf")
       require("telescope").load_extension("ui-select")
     end

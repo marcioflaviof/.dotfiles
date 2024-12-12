@@ -40,6 +40,9 @@ return {
             fg = colors.magenta,
             bg = colors.none
           }
+          hl["SnacksIndentScope"] = {
+            fg = colors.purple
+          }
         end,
       })
     end
