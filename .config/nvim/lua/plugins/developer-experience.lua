@@ -15,37 +15,6 @@ vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 return {
   { "andymass/vim-matchup", lazy = false, },
   {
-    'lukas-reineke/indent-blankline.nvim',
-    config = function()
-      require('ibl').setup({
-        scope = {
-          enabled = true,
-          show_start = false,
-          show_end = false,
-          highlight = { "Function" },
-          include = {
-            node_type = {
-              ["*"] = { "*" }
-            }
-          }
-
-        },
-        indent = {
-          char = "▏",
-        },
-        exclude = {
-          filetypes = {
-            "help",
-            "dashboard",
-            "neogitstatus",
-            "NvimTree",
-            "Trouble"
-          }
-        }
-      })
-    end
-  },
-  {
     "kevinhwang91/nvim-ufo",
     dependencies = 'kevinhwang91/promise-async',
     config = function()

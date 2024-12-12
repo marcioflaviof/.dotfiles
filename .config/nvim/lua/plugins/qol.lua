@@ -11,10 +11,11 @@ return {
   ---@type snacks.Config
   opts = {
     bigfile = { enabled = true },
+    indent = { enabled = true, animate = { enabled = false } },
     dashboard = { enabled = false },
     statuscolumn = { enabled = false },
     notifier = {
-      enabled = true,
+      enabled = false,
       timeout = 3000,
     },
     quickfile = { enabled = true },
@@ -29,11 +30,10 @@ return {
     }
   },
   keys = {
-    { "<leader>bd",  function() Snacks.bufdelete() end,               desc = "Delete Buffer" },
-    { "<leader>gl",  function() Snacks.git.blame_line() end,          desc = "Git Blame Line" },
-    { "<c-/>",       function() Snacks.terminal() end,                desc = "Toggle Terminal", mode = { "n", "i", "t" } },
-    { "<c-_>",       function() Snacks.terminal() end,                desc = "which_key_ignore" },
-    { "]]",          function() Snacks.words.jump(vim.v.count1) end,  desc = "Next Reference",  mode = { "n", "t" } },
-    { "[[",          function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference",  mode = { "n", "t" } },
+    { "<leader>bd", function() Snacks.bufdelete() end,               desc = "Delete Buffer" },
+    { "<leader>gl", function() Snacks.git.blame_line() end,          desc = "Git Blame Line" },
+    { "<c-\\>",     function() Snacks.terminal() end,                desc = "Toggle Terminal", mode = { "n", "i", "t" } },
+    { "]]",         function() Snacks.words.jump(vim.v.count1) end,  desc = "Next Reference",  mode = { "n", "t" } },
+    { "[[",         function() Snacks.words.jump(-vim.v.count1) end, desc = "Prev Reference",  mode = { "n", "t" } },
   },
 }
