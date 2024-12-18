@@ -2,14 +2,13 @@ return {
   "nvim-neotest/neotest",
   dependencies = {
     "nvim-lua/plenary.nvim",
-    "antoinemadec/FixCursorHold.nvim",
     'marilari88/neotest-vitest',
     'haydenmeade/neotest-jest',
     'nvim-neotest/neotest-plenary',
     "olimorris/neotest-rspec",
     "nvim-neotest/nvim-nio"
   },
-
+  
   config = function()
     require("neotest").setup({
       ft = { "typescript", "javascript", 'typescriptreact', 'javascriptreact' },

@@ -97,7 +97,9 @@ return {
           -- "prismals",
           -- "svelte",
           -- "ts_ls",
-          "emmet_language_server"
+          "emmet_language_server",
+          "sqlls",
+          -- "ember"
         },
         handlers = {
           lsp_zero.default_setup,
@@ -134,8 +136,8 @@ return {
           end
         },
         sources = {
-          { name = "nvim_lsp" },
           { name = "luasnip", max_item_count = 3 },
+          { name = "nvim_lsp" },
           { name = "buffer" },
           { name = "nvim_lua" },
           { name = "path" },
@@ -143,6 +145,8 @@ return {
         mapping = cmp.mapping.preset.insert({
           ["<C-n>"] = cmp_action.luasnip_supertab(),
           ["<C-p>"] = cmp_action.luasnip_shift_supertab(),
+          ['<C-u>'] = cmp.mapping.scroll_docs(-4),
+          ['<C-d>'] = cmp.mapping.scroll_docs(4),
           -- `Enter` key to confirm completion
           ["<CR>"] = cmp.mapping.confirm({ select = true }),
           -- Ctrl+Space to trigger completion menu
@@ -246,17 +250,16 @@ return {
 
   {
     "hrsh7th/nvim-cmp",
+    event = 'InsertEnter',
     dependencies = {
       -- snippets
       {
         "L3MON4D3/LuaSnip",
-        -- follow latest release.
-        version = "v2.*", -- Replace <CurrentMajor> by the latest released major (first number of latest release)
-        -- install jsregexp (optional!).
-        build = "make install_jsregexp"
+        build = "make install_jsregexp",
+        dependencies = {
+          "rafamadriz/friendly-snippets",
+        }
       },
-
-      "rafamadriz/friendly-snippets",
       "onsails/lspkind.nvim",
       "hrsh7th/cmp-buffer",
       "hrsh7th/cmp-path",
@@ -264,7 +267,7 @@ return {
       "saadparwaiz1/cmp_luasnip",
       "hrsh7th/cmp-nvim-lua",
       "hrsh7th/cmp-cmdline",
-      { "MattiasMTS/cmp-dbee", opts = {} },
+      { "MattiasMTS/cmp-dbee", opts = {}, ft = "sql" },
     },
   },
   {
