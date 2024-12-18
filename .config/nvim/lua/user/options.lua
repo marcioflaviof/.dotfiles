@@ -41,7 +41,7 @@ local options = {
   numberwidth = 2,                -- set number column width to 2 {default 4}
   -- colorcolumn = "80",
   wrap = true,                    -- display lines as one long line
-  -- guifont = "Maple Mono NF:h17", -- the font used in graphical neovim applications
+
   guifont = "JetBrains Mono:h16", -- the font used in graphical neovim applications
 }
 

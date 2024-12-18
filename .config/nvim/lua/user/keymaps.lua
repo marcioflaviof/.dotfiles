@@ -25,8 +25,8 @@ keymap("n", "<C-k>", "<C-w>k", opts)
 keymap("n", "<C-l>", "<C-w>l", opts)
 
 -- split resize
-keymap("n", "≤", "<c-w>5<", opts)
-keymap("n", "≥", "<c-w>5>", opts)
+keymap("n", "<leader>[", "<c-w>5<", opts)
+keymap("n", "<leader>]", "<c-w>5>", opts)
 
 -- Better navigation with ctrl d and ctrl u
 keymap("n", "<C-d>", "<C-d>zz", opts)
