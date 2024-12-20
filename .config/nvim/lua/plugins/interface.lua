@@ -232,22 +232,18 @@ return {
       "SmiteshP/nvim-navic",
       "nvim-tree/nvim-web-devicons"
     },
-    config = function()
-      require("barbecue").setup({
-        theme = "tokyonight",
-      })
-    end,
+    opts = {
+      theme = "tokyonight"
+    },
   },
 
   {
     "freddiehaddad/feline.nvim",
-    config = function()
-      require("feline").setup({
-        components = components,
-        theme = one_monokai,
-        vi_mode_colors = vi_mode_colors,
-      })
-    end
+    opts = {
+      components = components,
+      theme = one_monokai,
+      vi_mode_colors = vi_mode_colors,
+    }
   },
   "nvim-tree/nvim-web-devicons",
 }

@@ -151,8 +151,9 @@ return {
           ["<CR>"] = cmp.mapping.confirm({ select = true }),
           -- Ctrl+Space to trigger completion menu
           ["<C-Space>"] = cmp.mapping.complete(),
-          ["<Tab>"] = cmp_action.luasnip_supertab(),
-          ["<S-Tab>"] = cmp_action.luasnip_shift_supertab(),
+          ["<Tab>"] = cmp_action.luasnip_jump_forward(),
+          ["<S-Tab>"] = cmp_action.luasnip_jump_backward(),
+
         }),
       })
 
@@ -172,7 +173,7 @@ return {
 
       cmp.setup.filetype({ 'sql' }, {
         sources = {
-          { name = 'cmp-dbee' },
+          { name = 'vim-dadbod-completion' },
           { name = 'buffer' }
         }
       })
@@ -267,7 +268,6 @@ return {
       "saadparwaiz1/cmp_luasnip",
       "hrsh7th/cmp-nvim-lua",
       "hrsh7th/cmp-cmdline",
-      { "MattiasMTS/cmp-dbee", opts = {}, ft = "sql" },
     },
   },
   {
