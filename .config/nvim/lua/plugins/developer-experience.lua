@@ -67,15 +67,7 @@ return {
   {
     "RRethy/vim-illuminate",
     config = function()
-      require("illuminate").configure({
-        filetypes_denylist = {
-          'dirbuf',
-          'dirvish',
-          'fugitive',
-          'toggleterm',
-          'oil'
-        }
-      })
+      require("illuminate").configure({})
     end
   },
   "junegunn/vim-slash",
