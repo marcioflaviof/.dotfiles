@@ -67,20 +67,7 @@ return {
   {
     "RRethy/vim-illuminate",
     config = function()
-      require("illuminate").configure({
-        -- providers: provider used to get references in the buffer, ordered by priority
-        providers = {
-          "lsp",
-          "treesitter",
-          "regex",
-        },
-
-        under_cursor = true,
-      })
-
-      vim.api.nvim_set_hl(0, "IlluminatedWordText", { link = "Visual" })
-      vim.api.nvim_set_hl(0, "IlluminatedWordRead", { link = "Visual" })
-      vim.api.nvim_set_hl(0, "IlluminatedWordWrite", { link = "Visual" })
+      require("illuminate").configure({})
     end
   },
   "junegunn/vim-slash",

@@ -1,20 +1,24 @@
 return {
   {
-    'NvChad/nvim-colorizer.lua',
+    "echasnovski/mini.hipatterns",
+    recommended = true,
+    desc = "Highlight colors in your code. Also includes Tailwind CSS support.",
     config = function()
-      require('colorizer').setup({
-        filetypes = { "scss", "css", "lua", "typescriptreact", "typescript", "ruby", "javascript", 'svelte' },
-        user_default_options = {
-          tailwind = true,
-          rgb_fn   = true, -- CSS rgb() and rgba() functions
-          hsl_fn   = true, -- CSS hsl() and hsla() functions
-          names    = false,
-          css      = true,
-          -- virtualtext = "■",
-          mode     = "background", -- virtualtext | background
+      local hipatterns = require('mini.hipatterns')
+
+      hipatterns.setup({
+        highlighters = {
+          -- Highlight standalone 'FIXME', 'HACK', 'TODO', 'NOTE'
+          fixme     = { pattern = '%f[%w]()FIXME()%f[%W]', group = 'MiniHipatternsFixme' },
+          hack      = { pattern = '%f[%w]()HACK()%f[%W]', group = 'MiniHipatternsHack' },
+          todo      = { pattern = '%f[%w]()TODO()%f[%W]', group = 'MiniHipatternsTodo' },
+          note      = { pattern = '%f[%w]()NOTE()%f[%W]', group = 'MiniHipatternsNote' },
+
+          -- Highlight hex color strings (`#rrggbb`) using that color
+          hex_color = hipatterns.gen_highlighter.hex_color(),
         },
       })
-    end
+    end,
   },
   {
     "folke/tokyonight.nvim",
@@ -47,21 +51,5 @@ return {
       })
     end
   },
-  {
-    "catppuccin/nvim",
-    name = "catppuccin",
-    priority = 1000,
-    config = function()
-      require("catppuccin").setup({
-        -- transparent_background = true,
-        styles = {
-          comments = { "italic" },
-          keywords = { "italic" },
-          types = { "bold" },
-        }
-      })
-    end
-  },
-
-  "kchmck/vim-coffee-script",
+  "wavded/vim-stylus"
 }
