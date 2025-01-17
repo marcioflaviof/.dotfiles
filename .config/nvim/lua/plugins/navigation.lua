@@ -57,8 +57,24 @@ return {
   {
     "folke/flash.nvim",
     event = "VeryLazy",
-    opts = {},
+    opts = {
+      labels = "ASDFGHJKLQWERTYUIOPZXCVBNM",
+      modes = {
+        search = {
+          enabled = true
+        }
+      }
+    },
     keys = {
+      {
+        "s",
+        mode = { "n", "x", "o" },
+        function()
+          -- default options: exact mode, multi window, all directions, with a backdrop
+          require("flash").jump()
+        end,
+        desc = "Flash",
+      },
       {
         "S",
         mode = { "n", "o", "x" },
@@ -68,10 +84,5 @@ return {
         desc = "Flash Treesitter",
       },
     },
-    config = function()
-      require("flash").setup({
-        labels = "ASDFGHJKLQWERTYUIOPZXCVBNM",
-      })
-    end,
   },
 }
