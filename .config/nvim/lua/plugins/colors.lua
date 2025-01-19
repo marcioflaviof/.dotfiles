@@ -27,11 +27,11 @@ return {
     config = function()
       require("tokyonight").setup({
 
-        transparent = false,
+        transparent = true,
         style = "night",
         styles = {
-          -- sidebars = "transparent",
-          -- floats = "transparent",
+          sidebars = "transparent",
+          floats = "transparent",
         },
         on_highlights = function(hl, colors)
           hl["@tag.builtin.tsx"] = {

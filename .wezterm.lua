@@ -27,12 +27,12 @@ config.font_rules = {
   },
 }
 
-config.window_background_opacity = 1
+config.window_background_opacity = 0.9
 config.window_decorations = "RESIZE"
 config.enable_tab_bar = true
 config.tab_bar_at_bottom = true
-config.font_size = 18.0
-config.enable_wayland = true
+config.font_size = 12.0
+config.enable_wayland = false
 
 config.keys = {
   {
