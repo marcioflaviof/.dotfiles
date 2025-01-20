@@ -193,7 +193,8 @@ return {
           formatters.prettierd,
           formatters.sqlfmt,
           -- formatters.prettier,
-          -- formatters.erb_format,
+          formatters.erb_format,
+          formatters.rufo,
 
           -- diagnostics.eslint_d.with({
           --   condition = function(utils)

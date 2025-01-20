@@ -6,13 +6,13 @@ return {
     config = function()
       vim.g.projectionist_heuristics = {
         ["*"] = {
-          ["src/*.tsx"] = {
-            alternate = "src/{dirname}/__tests__/{basename}.test.tsx",
-            type = "source"
-          },
-          ['src/**/__tests__/*.test.tsx'] = {
-            alternate = "src/{dirname}/{basename}.tsx",
+          ['*.spec.js'] = {
+            alternate = "{dirname}/{basename}.js",
             type = "test"
+          },
+          ["*.js"] = {
+            alternate = "{dirname}/{basename}.spec.js",
+            type = "source"
           },
           ["src/*.ts"] = {
             alternate = "src/{dirname}/__tests__/{basename}.test.ts",

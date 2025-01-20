@@ -7,7 +7,7 @@ return {
       vim.keymap.set("i", "<C-]>", function() return vim.fn["codeium#CycleCompletions"](1) end,
         { expr = true, silent = true })
 
-      vim.g.codeium_enabled = false
+      vim.g.codeium_enabled = true
 
       vim.g.codeium_filetypes = {
         markdown = false
