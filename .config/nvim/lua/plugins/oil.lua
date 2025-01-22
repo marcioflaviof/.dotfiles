@@ -23,6 +23,7 @@ return {
           ["g\\"] = "actions.toggle_trash",
 
           lsp_file_methods = {
+            enabled = true,
             timeout_ms = 1000,
             autosave_changes = true,
           }
@@ -31,7 +32,7 @@ return {
         use_default_keymaps = false
       })
 
-      vim.keymap.set("n", "-", "<CMD>Oil<CR>")
+      vim.keymap.set("n", "-", "<CMD>Oil --float<CR>")
     end,
   },
   {
