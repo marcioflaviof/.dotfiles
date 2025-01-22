@@ -13,28 +13,31 @@ return {
     ---@type snacks.Config
     opts = {
       bigfile = { enabled = true },
-      scroll = { enabled = true },
       indent = { enabled = true, animate = { enabled = false } },
-      dashboard = { enabled = false },
-      statuscolumn = { enabled = false },
       picker = {
         enabled = true,
-        layout = {
-          preview = "main",
-          preset = "ivy",
-        },
-      },
-      notifier = {
-        enabled = false,
-        timeout = 3000,
-      },
-      quickfile = { enabled = true },
-      words = { enabled = true },
-      styles = {
-        notification = {
-          wo = { wrap = true } -- Wrap notifications
+        layouts = {
+          default = {
+            layout = {
+              box = "vertical",
+              backdrop = false,
+              row = -1,
+              width = 0,
+              height = 0.7,
+              border = "top",
+              title = " {title} {live} {flags}",
+              title_pos = "left",
+              { win = "input", height = 1, border = "bottom" },
+              {
+                box = "horizontal",
+                { win = "list",    border = "none" },
+                { win = "preview", title = "{preview}", width = 0.6, border = "left" },
+              },
+            }
+          }
         }
       },
+      quickfile = { enabled = true },
       terminal = {
         win = { style = "float" }
       },
@@ -51,6 +54,7 @@ return {
       { "<leader>sh", function() Snacks.picker.help() end,             desc = "Help Pages" },
       { "<leader>sg", function() Snacks.picker.grep() end,             desc = "Grep" },
       { "<leader>sw", function() Snacks.picker.grep_word() end,        desc = "Visual selection or word", mode = { "n", "x" } },
+      { "<leader>sr", function() Snacks.picker.resume() end,           desc = "Resume" },
       { "<leader>sH", function() Snacks.picker.command_history() end,  desc = "Command History" },
       { "<leader>sq", function() Snacks.picker.qflist() end,           desc = "Quickfix List" },
       { "<leader>so", function() Snacks.picker.recent() end,           desc = "Recent" },
