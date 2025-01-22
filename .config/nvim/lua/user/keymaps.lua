@@ -60,8 +60,8 @@ keymap("n", "<leader>li", "<cmd>TSToolsAddMissingImports<CR>", opts)
 keymap("n", "<leader>u", "<cmd>UndotreeToggle<cr>", opts)
 
 -- quickfix list
-keymap("n", "<leader>qn", ":cn<CR>", opts)
-keymap("n", "<leader>qp", ":cp<CR>", opts)
+keymap("n", "]q", ":cn<CR>", opts)
+keymap("n", "[q", ":cp<CR>", opts)
 
 -- Insert --
 -- Press jk fast to enter
