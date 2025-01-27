@@ -2,30 +2,49 @@
   "position": "top",
   "modules-left": ["hyprland/workspaces"],
   "modules-center": ["hyprland/window"],
-  "modules-right": ["cpu", "memory","hyprland/language", "pulseaudio", "clock"],
+  "modules-right": [
+    "tray",
+    "cpu",
+    "memory",
+    "hyprland/language",
+    "pulseaudio",
+    "clock",
+    "custom/exit"
+  ],
   "clock": {
     "format": "<span foreground='#f5c2e7'>   </span>{:%a %d %H:%M}",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
   },
   "pulseaudio": {
-      "format": "{icon}  {volume}%",
-      "format-muted": "",
-      "format-icons": {
-          "default": ["", "", " "]
-      },
-      "on-click": "pavucontrol"
+    "format": "{icon}  {volume}%",
+    "format-muted": "",
+    "format-icons": {
+      "default": ["", "", " "],
+    },
+    "on-click": "pavucontrol",
   },
   "hyprland/language": {
     "format": "{}",
     "format-br": "BR",
-    "format-en": "US"
+    "format-en": "US",
   },
   "memory": {
     "interval": 2,
-    "format": "M {0}%"
+    "format": "M {0}%",
   },
   "cpu": {
     "interval": 2,
-    "format": "C {usage}%"
-  }
+    "format": "C {usage}%",
+  },
+  "tray": {
+    "icon-size": 18,
+    "spacing": 5,
+  },
+  // Power Menu
+  "custom/exit": {
+    "format": "",
+    "on-click": "wlogout",
+    "on-click-right": "hyprlock",
+    "tooltip-format": "Left: Power menu\nRight: Lock screen"
+  },
 }

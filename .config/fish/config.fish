@@ -5,14 +5,18 @@ end
 
 starship init fish | source
 
+alias g="git"
+alias gs='git status '
+alias ga='git add '
+alias gb='git branch '
+alias gc='git commit'
+alias gd='git diff'
+alias gco='git checkout'
 
-alias gs='git status'
 alias ls="eza --icons"
 alias bat="bat --style=auto"
 alias icat="kitty +kitten icat"
-alias g="git"
 alias la="eza -la --icons"
-alias gc="git checkout"
 alias dc="docker compose"
 alias r="rails"
 
