@@ -73,7 +73,7 @@ return {
       -- lsp_zero.format_on_save({
       --   format_opts = {
       --     async = false,
-      --     timeout_ms = 10000,
+      --     timeout_ms = 3000,
       --   },
       --   servers = {
       --     ["null-ls"] = { "javascript", "typescript", "ruby", "typescriptreact", "javascriptreact", "markdown", "sql" },
@@ -89,17 +89,9 @@ return {
           "html",
           "jsonls",
           "lua_ls",
-          -- "yamlls",
-          -- "solargraph",
           "ruby_lsp",
-          -- "eslint",
-          -- "tailwindcss",
-          -- "prismals",
-          -- "svelte",
-          -- "ts_ls",
           "emmet_language_server",
           "sqlls",
-          -- "ember"
         },
         handlers = {
           lsp_zero.default_setup,
@@ -188,21 +180,7 @@ return {
         sources = {
           formatters.prettierd,
           formatters.sqlfmt,
-          -- formatters.erb_format,
-
-          -- diagnostics.eslint_d.with({
-          --   condition = function(utils)
-          --     return utils.root_has_file({ ".eslintrc.js" })
-          --   end,
-          -- }),
-
-          -- diagnostics.rubocop.with({
-          --   condition = function(utils)
-          --     return utils.root_has_file({ ".rubocop.yml" })
-          --   end,
-          --   command = "bundle",
-          --   args = vim.list_extend({ "exec", "rubocop" }, null_ls.builtins.diagnostics.rubocop._opts.args),
-          -- }),
+          formatters.erb_format,
         },
       })
 

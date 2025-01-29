@@ -5,8 +5,8 @@ end
 
 vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
 
-return {
-  {
+
+return  {
     "folke/snacks.nvim",
     priority = 1000,
     lazy = false,
@@ -15,7 +15,11 @@ return {
       bigfile = { enabled = true },
       indent = { enabled = true, animate = { enabled = false } },
       picker = {
-        enabled = true,
+        -- layout = {
+        --   preview = "main",
+        --   preset = "ivy"
+        -- }
+        -- sources = { files = { hidden = true } },
         layouts = {
           default = {
             layout = {
@@ -35,6 +39,13 @@ return {
               },
             }
           }
+        },
+        win = {
+          input = {
+            keys = {
+              ["<c-h>"] = { "toggle_hidden", mode = { "i", "n" } },
+            }
+          },
         }
       },
       quickfile = { enabled = true },
@@ -53,6 +64,7 @@ return {
       { "<leader>f",  function() Snacks.picker.files() end,            desc = "Find Files" },
       { "<leader>sh", function() Snacks.picker.help() end,             desc = "Help Pages" },
       { "<leader>sg", function() Snacks.picker.grep() end,             desc = "Grep" },
+      { "<leader>sb", function() Snacks.picker.buffers() end,          desc = "Buffers" },
       { "<leader>sw", function() Snacks.picker.grep_word() end,        desc = "Visual selection or word", mode = { "n", "x" } },
       { "<leader>sr", function() Snacks.picker.resume() end,           desc = "Resume" },
       { "<leader>sH", function() Snacks.picker.command_history() end,  desc = "Command History" },
@@ -61,18 +73,39 @@ return {
       { "<leader>ss", function() Snacks.picker.lsp_symbols() end,      desc = "LSP Symbols" },
       { "<leader>sk", function() Snacks.picker.keymaps() end,          desc = "Keymaps" },
 
-
-      -- keymap("n", "<leader>f", builtin.find_files, opts)
-      -- keymap("n", "<leader>so", builtin.oldfiles, opts)
-      -- keymap("n", "<leader>gb", builtin.git_branches, opts)
-      -- keymap("n", "<leader>slr", builtin.lsp_references, opts)
-      -- keymap("n", "<leader>sq", builtin.quickfix, opts)
-      -- keymap("n", "<leader>sr", "<cmd>lua require('telescope.builtin').resume()<cr>", opts)
-      -- keymap("n", "<leader>sw", builtin.grep_string, opts)
-      -- keymap("n", "<leader>sb", builtin.buffers, opts)
-      -- keymap("n", "<leader>sm", builtin.marks, opts)
-      -- keymap("n", "<leader>sh", builtin.help_tags, opts)
-
+      -- remove outer identation "do"
+      {
+        "o",
+        mode = "o",
+        desc = "Move outer indentation",
+        function()
+          local operator = vim.v.operator
+          if operator == "d" then
+            local scope = require("snacks").scope.get()
+            local top = scope.from
+            local bottom = scope.to
+            local row, col = unpack(vim.api.nvim_win_get_cursor(0))
+            local move = ""
+            if row == bottom then
+              move = "k"
+            elseif row == top then
+              move = "j"
+            end
+            local ns = vim.api.nvim_create_namespace("border")
+            vim.api.nvim_buf_add_highlight(0, ns, "Substitute", top - 1, 0, -1)
+            vim.api.nvim_buf_add_highlight(0, ns, "Substitute", bottom - 1, 0, -1)
+            vim.defer_fn(function()
+              vim.api.nvim_buf_set_text(0, top - 1, 0, top - 1, -1, {})
+              vim.api.nvim_buf_set_text(0, bottom - 1, 0, bottom - 1, -1, {})
+              vim.api.nvim_buf_clear_namespace(0, ns, 0, -1)
+            end, 150)
+            return "<esc>" .. move
+          else
+            return "o"
+          end
+        end,
+        { expr = true }
+      }
     },
   }
-}
+
