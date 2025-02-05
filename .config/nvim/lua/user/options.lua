@@ -1,4 +1,5 @@
 local options = {
+  signcolumn = "yes",        -- always show the sign column, otherwise it would shift the text each time
   expandtab = true,          -- convert tabs to spaces
   shiftwidth = 2,            -- the number of spaces inserted for each indentation
   smartindent = true,        -- make indenting smarter again
@@ -52,4 +53,5 @@ end
 
 vim.cmd("set whichwrap+=<,>,[,],h,l")
 vim.cmd([[set iskeyword+=-]])
+vim.cmd([[set mouse=]])
 -- vim.cmd([[set spell]])

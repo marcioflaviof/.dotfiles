@@ -6,6 +6,9 @@ return {
     'lewis6991/gitsigns.nvim',
     event = { "BufReadPre", "BufNewFile" },
     opts = {},
+    keys = {
+      { "<leader>gl", "<cmd>lua require('gitsigns').blame_line()<CR>", mode = { 'n' } },
+    }
   },
 
   {

@@ -20,7 +20,7 @@ return {
           "markdown",
         },
         highlight = {
-          enable = true,                -- false will disable the whole extension
+          enable = true,                    -- false will disable the whole extension
           disable = function(lang, buf)
             local max_filesize = 100 * 1024 -- 100 KB
             local ok, stats = pcall(vim.loop.fs_stat, vim.api.nvim_buf_get_name(buf))
@@ -29,19 +29,6 @@ return {
             end
           end,
           additional_vim_regex_highlighting = true,
-        },
-        autopairs = {
-          enable = true,
-        },
-        indent = {
-          enable = false,
-          disable = {
-            "python",
-            "css",
-            "yaml",
-            "ruby",
-            "eruby"
-          }
         },
         incremental_selection = {
           enable = true,

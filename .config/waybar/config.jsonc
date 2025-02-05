@@ -9,10 +9,10 @@
     "hyprland/language",
     "pulseaudio",
     "clock",
-    "custom/exit"
+    "custom/exit",
   ],
   "clock": {
-    "format": "<span foreground='#f5c2e7'>   </span>{:%a %d %H:%M}",
+    "format": "<span foreground='#f5c2e7'>   </span>{:%a %B %d %H:%M}",
     "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
   },
   "pulseaudio": {
@@ -45,6 +45,6 @@
     "format": "",
     "on-click": "wlogout",
     "on-click-right": "hyprlock",
-    "tooltip-format": "Left: Power menu\nRight: Lock screen"
+    "tooltip-format": "Left: Power menu\nRight: Lock screen",
   },
 }
