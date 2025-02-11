@@ -18,7 +18,6 @@ return {
           ["`"] = "actions.cd",
           ["~"] = "actions.tcd",
           ["gs"] = "actions.change_sort",
-          ["gx"] = "actions.open_external",
           ["g."] = "actions.toggle_hidden",
           ["g\\"] = "actions.toggle_trash",
 
@@ -35,10 +34,4 @@ return {
       vim.keymap.set("n", "-", "<CMD>Oil --float<CR>")
     end,
   },
-  {
-    'chrishrb/gx.nvim',
-    keys = { { "gx", "<cmd>Browse<cr>", mode = { "n", "x" } } },
-    cmd = { "Browse" },
-    opts = {}
-  }
 }

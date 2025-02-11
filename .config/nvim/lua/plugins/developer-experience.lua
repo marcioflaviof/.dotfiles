@@ -95,6 +95,11 @@ return {
     opts = {}
   },
   {
+    'echasnovski/mini.operators',
+    version = '*',
+    opts = {}
+  },
+  {
     "chentoast/marks.nvim",
     event = "VeryLazy",
     opts = {},

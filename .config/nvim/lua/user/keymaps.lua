@@ -51,11 +51,6 @@ keymap("n", "<leader>gj", "<cmd>diffget //3<CR>", opts) -- vim fugitive
 -- save with ctrl + s
 keymap("n", "<C-s>", ":w<CR>", { noremap = true })
 
-
--- lsp-ts-utils
-keymap("n", "<leader>lu", "<cmd>TSToolsRemoveUnusedImports<CR>", opts)
-keymap("n", "<leader>li", "<cmd>TSToolsAddMissingImports<CR>", opts)
-
 -- Undotree
 keymap("n", "<leader>u", "<cmd>UndotreeToggle<cr>", opts)
 

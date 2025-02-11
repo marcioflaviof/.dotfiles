@@ -29,182 +29,158 @@ end
 
 return {
   {
-    "VonHeikemen/lsp-zero.nvim",
-    branch = "v3.x",
-    config = function()
-      local lsp_zero = require('lsp-zero')
-      lsp_zero.extend_lspconfig()
+    "folke/lazydev.nvim",
+    ft = "lua",
+    opts = {
+      library = {
+        -- Load luvit types when the `vim.uv` word is found
+        { path = "${3rd}/luv/library", words = { "vim%.uv" } },
+      },
+    },
+  },
+  {
+    -- Main LSP Configuration
+    "neovim/nvim-lspconfig",
+    dependencies = {
+      { "williamboman/mason.nvim", opts = {} },
+      "williamboman/mason-lspconfig.nvim",
+      "WhoIsSethDaniel/mason-tool-installer.nvim",
 
-      local luasnip = require("luasnip")
-      luasnip.config.set_config {
-        updateevents = "TextChanged,TextChangedI"
+      -- Useful status updates for LSP.
+      { "j-hui/fidget.nvim",       opts = {} },
+
+      -- Allows extra capabilities provided by nvim-cmp
+      "hrsh7th/cmp-nvim-lsp",
+    },
+    config = function()
+      local Snacks = require("snacks")
+
+      vim.api.nvim_create_autocmd("LspAttach", {
+        group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),
+        callback = function(event)
+          local map = function(keys, func, desc, mode)
+            mode = mode or "n"
+            vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
+          end
+
+          map("gd", function()
+            vim.lsp.buf.definition({ on_list = on_list })
+          end, "[G]oto [D]efinition")
+
+          map("<leader>lr", function() Snacks.picker.lsp_references() end, "[L]sp [R]eferences")
+          map("gI", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
+          map("<leader>D", vim.lsp.buf.type_definition, "Type [D]efinition")
+          map("<leader>ds", vim.lsp.buf.document_symbol, "[D]ocument [S]ymbols")
+          map("<leader>ws", vim.lsp.buf.workspace_symbol, "[W]orkspace [S]ymbols")
+          map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
+          map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
+          map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
+          map("gl", function() vim.diagnostic.open_float() end, "")
+
+          local client = vim.lsp.get_client_by_id(event.data.client_id)
+          if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
+            local highlight_augroup =
+                vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
+            vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
+              buffer = event.buf,
+              group = highlight_augroup,
+              callback = vim.lsp.buf.document_highlight,
+            })
+
+            vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+              buffer = event.buf,
+              group = highlight_augroup,
+              callback = vim.lsp.buf.clear_references,
+            })
+
+            vim.api.nvim_create_autocmd("LspDetach", {
+              group = vim.api.nvim_create_augroup("kickstart-lsp-detach", { clear = true }),
+              callback = function(event2)
+                vim.lsp.buf.clear_references()
+                vim.api.nvim_clear_autocmds({ group = "kickstart-lsp-highlight", buffer = event2.buf })
+              end,
+            })
+          end
+
+          if client and client.supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
+            map("<leader>th", function()
+              vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
+            end, "[T]oggle Inlay [H]ints")
+          end
+        end,
+      })
+
+      local signs = { ERROR = "", WARN = "", INFO = "", HINT = "" }
+      local diagnostic_signs = {}
+      for type, icon in pairs(signs) do
+        diagnostic_signs[vim.diagnostic.severity[type]] = icon
+      end
+      vim.diagnostic.config({ signs = { text = diagnostic_signs } })
+
+      local capabilities = vim.lsp.protocol.make_client_capabilities()
+      capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+
+      local servers = {
+
+        cssls = {},
+        html = {},
+        jsonls = {},
+        ruby_lsp = {},
+        emmet_language_server = {},
+        sqlls = {},
+        -- ts_ls = {},
+
+        lua_ls = {
+          -- cmd = { ... },
+          -- filetypes = { ... },
+          -- capabilities = {},
+          settings = {
+            Lua = {
+              completion = {
+                callSnippet = "Replace",
+              },
+              -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
+              diagnostics = { disable = { "missing-fields" } },
+            },
+          },
+        },
       }
 
-      require('luasnip.loaders.from_vscode').lazy_load()
+      local ensure_installed = vim.tbl_keys(servers or {})
+      vim.list_extend(ensure_installed, {
+        "cssls",
+        "html",
+        "jsonls",
+        "lua_ls",
+        -- "ts_ls",
+        "ruby_lsp",
+        "emmet_language_server",
+        "sqlls",
+      })
+      require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
-      luasnip.filetype_extend("typescriptreact", { "javascript", "typescript" })
-      luasnip.filetype_extend("typescript", { "javascript" })
-
-      for _, ft_path in ipairs(vim.api.nvim_get_runtime_file("lua/custom/snippets/*.lua", true)) do
-        loadfile(ft_path)()
-      end
-
-      lsp_zero.on_attach(function(client, bufnr)
-        -- lsp_zero.buffer_autoformat()
-        lsp_zero.default_keymaps({ buffer = bufnr, preserve_mappings = false })
-
-        local opts = { noremap = true, silent = true }
-
-        vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lr", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
-        vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-        vim.api.nvim_buf_set_keymap(bufnr, "v", "<leader>lca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
-        vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lih",
-          "<cmd>lua vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())<CR>", opts)
-        vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>lf", "<cmd>LspZeroFormat<CR>", opts)
-
-        local bufopts = { noremap = true, silent = true, buffer = bufnr }
-
-        vim.keymap.set("n", "gd", function()
-          vim.lsp.buf.definition({ on_list = on_list })
-        end, bufopts)
-      end)
-
-
-      -- lsp_zero.format_on_save({
-      --   format_opts = {
-      --     async = false,
-      --     timeout_ms = 3000,
-      --   },
-      --   servers = {
-      --     ["null-ls"] = { "javascript", "typescript", "ruby", "typescriptreact", "javascriptreact", "markdown", "sql" },
-      --   }
-      -- })
-      -- MASON
-      local lua_opts = lsp_zero.nvim_lua_ls()
-
-      require('mason').setup({})
-      require('mason-lspconfig').setup({
-        ensure_installed = {
-          "cssls",
-          "html",
-          "jsonls",
-          "lua_ls",
-          "ruby_lsp",
-          "emmet_language_server",
-          "sqlls",
-        },
+      require("mason-lspconfig").setup({
         handlers = {
-          lsp_zero.default_setup,
-          ts_ls = lsp_zero.noop,
-          lua_ls = require('lspconfig').lua_ls.setup(lua_opts),
-        }
-      })
-
-      -- CMP
-      vim.opt.shortmess:append "c"
-
-      local lspkind = require "lspkind"
-
-      local cmp = require('cmp')
-      local cmp_action = require('lsp-zero').cmp_action()
-
-      cmp.setup({
-        window = {
-          completion = cmp.config.window.bordered(),
-          documentation = cmp.config.window.bordered(),
+          function(server_name)
+            local server = servers[server_name] or {}
+            -- This handles overriding only values explicitly passed
+            -- by the server configuration above. Useful when disabling
+            server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
+            require("lspconfig")[server_name].setup(server)
+          end,
         },
-        formatting = {
-          format = lspkind.cmp_format({
-            mode = 'symbol_text',
-            -- maxwidth = 150,
-            ellipsis_char = '...',
-            show_labelDetails = true
-          })
-
-        },
-        snippet = {
-          expand = function(args)
-            require('luasnip').lsp_expand(args.body)
-          end
-        },
-        sources = {
-          { name = "luasnip", max_item_count = 3 },
-          { name = "nvim_lsp" },
-          { name = "buffer" },
-          { name = "nvim_lua" },
-          { name = "path" },
-        },
-        mapping = cmp.mapping.preset.insert({
-          ["<C-n>"] = cmp_action.luasnip_supertab(),
-          ["<C-p>"] = cmp_action.luasnip_shift_supertab(),
-          ['<C-u>'] = cmp.mapping.scroll_docs(-4),
-          ['<C-d>'] = cmp.mapping.scroll_docs(4),
-          -- `Enter` key to confirm completion
-          ["<CR>"] = cmp.mapping.confirm({ select = true }),
-          -- Ctrl+Space to trigger completion menu
-          ["<C-Space>"] = cmp.mapping.complete(),
-          ["<Tab>"] = cmp_action.luasnip_jump_forward(),
-          ["<S-Tab>"] = cmp_action.luasnip_jump_backward(),
-
-        }),
-      })
-
-      cmp.setup.cmdline(':', {
-        mapping = cmp.mapping.preset.cmdline(),
-        sources = cmp.config.sources({
-          { name = 'path' }
-        }, {
-          {
-            name = 'cmdline',
-            option = {
-              ignore_cmds = { 'Man', '!' }
-            }
-          }
-        })
-      })
-
-      cmp.setup.filetype({ 'sql' }, {
-        sources = {
-          { name = 'vim-dadbod-completion' },
-          { name = 'buffer' }
-        }
-      })
-
-      --- NULL LS
-      local null_ls = require("null-ls")
-
-      local formatters = null_ls.builtins.formatting
-      local diagnostics = null_ls.builtins.diagnostics
-
-      null_ls.setup({
-        sources = {
-          formatters.prettierd,
-          formatters.sqlfmt,
-          formatters.erb_format,
-        },
-      })
-
-      -- LSP
-
-      local lspconfig = require('lspconfig')
-      lspconfig.emmet_language_server.setup({
-        filetypes = { "css", "eruby", "html", "javascript", "javascriptreact", "less", "sass", "scss", "svelte", "pug", "typescriptreact", "vue", "handlebars" },
       })
     end,
   },
 
 
-  'neovim/nvim-lspconfig',
-  "williamboman/mason.nvim",
-  "williamboman/mason-lspconfig.nvim",
-  "nvimtools/none-ls.nvim",
   {
     "pmizio/typescript-tools.nvim",
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
     config = function()
       require("typescript-tools").setup({
         settings = {
-          separate_diagnostic_server = false,
+          separate_diagnostic_server = true,
           publish_diagnostic_on = "insert_leave",
           tsserver_max_memory = "auto",
           tsserver_plugins = {},
@@ -225,39 +201,10 @@ return {
     end,
     event = "VeryLazy",
     ft = { "typescript", "typescriptreact", "javascript", "javascriptreact" },
-  },
-
-  {
-    "hrsh7th/nvim-cmp",
-    event = 'InsertEnter',
-    dependencies = {
-      -- snippets
-      {
-        "L3MON4D3/LuaSnip",
-        build = "make install_jsregexp",
-        dependencies = {
-          "rafamadriz/friendly-snippets",
-        }
-      },
-      "onsails/lspkind.nvim",
-      "hrsh7th/cmp-buffer",
-      "hrsh7th/cmp-path",
-      "hrsh7th/cmp-nvim-lsp",
-      "saadparwaiz1/cmp_luasnip",
-      "hrsh7th/cmp-nvim-lua",
-      "hrsh7th/cmp-cmdline",
-    },
-  },
-  {
-    "ray-x/lsp_signature.nvim",
-    event = "VeryLazy",
-    opts = {},
-    config = function()
-      require 'lsp_signature'.setup({
-        floating_window = false,
-        hint_scheme = "Comment",
-        hint_prefix = " ",
-      })
-    end
-  },
+    keys = {
+      { "<leader>lo", "<cmd>TSToolsOrganizeImports<CR>",     desc = "Organize imports",      mode = { 'n' } },
+      { "<leader>lu", "<cmd>TSToolsRemoveUnusedImports<CR>", desc = "Remove unused imports", mode = { 'n' } },
+      { "<leader>li", "<cmd>TSToolsAddMissingImports<CR>",   desc = "Add missing imports",   mode = { 'n' } },
+    }
+  }
 }
