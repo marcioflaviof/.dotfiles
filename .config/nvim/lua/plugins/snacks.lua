@@ -63,23 +63,23 @@ return {
     },
   },
   keys = {
-    { "<leader>bd", function() Snacks.bufdelete() end,                                     desc = "Delete Buffer" },
-    { "<c-\\>",     function() Snacks.terminal() end,                                      desc = "Toggle Terminal",          mode = { "n", "i", "t" } },
-    { "]]",         function() Snacks.words.jump(vim.v.count1) end,                        desc = "Next Reference",           mode = { "n", "t" } },
-    { "[[",         function() Snacks.words.jump(-vim.v.count1) end,                       desc = "Prev Reference",           mode = { "n", "t" } },
+    { "<leader>bd", function() Snacks.bufdelete() end,                                               desc = "Delete Buffer" },
+    { "<c-\\>",     function() Snacks.terminal() end,                                                desc = "Toggle Terminal",          mode = { "n", "i", "t" } },
+    { "]]",         function() Snacks.words.jump(vim.v.count1) end,                                  desc = "Next Reference",           mode = { "n", "t" } },
+    { "[[",         function() Snacks.words.jump(-vim.v.count1) end,                                 desc = "Prev Reference",           mode = { "n", "t" } },
 
     -- picker
-    { "<leader>f",  function() Snacks.picker.files({ exclude = { 'node_modules/' } }) end, desc = "Find Files" },
-    { "<leader>sh", function() Snacks.picker.help() end,                                   desc = "Help Pages" },
-    { "<leader>sg", function() Snacks.picker.grep() end,                                   desc = "Grep" },
-    { "<leader>sb", function() Snacks.picker.buffers() end,                                desc = "Buffers" },
-    { "<leader>sw", function() Snacks.picker.grep_word() end,                              desc = "Visual selection or word", mode = { "n", "x" } },
-    { "<leader>sr", function() Snacks.picker.resume() end,                                 desc = "Resume" },
-    { "<leader>sH", function() Snacks.picker.command_history() end,                        desc = "Command History" },
-    { "<leader>sq", function() Snacks.picker.qflist() end,                                 desc = "Quickfix List" },
-    { "<leader>so", function() Snacks.picker.recent() end,                                 desc = "Recent" },
-    { "<leader>ss", function() Snacks.picker.lsp_symbols() end,                            desc = "LSP Symbols" },
-    { "<leader>sk", function() Snacks.picker.keymaps() end,                                desc = "Keymaps" },
+    { "<leader>f",  function() Snacks.picker.files({ exclude = { 'node_modules/', '*.lock' } }) end, desc = "Find Files" },
+    { "<leader>sh", function() Snacks.picker.help() end,                                             desc = "Help Pages" },
+    { "<leader>sg", function() Snacks.picker.grep() end,                                             desc = "Grep" },
+    { "<leader>sb", function() Snacks.picker.buffers() end,                                          desc = "Buffers" },
+    { "<leader>sw", function() Snacks.picker.grep_word() end,                                        desc = "Visual selection or word", mode = { "n", "x" } },
+    { "<leader>sr", function() Snacks.picker.resume() end,                                           desc = "Resume" },
+    { "<leader>sH", function() Snacks.picker.command_history() end,                                  desc = "Command History" },
+    { "<leader>sq", function() Snacks.picker.qflist() end,                                           desc = "Quickfix List" },
+    { "<leader>so", function() Snacks.picker.recent() end,                                           desc = "Recent" },
+    { "<leader>ss", function() Snacks.picker.lsp_symbols() end,                                      desc = "LSP Symbols" },
+    { "<leader>sk", function() Snacks.picker.keymaps() end,                                          desc = "Keymaps" },
 
     -- remove outer identation "do"
     {

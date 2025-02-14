@@ -1,24 +1,14 @@
 return {
   {
-    "echasnovski/mini.hipatterns",
-    recommended = true,
-    desc = "Highlight colors in your code. Also includes Tailwind CSS support.",
-    config = function()
-      local hipatterns = require('mini.hipatterns')
-
-      hipatterns.setup({
-        highlighters = {
-          -- Highlight standalone 'FIXME', 'HACK', 'TODO', 'NOTE'
-          fixme     = { pattern = '%f[%w]()FIXME()%f[%W]', group = 'MiniHipatternsFixme' },
-          hack      = { pattern = '%f[%w]()HACK()%f[%W]', group = 'MiniHipatternsHack' },
-          todo      = { pattern = '%f[%w]()TODO()%f[%W]', group = 'MiniHipatternsTodo' },
-          note      = { pattern = '%f[%w]()NOTE()%f[%W]', group = 'MiniHipatternsNote' },
-
-          -- Highlight hex color strings (`#rrggbb`) using that color
-          hex_color = hipatterns.gen_highlighter.hex_color(),
-        },
-      })
-    end,
+    'catgoose/nvim-colorizer.lua',
+    event = "BufReadPre",
+    opts = {
+      RRGGBBAA = true, -- #RRGGBBAA hex codes
+      AARRGGBB = true, -- 0xAARRGGBB hex codes
+      rgb_fn = true,   -- CSS rgb() and rgba() functions
+      hsl_fn = true,   -- CSS hsl() and hsla() functions
+      tailwind = true
+    },
   },
   {
     "folke/tokyonight.nvim",
