@@ -31,7 +31,7 @@ config.window_background_opacity = 1.0
 config.window_decorations = "RESIZE"
 config.enable_tab_bar = true
 config.tab_bar_at_bottom = true
-config.font_size = 12.0
+config.font_size = 13.0
 config.enable_wayland = false
 
 config.keys = {

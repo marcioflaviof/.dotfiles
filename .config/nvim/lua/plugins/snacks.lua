@@ -12,6 +12,9 @@ return {
   lazy = false,
   ---@type snacks.Config
   opts = {
+    image = {
+      enabled = true
+    },
     statuscolumn = {
       left = { "mark", "sign" }, -- priority of signs on the left (high to low)
       right = { "fold", "git" }, -- priority of signs on the right (high to low)
