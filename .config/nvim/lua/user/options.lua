@@ -26,7 +26,7 @@ local options = {
   completeopt = { "menu", "menuone", "noselect" }, -- mostly just for cmp
   conceallevel = 0,                                -- so that `` is visible in markdown files
   fileencoding = "utf-8",                          -- the encoding written to a file
-  -- spelllang = "en",
+  spelllang = "pt_br,en_us",
   pumheight = 10,                                  -- pop up menu height
   showmode = false,                                -- we don't need to see things like -- INSERT -- anymore
   showtabline = 0,                                 -- always show tabs
@@ -38,12 +38,11 @@ local options = {
   undofile = true,                                 -- enable persistent undo
   laststatus = 3,
   showcmd = false,
-  relativenumber = true,          -- set relative numbered lines
-  numberwidth = 2,                -- set number column width to 2 {default 4}
+  relativenumber = true, -- set relative numbered lines
+  numberwidth = 2,       -- set number column width to 2 {default 4}
   -- colorcolumn = "80",
-  wrap = true,                    -- display lines as one long line
-
-  guifont = "JetBrains Mono:h16", -- the font used in graphical neovim applications
+  wrap = false,          -- display lines as one long line
+  spell = false,
 }
 
 for k, v in pairs(options) do
@@ -54,4 +53,3 @@ end
 vim.cmd("set whichwrap+=<,>,[,],h,l")
 vim.cmd([[set iskeyword+=-]])
 vim.cmd([[set mouse=]])
--- vim.cmd([[set spell]])

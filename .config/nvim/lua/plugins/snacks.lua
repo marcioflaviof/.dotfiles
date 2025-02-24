@@ -5,6 +5,13 @@ end
 
 vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
 
+vim.api.nvim_create_autocmd("User", {
+  pattern = "MiniFilesActionRename",
+  callback = function(event)
+    Snacks.rename.on_rename_file(event.data.from, event.data.to)
+  end,
+})
+
 
 return {
   "folke/snacks.nvim",
@@ -13,7 +20,7 @@ return {
   ---@type snacks.Config
   opts = {
     image = {
-      enabled = true
+      enabled = false
     },
     statuscolumn = {
       left = { "mark", "sign" }, -- priority of signs on the left (high to low)
@@ -93,6 +100,8 @@ return {
         local operator = vim.v.operator
         if operator == "d" then
           local scope = require("snacks").scope.get()
+          if not scope then return "o" end
+
           local top = scope.from
           local bottom = scope.to
           local row, col = unpack(vim.api.nvim_win_get_cursor(0))

@@ -11,25 +11,39 @@ vim.api.nvim_set_keymap("v", "ga", "<cmd>CodeCompanionChat Add<cr>", { noremap =
 vim.cmd([[cab cc CodeCompanion]])
 return {
   {
-    "Exafunction/codeium.vim",
-    config = function()
-      vim.keymap.set("i", "<C-a>", function()
-        return vim.fn["codeium#Accept"]()
-      end, { expr = true })
-
-      vim.keymap.set("i", "<C-a>", function() return vim.fn["codeium#Accept"]() end, { expr = true, silent = true })
-      vim.keymap.set("i", "<C-x>", function() return vim.fn["codeium#Clear"]() end, { expr = true, silent = true })
-      vim.keymap.set("i", "<C-]>", function() return vim.fn["codeium#CycleCompletions"](1) end,
-        { expr = true, silent = true })
-
-      vim.g.codeium_enabled = true
-
-      vim.g.codeium_filetypes = {
-        markdown = false
-      }
-    end,
-    event = "BufEnter",
+    "zbirenbaum/copilot.lua",
+    cmd = { "Copilot" },
+    event = "InsertEnter",
+    opts = {
+      suggestion = {
+        enabled = true,
+        auto_trigger = true,
+        keymap = {
+          accept = "<C-a>",
+        }
+      },
+    }
   },
+  -- {
+  --   "Exafunction/codeium.vim",
+  --   config = function()
+  --     vim.keymap.set("i", "<C-a>", function()
+  --       return vim.fn["codeium#Accept"]()
+  --     end, { expr = true })
+  --
+  --     vim.keymap.set("i", "<C-a>", function() return vim.fn["codeium#Accept"]() end, { expr = true, silent = true })
+  --     vim.keymap.set("i", "<C-x>", function() return vim.fn["codeium#Clear"]() end, { expr = true, silent = true })
+  --     vim.keymap.set("i", "<C-]>", function() return vim.fn["codeium#CycleCompletions"](1) end,
+  --       { expr = true, silent = true })
+  --
+  --     vim.g.codeium_enabled = true
+  --
+  --     vim.g.codeium_filetypes = {
+  --       markdown = false
+  --     }
+  --   end,
+  --   event = "BufEnter",
+  -- },
   {
     "olimorris/codecompanion.nvim",
     dependencies = {
