@@ -39,15 +39,6 @@ return {
     },
   },
   {
-    "ray-x/lsp_signature.nvim",
-    event = "VeryLazy",
-    opts = {
-      floating_window = false,
-      hint_scheme = "Comment",
-      hint_prefix = " ",
-    },
-  },
-  {
     -- Main LSP Configuration
     "neovim/nvim-lspconfig",
     dependencies = {
@@ -59,7 +50,7 @@ return {
       { "j-hui/fidget.nvim",       opts = {} },
 
       -- Allows extra capabilities provided by nvim-cmp
-      "hrsh7th/cmp-nvim-lsp",
+      'saghen/blink.cmp'
     },
     config = function()
       local Snacks = require("snacks")
@@ -127,18 +118,9 @@ return {
       vim.diagnostic.config({ signs = { text = diagnostic_signs } })
 
       local capabilities = vim.lsp.protocol.make_client_capabilities()
-      capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+      capabilities = vim.tbl_deep_extend("force", capabilities, require("blink.cmp").get_lsp_capabilities())
 
       local servers = {
-
-        cssls = {},
-        html = {},
-        jsonls = {},
-        ruby_lsp = {},
-        emmet_language_server = {},
-        sqlls = {},
-        -- ts_ls = {},
-
         lua_ls = {
           -- cmd = { ... },
           -- filetypes = { ... },
@@ -157,14 +139,12 @@ return {
 
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
-        "cssls",
         "html",
         "jsonls",
         "lua_ls",
-        -- "ts_ls",
+        "flake8",
         "ruby_lsp",
-        "emmet_language_server",
-        "sqlls",
+        "emmet-language-server"
       })
       require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
@@ -181,8 +161,6 @@ return {
       })
     end,
   },
-
-
   {
     "pmizio/typescript-tools.nvim",
     dependencies = { "nvim-lua/plenary.nvim", "neovim/nvim-lspconfig" },
@@ -199,7 +177,8 @@ return {
             includeCompletionsForModuleExports = true,
             quotePreference = "auto",
           },
-          expose_as_code_action = { 'organize_imports', 'remove_unused_imports', 'fix_all' },
+          -- expose_as_code_action = { 'organize_imports', 'remove_unused_imports', 'fix_all' },
+          expose_as_code_action = 'all'
         },
 
         on_attach = function(client, bufnr)
@@ -215,5 +194,15 @@ return {
       { "<leader>lu", "<cmd>TSToolsRemoveUnusedImports<CR>", desc = "Remove unused imports", mode = { 'n' } },
       { "<leader>li", "<cmd>TSToolsAddMissingImports<CR>",   desc = "Add missing imports",   mode = { 'n' } },
     }
-  }
+  },
+  {
+    'folke/trouble.nvim',
+    dependencies = { "nvim-tree/nvim-web-devicons" },
+    opts = {},
+    keys = {
+      { "<leader>xx", function() require("trouble").toggle("diagnostics") end },
+      { "<leader>xw", function() require("trouble").toggle("workspace_diagnostics") end },
+      { "gR",         function() require("trouble").toggle("lsp_references") end },
+    }
+  },
 }
