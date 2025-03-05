@@ -79,15 +79,11 @@ button:hover {
 }
 
 #cpu {
-  color: @mauve;
+  color: @flamingo;
 }
 
 #memory {
-  color: @mauve;
-}
-
-#language {
-  color: @peach
+  color: @flamingo;
 }
 
 #clock {

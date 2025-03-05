@@ -2,7 +2,25 @@ return {
   {
     -- Autocompletion
     'saghen/blink.cmp',
-    dependencies = 'rafamadriz/friendly-snippets',
+    -- dependencies = { 'rafamadriz/friendly-snippets' },
+    dependencies = {
+      {
+        'L3MON4D3/LuaSnip',
+        version = 'v2.*',
+        build = "make install_jsregexp",
+        dependencies = 'rafamadriz/friendly-snippets',
+        config = function()
+          local luasnip = require("luasnip")
+
+          require("luasnip.loaders.from_vscode").lazy_load()
+
+          luasnip.config.setup({})
+
+          luasnip.filetype_extend("typescriptreact", { "javascript", "typescript" })
+          luasnip.filetype_extend("typescript", { "javascript" })
+        end
+      }
+    },
 
     -- use a release tag to download pre-built binaries
     version = '*',
@@ -10,9 +28,28 @@ return {
     ---@module 'blink.cmp'
     ---@type blink.cmp.Config
     opts = {
+
+      snippets = { preset = 'luasnip' },
+
+      signature = {
+        enabled = true
+      },
+
       appearance = {
         use_nvim_cmp_as_default = true,
         nerd_font_variant = 'mono'
+      },
+
+      fuzzy = {
+        implementation = 'rust'
+      },
+
+      cmdline = {
+        completion = {
+          menu = {
+            auto_show = true
+          }
+        }
       },
 
       -- Default list of enabled providers defined so that you can extend it
@@ -35,12 +72,12 @@ return {
         },
         menu = {
           draw = {
-            columns = { { 'item_idx' }, { 'kind_icon' }, { 'label', 'label_description', gap = 1 } },
+            -- columns = { { 'item_idx' }, { 'kind_icon' }, { 'label', 'label_description', gap = 1 } },
 
             -- look like cmp
-            -- columns = {
-            --   { "item_idx", "label", "label_description", gap = 1 }, { "kind" }
-            -- },
+            columns = {
+              { "item_idx", "label", "label_description", gap = 1 }, { "kind" }
+            },
             components = {
               item_idx = {
                 text = function(ctx) return ctx.idx == 10 and '0' or ctx.idx >= 10 and ' ' or tostring(ctx.idx) end,
@@ -66,17 +103,19 @@ return {
         ['<C-8>'] = { function(cmp) cmp.accept({ index = 8 }) end },
         ['<C-9>'] = { function(cmp) cmp.accept({ index = 9 }) end },
         ['<C-0>'] = { function(cmp) cmp.accept({ index = 10 }) end },
+
+        ['<C-space>'] = { function(cmp) cmp.show({ providers = { 'snippets' } }) end },
       }
     },
     opts_extend = { "sources.default" }
   },
-  {
-    "ray-x/lsp_signature.nvim",
-    event = "VeryLazy",
-    opts = {
-      floating_window = false,
-      hint_scheme = "Comment",
-      hint_prefix = " ",
-    },
-  },
+  -- {
+  --   "ray-x/lsp_signature.nvim",
+  --   event = "VeryLazy",
+  --   opts = {
+  --     floating_window = false,
+  --     hint_scheme = "Comment",
+  --     hint_prefix = " ",
+  --   },
+  -- },
 }
