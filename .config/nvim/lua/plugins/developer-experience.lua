@@ -13,7 +13,7 @@ vim.o.foldenable = true
 vim.o.fillchars = [[eob: ,fold: ,foldopen:,foldsep: ,foldclose:]]
 
 return {
-  { "andymass/vim-matchup", lazy = false, },
+  { "andymass/vim-matchup",  lazy = false, },
   {
     "kevinhwang91/nvim-ufo",
     dependencies = 'kevinhwang91/promise-async',
@@ -185,5 +185,7 @@ return {
     'stevearc/quicker.nvim',
     event = "FileType qf",
     opts = {},
-  }
+  },
+  'kchmck/vim-coffee-script',
+  { 'nvim-focus/focus.nvim', version = '*', opts = {} },
 }

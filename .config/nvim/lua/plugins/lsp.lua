@@ -144,7 +144,7 @@ return {
         "lua_ls",
         "flake8",
         "ruby_lsp",
-        "emmet-language-server"
+        "emmet_ls"
       })
       require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
