@@ -41,7 +41,7 @@ local options = {
   relativenumber = true, -- set relative numbered lines
   numberwidth = 2,       -- set number column width to 2 {default 4}
   -- colorcolumn = "80",
-  wrap = false,          -- display lines as one long line
+  wrap = true,          -- display lines as one long line
   spell = false,
 }
 

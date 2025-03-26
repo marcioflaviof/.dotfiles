@@ -31,9 +31,9 @@ return {
 
       snippets = { preset = 'luasnip' },
 
-      signature = {
-        enabled = true
-      },
+      -- signature = {
+      --   enabled = true
+      -- },
 
       appearance = {
         use_nvim_cmp_as_default = true,
@@ -105,17 +105,18 @@ return {
         ['<C-0>'] = { function(cmp) cmp.accept({ index = 10 }) end },
 
         ['<C-space>'] = { function(cmp) cmp.show({ providers = { 'snippets' } }) end },
+        ['<C-r>'] = { function(cmp) cmp.show() end },
       }
     },
     opts_extend = { "sources.default" }
   },
-  -- {
-  --   "ray-x/lsp_signature.nvim",
-  --   event = "VeryLazy",
-  --   opts = {
-  --     floating_window = false,
-  --     hint_scheme = "Comment",
-  --     hint_prefix = " ",
-  --   },
-  -- },
+  {
+    "ray-x/lsp_signature.nvim",
+    event = "VeryLazy",
+    opts = {
+      floating_window = false,
+      hint_scheme = "Comment",
+      hint_prefix = " ",
+    },
+  },
 }

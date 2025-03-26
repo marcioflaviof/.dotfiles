@@ -8,9 +8,11 @@ layout {
         plugin location="zellij:status-bar"
       }
   }
-  tab name="Main" cwd="/home/mf/code-42/codeminer42-website" focus=true {
-    pane borderless=true command="rails" {
-        args "s"
-      }
+  tab name="Launch" cwd="/home/mf/Stack/stack-development" {
+    pane {}
   }
+  tab name="SPC launch" cwd="/home/mf/Stack/stack-development/stack-partners-client" {
+    pane {}
+  }
+  tab name="SPC" cwd="/home/mf/Stack/stack-development/stack-partners-client" focus=true {}
 }

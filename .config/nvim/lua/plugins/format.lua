@@ -32,7 +32,8 @@ return {
       javascriptreact = { "prettierd", "prettier", stop_after_first = true },
       typescriptreact = { "prettierd", "prettier", stop_after_first = true },
       sql = { "pg_format" },
-      eruby = { "erb_format" }
+      eruby = { "erb_format" },
+      ruby = { "rufo" }
     },
   },
 }
