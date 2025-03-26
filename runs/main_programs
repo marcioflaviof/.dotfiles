@@ -1,0 +1,4 @@
+#!/usr/bin/env bash
+
+sudo pacman -S discord telegram-desktop --noconfirm
+yay -S spotify slack-desktop google-chrome --noconfirm

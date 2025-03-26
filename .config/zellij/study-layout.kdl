@@ -1,0 +1,25 @@
+layout {
+  default_tab_template {
+    pane size=1 borderless=true {
+      plugin location="zellij:tab-bar"
+    }
+    children
+    pane size=2 borderless=true {
+      plugin location="zellij:status-bar"
+    }
+  }
+  tab name="Project" cwd="/home/mf/code42/ledgerdary/ledgerdary-frontend" focus=true {
+  }
+  tab name="Docker" cwd="/home/mf/code42/ledgerdary/ledgerdary-ruby" {
+    pane {
+      command "docker"
+      args "compose" "up"
+    }
+  }
+  tab name="Run Dev" cwd="/home/mf/code42/ledgerdary/ledgerdary-frontend" {
+    pane {
+      command "pnpm"
+      args "dev"
+    }
+  }
+}

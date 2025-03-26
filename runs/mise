@@ -1,0 +1,10 @@
+#!/usr/bin/env bash
+
+curl https://mise.run | sh
+
+mise use --global node
+mise use --global ruby
+mise use --global python
+mise use --global rust
+
+mise self-update

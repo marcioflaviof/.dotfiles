@@ -1,0 +1,18 @@
+layout {
+  default_tab_template {
+    pane size=1 borderless=true {
+      plugin location="zellij:tab-bar"
+    }
+    children
+      pane size=2 borderless=true {
+        plugin location="zellij:status-bar"
+      }
+  }
+  tab name="Launch" cwd="/home/mf/Stack/stack-development" {
+    pane {}
+  }
+  tab name="SPC launch" cwd="/home/mf/Stack/stack-development/stack-partners-client" {
+    pane {}
+  }
+  tab name="SPC" cwd="/home/mf/Stack/stack-development/stack-partners-client" focus=true {}
+}

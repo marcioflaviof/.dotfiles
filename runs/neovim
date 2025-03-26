@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+git clone -b stable https://github.com/neovim/neovim.git $HOME/personal/neovim
+
+sudo pacman -S base-devel cmake ninja curl
+
+cd $HOME/personal/neovim
+make CMAKE_BUILD_TYPE=RelWithDebInfo
+sudo make install

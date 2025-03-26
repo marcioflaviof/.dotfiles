@@ -1,0 +1,7 @@
+#!/usr/bin/env bash
+
+sudo pacman -S fish starship --noconfirm
+
+chsh -s $(which fish)
+
+cd $HOME
