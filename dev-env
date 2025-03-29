@@ -1,11 +1,14 @@
 #!/usr/bin/env bash
 
 script_dir=$(cd $(dirname "${BASH_SOURCE[0]}") && pwd)
+filter=""
 dry="0"
 
 while [[ $# > 0 ]]; do
   if [[ $1 == "--dry" ]]; then
     dry="1"
+  else
+    filter="$1"
   fi
   shift
 done
@@ -39,6 +42,11 @@ copy_dir() {
   dirs=$(find . -mindepth 1 -maxdepth 1 -type d -exec basename {} \;)
 
   for dir in $dirs; do
+    if [ -n "$filter" ] && echo "$dir" | grep -qv $filter; then
+      log "filtering $dir"
+      continue
+    fi
+
     execute rm -rf $to/$dir
     execute cp -r $dir $to/$dir
   done
@@ -51,6 +59,11 @@ copy_file() {
 
   name=$(basename $from)
 
+  if [ -n "$filter" ] && echo "$name" | grep -qv $filter; then
+    log "filtering $name"
+    return
+  fi
+
   execute rm $to/$name
   execute cp $from $to/$name
 
@@ -58,3 +71,6 @@ copy_file() {
 
 copy_dir .config $HOME/.config
 copy_dir .local $HOME/.local
+copy_file .wezterm.lua $HOME
+copy_file .tmux.conf $HOME
+copy_file .gitconfig $HOME

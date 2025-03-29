@@ -1,3 +1,4 @@
 #!/usr/bin/env bash
 
-sudo pacman -S hyprland waybar hyprpaper swaync --noconfirm
+sudo pacman -S hyprland waybar hyprpaper swaync hyprlock grim slurp hyprpolkitagent --noconfirm
+yay -S wlogout pipewire wireplumber xdg-desktop-portal-hyprland --noconfirm

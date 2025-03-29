@@ -16,12 +16,13 @@ if status is-interactive
   alias la="eza -la --icons"
   alias dc="docker compose"
   alias r="rails"
+  alias ts="tmux-sessionizer"
 
   set PATH /home/mf/.local/bin:/home/mf/.local/bin:/usr/local/bin:/usr/bin:/var/lib/snapd/snap/bin:/usr/local/sbin:/usr/bin/core_perl:/snap/bin:/usr/sbin:/sbin:/home/mf/.local/share/bob/nvim-bin $PATH
 
   set PATH $HOME/.local/scripts $PATH
 
-  set EDITOR "/home/mf/.local/share/bob/nvim-bin/nvim"
+  set -gx EDITOR "nvim"
   set -gx VOLTA_HOME "$HOME/.volta"
   set -gx PATH "$VOLTA_HOME/bin" $PATH
 
