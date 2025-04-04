@@ -16,7 +16,8 @@ if status is-interactive
   alias la="eza -la --icons"
   alias dc="docker compose"
   alias r="rails"
-  alias ts="tmux-sessionizer"
+
+  bind ctrl-t 'tmux-sessionizer'
 
   set PATH /home/mf/.local/bin:/home/mf/.local/bin:/usr/local/bin:/usr/bin:/var/lib/snapd/snap/bin:/usr/local/sbin:/usr/bin/core_perl:/snap/bin:/usr/sbin:/sbin:/home/mf/.local/share/bob/nvim-bin $PATH
 

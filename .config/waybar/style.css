@@ -136,3 +136,7 @@ button:hover {
   padding-left: 6px;
   padding-right: 6px;
 }
+
+#custom-exit { 
+  padding-right: 6px;
+}

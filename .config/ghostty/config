@@ -1,2 +1,5 @@
 theme = tokyonight
 background-opacity = 1.0
+
+keybind = ctrl+up=scroll_page_lines:-25
+keybind = ctrl+down=scroll_page_lines:25
