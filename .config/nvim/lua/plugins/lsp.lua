@@ -143,8 +143,9 @@ return {
         "jsonls",
         "lua_ls",
         "flake8",
-        -- "ruby_lsp",
-        { 'solargraph', version = '0.51.1' },
+        "ruby_lsp",
+        "erb-formatter",
+        -- { 'solargraph', version = '0.51.1' },
         "emmet_ls"
       })
       require("mason-tool-installer").setup({ ensure_installed = ensure_installed })

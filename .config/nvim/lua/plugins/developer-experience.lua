@@ -23,6 +23,11 @@ return {
 
       require("ufo").setup {
         close_fold_kinds_for_ft = { default = { "imports" } },
+        provider_selector = function(_, ft, _)
+          local lspWithOutFolding = { "markdown", "zsh", "css", "html", "python", "json" }
+          if vim.tbl_contains(lspWithOutFolding, ft) then return { "treesitter", "indent" } end
+          return { "lsp", "indent" }
+        end,
       }
     end
   },

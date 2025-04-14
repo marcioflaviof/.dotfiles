@@ -15,13 +15,16 @@ return {
     cmd = { "Copilot" },
     event = "InsertEnter",
     opts = {
+      copilot_node_command = vim.fn.expand("$HOME") .. "/.local/share/mise/installs/node/23.10.0/bin/node",
       suggestion = {
         enabled = true,
         auto_trigger = true,
+        debounce = 75,
         keymap = {
-          accept = "<C-a>",
+          accept = "<M-l>",
         }
       },
+      -- copilot_model = "gpt-4o-copilot"
     }
   },
   {
@@ -31,6 +34,17 @@ return {
       "nvim-treesitter/nvim-treesitter",
     },
     opts = {
+      adapters = {
+        copilot = function()
+          return require("codecompanion.adapters").extend("copilot", {
+            schema = {
+              model = {
+                default = "claude-3.7-sonnet",
+              },
+            },
+          })
+        end,
+      },
       strategies = {
         chat = {
           adapter = "copilot",

@@ -3,3 +3,5 @@
 yay -S xclip wl-clipboard rofi bluez-utils jq upower fzf flameshot --noconfirm
 
 sudo pacman -S ripgrep exa wget ttf-jetbrains-mono unzip snapd zellij zoxide pavucontrol tmux postgresql-libs --noconfirm
+
+git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
