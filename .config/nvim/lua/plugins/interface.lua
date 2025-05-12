@@ -186,6 +186,14 @@ return {
       }
 
       ins_right {
+        function()
+          return vim.bo.filetype
+        end,
+        icon = '', -- optional icon
+        color = { fg = colors.cyan, gui = 'bold' },
+      }
+
+      ins_right {
         'branch',
         icon = '',
         color = { fg = colors.violet, gui = 'bold' },

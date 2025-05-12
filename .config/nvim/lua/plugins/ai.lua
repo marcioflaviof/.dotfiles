@@ -19,12 +19,12 @@ return {
       suggestion = {
         enabled = true,
         auto_trigger = true,
-        debounce = 75,
+        debounce = 0,
         keymap = {
           accept = "<M-l>",
         }
       },
-      -- copilot_model = "gpt-4o-copilot"
+      copilot_model = "gpt-4o-copilot"
     }
   },
   {
@@ -39,7 +39,7 @@ return {
           return require("codecompanion.adapters").extend("copilot", {
             schema = {
               model = {
-                default = "claude-3.7-sonnet",
+                default = "gpt-4.1",
               },
             },
           })

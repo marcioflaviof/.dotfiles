@@ -12,7 +12,6 @@ if status is-interactive
 
   alias ls="eza --icons"
   alias bat="bat --style=auto"
-  alias icat="kitty +kitten icat"
   alias la="eza -la --icons"
   alias dc="docker compose"
   alias r="rails"
@@ -21,11 +20,8 @@ if status is-interactive
 
   set PATH /home/mf/.local/bin:/home/mf/.local/bin:/usr/local/bin:/usr/bin:/var/lib/snapd/snap/bin:/usr/local/sbin:/usr/bin/core_perl:/snap/bin:/usr/sbin:/sbin:/home/mf/.local/share/bob/nvim-bin $PATH
 
-  set PATH $HOME/.local/scripts $PATH
-
   set -gx EDITOR "nvim"
-  set -gx VOLTA_HOME "$HOME/.volta"
-  set -gx PATH "$VOLTA_HOME/bin" $PATH
+  set -gx PATH $HOME/.local/scripts $PATH
 
 
   zoxide init fish | source

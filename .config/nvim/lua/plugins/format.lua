@@ -33,7 +33,9 @@ return {
       typescriptreact = { "prettierd", "prettier", stop_after_first = true },
       sql = { "pg_format" },
       eruby = { "erb_format" },
-      ruby = { "rufo" }
+      go = { "goimports" },
+      http = { "kulala-fmt" }
+      -- ruby = { "rufo", stop_after_first = true }
     },
   },
 }

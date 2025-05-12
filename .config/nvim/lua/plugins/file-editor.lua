@@ -8,7 +8,9 @@ return {
         go_in = 'L',
         go_out = 'H'
       },
-      use_as_default_explorer = true
+      options = {
+        use_as_default_explorer = true
+      }
     },
     keys = {
       {

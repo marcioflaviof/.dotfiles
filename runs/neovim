@@ -1,5 +1,17 @@
 #!/usr/bin/env bash
 
+if [ -d "/usr/local/bin/nvim" ]; then
+  sudo rm -rf /usr/local/bin/nvim
+fi
+
+if [ -d "/usr/local/share/nvim" ]; then
+  sudo rm -rf /usr/local/share/nvim
+fi
+
+if [ -d "$HOME/personal/neovim" ]; then
+    rm -rf "$HOME/personal/neovim"
+fi
+
 git clone -b stable https://github.com/neovim/neovim.git $HOME/personal/neovim
 
 sudo pacman -S base-devel cmake ninja curl

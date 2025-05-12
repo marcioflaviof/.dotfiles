@@ -31,10 +31,10 @@ return {
       }
     end
   },
-  -- {
-  --   "windwp/nvim-ts-autotag",
-  --   opts = {}
-  -- },
+  {
+    "windwp/nvim-ts-autotag",
+    opts = {}
+  },
   {
     "RRethy/vim-illuminate",
     config = function()
@@ -83,8 +83,4 @@ return {
     opts = {},
   },
   'kchmck/vim-coffee-script',
-  {
-    "OXY2DEV/markview.nvim",
-    lazy = false,
-  },
 }

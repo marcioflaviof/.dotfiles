@@ -42,12 +42,12 @@ return {
     -- Main LSP Configuration
     "neovim/nvim-lspconfig",
     dependencies = {
-      { "williamboman/mason.nvim", opts = {} },
-      "williamboman/mason-lspconfig.nvim",
+      { "mason-org/mason.nvim",          opts = {} },
+      { "mason-org/mason-lspconfig.nvim" },
       "WhoIsSethDaniel/mason-tool-installer.nvim",
 
       -- Useful status updates for LSP.
-      { "j-hui/fidget.nvim",       opts = {} },
+      { "j-hui/fidget.nvim", opts = {} },
 
       -- Allows extra capabilities provided by nvim-cmp
       'saghen/blink.cmp'
@@ -115,7 +115,14 @@ return {
       for type, icon in pairs(signs) do
         diagnostic_signs[vim.diagnostic.severity[type]] = icon
       end
-      vim.diagnostic.config({ signs = { text = diagnostic_signs } })
+      vim.diagnostic.config({
+        signs = { text = diagnostic_signs },
+        virtual_text = {
+          prefix = "●",
+          spacing = 4,
+          source = "if_many",
+        },
+      })
 
       local capabilities = vim.lsp.protocol.make_client_capabilities()
       capabilities = vim.tbl_deep_extend("force", capabilities, require("blink.cmp").get_lsp_capabilities())
@@ -145,8 +152,10 @@ return {
         "flake8",
         "ruby_lsp",
         "erb-formatter",
+        "gopls",
         -- { 'solargraph', version = '0.51.1' },
-        "emmet_ls"
+        "emmet_ls",
+        "kulala-fmt"
       })
       require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
@@ -154,8 +163,6 @@ return {
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}
-            -- This handles overriding only values explicitly passed
-            -- by the server configuration above. Useful when disabling
             server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
             require("lspconfig")[server_name].setup(server)
           end,
