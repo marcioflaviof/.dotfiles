@@ -41,7 +41,7 @@ local options = {
   relativenumber = true, -- set relative numbered lines
   numberwidth = 2,       -- set number column width to 2 {default 4}
   -- colorcolumn = "80",
-  wrap = true,          -- display lines as one long line
+  wrap = true,           -- display lines as one long line
   spell = false,
 }
 
@@ -49,7 +49,10 @@ for k, v in pairs(options) do
   vim.opt[k] = v
 end
 
-
 vim.cmd("set whichwrap+=<,>,[,],h,l")
 vim.cmd([[set iskeyword+=-]])
 vim.cmd([[set mouse=]])
+
+-- auto-reload files when modified externally
+-- https://unix.stackexchange.com/a/383044
+vim.o.autoread = true

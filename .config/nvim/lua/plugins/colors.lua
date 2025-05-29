@@ -19,6 +19,11 @@ return {
     priority = 1000,
     opts = {
       style = "night",
+      -- transparent = true,
+      -- styles = {
+      --   sidebars = "transparent",
+      --   floats = "transparent",
+      -- },
       on_colors = function(colors)
         colors.comment = "#6272a4"
       end,

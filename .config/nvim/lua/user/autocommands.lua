@@ -45,11 +45,19 @@ vim.api.nvim_create_autocmd("FileType", {
 --   group = disable_node_modules_eslint_group,
 -- })
 
--- auto-reload files when modified externally
--- https://unix.stackexchange.com/a/383044
-vim.o.autoread = true
-
--- vim.api.nvim_create_autocmd({ "BufEnter", "CursorHold", "CursorHoldI", "FocusGained" }, {
---   command = "if mode() != 'c' | checktime | endif",
---   pattern = { "*" },
--- })
+autocmd({ "FileType" }, {
+  desc = "On buffer enter with file type sql",
+  group = vim.api.nvim_create_augroup("dbee", { clear = true }),
+  pattern = { "sql" },
+  callback = function()
+    vim.keymap.set({ "n" }, "<leader>bb", function()
+      vim.api.nvim_feedkeys("vip", "n", false)
+      local srow, scol, erow, ecol = require("dbee.utils").visual_selection()
+      local selection = vim.api.nvim_buf_get_text(0, srow, scol, erow, ecol, {})
+      local query = table.concat(selection, "\n")
+      local command = string.format("Dbee execute %s", query)
+      -- vim.print(command)
+      vim.api.nvim_command(command)
+    end, { desc = "[D]bee [e]xecute query under cursor" })
+  end,
+})

@@ -7,9 +7,9 @@ return {
     event = { "BufReadPre", "BufNewFile" },
     opts = {},
     keys = {
-      { "<leader>gl", "<cmd>lua require('gitsigns').blame_line()<CR>", mode = { 'n' } },
-      { "]c", "<cmd>lua require('gitsigns').nav_hunk('next')<CR>", mode = { 'n' } },
-      { "[c", "<cmd>lua require('gitsigns').nav_hunk('prev')<CR>", mode = { 'n' } },
+      { "<leader>gl", "<cmd>lua require('gitsigns').blame_line()<CR>",     mode = { 'n' } },
+      { "]c",         "<cmd>lua require('gitsigns').nav_hunk('next')<CR>", mode = { 'n' } },
+      { "[c",         "<cmd>lua require('gitsigns').nav_hunk('prev')<CR>", mode = { 'n' } },
     },
   },
 

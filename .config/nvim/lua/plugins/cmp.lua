@@ -1,5 +1,14 @@
 return {
   {
+    'saghen/blink.compat',
+    -- use the latest release, via version = '*', if you also use the latest release for blink.cmp
+    version = '*',
+    -- lazy.nvim will automatically load the plugin when it's required by blink.cmp
+    lazy = true,
+    -- make sure to set opts so that lazy.nvim calls blink.compat's setup
+    opts = {},
+  },
+  {
     -- Autocompletion
     'saghen/blink.cmp',
     -- dependencies = { 'rafamadriz/friendly-snippets' },
@@ -47,8 +56,10 @@ return {
       cmdline = {
         completion = {
           menu = {
-            auto_show = true
-          }
+            auto_show = true,
+            border = 'single'
+          },
+          documentation = { window = { border = 'single' } },
         }
       },
 
@@ -56,8 +67,13 @@ return {
       -- elsewhere in your config, without redefining it, due to `opts_extend`
       sources = {
         default = { 'lazydev', 'lsp', 'path', 'snippets', 'buffer' },
+        per_filetype = {
+          -- Dbee
+          sql = { 'dbee', 'buffer' }
+        },
         providers = {
           lazydev = { name = "LazyDev", module = "lazydev.integrations.blink", score_offset = 100 },
+          dbee = { name = 'cmp-dbee', module = 'blink.compat.source' }
         }
       },
 
@@ -76,7 +92,7 @@ return {
             },
             components = {
               item_idx = {
-                text = function(ctx) return ctx.idx == 10 and '0' or ctx.idx >= 10 and ' ' or tostring(ctx.idx) end,
+                text = function(ctx) return tostring(ctx.idx) end,
                 highlight = 'BlinkCmpItemIdx' -- optional, only if you want to change its color
               }
             }
@@ -98,7 +114,6 @@ return {
         ['<C-7>'] = { function(cmp) cmp.accept({ index = 7 }) end },
         ['<C-8>'] = { function(cmp) cmp.accept({ index = 8 }) end },
         ['<C-9>'] = { function(cmp) cmp.accept({ index = 9 }) end },
-        ['<C-0>'] = { function(cmp) cmp.accept({ index = 10 }) end },
 
         ['<C-space>'] = { function(cmp) cmp.show({ providers = { 'snippets' } }) end },
         ['<C-r>'] = { function(cmp) cmp.show() end },
