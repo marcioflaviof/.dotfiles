@@ -1,10 +1,6 @@
 return {
   {
     "mistweaverco/kulala.nvim",
-    keys = {
-      { "<leader>rs", desc = "Send request" },
-      { "<leader>ra", desc = "Send all requests" },
-    },
     ft = { "http", "rest" },
     opts = {
       -- your configuration comes here

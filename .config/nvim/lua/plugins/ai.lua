@@ -24,7 +24,6 @@ return {
           accept = "<M-l>",
         }
       },
-      copilot_model = "gpt-4o-copilot"
     }
   },
   {
@@ -45,33 +44,39 @@ return {
           })
         end,
       },
-      strategies = {
-        chat = {
-          adapter = "copilot",
-        },
-        inline = {
-          adapter = "copilot",
-        },
-        agent = {
-          adapter = "copilot",
-        },
-      },
       prompt_library = {
-        ["Fix Grammar"] = {
+        ["Ruby on Rails Expert"] = {
           strategy = "chat",
-          description = "Fix the english grammar",
+          description = "Professional Ruby and Ruby on Rails developer for code review, debugging, and best practices.",
           prompts = {
             {
               role = "system",
-              content = "You are an experienced english teacher",
+              content =
+              "You are a senior Ruby and Ruby on Rails developer. You write idiomatic, secure, and maintainable Ruby code, follow Rails conventions, and provide clear, concise explanations.",
             },
             {
               role = "user",
-              content = "Can you fix the grammar on this sentence: "
+              content = "Please review or help with the following Ruby/Rails code or question: "
             }
           },
         },
-      }
+        ["React Frontend Specialist"] = {
+          strategy = "chat",
+          description =
+          "Professional React and JavaScript frontend specialist for code review, debugging, and best practices.",
+          prompts = {
+            {
+              role = "system",
+              content =
+              "You are a senior frontend developer specializing in React and modern JavaScript. You write clean, efficient, and accessible code, follow best practices, and provide clear, actionable feedback.",
+            },
+            {
+              role = "user",
+              content = "Please review or help with the following React/JavaScript code or question: "
+            }
+          },
+        },
+      },
     }
   }
 }

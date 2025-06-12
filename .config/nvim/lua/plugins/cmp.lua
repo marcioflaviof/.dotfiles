@@ -1,17 +1,13 @@
 return {
   {
     'saghen/blink.compat',
-    -- use the latest release, via version = '*', if you also use the latest release for blink.cmp
     version = '*',
-    -- lazy.nvim will automatically load the plugin when it's required by blink.cmp
     lazy = true,
-    -- make sure to set opts so that lazy.nvim calls blink.compat's setup
     opts = {},
   },
   {
     -- Autocompletion
     'saghen/blink.cmp',
-    -- dependencies = { 'rafamadriz/friendly-snippets' },
     dependencies = {
       {
         'L3MON4D3/LuaSnip',
@@ -31,7 +27,6 @@ return {
       }
     },
 
-    -- use a release tag to download pre-built binaries
     version = '*',
 
     ---@module 'blink.cmp'
@@ -39,10 +34,6 @@ return {
     opts = {
 
       snippets = { preset = 'luasnip' },
-
-      -- signature = {
-      --   enabled = true
-      -- },
 
       appearance = {
         use_nvim_cmp_as_default = true,
@@ -57,9 +48,7 @@ return {
         completion = {
           menu = {
             auto_show = true,
-            border = 'single'
           },
-          documentation = { window = { border = 'single' } },
         }
       },
 
@@ -123,7 +112,7 @@ return {
   },
   {
     "ray-x/lsp_signature.nvim",
-    event = "VeryLazy",
+    event = "InsertEnter",
     opts = {
       floating_window = false,
       hint_scheme = "Comment",
