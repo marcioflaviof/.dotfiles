@@ -18,20 +18,23 @@ if status is-interactive
 
   bind ctrl-t 'tmux-sessionizer'
 
-  set PATH /home/mf/.local/bin:/home/mf/.local/bin:/usr/local/bin:/usr/bin:/var/lib/snapd/snap/bin:/usr/local/sbin:/usr/bin/core_perl:/snap/bin:/usr/sbin:/sbin:/home/mf/.local/share/bob/nvim-bin $PATH
-
   set -gx EDITOR "nvim"
-  set -gx PATH $HOME/.local/scripts $PATH
+
+  set -gx PATH $HOME/.local/scripts \
+    $HOME/.local/bin \
+    $HOME/.local/share/bob/nvim-bin \
+    /usr/local/bin \
+    /usr/bin \
+    /usr/local/sbin \
+    /usr/sbin \
+    /sbin \
+    /usr/bin/core_perl \
+    /var/lib/snapd/snap/bin \
+    /snap/bin \
+    $PATH
 
 
   zoxide init fish | source
-
-  # pnpm
-  set -gx PNPM_HOME "/home/mf/.local/share/pnpm"
-  if not string match -q -- $PNPM_HOME $PATH
-    set -gx PATH "$PNPM_HOME" $PATH
-  end
-  # pnpm end
 
   ~/.local/bin/mise activate fish | source
 

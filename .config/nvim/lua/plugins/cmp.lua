@@ -71,38 +71,23 @@ return {
           auto_show = true,
           auto_show_delay_ms = 500,
         },
-        menu = {
-          draw = {
-            -- columns = { { 'item_idx' }, { 'kind_icon' }, { 'label', 'label_description', gap = 1 } },
-
-            -- look like cmp
-            columns = {
-              { "item_idx", "label", "label_description", gap = 1 }, { "kind" }
-            },
-            components = {
-              item_idx = {
-                text = function(ctx) return tostring(ctx.idx) end,
-                highlight = 'BlinkCmpItemIdx' -- optional, only if you want to change its color
-              }
-            }
-
-          }
-        }
+        -- menu = {
+        --   draw = {
+        --     columns = { { 'kind_icon' }, { 'label', 'label_description', gap = 1 } },
+        --
+        -- look like cmp
+        -- columns = {
+        -- { "label", "label_description", gap = 1 }, { "kind" }
+        -- },
+        --
+        --   }
+        -- }
       },
 
       keymap = {
         preset = 'default',
         ['<C-l>'] = { 'snippet_forward', 'fallback' },
         ['<C-h>'] = { 'snippet_backward', 'fallback' },
-        ['<C-1>'] = { function(cmp) cmp.accept({ index = 1 }) end },
-        ['<C-2>'] = { function(cmp) cmp.accept({ index = 2 }) end },
-        ['<C-3>'] = { function(cmp) cmp.accept({ index = 3 }) end },
-        ['<C-4>'] = { function(cmp) cmp.accept({ index = 4 }) end },
-        ['<C-5>'] = { function(cmp) cmp.accept({ index = 5 }) end },
-        ['<C-6>'] = { function(cmp) cmp.accept({ index = 6 }) end },
-        ['<C-7>'] = { function(cmp) cmp.accept({ index = 7 }) end },
-        ['<C-8>'] = { function(cmp) cmp.accept({ index = 8 }) end },
-        ['<C-9>'] = { function(cmp) cmp.accept({ index = 9 }) end },
 
         ['<C-space>'] = { function(cmp) cmp.show({ providers = { 'snippets' } }) end },
         ['<C-r>'] = { function(cmp) cmp.show() end },
