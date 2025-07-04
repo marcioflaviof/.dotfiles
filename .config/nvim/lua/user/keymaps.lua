@@ -41,11 +41,6 @@ keymap(
   opts
 )
 
--- Git
-keymap("n", "<leader>gs", "<cmd>0G<CR>", opts)          -- vim fugitive
-keymap("n", "<leader>gf", "<cmd>diffget //2<CR>", opts) -- vim fugitive
-keymap("n", "<leader>gj", "<cmd>diffget //3<CR>", opts) -- vim fugitive
-
 -- save with ctrl + s
 keymap("n", "<C-s>", ":w<CR>", { noremap = true })
 

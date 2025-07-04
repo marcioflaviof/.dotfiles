@@ -84,8 +84,8 @@ return {
     { "[[",         function() Snacks.words.jump(-vim.v.count1) end,                                desc = "Prev Reference",           mode = { "n", "t" } },
 
     -- picker
-    -- { "<leader>f",  function() Snacks.picker.files({ exclude = { 'node_modules/', '*.lock' }, hidden = true }) end, desc = "Find Files" },
-    { "<leader>f",  function() Snacks.picker.smart({ filter = { cwd = true } }) end,                desc = "Smart Find Files" },
+    { "<leader>f",  function() Snacks.picker.files({ exclude = { 'node_modules/', '*.lock' }, hidden = true }) end, desc = "Find Files" },
+    -- { "<leader>f",  function() Snacks.picker.smart({ filter = { cwd = true } }) end,                desc = "Smart Find Files" },
     { "<leader>sh", function() Snacks.picker.help() end,                                            desc = "Help Pages" },
     { "<leader>sg", function() Snacks.picker.grep({ exclude = { 'node_modules/', '*.lock' } }) end, desc = "Grep" },
     { "<leader>sb", function() Snacks.picker.buffers() end,                                         desc = "Buffers" },

@@ -85,8 +85,4 @@ return {
     opts = {},
   },
   'kchmck/vim-coffee-script',
-  {
-    "OXY2DEV/markview.nvim",
-    lazy = false,
-  },
 }

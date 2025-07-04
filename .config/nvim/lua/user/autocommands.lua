@@ -33,6 +33,14 @@ vim.api.nvim_create_autocmd("FileType", {
   end,
 })
 
+vim.api.nvim_create_autocmd("FileType", {
+  pattern = "markdown",
+  callback = function()
+    vim.opt_local.spell = true
+    vim.opt_local.spelllang = { "en_us" }
+  end,
+})
+
 
 -- GROUPS:
 -- local disable_node_modules_eslint_group = ag("DisableNodeModulesEslint", { clear = true })

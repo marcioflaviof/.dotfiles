@@ -25,8 +25,7 @@ local options = {
   cmdheight = 1,                                                        -- more space in the neovim command line for displaying messages
   completeopt = { "menu", "menuone", "noselect", "noinsert", "popup" }, -- mostly just for cmp
   conceallevel = 0,                                                     -- so that `` is visible in markdown files
-  fileencoding = "utf-8",                                               -- the encoding written to a file
-  spelllang = "pt_br,en_us",
+  fileencoding = "UTF-8",                                               -- the encoding written to a file
   pumheight = 10,                                                       -- pop up menu height
   showmode = false,                                                     -- we don't need to see things like -- INSERT -- anymore
   showtabline = 0,                                                      -- always show tabs
@@ -49,9 +48,10 @@ for k, v in pairs(options) do
   vim.opt[k] = v
 end
 
+
+vim.o.winborder = 'single'
 vim.cmd("set whichwrap+=<,>,[,],h,l")
 vim.cmd([[set iskeyword+=-]])
-vim.cmd([[set mouse=]])
 
 -- auto-reload files when modified externally
 -- https://unix.stackexchange.com/a/383044

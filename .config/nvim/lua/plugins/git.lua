@@ -1,5 +1,6 @@
 local opts = { noremap = true, silent = true }
 
+vim.api.nvim_set_keymap("n", "<leader>gs", "<cmd>0G<CR>", opts) -- vim fugitive
 
 return {
   {
@@ -16,9 +17,7 @@ return {
   {
     "tpope/vim-fugitive",
     keys = {
-      { "<leader>gs", "<cmd>0G<CR>",          opts },
-      { "<leader>gf", "<cmd>diffget //2<CR>", opts },
-      { "<leader>gj", "<cmd>diffget //3<CR>", opts },
+      { "<leader>gs", "<cmd>0G<CR>", opts },
     }
   },
   { 'akinsho/git-conflict.nvim', version = "*", config = true },
