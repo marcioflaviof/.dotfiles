@@ -33,27 +33,24 @@ execute() {
 
 log "---------------- dev-env ----------------"
 
-update_files() {
-    log "copying over files from: $1"
-    pushd $1 &> /dev/null
-    (
-        configs=`find . -mindepth 1 -maxdepth 1 -type d`
-        for c in $configs; do
-            directory=${2%/}/${c#./}
-            log "    removing: rm -rf $directory"
+copy_dir() {
+  from=$1
+  to=$2
 
-            if [[ $dry_run == "0" ]]; then
-                rm -rf $directory
-            fi
 
-            log "    copying env: cp $c $2"
-            if [[ $dry_run == "0" ]]; then
-                cp -r ./$c $2
-            fi
-        done
+  pushd $from > /dev/null
+  dirs=$(find . -mindepth 1 -maxdepth 1 -type d -exec basename {} \;)
 
-    )
-    popd &> /dev/null
+  for dir in $dirs; do
+    if [ -n "$filter" ] && echo "$dir" | grep -qv $filter; then
+      log "filtering $dir"
+      continue
+    fi
+
+    execute rm -rf $to/$dir
+    execute cp -r $dir $to/$dir
+  done
+  popd > /dev/null
 }
 
 copy_file() {
@@ -72,8 +69,8 @@ copy_file() {
 
 }
 
-update_files .config $HOME/.config
-update_files .local $HOME/.local
+copy_dir .config $HOME/.config
+copy_dir .local $HOME/.local
 copy_file .wezterm.lua $HOME
 copy_file .tmux.conf $HOME
 copy_file .gitconfig $HOME

@@ -163,22 +163,84 @@ return {
         },
       }
 
+      local function get_ruby_version()
+        local handle = io.popen("ruby --version 2>/dev/null")
+        if not handle then
+          return nil
+        end
+
+        local result = handle:read("*a")
+        handle:close()
+
+        if not result or result == "" then
+          return nil
+        end
+
+        -- Parse version like "ruby 3.1.0p0 (2021-12-25 revision fb4df44d16) [x86_64-linux]"
+        local major, minor = result:match("ruby (%d+)%.(%d+)")
+        if major and minor then
+          return tonumber(major), tonumber(minor)
+        end
+
+        return nil
+      end
+
+      local ruby_major, ruby_minor = get_ruby_version()
+
+      if ruby_major then
+        if ruby_major >= 3 then
+          require("lspconfig")["ruby_lsp"].setup({
+            cmd = { "ruby-lsp" },
+            filetypes = { "ruby" },
+            capabilities = capabilities,
+            settings = {
+              rubyLsp = {
+                format = {
+                  provider = "rubocop",
+                },
+                diagnostics = {
+                  enabled = true,
+                  rubocop = true,
+                },
+              },
+            },
+          })
+        elseif ruby_major < 3 then
+          require("lspconfig")["solargraph"].setup({
+            cmd = { "solargraph", "stdio" },
+            filetypes = { "ruby" },
+            capabilities = capabilities,
+            settings = {
+              solargraph = {
+                diagnostics = true,
+                formatting = true,
+                completion = true,
+              },
+            },
+          })
+        end
+      end
+
+
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
         "html",
         "jsonls",
         "lua_ls",
         "flake8",
-        "ruby_lsp",
+        -- "ruby_lsp",
         "erb-formatter",
         "gopls",
-        -- { 'solargraph', version = '0.51.1' },
+        { 'solargraph', version = '0.55.4' },
         "emmet_ls",
         "kulala-fmt"
       })
       require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
       require("mason-lspconfig").setup({
+        automatic_enable = {
+          exclude = { "solargraph", "ruby_lsp" }
+        },
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}

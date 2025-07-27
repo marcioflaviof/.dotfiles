@@ -85,4 +85,8 @@ return {
     opts = {},
   },
   'kchmck/vim-coffee-script',
+  {
+    "sphamba/smear-cursor.nvim",
+    opts = {},
+  }
 }

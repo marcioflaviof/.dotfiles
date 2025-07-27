@@ -49,7 +49,7 @@ return {
       { "<leader>4",  "<cmd>Grapple select index=4<cr>", mode = { 'n' } },
     },
     opts = {
-      scope = 'git_branch'
+      scope = 'git_branch',
     },
     cmd = "Grapple",
     event = { "BufReadPost", "BufNewFile" },

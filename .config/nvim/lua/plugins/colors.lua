@@ -26,6 +26,7 @@ return {
       -- },
       on_colors = function(colors)
         colors.comment = "#6272a4"
+        colors.bg = "#11121d"
       end,
       on_highlights = function(hl, colors)
         hl["@tag.builtin.tsx"] = {
