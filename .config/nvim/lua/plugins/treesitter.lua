@@ -1,3 +1,33 @@
+local RemoveComments = function()
+  local ts         = vim.treesitter
+  local bufnr      = vim.api.nvim_get_current_buf()
+  local ft         = vim.bo[bufnr].filetype
+  local lang       = ts.language.get_lang(ft) or ft
+
+  local ok, parser = pcall(ts.get_parser, bufnr, lang)
+  if not ok then return vim.notify("No parser for " .. ft, vim.log.levels.WARN) end
+
+  local tree   = parser:parse()[1]
+  local root   = tree:root()
+  local query  = ts.query.parse(lang, "(comment) @comment")
+
+  local ranges = {}
+  for _, node in query:iter_captures(root, bufnr, 0, -1) do
+    table.insert(ranges, { node:range() })
+  end
+
+  table.sort(ranges, function(a, b)
+    if a[1] == b[1] then return a[2] < b[2] end
+    return a[1] > b[1]
+  end)
+
+  for _, r in ipairs(ranges) do
+    vim.api.nvim_buf_set_text(bufnr, r[1], r[2], r[3], r[4], {})
+  end
+end
+
+vim.api.nvim_create_user_command("RemoveComments", RemoveComments, {})
+
 return {
   {
     "nvim-treesitter/nvim-treesitter",
@@ -37,31 +67,6 @@ return {
             node_decremental = "<c-backspace>",
           },
         },
-        textobjects = {
-          select = {
-            enable = true,
-            lookahead = true,
-            keymaps = {
-              ["aa"] = "@parameter.outer",
-              ["ia"] = "@parameter.inner",
-              ["af"] = "@function.outer",
-              ["if"] = "@function.inner",
-              ["ic"] = "@class.inner",
-              ["ac"] = "@class.outer",
-            },
-          },
-          move = {
-            enable = true,
-            set_jumps = true,
-            goto_next_start = {
-              ["]f"] = "@function.outer",
-            },
-            goto_previous_start = {
-              ["[f"] = "@function.outer",
-            }
-          }
-
-        },
         matchup = {
           enable = true,
           enable_quotes = true,
@@ -78,15 +83,9 @@ return {
   },
   {
     "nvim-treesitter/nvim-treesitter-context",
-    config = function()
-      require("treesitter-context").setup({
-        enable = true,
-        max_lines = 3,
-      })
-    end
-  },
-  {
-    "nvim-treesitter/nvim-treesitter-textobjects",
-    dependencies = "nvim-treesitter/nvim-treesitter"
+    opts = {
+      enable = true,
+      max_lines = 3,
+    }
   },
 }

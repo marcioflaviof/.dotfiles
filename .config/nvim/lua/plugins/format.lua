@@ -31,10 +31,11 @@ return {
       typescript = { "prettierd", "prettier", stop_after_first = true },
       javascriptreact = { "prettierd", "prettier", stop_after_first = true },
       typescriptreact = { "prettierd", "prettier", stop_after_first = true },
-      sql = { "pg_format" },
+      sql = { "sleek" },
       eruby = { "erb_format" },
       go = { "goimports" },
-      http = { "kulala-fmt" }
+      http = { "kulala-fmt" },
+      c = { "clang-format" }
       -- ruby = { "rufo", stop_after_first = true }
     },
   },

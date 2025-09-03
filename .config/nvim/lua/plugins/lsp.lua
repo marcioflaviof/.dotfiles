@@ -1,34 +1,13 @@
-vim.api.nvim_create_autocmd("LspAttach", {
-  callback = function(args)
-    local client = vim.lsp.get_client_by_id(args.data.client_id)
-    if not client then
-      return
-    end
-
-    if client:supports_method("textDocument/hover") then
-      vim.keymap.set("n", "K", function()
-        vim.lsp.buf.hover({
-          border = "single",
-          focusable = false,
-          max_width = 80,
-        })
-      end, { buffer = args.buf })
-    end
-  end,
-})
-
 local function filter(arr, fn)
   if type(arr) ~= "table" then
     return arr
   end
-
   local filtered = {}
   for k, v in pairs(arr) do
     if fn(v, k, arr) then
       table.insert(filtered, v)
     end
   end
-
   return filtered
 end
 
@@ -41,9 +20,8 @@ local function on_list(options)
   if #items > 1 then
     items = filter(items, filterReactDTS)
   end
-
   vim.fn.setqflist({}, " ", { title = options.title, items = items, context = options.context })
-  vim.api.nvim_command("cfirst") -- or maybe you want 'copen' instead of 'cfirst'
+  vim.api.nvim_command("cfirst")
 end
 
 return {
@@ -58,7 +36,6 @@ return {
     },
   },
   {
-    -- Main LSP Configuration
     "neovim/nvim-lspconfig",
     dependencies = {
       { "mason-org/mason.nvim",          opts = {} },
@@ -82,10 +59,7 @@ return {
             vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
           end
 
-          map("gd", function()
-            vim.lsp.buf.definition({ on_list = on_list })
-          end, "[G]oto [D]efinition")
-
+          map("gd", function() vim.lsp.buf.definition({ on_list = on_list }) end, "[G]oto [D]efinition")
           map("<leader>lr", function() Snacks.picker.lsp_references() end, "[L]sp [R]eferences")
           map("gI", vim.lsp.buf.implementation, "[G]oto [I]mplementation")
           map("<leader>D", vim.lsp.buf.type_definition, "Type [D]efinition")
@@ -95,11 +69,19 @@ return {
           map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction", { "n", "x" })
           map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
           map("gl", function() vim.diagnostic.open_float() end, "")
+          map("K", function()
+            vim.lsp.buf.hover({
+              border = "single",
+              close_events = { "CursorMoved", "BufHidden", "InsertCharPre" },
+              focusable = true,
+              max_width = 120,
+            })
+          end, "Hover")
 
+          -- LSP Highlighting
           local client = vim.lsp.get_client_by_id(event.data.client_id)
           if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
-            local highlight_augroup =
-                vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
+            local highlight_augroup = vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
             vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
               buffer = event.buf,
               group = highlight_augroup,
@@ -148,40 +130,26 @@ return {
 
       local servers = {
         lua_ls = {
-          -- cmd = { ... },
-          -- filetypes = { ... },
-          -- capabilities = {},
           settings = {
             Lua = {
-              completion = {
-                callSnippet = "Replace",
-              },
-              -- You can toggle below to ignore Lua_LS's noisy `missing-fields` warnings
+              completion = { callSnippet = "Replace" },
               diagnostics = { disable = { "missing-fields" } },
             },
           },
         },
       }
 
+      -- Ruby Version Detection
       local function get_ruby_version()
         local handle = io.popen("ruby --version 2>/dev/null")
-        if not handle then
-          return nil
-        end
-
+        if not handle then return nil end
         local result = handle:read("*a")
         handle:close()
-
-        if not result or result == "" then
-          return nil
-        end
-
-        -- Parse version like "ruby 3.1.0p0 (2021-12-25 revision fb4df44d16) [x86_64-linux]"
+        if not result or result == "" then return nil end
         local major, minor = result:match("ruby (%d+)%.(%d+)")
         if major and minor then
           return tonumber(major), tonumber(minor)
         end
-
         return nil
       end
 
@@ -195,13 +163,8 @@ return {
             capabilities = capabilities,
             settings = {
               rubyLsp = {
-                format = {
-                  provider = "rubocop",
-                },
-                diagnostics = {
-                  enabled = true,
-                  rubocop = true,
-                },
+                format = { provider = "rubocop" },
+                diagnostics = { enabled = true, rubocop = true },
               },
             },
           })
@@ -224,23 +187,15 @@ return {
 
       local ensure_installed = vim.tbl_keys(servers or {})
       vim.list_extend(ensure_installed, {
-        "html",
-        "jsonls",
-        "lua_ls",
-        "flake8",
-        -- "ruby_lsp",
-        "erb-formatter",
-        "gopls",
-        { 'solargraph', version = '0.55.4' },
-        "emmet_ls",
-        "kulala-fmt"
+        "html", "jsonls", "lua_ls", "flake8",
+        "erb-formatter", "gopls", { 'solargraph', version = '0.55.4' },
+        "emmet_ls", "kulala-fmt"
       })
       require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
+      -- Mason LSP Config
       require("mason-lspconfig").setup({
-        automatic_enable = {
-          exclude = { "solargraph", "ruby_lsp" }
-        },
+        automatic_enable = { exclude = { "solargraph", "ruby_lsp" } },
         handlers = {
           function(server_name)
             local server = servers[server_name] or {}

@@ -20,13 +20,13 @@ return {
     opts = {
       style = "night",
       -- transparent = true,
-      -- styles = {
-      --   sidebars = "transparent",
-      --   floats = "transparent",
-      -- },
+      styles = {
+        sidebars = "transparent",
+        floats = "transparent",
+      },
       on_colors = function(colors)
         colors.comment = "#6272a4"
-        colors.bg = "#11121d"
+        colors.bg = "#000000"
       end,
       on_highlights = function(hl, colors)
         hl["@tag.builtin.tsx"] = {

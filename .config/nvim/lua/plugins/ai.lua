@@ -31,18 +31,21 @@ return {
     dependencies = {
       "nvim-lua/plenary.nvim",
       "nvim-treesitter/nvim-treesitter",
+      "franco-ruggeri/codecompanion-spinner.nvim",
     },
     opts = {
       adapters = {
-        copilot = function()
-          return require("codecompanion.adapters").extend("copilot", {
-            schema = {
-              model = {
-                default = "gpt-4.1",
+        http = {
+          copilot = function()
+            return require("codecompanion.adapters").extend("copilot", {
+              schema = {
+                model = {
+                  default = "gpt-4.1",
+                },
               },
-            },
-          })
-        end,
+            })
+          end,
+        }
       },
       prompt_library = {
         ["Ruby on Rails Expert"] = {
@@ -77,6 +80,9 @@ return {
           },
         },
       },
+      extensions = {
+        spinner = {}
+      }
     }
   }
 }

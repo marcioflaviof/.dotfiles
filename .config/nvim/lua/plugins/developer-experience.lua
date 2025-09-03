@@ -49,25 +49,35 @@ return {
   {
     'echasnovski/mini.ai',
     version = '*',
-    opts = {
-      n_lines = 300
-    }
+    config = function()
+      local ai = require('mini.ai')
+      return ai.setup({
+        n_lines = 500,
+        custom_textobjects = {
+          o = ai.gen_spec.treesitter({
+            a = { '@block.outer', '@conditional.outer', '@loop.outer' },
+            i = { '@block.inner', '@conditional.inner', '@loop.inner' },
+          }),
+          c = ai.gen_spec.treesitter({ a = '@class.outer', i = '@class.inner' }),
+        },
+      })
+    end,
+    dependencies = { 'nvim-treesitter/nvim-treesitter-textobjects' }
 
   },
   {
     'echasnovski/mini.surround',
     version = '*',
     opts = {
-      n_lines = 300,
+      n_lines = 500,
       search_method = 'cover_or_next'
     }
   },
   {
-    'echasnovski/mini.pairs',
-    version = '*',
-    opts = {
-      modes = { insert = true, command = false, terminal = false },
-    },
+    'windwp/nvim-autopairs',
+    event = "InsertEnter",
+    config = true,
+    opts = {}
   },
   {
     'echasnovski/mini.operators',

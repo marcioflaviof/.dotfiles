@@ -6,7 +6,9 @@ return {
   {
     'lewis6991/gitsigns.nvim',
     event = { "BufReadPre", "BufNewFile" },
-    opts = {},
+    opts = {
+      gh = true
+    },
     keys = {
       { "<leader>gl", "<cmd>lua require('gitsigns').blame_line()<CR>",     mode = { 'n' } },
       { "]c",         "<cmd>lua require('gitsigns').nav_hunk('next')<CR>", mode = { 'n' } },
@@ -21,5 +23,4 @@ return {
     }
   },
   { 'akinsho/git-conflict.nvim', version = "*", config = true },
-  'Almo7aya/openingh.nvim'
 }
