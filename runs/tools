@@ -1,6 +1,7 @@
 #!/usr/bin/env bash
 
-yay -S xclip wl-clipboard rofi bluez-utils jq upower fzf flameshot --noconfirm
+yay -S xclip wl-clipboard rofi bluez-utils jq upower fzf --noconfirm
+yay -S xdg-desktop-portal xdg-desktop-portal-wlr grim flameshot --noconfirm
 
 sudo pacman -S ripgrep exa wget ttf-jetbrains-mono unzip snapd zellij zoxide pavucontrol tmux postgresql-libs --noconfirm
 

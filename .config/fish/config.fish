@@ -16,6 +16,9 @@ if status is-interactive
   alias dc="docker compose"
   alias r="rails"
 
+  alias ber="bundle exec rails "
+  alias be="bundle exec "
+
   bind ctrl-t 'tmux-sessionizer'
 
   set -gx EDITOR "nvim"
