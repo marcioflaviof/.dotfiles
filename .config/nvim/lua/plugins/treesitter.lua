@@ -1,3 +1,4 @@
+local highlighter = require("vim.treesitter.highlighter")
 local RemoveComments = function()
 	local ts = vim.treesitter
 	local bufnr = vim.api.nvim_get_current_buf()
@@ -35,14 +36,21 @@ vim.api.nvim_create_user_command("RemoveComments", RemoveComments, {})
 return {
 	{
 		"nvim-treesitter/nvim-treesitter",
-		lazy = false,
+		version = false,
+		lazy = true,
 		branch = "main",
 		build = ":TSUpdate",
+		cmd = { "TSUpdate", "TSInstall", "TSLog", "TSUninstall" },
+		init = function() end,
 		config = function()
-			require("nvim-treesitter").setup({
+			if vim.fn.executable("tree-sitter") == 0 then
+				print("**treesitter-main** requires the `tree-sitter` executable to be installed")
+			end
+			local opts = {
 				auto_install = true,
 				ensure_installed = {
 					"javascript",
+					"go",
 					"typescript",
 					"html",
 					"css",
@@ -56,6 +64,21 @@ return {
 					enable = true,
 					enable_quotes = true,
 				},
+			}
+
+			local TS = require("nvim-treesitter")
+			TS.setup(opts)
+
+			local installed = TS.get_installed("parsers")
+
+			vim.api.nvim_create_autocmd("FileType", {
+				callback = function(ev)
+					local lang = vim.treesitter.language.get_lang(ev.match)
+
+					if vim.tbl_contains(installed, lang) then
+						pcall(vim.treesitter.start)
+					end
+				end,
 			})
 		end,
 	},
