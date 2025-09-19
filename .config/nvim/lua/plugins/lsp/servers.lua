@@ -34,7 +34,7 @@ function M.setup()
 
 	if ruby_major then
 		if ruby_major >= 3 then
-			require("lspconfig")["ruby_lsp"].setup({
+			vim.lsp.config("ruby_lsp", {
 				cmd = { "ruby-lsp" },
 				filetypes = { "ruby" },
 				capabilities = capabilities,
@@ -46,7 +46,7 @@ function M.setup()
 				},
 			})
 		elseif ruby_major < 3 then
-			require("lspconfig")["solargraph"].setup({
+			vim.lsp.config("solargraph", {
 				cmd = { "solargraph", "stdio" },
 				filetypes = { "ruby" },
 				capabilities = capabilities,
@@ -83,7 +83,7 @@ function M.setup()
 			function(server_name)
 				local server = servers[server_name] or {}
 				server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-				require("lspconfig")[server_name].setup(server)
+				vim.lsp.enable(server)
 			end,
 		},
 	})
