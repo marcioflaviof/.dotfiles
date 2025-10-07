@@ -34,30 +34,9 @@ function M.setup()
 
 	if ruby_major then
 		if ruby_major >= 3 then
-			vim.lsp.config("ruby_lsp", {
-				cmd = { "ruby-lsp" },
-				filetypes = { "ruby" },
-				capabilities = capabilities,
-				settings = {
-					rubyLsp = {
-						format = { provider = "rubocop" },
-						diagnostics = { enabled = true, rubocop = true },
-					},
-				},
-			})
+			vim.lsp.enable("ruby-lsp")
 		elseif ruby_major < 3 then
-			vim.lsp.config("solargraph", {
-				cmd = { "solargraph", "stdio" },
-				filetypes = { "ruby" },
-				capabilities = capabilities,
-				settings = {
-					solargraph = {
-						diagnostics = true,
-						formatting = true,
-						completion = true,
-					},
-				},
-			})
+			vim.lsp.enable("solargraph")
 		end
 	end
 
@@ -70,6 +49,7 @@ function M.setup()
 		"flake8",
 		"erb-formatter",
 		"gopls",
+		"ruby_lsp",
 		{ "solargraph", version = "0.55.4" },
 		"emmet_ls",
 		"kulala-fmt",

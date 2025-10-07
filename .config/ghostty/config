@@ -1,15 +1,16 @@
-theme = tokyonight
 background-opacity = 1.0
+theme = TokyoNight Night
 
 keybind = ctrl+up=scroll_page_lines:-25
 keybind = ctrl+down=scroll_page_lines:25
 keybind = ctrl+shift+l=clear_screen
 
-# font-family = "Monaspace Argon Var"
 font-size = 13
 
-# font-feature = "ss01"
-# font-feature = "ss02"
-# font-feature = "ss03"
-# font-feature = "ss04"
-# font-feature = "liga"
+# font-family = Maple Mono Normal NF
+font-family-italic = Maple Mono Normal NF Italic
+
+background = #000000
+foreground = #abb2bf
+selection-background = #282934
+selection-foreground = #abb2bf

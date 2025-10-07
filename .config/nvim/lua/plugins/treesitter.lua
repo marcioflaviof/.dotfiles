@@ -48,25 +48,27 @@ return {
 			end
 			local opts = {
 				auto_install = true,
-				ensure_installed = {
-					"javascript",
-					"go",
-					"typescript",
-					"html",
-					"css",
-					"tsx",
-					"ruby",
-					"lua",
-					"embedded_template",
-					"markdown",
-				},
 				matchup = {
 					enable = true,
 					enable_quotes = true,
 				},
 			}
 
+			local ensure_installed = {
+				"javascript",
+				"go",
+				"typescript",
+				"html",
+				"css",
+				"tsx",
+				"ruby",
+				"lua",
+				"embedded_template",
+				"markdown",
+			}
+
 			local TS = require("nvim-treesitter")
+			TS.install(ensure_installed)
 			TS.setup(opts)
 
 			local installed = TS.get_installed("parsers")
