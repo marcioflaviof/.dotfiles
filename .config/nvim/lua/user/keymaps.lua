@@ -44,9 +44,6 @@ keymap(
 -- save with ctrl + s
 keymap("n", "<C-s>", ":w<CR>", { noremap = true })
 
--- Undotree
-keymap("n", "<leader>u", "<cmd>UndotreeToggle<cr>", opts)
-
 -- quickfix list
 keymap("n", "]q", ":cn<CR>", opts)
 keymap("n", "[q", ":cp<CR>", opts)
