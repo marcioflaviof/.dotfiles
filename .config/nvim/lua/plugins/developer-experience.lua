@@ -132,4 +132,17 @@ return {
 		lazy = false,
 		opts = {},
 	},
+	{
+		"folke/todo-comments.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+		},
+		opts = {},
+	},
+	{
+		"Wansmer/treesj",
+		keys = { "<space>m" },
+		opts = {},
+		dependencies = { "nvim-treesitter/nvim-treesitter" },
+	},
 }

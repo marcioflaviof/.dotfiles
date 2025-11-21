@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+
+git clone -b master https://github.com/abenz1267/walker.git $HOME/personal/walker
+
+cd $HOME/personal/walker
+
+cargoo build --release
+
+sudo cp target/release/walker /usr/local/bin/walker

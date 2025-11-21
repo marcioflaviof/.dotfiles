@@ -1,4 +1,3 @@
-local highlighter = require("vim.treesitter.highlighter")
 local RemoveComments = function()
 	local ts = vim.treesitter
 	local bufnr = vim.api.nvim_get_current_buf()
@@ -7,6 +6,10 @@ local RemoveComments = function()
 
 	local ok, parser = pcall(ts.get_parser, bufnr, lang)
 	if not ok then
+		return vim.notify("No parser for " .. ft, vim.log.levels.WARN)
+	end
+
+	if parser == nil then
 		return vim.notify("No parser for " .. ft, vim.log.levels.WARN)
 	end
 
