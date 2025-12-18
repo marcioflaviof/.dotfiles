@@ -4,6 +4,18 @@ vim.g.matchup_enabled = 1
 -- vim.g.matchup_matchparen_enabled = 0
 vim.g.matchup_surround_enabled = 1
 
+local map_ai_move = function(lhs, textobject_id, direction, desc)
+	local rhs = function()
+		MiniAi.move_cursor("left", "a", textobject_id, { search_method = direction })
+	end
+	vim.keymap.set({ "n", "x", "o" }, lhs, rhs, { desc = desc })
+end
+
+-- Instead of `'f'` use id of textobject you'd like to move.
+-- For more info see `:h MiniAi.move_cursor()`.
+map_ai_move("[f", "f", "prev", "Jump to prev function")
+map_ai_move("]f", "f", "next", "Jump to next function")
+
 return {
 	{ "andymass/vim-matchup", lazy = false },
 	{
@@ -88,6 +100,7 @@ return {
 						i = { "@block.inner", "@conditional.inner", "@loop.inner" },
 					}),
 					c = ai.gen_spec.treesitter({ a = "@class.outer", i = "@class.inner" }),
+					f = ai.gen_spec.treesitter({ a = "@function.outer", i = "@function.inner" }),
 				},
 			})
 		end,
@@ -144,5 +157,44 @@ return {
 		keys = { "<space>m" },
 		opts = {},
 		dependencies = { "nvim-treesitter/nvim-treesitter" },
+	},
+	{
+		"zk-org/zk-nvim",
+		config = function()
+			require("zk").setup({
+				picker = "snacks_picker",
+
+				lsp = {
+					config = {
+						name = "zk",
+						cmd = { "zk", "lsp" },
+						filetypes = { "markdown" },
+					},
+
+					auto_attach = {
+						enabled = true,
+					},
+				},
+			})
+			local opts = { noremap = true, silent = false }
+
+			-- Create a new note after asking for its title.
+			vim.api.nvim_set_keymap("n", "<leader>zn", "<Cmd>ZkNew { title = vim.fn.input('Title: ') }<CR>", opts)
+
+			-- Open notes.
+			vim.api.nvim_set_keymap("n", "<leader>zo", "<Cmd>ZkNotes { sort = { 'modified' } }<CR>", opts)
+			-- Open notes associated with the selected tags.
+			vim.api.nvim_set_keymap("n", "<leader>zt", "<Cmd>ZkTags<CR>", opts)
+
+			-- Search for the notes matching a given query.
+			vim.api.nvim_set_keymap(
+				"n",
+				"<leader>zf",
+				"<Cmd>ZkNotes { sort = { 'modified' }, match = { vim.fn.input('Search: ') } }<CR>",
+				opts
+			)
+			-- Search for the notes matching the current visual selection.
+			vim.api.nvim_set_keymap("v", "<leader>zf", ":'<,'>ZkMatch<CR>", opts)
+		end,
 	},
 }

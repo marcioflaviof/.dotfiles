@@ -1,0 +1,25 @@
+#!/usr/bin/env bash
+
+pane1_path=$(tmux display-message -p -t 1 "#{pane_current_path}")
+selected=$(find "$pane1_path" -mindepth 1 -maxdepth 1 -type d | fzf)
+
+if [[ -z "$selected" ]]; then
+  exit 0
+fi
+
+sessioname=$(basename "$PWD")
+selected_name=$(basename "$selected" | tr ":,. " "____")
+
+switch_to_window() {
+  tmux select-window -t "${session_name}:${selected_name}"
+}
+
+# Check if the window exists
+if tmux list-windows -t "$session_name" | grep -q "$selected_name"; then
+  switch_to_window
+  exit 0
+fi
+
+
+tmux new-window -t "$session_name" -n "$selected_name" -c "$selected"
+switch_to_window

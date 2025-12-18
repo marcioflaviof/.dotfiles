@@ -19,9 +19,14 @@ if status is-interactive
   alias ber="bundle exec rails "
   alias be="bundle exec "
 
+  alias nvc="cd ~/dev/.config/nvim && nvim ~/dev/.config/nvim"
+
   bind ctrl-t 'tmux-sessionizer'
+  bind ctrl-e 'tmux-windownizer'
 
   set -gx EDITOR "nvim"
+
+  set -gx ZK_NOTEBOOK_DIR "/home/mf/Documents/Notes"
 
   set -gx PATH $HOME/.local/scripts \
     $HOME/.local/bin \
@@ -35,7 +40,6 @@ if status is-interactive
     /var/lib/snapd/snap/bin \
     /snap/bin \
     $PATH
-
 
   zoxide init fish | source
 

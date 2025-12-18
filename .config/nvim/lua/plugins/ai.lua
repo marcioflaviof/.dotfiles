@@ -15,16 +15,21 @@ return {
 			copilot_node_command = "/home/mf/.local/share/mise/installs/node/23.11.0/bin/node",
 			suggestion = {
 				enabled = true,
-				auto_trigger = true,
+				auto_trigger = false,
 				debounce = 0,
 				keymap = {
 					accept = "<M-l>",
 				},
 			},
+			filetypes = {
+				markdown = true,
+				yaml = true,
+			},
 		},
 	},
 	{
 		"olimorris/codecompanion.nvim",
+		commit = "e7762c68daf24c3e356401f5223eeb5217047754",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 			"nvim-treesitter/nvim-treesitter",

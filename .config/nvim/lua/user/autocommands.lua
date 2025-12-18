@@ -13,6 +13,16 @@ autocmd("BufRead", {
 	end,
 })
 
+-- eruby.yml as yaml
+autocmd("BufRead", {
+	pattern = { "*.yml*" },
+	callback = function()
+		vim.schedule(function()
+			vim.api.nvim_command("set ft=yaml")
+		end)
+	end,
+})
+
 autocmd("TextYankPost", {
 	group = yank_group,
 	pattern = "*",

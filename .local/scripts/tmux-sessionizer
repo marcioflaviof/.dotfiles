@@ -23,6 +23,7 @@ if tmux has-session -t=$selected_name 2> /dev/null; then
 fi
 
 tmux new-session -ds $selected_name -c $selected
+tmux rename-window $selected_name
 switch_to
 
 # tmux send-keys -t $selected_name "ready_tmux" ^M

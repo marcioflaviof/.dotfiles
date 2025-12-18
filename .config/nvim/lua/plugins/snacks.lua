@@ -24,8 +24,8 @@ return {
 			frecency = true,
 		},
 		image = {
-			enabled = false,
-			formats = {},
+			enabled = true,
+			-- formats = {},
 		},
 		statuscolumn = {
 			left = { "mark", "sign" }, -- priority of signs on the left (high to low)
@@ -98,22 +98,6 @@ return {
 			desc = "Toggle Terminal",
 			mode = { "n", "i", "t" },
 		},
-		{
-			"]]",
-			function()
-				Snacks.words.jump(vim.v.count1)
-			end,
-			desc = "Next Reference",
-			mode = { "n", "t" },
-		},
-		{
-			"[[",
-			function()
-				Snacks.words.jump(-vim.v.count1)
-			end,
-			desc = "Prev Reference",
-			mode = { "n", "t" },
-		},
 
 		-- picker
 		{
@@ -122,6 +106,14 @@ return {
 				Snacks.picker.files({ exclude = { "node_modules/", "*.lock" }, hidden = true })
 			end,
 			desc = "Find Files",
+		},
+		{
+			"<leader>sf",
+			function()
+				local buf_dir = vim.fn.expand("%:p:h")
+				Snacks.picker.files({ cwd = buf_dir })
+			end,
+			desc = "Search Folder",
 		},
 		{
 			"<leader>sh",
