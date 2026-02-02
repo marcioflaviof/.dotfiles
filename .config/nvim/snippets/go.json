@@ -7,5 +7,12 @@
       "}"
     ],
     "description": "Return err if not nil"
+  },
+  "Println": {
+    "prefix": "print",
+    "body": [
+      "fmt.Println(${1})"
+    ],
+    "description": "Return err if not nil"
   }
 }

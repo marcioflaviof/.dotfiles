@@ -22,6 +22,13 @@ return {
 		--   timeout_ms = 500
 		-- },
 
+		formatters = {
+			["herb-format"] = {
+				command = "/home/mf/.local/share/mise/installs/node/23.11.0/bin/herb-format", -- use absolute path
+				stdin = true,
+			},
+		},
+
 		formatters_by_ft = {
 			lua = { "stylua" },
 			-- Conform can also run multiple formatters sequentially
@@ -38,7 +45,7 @@ return {
 			graphql = prettier,
 			yaml = prettier,
 			sql = { "sql_formatter" },
-			eruby = { "erb_format" },
+			eruby = { "herb-format" },
 			go = { "goimports", "gofmt" },
 			http = { "kulala-fmt" },
 			c = { "clang-format" },

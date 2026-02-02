@@ -46,8 +46,6 @@ function M.setup()
 		"html",
 		"jsonls",
 		"lua_ls",
-		"flake8",
-		"erb-formatter",
 		"gopls",
 		"ruby_lsp",
 		{ "solargraph", version = "0.55.4" },
