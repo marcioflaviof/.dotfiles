@@ -8,7 +8,7 @@ return {
 			rgb_fn = true, -- CSS rgb() and rgba() functions
 			hsl_fn = true, -- CSS hsl() and hsla() functions
 			tailwind = true,
-			user_default_options = {
+			options = {
 				names = false,
 			},
 		},
@@ -17,9 +17,9 @@ return {
 		"rose-pine/neovim",
 		name = "rose-pine",
 		opts = {
-			styles = {
-				transparency = true,
-			},
+			-- styles = {
+			-- 	transparency = true,
+			-- },
 		},
 	},
 	{

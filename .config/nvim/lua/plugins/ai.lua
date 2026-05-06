@@ -15,7 +15,7 @@ return {
 			copilot_node_command = "/home/mf/.local/share/mise/installs/node/23.11.0/bin/node",
 			suggestion = {
 				enabled = true,
-				auto_trigger = false,
+				auto_trigger = true,
 				debounce = 0,
 				keymap = {
 					accept = "<M-l>",
@@ -36,17 +36,20 @@ return {
 		},
 		opts = {
 			adapters = {
-				http = {
-					copilot = function()
-						return require("codecompanion.adapters").extend("copilot", {
-							schema = {
-								model = {
-									default = "gpt-4.1",
-								},
+				copilot = function()
+					return require("codecompanion.adapters").extend("copilot", {
+						schema = {
+							model = {
+								default = "gpt-5.3-Codex",
 							},
-						})
-					end,
-				},
+						},
+					})
+				end,
+			},
+			strategies = {
+				chat = { adapter = "copilot" },
+				inline = { adapter = "copilot" },
+				cmd = { adapter = "copilot" },
 			},
 			extensions = {
 				spinner = {},

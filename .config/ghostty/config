@@ -1,5 +1,5 @@
-background-opacity = 1.0
 theme = TokyoNight Night
+# background-opacity = 0.85
 
 keybind = ctrl+up=scroll_page_lines:-25
 keybind = ctrl+down=scroll_page_lines:25
@@ -7,10 +7,20 @@ keybind = ctrl+shift+l=clear_screen
 
 font-size = 13
 
-# font-family = Maple Mono Normal NF
-font-family-italic = Maple Mono Normal NF Italic
+# font-family = Monaspace Argon
+# font-feature = calt
+# font-feature = liga
+# font-feature = ss01
+# font-feature = ss02
+# font-feature = ss03
+# font-feature = ss04
+# font-feature = ss05
+# font-feature = ss06
+# font-feature = ss07
+# font-feature = ss08
+# font-feature = ss09
 
-background = #000000
-foreground = #abb2bf
-selection-background = #282934
-selection-foreground = #abb2bf
+# background = #000000
+# foreground = #abb2bf
+# selection-background = #282934
+# selection-foreground = #abb2bf

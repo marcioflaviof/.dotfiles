@@ -10,7 +10,7 @@ function M.setup()
 			settings = {
 				Lua = {
 					completion = { callSnippet = "Replace" },
-					diagnostics = { disable = { "missing-fields" } },
+					telemetry = { enable = false },
 				},
 			},
 		},
@@ -45,7 +45,7 @@ function M.setup()
 	vim.list_extend(ensure_installed, {
 		"html",
 		"jsonls",
-		"lua_ls",
+		{ "lua_ls", version = "3.16.4", auto_update = false },
 		"gopls",
 		"ruby_lsp",
 		{ "solargraph", version = "0.55.4" },
