@@ -34,12 +34,7 @@ keymap("n", "<C-u>", "<C-u>zz", opts)
 
 -- Copy path
 keymap("n", "<leader>cfp", "<cmd>let @+ = expand('%:p')<CR>", opts)
-keymap(
-  "n",
-  "<leader>cp",
-  '<cmd>let @+ = fnamemodify(expand("%"), ":~:.") .. ":" .. line(".")<CR>',
-  opts
-)
+keymap("n", "<leader>cp", '<cmd>let @+ = fnamemodify(expand("%"), ":~:.")<CR>', opts)
 
 -- save with ctrl + s
 keymap("n", "<C-s>", ":w<CR>", { noremap = true })
@@ -67,17 +62,17 @@ keymap("v", "p", '"_dP', opts)
 -- Neovide
 --
 if vim.g.neovide == true then
-  vim.api.nvim_set_keymap(
-    "n",
-    "<C-+>",
-    ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1<CR>",
-    { silent = true }
-  )
-  vim.api.nvim_set_keymap(
-    "n",
-    "<C-->",
-    ":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.1<CR>",
-    { silent = true }
-  )
-  vim.api.nvim_set_keymap("n", "<C-0>", ":lua vim.g.neovide_scale_factor = 1<CR>", { silent = true })
+	vim.api.nvim_set_keymap(
+		"n",
+		"<C-+>",
+		":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1<CR>",
+		{ silent = true }
+	)
+	vim.api.nvim_set_keymap(
+		"n",
+		"<C-->",
+		":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.1<CR>",
+		{ silent = true }
+	)
+	vim.api.nvim_set_keymap("n", "<C-0>", ":lua vim.g.neovide_scale_factor = 1<CR>", { silent = true })
 end
