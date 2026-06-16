@@ -1,5 +1,3 @@
-Job = require("plenary.job")
-
 return {
 	{
 		"tpope/vim-projectionist",

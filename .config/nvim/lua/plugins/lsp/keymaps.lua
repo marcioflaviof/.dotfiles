@@ -67,7 +67,7 @@ function M.setup()
 				end, "[T]oggle Inlay [H]ints")
 			end
 
-			map("gR", function()
+			map("<leader>lR", function()
 				vim.lsp.buf_request(0, "workspace/executeCommand", {
 					command = "typescript.findAllFileReferences",
 					arguments = { vim.uri_from_bufnr(event.buf) },
@@ -77,7 +77,7 @@ function M.setup()
 						vim.cmd("copen")
 					end
 				end)
-			end, "File References")
+			end, "[L]sp File [R]eferences")
 
 			map("<leader>lo", function()
 				vim.lsp.buf.code_action({
