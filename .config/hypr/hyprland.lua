@@ -63,38 +63,6 @@ hl.on("hyprland.start", function()
 	hl.exec_cmd("fcitx5 -d")
 end)
 
-------------------------------
----- WAYBAR WORKSPACES -------
-------------------------------
-
--- Waybar shows workspaces as ten custom/wsN modules rather than the built-in
--- hyprland/workspaces, because that module can't switch workspaces under a Lua
--- config: it sends the hyprlang form (`dispatch workspace 5`), which Hyprland
--- evaluates as Lua and rejects as a syntax error. See ~/.config/waybar/hypr-ws.sh.
---
--- Those modules have no way to notice workspace changes on their own, so nudge
--- them from Hyprland's own events. Signal 8 matches "signal" in waybar's
--- config.jsonc; all ten modules share it, so one kill refreshes the whole row.
--- Doing this here rather than from a socket2-listening helper keeps it to a
--- couple of lines of config instead of a background daemon.
-local function refresh_waybar_workspaces()
-	hl.exec_cmd("pkill -RTMIN+8 waybar")
-end
-
--- window.destroy rather than window.close: `close` fires when the close is
--- requested, while the window is still in `hyprctl clients` and would be counted.
-for _, event in ipairs({
-	"workspace.active",
-	"workspace.created",
-	"workspace.removed",
-	"window.open",
-	"window.destroy",
-	"window.urgent",
-	"monitor.focused",
-}) do
-	hl.on(event, refresh_waybar_workspaces)
-end
-
 -------------------------------
 ---- ENVIRONMENT VARIABLES ----
 -------------------------------

@@ -36,25 +36,23 @@ button:hover {
   border-top: 2px solid @mauve;
 }
 
-/* Workspaces. These are custom/wsN modules rather than hyprland/workspaces --
- * see the comment in config.jsonc for why. The .ws class is emitted by
- * hypr-ws.sh on every workspace so one rule can style all ten. */
-.ws {
+#workspaces button {
   padding: 0 4px;
 }
 
-.ws:hover {
-  color: @mauve;
-  border-top: 2px solid @mauve;
+#workspaces button.focused {
+  background-color: rgba(0, 0, 0, 0.3);
+  color: @rosewater;
+  border-top: 2px solid @rosewater;
 }
 
-.ws.active {
+#workspaces button.active {
   background-color: rgba(0, 0, 0, 0.3);
   color: @mauve;
   border-top: 2px solid @mauve;
 }
 
-.ws.urgent {
+#workspaces button.urgent {
   background-color: #eb4d4b;
 }
 
@@ -122,12 +120,12 @@ button:hover {
 }
 
 /* If workspaces is the leftmost module, omit left margin */
-.modules-left > widget:first-child > .ws {
+.modules-left > widget:first-child > #workspaces {
   margin-left: 0;
 }
 
 /* If workspaces is the rightmost module, omit right margin */
-.modules-right > widget:last-child > .ws {
+.modules-right > widget:last-child > #workspaces {
   margin-right: 0;
 }
 

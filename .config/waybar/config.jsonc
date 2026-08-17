@@ -1,21 +1,7 @@
 {
   "position": "top",
-  // hyprland/workspaces is unusable with a hypr/hyprland.lua config: Hyprland
-  // 0.56 evaluates socket1 `dispatch` payloads as Lua, and waybar hardcodes the
-  // hyprlang form (`dispatch workspace 5`), which is a Lua syntax error -- so
-  // clicks were silently dropped while the numbers still rendered correctly.
-  // These modules send the Lua form. See waybar/hypr-ws.sh for the details.
   "modules-left": [
-    "custom/ws1",
-    "custom/ws2",
-    "custom/ws3",
-    "custom/ws4",
-    "custom/ws5",
-    "custom/ws6",
-    "custom/ws7",
-    "custom/ws8",
-    "custom/ws9",
-    "custom/ws10"
+    "hyprland/workspaces"
   ],
   "modules-center": [
     "hyprland/window"
@@ -77,81 +63,6 @@
   "tray": {
     "icon-size": 18,
     "spacing": 3
-  },
-  // Workspaces. One module per workspace so each number is independently
-  // clickable. hypr-ws.sh prints empty text for workspaces that don't exist,
-  // which hides the module -- same visible behaviour as hyprland/workspaces.
-  // All ten share signal 8; hypr-ws-watch.py fires it on Hyprland workspace
-  // events, and "interval": "once" means they only re-run on that signal.
-  "custom/ws1": {
-    "exec": "$HOME/.config/waybar/hypr-ws.sh 1",
-    "return-type": "json",
-    "interval": "once",
-    "signal": 8,
-    "on-click": "hyprctl dispatch 'hl.dsp.focus({ workspace = 1 })'"
-  },
-  "custom/ws2": {
-    "exec": "$HOME/.config/waybar/hypr-ws.sh 2",
-    "return-type": "json",
-    "interval": "once",
-    "signal": 8,
-    "on-click": "hyprctl dispatch 'hl.dsp.focus({ workspace = 2 })'"
-  },
-  "custom/ws3": {
-    "exec": "$HOME/.config/waybar/hypr-ws.sh 3",
-    "return-type": "json",
-    "interval": "once",
-    "signal": 8,
-    "on-click": "hyprctl dispatch 'hl.dsp.focus({ workspace = 3 })'"
-  },
-  "custom/ws4": {
-    "exec": "$HOME/.config/waybar/hypr-ws.sh 4",
-    "return-type": "json",
-    "interval": "once",
-    "signal": 8,
-    "on-click": "hyprctl dispatch 'hl.dsp.focus({ workspace = 4 })'"
-  },
-  "custom/ws5": {
-    "exec": "$HOME/.config/waybar/hypr-ws.sh 5",
-    "return-type": "json",
-    "interval": "once",
-    "signal": 8,
-    "on-click": "hyprctl dispatch 'hl.dsp.focus({ workspace = 5 })'"
-  },
-  "custom/ws6": {
-    "exec": "$HOME/.config/waybar/hypr-ws.sh 6",
-    "return-type": "json",
-    "interval": "once",
-    "signal": 8,
-    "on-click": "hyprctl dispatch 'hl.dsp.focus({ workspace = 6 })'"
-  },
-  "custom/ws7": {
-    "exec": "$HOME/.config/waybar/hypr-ws.sh 7",
-    "return-type": "json",
-    "interval": "once",
-    "signal": 8,
-    "on-click": "hyprctl dispatch 'hl.dsp.focus({ workspace = 7 })'"
-  },
-  "custom/ws8": {
-    "exec": "$HOME/.config/waybar/hypr-ws.sh 8",
-    "return-type": "json",
-    "interval": "once",
-    "signal": 8,
-    "on-click": "hyprctl dispatch 'hl.dsp.focus({ workspace = 8 })'"
-  },
-  "custom/ws9": {
-    "exec": "$HOME/.config/waybar/hypr-ws.sh 9",
-    "return-type": "json",
-    "interval": "once",
-    "signal": 8,
-    "on-click": "hyprctl dispatch 'hl.dsp.focus({ workspace = 9 })'"
-  },
-  "custom/ws10": {
-    "exec": "$HOME/.config/waybar/hypr-ws.sh 10",
-    "return-type": "json",
-    "interval": "once",
-    "signal": 8,
-    "on-click": "hyprctl dispatch 'hl.dsp.focus({ workspace = 10 })'"
   },
   // Power Menu
   "custom/exit": {
