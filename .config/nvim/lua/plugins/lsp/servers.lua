@@ -1,6 +1,18 @@
 local utils = require("plugins.lsp.utils")
 local M = {}
 
+-- shared between typescript + javascript blocks
+M.inlay_hints = {
+	includeInlayParameterNameHints = "all",
+	includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+	includeInlayFunctionParameterTypeHints = true,
+	includeInlayVariableTypeHints = true,
+	includeInlayVariableTypeHintsWhenTypeMatchesName = false,
+	includeInlayPropertyDeclarationTypeHints = true,
+	includeInlayFunctionLikeReturnTypeHints = true,
+	includeInlayEnumMemberValueHints = true,
+}
+
 function M.setup()
 	local capabilities = vim.lsp.protocol.make_client_capabilities()
 	capabilities = vim.tbl_deep_extend("force", capabilities, require("blink.cmp").get_lsp_capabilities())
@@ -11,6 +23,7 @@ function M.setup()
 				Lua = {
 					completion = { callSnippet = "Replace" },
 					telemetry = { enable = false },
+					hint = { enable = false },
 				},
 			},
 		},
@@ -25,6 +38,9 @@ function M.setup()
 				preferences = {
 					importModuleSpecifierPreference = "relative",
 				},
+				-- inlayHints config is read per-language (typescript/javascript), not under preferences
+				typescript = { inlayHints = M.inlay_hints },
+				javascript = { inlayHints = M.inlay_hints },
 			},
 		},
 	}
@@ -54,16 +70,15 @@ function M.setup()
 	})
 	require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
+	-- Register per-server config so automatic_enable picks it up (mason-lspconfig v2 dropped `handlers`)
+	vim.lsp.config("*", { capabilities = capabilities })
+	for server_name, server in pairs(servers) do
+		vim.lsp.config(server_name, server)
+	end
+
 	-- Mason LSP Config
 	require("mason-lspconfig").setup({
 		automatic_enable = { exclude = { "solargraph", "ruby_lsp" } },
-		handlers = {
-			function(server_name)
-				local server = servers[server_name] or {}
-				server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-				vim.lsp.enable(server)
-			end,
-		},
 	})
 end
 

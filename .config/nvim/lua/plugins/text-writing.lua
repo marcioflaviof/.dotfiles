@@ -1,45 +1,32 @@
 return {
-  {
-    "epwalsh/obsidian.nvim",
-    version = "*", -- recommended, use latest release instead of latest commit
-    lazy = true,
-    ft = "markdown",
-    dependencies = {
-      "nvim-lua/plenary.nvim",
-    },
-    opts = {
-      ui = {
-        enable = false
-      },
-      follow_url_func = function(url)
-        vim.fn.jobstart("xdg-open", url)
-      end,
-      attachments = {
-        img_folder = 'Attachments',
-      },
-      workspaces = {
-        {
-          name = "personal",
-          path = "~/Documents/Obsidian",
-        },
-        {
-          name = "no-vault",
-          path = function()
-            -- alternatively use the CWD:
-            -- return assert(vim.fn.getcwd())
-            return assert(vim.fs.dirname(vim.api.nvim_buf_get_name(0)))
-          end,
-          overrides = {
-            notes_subdir = vim.NIL, -- have to use 'vim.NIL' instead of 'nil'
-            new_notes_location = "current_dir",
-            templates = {
-              folder = vim.NIL,
-            },
-            disable_frontmatter = true,
-          },
-        },
-      },
-
-    },
-  }
+	{
+		"obsidian-nvim/obsidian.nvim",
+		version = "*", -- recommended, use latest release instead of latest commit
+		lazy = true,
+		-- only load inside a vault, not for every markdown file
+		event = {
+			"BufReadPre " .. vim.fn.expand("~") .. "/Documents/Obsidian/*.md",
+			"BufNewFile " .. vim.fn.expand("~") .. "/Documents/Obsidian/*.md",
+		},
+		---@module 'obsidian'
+		---@type obsidian.config
+		opts = {
+			legacy_commands = false,
+			picker = {
+				name = "snacks.picker",
+			},
+			ui = {
+				enable = false,
+			},
+			attachments = {
+				folder = "Attachments",
+			},
+			workspaces = {
+				{
+					name = "personal",
+					path = "~/Documents/Obsidian",
+				},
+			},
+		},
+	},
 }

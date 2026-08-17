@@ -6,8 +6,8 @@ return {
 		opts = {
 			copilot_node_command = "/home/mf/.local/share/mise/installs/node/23.11.0/bin/node",
 			suggestion = {
-				enabled = false,
-				auto_trigger = false,
+				enabled = true,
+				auto_trigger = true,
 				debounce = 0,
 				keymap = {
 					accept = "<M-l>",

@@ -16,11 +16,27 @@
     "custom/exit"
   ],
   "clock": {
-    "format": "<span foreground='#f5c2e7'>   </span>{:%a %B %d %H:%M}",
-    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>"
+    "format": "<span foreground='#f5c2e7'> </span>{:%a %B %d %H:%M}",
+    "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+    "calendar": {
+      "mode": "month",
+      "weeks-pos": "right",
+      "format": {
+        "months":  "<span color='#f5c2e7'><b>{}</b></span>",
+        "days":    "<span color='#cdd6f4'>{}</span>",
+        "weeks":   "<span color='#94e2d5'><b>W{}</b></span>",
+        "weekdays":"<span color='#fab387'><b>{}</b></span>",
+        "today":   "<span color='#f38ba8'><b><u>{}</u></b></span>"
+      }
+    },
+    "actions": {
+      "on-click-right": "mode",
+      "on-scroll-up": "shift_up",
+      "on-scroll-down": "shift_down"
+    }
   },
   "pulseaudio": {
-    "format": "{icon}  {volume}%",
+    "format": "{icon} {volume}%",
     "format-muted": "",
     "format-icons": {
       "default": [
@@ -46,7 +62,7 @@
   },
   "tray": {
     "icon-size": 18,
-    "spacing": 5
+    "spacing": 3
   },
   // Power Menu
   "custom/exit": {

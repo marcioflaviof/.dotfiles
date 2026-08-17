@@ -18,6 +18,9 @@ vim.g.maplocalleader = " "
 
 -- Normal --
 
+-- Smart Paste
+keymap("n", "p", "p`[v`]=", opts)
+
 -- Better window navigation
 keymap("n", "<C-h>", "<C-w>h", opts)
 keymap("n", "<C-j>", "<C-w>j", opts)
