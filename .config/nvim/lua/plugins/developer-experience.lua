@@ -4,22 +4,11 @@ vim.g.matchup_enabled = 1
 -- vim.g.matchup_matchparen_enabled = 0
 vim.g.matchup_surround_enabled = 1
 
-local map_ai_move = function(lhs, textobject_id, direction, desc)
-	local rhs = function()
-		MiniAi.move_cursor("left", "a", textobject_id, { search_method = direction })
-	end
-	vim.keymap.set({ "n", "x", "o" }, lhs, rhs, { desc = desc })
-end
-
--- Instead of `'f'` use id of textobject you'd like to move.
--- For more info see `:h MiniAi.move_cursor()`.
-map_ai_move("[f", "f", "prev", "Jump to prev function")
-map_ai_move("]f", "f", "next", "Jump to next function")
-
 return {
 	{ "andymass/vim-matchup", lazy = false },
 	{
 		"kevinhwang91/nvim-ufo",
+		event = "BufReadPost",
 		dependencies = "kevinhwang91/promise-async",
 		config = function()
 			vim.o.foldcolumn = "0" -- '0' is not bad
@@ -46,6 +35,7 @@ return {
 	},
 	{
 		"windwp/nvim-ts-autotag",
+		event = "InsertEnter",
 		opts = {},
 	},
 	{
@@ -58,7 +48,7 @@ return {
 			require("illuminate").configure({})
 		end,
 	},
-	"junegunn/vim-slash",
+	{ "junegunn/vim-slash", event = "VeryLazy" },
 	{
 		"jiaoshijie/undotree",
 		---@module 'undotree.collector'
@@ -94,6 +84,27 @@ return {
 	{
 		"nvim-mini/mini.ai",
 		version = "*",
+		event = "VeryLazy",
+		-- `:h MiniAi.move_cursor()`. Declared as `keys` rather than set at spec
+		-- eval time, so they cannot fire before MiniAi exists.
+		keys = {
+			{
+				"[f",
+				function()
+					MiniAi.move_cursor("left", "a", "f", { search_method = "prev" })
+				end,
+				mode = { "n", "x", "o" },
+				desc = "Jump to prev function",
+			},
+			{
+				"]f",
+				function()
+					MiniAi.move_cursor("left", "a", "f", { search_method = "next" })
+				end,
+				mode = { "n", "x", "o" },
+				desc = "Jump to next function",
+			},
+		},
 		config = function()
 			local ai = require("mini.ai")
 			return ai.setup({
@@ -113,6 +124,7 @@ return {
 	{
 		"nvim-mini/mini.surround",
 		version = "*",
+		event = "VeryLazy",
 		opts = {
 			n_lines = 500,
 			search_method = "cover_or_next",
@@ -127,6 +139,7 @@ return {
 	{
 		"nvim-mini/mini.operators",
 		version = "*",
+		event = "VeryLazy",
 		opts = {},
 	},
 	{
@@ -139,13 +152,15 @@ return {
 		event = "FileType qf",
 		opts = {},
 	},
-	"kchmck/vim-coffee-script",
+	{ "kchmck/vim-coffee-script", ft = "coffee" },
 	{
 		"sphamba/smear-cursor.nvim",
+		event = "VeryLazy",
 		opts = {},
 	},
 	{
 		"MeanderingProgrammer/render-markdown.nvim",
+		ft = "markdown",
 		dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" }, -- if you prefer nvim-web-devicons
 		---@module 'render-markdown'
 		---@type render.md.UserConfig
@@ -153,6 +168,7 @@ return {
 	},
 	{
 		"folke/todo-comments.nvim",
+		event = "VeryLazy",
 		dependencies = {
 			"nvim-lua/plenary.nvim",
 		},
@@ -166,6 +182,20 @@ return {
 	},
 	{
 		"zk-org/zk-nvim",
+		cmd = { "ZkNew", "ZkNotes", "ZkTags", "ZkMatch" },
+		-- Keymaps live here rather than in `config` so they still work from a
+		-- non-markdown buffer without loading zk on every launch.
+		keys = {
+			{ "<leader>zn", "<Cmd>ZkNew { title = vim.fn.input('Title: ') }<CR>", desc = "zk: new note" },
+			{ "<leader>zo", "<Cmd>ZkNotes { sort = { 'modified' } }<CR>", desc = "zk: open notes" },
+			{ "<leader>zt", "<Cmd>ZkTags<CR>", desc = "zk: tags" },
+			{
+				"<leader>zf",
+				"<Cmd>ZkNotes { sort = { 'modified' }, match = { vim.fn.input('Search: ') } }<CR>",
+				desc = "zk: search notes",
+			},
+			{ "<leader>zf", ":'<,'>ZkMatch<CR>", mode = "v", desc = "zk: match selection" },
+		},
 		config = function()
 			require("zk").setup({
 				picker = "snacks_picker",
@@ -182,25 +212,6 @@ return {
 					},
 				},
 			})
-			local opts = { noremap = true, silent = false }
-
-			-- Create a new note after asking for its title.
-			vim.api.nvim_set_keymap("n", "<leader>zn", "<Cmd>ZkNew { title = vim.fn.input('Title: ') }<CR>", opts)
-
-			-- Open notes.
-			vim.api.nvim_set_keymap("n", "<leader>zo", "<Cmd>ZkNotes { sort = { 'modified' } }<CR>", opts)
-			-- Open notes associated with the selected tags.
-			vim.api.nvim_set_keymap("n", "<leader>zt", "<Cmd>ZkTags<CR>", opts)
-
-			-- Search for the notes matching a given query.
-			vim.api.nvim_set_keymap(
-				"n",
-				"<leader>zf",
-				"<Cmd>ZkNotes { sort = { 'modified' }, match = { vim.fn.input('Search: ') } }<CR>",
-				opts
-			)
-			-- Search for the notes matching the current visual selection.
-			vim.api.nvim_set_keymap("v", "<leader>zf", ":'<,'>ZkMatch<CR>", opts)
 		end,
 	},
 }

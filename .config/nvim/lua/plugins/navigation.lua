@@ -1,6 +1,8 @@
 return {
 	{
 		"tpope/vim-projectionist",
+		cmd = { "A", "AS", "AV", "AT" },
+		keys = { { "<leader>al", "<CMD>A<CR>", desc = "Alternate file" } },
 		config = function()
 			vim.g.projectionist_heuristics = {
 				["*"] = {
@@ -23,8 +25,6 @@ return {
 					},
 				},
 			}
-
-			vim.keymap.set("n", "<leader>al", "<CMD>A<CR>", { desc = "Alternate file" })
 		end,
 	},
 	{

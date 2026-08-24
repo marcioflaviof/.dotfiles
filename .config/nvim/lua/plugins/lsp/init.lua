@@ -10,6 +10,10 @@ return {
 	},
 	{
 		"neovim/nvim-lspconfig",
+		-- Defers the whole mason chain (mason, mason-lspconfig,
+		-- mason-tool-installer, fidget) with it, instead of five plugins on
+		-- every launch including ones that open no file.
+		event = { "BufReadPre", "BufNewFile" },
 		dependencies = {
 			{ "mason-org/mason.nvim", opts = {} },
 			{ "mason-org/mason-lspconfig.nvim" },
