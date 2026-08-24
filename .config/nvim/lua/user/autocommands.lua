@@ -3,24 +3,10 @@ local ag = vim.api.nvim_create_augroup
 
 local yank_group = ag("HighlightYank", {})
 
--- jbuilder as ruby
-autocmd("BufRead", {
-	pattern = { "*.jbuilder" },
-	callback = function()
-		vim.schedule(function()
-			vim.api.nvim_command("set ft=ruby")
-		end)
-	end,
-})
-
--- eruby.yml as yaml
-autocmd("BufRead", {
-	pattern = { "*.yml*" },
-	callback = function()
-		vim.schedule(function()
-			vim.api.nvim_command("set ft=yaml")
-		end)
-	end,
+vim.filetype.add({
+	extension = {
+		jbuilder = "ruby",
+	},
 })
 
 autocmd("TextYankPost", {

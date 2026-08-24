@@ -1,11 +1,13 @@
-function _G.set_terminal_keymaps()
-	local opts = { noremap = true }
-	vim.api.nvim_buf_set_keymap(0, "t", "jk", [[<C-\><C-n>]], opts)
-end
-
-vim.cmd("autocmd! TermOpen term://* lua set_terminal_keymaps()")
+vim.api.nvim_create_autocmd("TermOpen", {
+	group = vim.api.nvim_create_augroup("terminal-keymaps", { clear = true }),
+	pattern = "term://*",
+	callback = function(event)
+		vim.keymap.set("t", "jk", [[<C-\><C-n>]], { buffer = event.buf, desc = "Leave terminal mode" })
+	end,
+})
 
 vim.api.nvim_create_autocmd("User", {
+	group = vim.api.nvim_create_augroup("mini-files-rename", { clear = true }),
 	pattern = "MiniFilesActionRename",
 	callback = function(event)
 		Snacks.rename.on_rename_file(event.data.from, event.data.to)

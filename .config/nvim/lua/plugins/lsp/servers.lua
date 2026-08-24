@@ -67,6 +67,7 @@ function M.setup()
 		{ "solargraph", version = "0.55.4" },
 		"emmet_ls",
 		"kulala-fmt",
+		"sql-formatter", -- conform's `sql_formatter` for filetype=sql
 	})
 	require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 

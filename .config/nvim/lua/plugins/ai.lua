@@ -4,7 +4,6 @@ return {
 		cmd = { "Copilot" },
 		event = "InsertEnter",
 		opts = {
-			copilot_node_command = "/home/mf/.local/share/mise/installs/node/23.11.0/bin/node",
 			suggestion = {
 				enabled = true,
 				auto_trigger = true,

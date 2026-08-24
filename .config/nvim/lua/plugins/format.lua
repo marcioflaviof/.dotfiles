@@ -23,8 +23,10 @@ return {
 		-- },
 
 		formatters = {
+			-- No conform builtin and no mason package; resolved from PATH.
+			-- Install with: mise use -g npm:@herb-tools/formatter
 			["herb-format"] = {
-				command = "/home/mf/.local/share/mise/installs/node/23.11.0/bin/herb-format", -- use absolute path
+				command = "herb-format",
 				stdin = true,
 			},
 		},

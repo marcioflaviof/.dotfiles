@@ -40,24 +40,19 @@ return {
 	{
 		"nvim-treesitter/nvim-treesitter",
 		version = false,
-		lazy = true,
+		lazy = false,
 		branch = "main",
 		build = ":TSUpdate",
-		cmd = { "TSUpdate", "TSInstall", "TSLog", "TSUninstall" },
-		init = function() end,
 		config = function()
 			if vim.fn.executable("tree-sitter") == 0 then
-				print("**treesitter-main** requires the `tree-sitter` executable to be installed")
+				vim.notify("nvim-treesitter (main) requires the `tree-sitter` executable", vim.log.levels.WARN)
 			end
-			local opts = {
-				auto_install = true,
-				matchup = {
-					enable = true,
-					enable_quotes = true,
-				},
-			}
 
-			local ensure_installed = {
+			local TS = require("nvim-treesitter")
+
+			TS.setup()
+
+			TS.install({
 				"javascript",
 				"go",
 				"typescript",
@@ -68,21 +63,44 @@ return {
 				"lua",
 				"embedded_template",
 				"markdown",
-			}
+			})
 
-			local TS = require("nvim-treesitter")
-			TS.install(ensure_installed)
-			TS.setup(opts)
-
-			local installed = TS.get_installed("parsers")
+			local available = nil
+			local pending = {}
 
 			vim.api.nvim_create_autocmd("FileType", {
+				group = vim.api.nvim_create_augroup("ts-highlight", { clear = true }),
 				callback = function(ev)
 					local lang = vim.treesitter.language.get_lang(ev.match)
-
-					if vim.tbl_contains(installed, lang) then
-						pcall(vim.treesitter.start)
+					if not lang then
+						return
 					end
+
+					if vim.tbl_contains(TS.get_installed("parsers"), lang) then
+						pcall(vim.treesitter.start, ev.buf, lang)
+						return
+					end
+
+					if pending[lang] then
+						return
+					end
+					available = available or TS.get_available()
+					if not vim.tbl_contains(available, lang) then
+						return
+					end
+
+					pending[lang] = true
+					TS.install(lang):await(function()
+						pending[lang] = nil
+						for _, buf in ipairs(vim.api.nvim_list_bufs()) do
+							if vim.api.nvim_buf_is_loaded(buf) then
+								local buf_lang = vim.treesitter.language.get_lang(vim.bo[buf].filetype)
+								if buf_lang == lang then
+									pcall(vim.treesitter.start, buf, lang)
+								end
+							end
+						end
+					end)
 				end,
 			})
 		end,
