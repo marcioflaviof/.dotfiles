@@ -7,13 +7,11 @@ function M.setup()
 		diagnostic_signs[vim.diagnostic.severity[type]] = icon
 	end
 
+	-- No virtual_text here: tiny-inline-diagnostic renders diagnostics and
+	-- disables it anyway, so setting it up first was pure churn.
 	vim.diagnostic.config({
 		signs = { text = diagnostic_signs },
-		virtual_text = {
-			prefix = "●",
-			spacing = 4,
-			source = "if_many",
-		},
+		severity_sort = true,
 	})
 end
 

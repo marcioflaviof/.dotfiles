@@ -1,7 +1,3 @@
-local opts = { noremap = true, silent = true }
-
-vim.api.nvim_set_keymap("n", "<leader>gs", "<cmd>0G<CR>", opts) -- vim fugitive
-
 return {
   {
     'lewis6991/gitsigns.nvim',
@@ -18,9 +14,10 @@ return {
 
   {
     "tpope/vim-fugitive",
+    cmd = { "G", "Git" },
     keys = {
-      { "<leader>gs", "<cmd>0G<CR>", opts },
-    }
+      { "<leader>gs", "<cmd>0G<CR>", desc = "Fugitive status" },
+    },
   },
   {
     'akinsho/git-conflict.nvim',

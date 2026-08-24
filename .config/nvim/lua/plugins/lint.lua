@@ -14,7 +14,8 @@ return {
 
       -- on the specified events.
       local lint_augroup = vim.api.nvim_create_augroup('lint', { clear = true })
-      vim.api.nvim_create_autocmd({ 'BufEnter', 'BufWritePost', 'InsertLeave', 'CursorHold' }, {
+      -- No CursorHold: with updatetime=200 that re-ran eslint_d every 200ms of idle.
+      vim.api.nvim_create_autocmd({ 'BufReadPost', 'BufWritePost', 'InsertLeave' }, {
         group = lint_augroup,
         callback = function()
           -- Only run the linter in buffers that you can modify in order to

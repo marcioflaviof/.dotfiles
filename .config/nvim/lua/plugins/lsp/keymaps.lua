@@ -29,37 +29,17 @@ function M.setup()
 			end, "")
 			map("K", function()
 				vim.lsp.buf.hover({
-					border = "single",
+					-- border comes from the global 'winborder'
 					close_events = { "CursorMoved", "BufHidden", "InsertCharPre" },
 					focusable = true,
 					max_width = 120,
 				})
 			end, "Hover")
 
-			-- LSP Highlighting
+			-- Reference highlighting is vim-illuminate's job; its `lsp` provider
+			-- issues the same textDocument/documentHighlight request this block
+			-- used to, so doing it here as well was duplicated work.
 			local client = vim.lsp.get_client_by_id(event.data.client_id)
-			if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_documentHighlight) then
-				local highlight_augroup = vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
-				vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
-					buffer = event.buf,
-					group = highlight_augroup,
-					callback = vim.lsp.buf.document_highlight,
-				})
-
-				vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
-					buffer = event.buf,
-					group = highlight_augroup,
-					callback = vim.lsp.buf.clear_references,
-				})
-
-				vim.api.nvim_create_autocmd("LspDetach", {
-					group = vim.api.nvim_create_augroup("kickstart-lsp-detach", { clear = true }),
-					callback = function(event2)
-						vim.lsp.buf.clear_references()
-						vim.api.nvim_clear_autocmds({ group = "kickstart-lsp-highlight", buffer = event2.buf })
-					end,
-				})
-			end
 
 			if client and client:supports_method(vim.lsp.protocol.Methods.textDocument_inlayHint) then
 				map("<leader>th", function()

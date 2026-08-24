@@ -49,6 +49,10 @@ return {
 		opts = {},
 	},
 	{
+		-- Kept over snacks.words, which is LSP-only. Illuminate falls back
+		-- lsp -> regex, so it still highlights in yaml/sql/http/coffee/markdown,
+		-- none of which have a documentHighlight-capable server here. It also
+		-- ships reference navigation and textobjects.
 		"RRethy/vim-illuminate",
 		config = function()
 			require("illuminate").configure({})

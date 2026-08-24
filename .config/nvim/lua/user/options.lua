@@ -25,10 +25,9 @@ local options = {
 	cmdheight = 1, -- more space in the neovim command line for displaying messages
 	completeopt = { "menu", "menuone", "noselect", "noinsert", "popup" }, -- mostly just for cmp
 	conceallevel = 0, -- so that `` is visible in markdown files
-	fileencoding = "UTF-8", -- the encoding written to a file
 	pumheight = 10, -- pop up menu height
 	showmode = false, -- we don't need to see things like -- INSERT -- anymore
-	showtabline = 0, -- always show tabs
+	showtabline = 0, -- never show the tabline
 	smartcase = true, -- smart case
 	splitbelow = true, -- force all horizontal splits to go below current window
 	splitright = true, -- force all vertical splits to go to the right of current window
@@ -41,7 +40,15 @@ local options = {
 	numberwidth = 2, -- set number column width to 2 {default 4}
 	-- colorcolumn = "80",
 	wrap = true, -- display lines as one long line
+	linebreak = true, -- ...but break at word boundaries, not mid-word
+	breakindent = true, -- keep wrapped lines visually indented
+	smoothscroll = true, -- scroll by screen line, so C-d/C-e behave with wrap
 	spell = false,
+
+	inccommand = "split", -- live preview for :s, with an off-screen diff
+	splitkeep = "screen", -- don't scroll the current window when splitting
+	confirm = true, -- prompt on :q with unsaved changes instead of erroring
+	jumpoptions = "stack,view", -- restore the view when jumping back
 	-- list = true,
 	-- listchars = { tab = "  ", eol = "↵", trail = "", extends = ">", precedes = "<", nbsp = "•" },
 }

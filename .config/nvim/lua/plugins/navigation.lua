@@ -24,25 +24,29 @@ return {
 				},
 			}
 
-			vim.keymap.set("n", "<leader>al", "<CMD>A<CR>")
+			vim.keymap.set("n", "<leader>al", "<CMD>A<CR>", { desc = "Alternate file" })
 		end,
 	},
 	{
 		"tpope/vim-rails",
 		ft = { "ruby", "eruby", "slim", "yaml", "yml" },
 		config = function()
-			vim.keymap.set("n", "<leader>rl", "<CMD>R<CR>")
+			vim.keymap.set("n", "<leader>rl", "<CMD>R<CR>", { desc = "Rails related file" })
 		end,
 	},
 	{
 		"cbochs/grapple.nvim",
+		-- `<leader>r` used to be "select tag 4", but it is a prefix of rn/rl/rs/
+		-- ra/rr/rc/rC (LSP rename, vim-rails, kulala), so every press stalled
+		-- for 'timeoutlen'. `<leader>h` was likewise a prefix of `<leader>hm`;
+		-- it is now a pure group prefix with hh/ha underneath.
 		keys = {
-			{ "<leader>hm", "<cmd>Grapple tag<cr>", mode = { "n" } },
-			{ "<leader>h", "<cmd>Grapple toggle_tags<cr>", mode = { "n" } },
-			{ "<leader>q", "<cmd>Grapple select index=1<cr>", mode = { "n" } },
-			{ "<leader>w", "<cmd>Grapple select index=2<cr>", mode = { "n" } },
-			{ "<leader>e", "<cmd>Grapple select index=3<cr>", mode = { "n" } },
-			{ "<leader>r", "<cmd>Grapple select index=4<cr>", mode = { "n" } },
+			{ "<leader>ha", "<cmd>Grapple tag<cr>", desc = "Grapple: add tag" },
+			{ "<leader>hh", "<cmd>Grapple toggle_tags<cr>", desc = "Grapple: tags" },
+			{ "<leader>1", "<cmd>Grapple select index=1<cr>", desc = "Grapple: tag 1" },
+			{ "<leader>2", "<cmd>Grapple select index=2<cr>", desc = "Grapple: tag 2" },
+			{ "<leader>3", "<cmd>Grapple select index=3<cr>", desc = "Grapple: tag 3" },
+			{ "<leader>4", "<cmd>Grapple select index=4<cr>", desc = "Grapple: tag 4" },
 		},
 		opts = {
 			scope = "git_branch",

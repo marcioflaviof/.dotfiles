@@ -1,81 +1,57 @@
-local opts = { noremap = true, silent = true }
+local map = vim.keymap.set
 
--- Shorten function name
-local keymap = vim.api.nvim_set_keymap
-
---Remap space as leader key
-keymap("", "<Space>", "<Nop>", opts)
+-- Remap space as leader key
+map("", "<Space>", "<Nop>", { desc = "Leader" })
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
--- Modes
---   normal_mode = "n",
---   insert_mode = "i",
---   visual_mode = "v",
---   visual_block_mode = "x",
---   term_mode = "t",
---   command_mode = "c",
-
 -- Normal --
 
--- Smart Paste
-keymap("n", "p", "p`[v`]=", opts)
-
 -- Better window navigation
-keymap("n", "<C-h>", "<C-w>h", opts)
-keymap("n", "<C-j>", "<C-w>j", opts)
-keymap("n", "<C-k>", "<C-w>k", opts)
-keymap("n", "<C-l>", "<C-w>l", opts)
+map("n", "<C-h>", "<C-w>h", { desc = "Window left" })
+map("n", "<C-j>", "<C-w>j", { desc = "Window down" })
+map("n", "<C-k>", "<C-w>k", { desc = "Window up" })
+map("n", "<C-l>", "<C-w>l", { desc = "Window right" })
 
--- split resize
-keymap("n", "<M-,>", "<c-w>5<", opts)
-keymap("n", "<M-.>", "<c-w>5>", opts)
+-- Split resize
+map("n", "<M-,>", "<C-w>5<", { desc = "Shrink window" })
+map("n", "<M-.>", "<C-w>5>", { desc = "Grow window" })
 
--- Better navigation with ctrl d and ctrl u
-keymap("n", "<C-d>", "<C-d>zz", opts)
-keymap("n", "<C-u>", "<C-u>zz", opts)
+-- Keep the cursor centred when paging
+map("n", "<C-d>", "<C-d>zz", { desc = "Half page down" })
+map("n", "<C-u>", "<C-u>zz", { desc = "Half page up" })
 
 -- Copy path
-keymap("n", "<leader>cfp", "<cmd>let @+ = expand('%:p')<CR>", opts)
-keymap("n", "<leader>cp", '<cmd>let @+ = fnamemodify(expand("%"), ":~:.")<CR>', opts)
+map("n", "<leader>cfp", "<cmd>let @+ = expand('%:p')<CR>", { desc = "Copy absolute file path" })
+map("n", "<leader>cp", '<cmd>let @+ = fnamemodify(expand("%"), ":~:.")<CR>', { desc = "Copy relative file path" })
 
--- save with ctrl + s
-keymap("n", "<C-s>", ":w<CR>", { noremap = true })
+-- Save
+map("n", "<C-s>", "<cmd>w<CR>", { desc = "Save file" })
 
--- quickfix list
-keymap("n", "]q", ":cn<CR>", opts)
-keymap("n", "[q", ":cp<CR>", opts)
+-- Reindent the pasted region. Bound to ]p rather than p so a plain paste
+-- keeps its own formatting and still honours a count.
+map("n", "]p", "p`[v`]=", { desc = "Paste and reindent" })
+
+-- `]q`/`[q`, `]d`/`[d`, `]b`/`[b` etc. ship with Neovim 0.11+ and already
+-- handle counts and end-of-list, so they are deliberately not remapped here.
 
 -- Insert --
--- Press jk fast to enter
-keymap("i", "jk", "<ESC>", opts)
+map("i", "jk", "<ESC>", { desc = "Exit insert mode" })
 
 -- Visual --
--- Stay in indent mode
-keymap("v", "<", "<gv", opts)
-keymap("v", ">", ">gv", opts)
-
-keymap("v", "p", '"_dP', opts)
-
--- Visual Block --
--- Move text up and down
--- keymap("x", "J", ":move '>+1<CR>gv-gv", opts)
--- keymap("x", "K", ":move '<-2<CR>gv-gv", opts)
+map("v", "<", "<gv", { desc = "Outdent and reselect" })
+map("v", ">", ">gv", { desc = "Indent and reselect" })
+map("v", "p", '"_dP', { desc = "Paste without yanking replaced text" })
 
 -- Neovide
---
 if vim.g.neovide == true then
-	vim.api.nvim_set_keymap(
-		"n",
-		"<C-+>",
-		":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor + 0.1<CR>",
-		{ silent = true }
-	)
-	vim.api.nvim_set_keymap(
-		"n",
-		"<C-->",
-		":lua vim.g.neovide_scale_factor = vim.g.neovide_scale_factor - 0.1<CR>",
-		{ silent = true }
-	)
-	vim.api.nvim_set_keymap("n", "<C-0>", ":lua vim.g.neovide_scale_factor = 1<CR>", { silent = true })
+	local function scale(delta)
+		return function()
+			vim.g.neovide_scale_factor = delta and (vim.g.neovide_scale_factor + delta) or 1
+		end
+	end
+
+	map("n", "<C-+>", scale(0.1), { desc = "Neovide: zoom in" })
+	map("n", "<C-->", scale(-0.1), { desc = "Neovide: zoom out" })
+	map("n", "<C-0>", scale(nil), { desc = "Neovide: reset zoom" })
 end
