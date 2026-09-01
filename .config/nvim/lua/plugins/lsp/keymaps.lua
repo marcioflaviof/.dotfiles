@@ -47,15 +47,43 @@ function M.setup()
 				end, "[T]oggle Inlay [H]ints")
 			end
 
+			-- `typescript.findAllFileReferences` is a vtsls command; ts_ls does not
+			-- advertise it. Route through `typescript.tsserverRequest`, which it
+			-- does support, and build the quickfix list by hand (there is no
+			-- vim.lsp.util.set_qflist any more).
 			map("<leader>lR", function()
 				vim.lsp.buf_request(0, "workspace/executeCommand", {
-					command = "typescript.findAllFileReferences",
-					arguments = { vim.uri_from_bufnr(event.buf) },
+					command = "typescript.tsserverRequest",
+					arguments = { "fileReferences", { file = vim.api.nvim_buf_get_name(event.buf) } },
 				}, function(err, result)
-					if result then
-						vim.lsp.util.set_qflist(result)
-						vim.cmd("copen")
+					if err then
+						return vim.notify(err.message or "File references failed", vim.log.levels.ERROR)
 					end
+
+					local refs = result and result.body and result.body.refs
+					if not refs or vim.tbl_isempty(refs) then
+						return vim.notify("No file references found", vim.log.levels.INFO)
+					end
+
+					-- tsserver refs are 1-based and carry no line text, so convert
+					-- them to LSP Locations and let locations_to_items() read the
+					-- surrounding source for the quickfix preview.
+					local locations = vim.tbl_map(function(ref)
+						return {
+							uri = vim.uri_from_fname(ref.file),
+							range = {
+								start = { line = ref.start.line - 1, character = ref.start.offset - 1 },
+								["end"] = { line = ref["end"].line - 1, character = ref["end"].offset - 1 },
+							},
+						}
+					end, refs)
+
+					local encoding = vim.lsp.get_clients({ bufnr = event.buf, name = "ts_ls" })[1].offset_encoding
+					vim.fn.setqflist({}, " ", {
+						title = "LSP file references",
+						items = vim.lsp.util.locations_to_items(locations, encoding),
+					})
+					vim.cmd("copen")
 				end)
 			end, "[L]sp File [R]eferences")
 

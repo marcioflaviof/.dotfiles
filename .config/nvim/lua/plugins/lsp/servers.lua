@@ -45,31 +45,26 @@ function M.setup()
 		},
 	}
 
-	-- Ruby Version Detection and Server Setup
+	-- Ruby: pick a server from what the project pins, defaulting to ruby-lsp.
 	local ruby_major = utils.get_ruby_version()
+	vim.lsp.enable((ruby_major and ruby_major < 3) and "solargraph" or "ruby-lsp")
 
-	if ruby_major then
-		if ruby_major >= 3 then
-			vim.lsp.enable("ruby-lsp")
-		elseif ruby_major < 3 then
-			vim.lsp.enable("solargraph")
-		end
-	end
-
-	-- Mason Tool Installation
-	local ensure_installed = vim.tbl_keys(servers or {})
-	vim.list_extend(ensure_installed, {
-		"html",
-		"jsonls",
-		{ "lua_ls", version = "3.16.4", auto_update = false },
-		"gopls",
-		"ruby_lsp",
-		{ "solargraph", version = "0.55.4" },
-		"emmet_ls",
-		"kulala-fmt",
-		"sql-formatter", -- conform's `sql_formatter` for filetype=sql
+	-- Mason tool installation. Listed explicitly rather than derived from
+	-- `servers` so lua_ls is not requested twice with conflicting versions.
+	require("mason-tool-installer").setup({
+		ensure_installed = {
+			{ "lua_ls", version = "3.16.4", auto_update = false },
+			"ts_ls",
+			"html",
+			"jsonls",
+			"gopls",
+			"ruby_lsp",
+			{ "solargraph", version = "0.55.4" },
+			"emmet_ls",
+			"kulala-fmt",
+			"sql-formatter", -- conform's `sql_formatter` for filetype=sql
+		},
 	})
-	require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
 	-- Register per-server config so automatic_enable picks it up (mason-lspconfig v2 dropped `handlers`)
 	vim.lsp.config("*", { capabilities = capabilities })

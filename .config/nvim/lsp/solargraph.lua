@@ -1,10 +1,8 @@
-local capabilities = vim.lsp.protocol.make_client_capabilities()
-capabilities = vim.tbl_deep_extend("force", capabilities, require("blink.cmp").get_lsp_capabilities())
-
+-- capabilities come from the `vim.lsp.config("*")` block in
+-- lua/plugins/lsp/servers.lua, which already merges blink's.
 return {
 	cmd = { "solargraph", "stdio" },
 	filetypes = { "ruby" },
-	capabilities = capabilities,
 	settings = {
 		solargraph = {
 			diagnostics = true,

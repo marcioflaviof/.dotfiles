@@ -218,4 +218,39 @@ return {
 
   },
   "nvim-tree/nvim-web-devicons",
+
+  {
+    "folke/which-key.nvim",
+    event = "VeryLazy",
+    opts = {
+      preset = "helix",
+      spec = {
+        { "<leader>a", group = "ai" },
+        { "<leader>b", group = "buffer" },
+        { "<leader>c", group = "copy" },
+        { "<leader>g", group = "git" },
+        { "<leader>h", group = "grapple" },
+        { "<leader>l", group = "lsp" },
+        { "<leader>r", group = "rest / rails" },
+        { "<leader>s", group = "search" },
+        { "<leader>t", group = "test" },
+        { "<leader>x", group = "trouble" },
+        { "<leader>z", group = "zk" },
+        -- grapple slots, moved off <leader>q/w/e/r to stop the prefix stall
+        { "<leader>1", hidden = true },
+        { "<leader>2", hidden = true },
+        { "<leader>3", hidden = true },
+        { "<leader>4", hidden = true },
+      },
+    },
+    keys = {
+      {
+        "<leader>?",
+        function()
+          require("which-key").show({ global = false })
+        end,
+        desc = "Buffer keymaps",
+      },
+    },
+  },
 }

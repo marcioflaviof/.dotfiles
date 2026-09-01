@@ -42,3 +42,6 @@ luac.out
 .*/*/plugin/*
 
 lazy-lock.json
+
+# fish writes this on every universal-var change
+.config/fish/fish_variables
